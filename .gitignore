@@ -1,0 +1,4 @@
+# The architecture chat's ledger is never committed. ADR-0002.
+CHAT_STATE.md
+
+# Local build output and dependencies, named once the framework is decided.

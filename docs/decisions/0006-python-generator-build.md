@@ -1,0 +1,170 @@
+---
+status: accepted
+topic: build
+description: A small Python generator, no site framework, built locally with its output committed. Turns two of ADR-0005's review checks into build gates. Read before writing any build code.
+date: 2026-09-26
+decision-makers: Waqas Sharif
+# consulted:
+# informed:
+---
+
+# ADR-0006: Build with a small Python generator
+
+## Context and Problem Statement
+
+The accepted records leave the site with exactly three things to generate.
+The timeline's grid positions, computed from fourteen items' dates at four
+layout units per month from Jan 2024 (ADR-0003). The same three-layer markup
+repeated for roughly twelve items (ADR-0005). Nothing else: no routing, no
+client state, no data fetching.
+
+Every option can do that. The question is how much dependency and how much
+toolchain to accept for it, against a standing constraint that a dependency
+is added by decision and not by import (ADR-0004 line 14), and against
+output that must carry all content in the initial HTML (ADR-0004 line 7).
+
+Writing the HTML by hand is the zero-dependency answer, but it means
+calculating each timeline item's grid row and span by hand, fourteen times,
+and recalculating whenever a date moves. That failure is silent: a bar in
+the wrong month looks entirely normal.
+
+## Decision Drivers
+
+- ADR-0003: timeline positions are a function of dates and must stay in
+  sync with the master CV.
+- ADR-0005: repeated markup per item, and two confirmation checks that are
+  review-only unless something enforces them.
+- ADR-0004 lines 7 and 14: content in the initial HTML; no dependency by
+  import.
+- ADR-0002: GitHub Pages, served at the domain root, root-relative links.
+- Free by default, minimum spend, discussed before committed.
+- Python is the operator's primary language.
+
+## Assumptions
+
+- A1. The operator can maintain and audit the generator himself. **Stated**:
+  the master CV lists Python as his primary language, read 2026-09-25.
+- A2. The content stays small enough that the generator does not grow into a
+  framework. **Measured**: fourteen dated items, about twelve content items,
+  a handful of sections, counted 2026-09-25. If the item count multiplies,
+  this assumption fails and the decision should be revisited.
+- A3. A committed build output can be served by GitHub Pages from the
+  repository root with no build service involved. **Sourced**: ADR-0002
+  records that a user site is served from a repository named
+  `<owner>.github.io` at the domain root. **Not independently verified** for
+  the specific case of committed generated files; the publishing-source
+  documentation was not read.
+
+## Considered Options
+
+- A small generator written in Python
+- Hand-written HTML and CSS, no build step
+- Astro
+- A JavaScript static site generator such as Eleventy
+
+## Decision Outcome
+
+Chosen option: "A small generator written in Python".
+
+We will build the site with a small generator written in Python and will not
+adopt a site framework.
+We will keep its templating to one library, added by this record rather than
+by import, and will add no further dependency without a record.
+We will hold every item's content as structured data in one place and
+generate all markup from it, so that a date or a fact is written once.
+We will make the generator fail the build when an item lacks a source
+reference to the master CV or lacks either a proof link or a named
+verification route.
+We will run the build locally and commit its output, rather than building in
+a continuous integration service.
+We will add a gate that rebuilds from source and fails if the committed
+output differs from a fresh build.
+
+### Consequences
+
+- Positive: timeline positions are computed, so they cannot drift from the
+  dates silently.
+- Positive: two of ADR-0005's confirmation checks stop being review-only and
+  become build failures. That is the single largest gain here.
+- Positive: the whole build is one language the operator already uses, short
+  enough to read end to end, with no node toolchain to rot.
+- Positive: building locally sidesteps continuous integration entirely. No
+  minutes consumed, no workflow to maintain, and the unverified question in
+  A3 about build services never arises.
+- Positive: generated output lands in the commit diff, so a change to the
+  site is visible as a change, not as a build log.
+- Negative: the templating layer is the operator's to write and maintain.
+  There is no ecosystem and no community answer when something is awkward.
+- Negative: committed output makes diffs noisy, and source and output can
+  drift if anyone edits the output directly. The rebuild gate is the answer
+  and it must exist before the output is trusted.
+- Negative: a later need for client-side interactivity, such as the AI
+  assistant, has no framework to fall back on. Against that, the assistant
+  as the operator described it, matching what a visitor needs against what
+  he offers, may need no client-side code at all.
+- Neutral: the repository will hold source and output side by side. The
+  layout is left to the implementing brief.
+
+### Confirmation
+
+- `pip list` inside the project environment shows exactly one templating
+  dependency. A second dependency without a record fails the review.
+- Remove an item's source reference and run the build. It must fail. A build
+  that succeeds fails this check.
+- Remove an item's proof link and verification route and run the build. It
+  must fail.
+- Change one item's end date by one month, rebuild, and confirm its grid
+  span changes by four units and no other item moves.
+- Run the rebuild gate against a deliberately hand-edited output file. It
+  must fail.
+- Fetch the built page with JavaScript disabled and confirm every layer of
+  every item is present, per ADR-0005.
+
+## Pros and Cons of the Options
+
+### A small generator written in Python
+
+- Good: one language, one dependency, fully auditable, and it can enforce
+  the content rules rather than merely rendering them.
+- Bad: the templating is hand-rolled and unsupported by anyone else.
+
+### Hand-written HTML and CSS
+
+- Good: no dependency, no build, nothing between source and served output.
+- Bad: fourteen timeline positions calculated by hand and kept in sync
+  manually, with silent failure when they drift.
+- Bad: the three-layer markup copy-pasted roughly twelve times, so a change
+  to the pattern is twelve edits.
+- Bad: no mechanism can enforce that a claim traces to the master CV.
+
+### Astro
+
+- Good: static HTML with no client JavaScript by default, which matches
+  ADR-0004 line 7 by construction; islands available if ever needed; a
+  GitHub Pages deployment guide exists (research 0002).
+- Bad: a framework and a node dependency tree for a site whose entire
+  dynamic requirement is arithmetic on fourteen dates.
+- Bad: toolchain rot on a site expected to sit unchanged for long periods.
+
+### A JavaScript static site generator such as Eleventy
+
+- Good: lighter than Astro, well established.
+- Bad: same node toolchain cost, in a language that is not the operator's
+  primary one, with no compensating gain over the Python option.
+
+## More Information
+
+- The deciding comparison was not framework against framework. It was
+  whether the build can enforce ADR-0005's rules or only render them. Only a
+  generator the operator controls can fail a build on a missing source
+  reference, and that is what turns the scope floor from documentation into
+  enforcement.
+- Not decided here: the repository layout, the templating library by name,
+  and where the structured content file lives. Those belong in the first
+  implementing brief.
+- Left open by ADR-0005 and unaffected by this record: a page-weight budget.
+- Revisit if A2 fails, if a genuine need for client-side interactivity
+  appears that cannot be met without a framework, or if the rebuild gate
+  proves unable to catch hand-edited output.
+
+## Changes
