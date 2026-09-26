@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit 5e9ea57, the last commit before this file's
-update, 2026-09-26T20:58Z, by the Brief 1 implementing session.** This is
+**Verified against commit e843533, the last commit before this file's
+update, 2026-09-26T21:12Z, by the Brief 1 implementing session.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -73,7 +73,8 @@ exists and renders one item, Rahzaan, as unstyled HTML with both content
 gates proven. It is committed as a series of commits by concern. The
 commits through the end of round 2 were pushed on 2026-09-26 at 20:46Z,
 not by the implementing seat, and **the site is live at the domain root**,
-serving that unstyled output. Later commits are held until Brief 2. Next, Brief 2: the four gates, the map generator,
+serving that unstyled output. Every later Brief 1 commit is pushed too,
+the chat having withdrawn its hold. Next, Brief 2: the four gates, the map generator,
 verification of .gitattributes, and the as-of month.
 
 ## Documents
@@ -98,7 +99,7 @@ verification of .gitattributes, and the as-of month.
 | CLAUDE.md commands section | PARTIAL | [VERIFIED] | 2026-09-26 | logs/2026-09-26-generator-and-content-model.md. Environment, build and dependency check recorded and each run. The map generator and rebuild gate the section requires are Brief 2 |
 | CLAUDE.md hook blocks section | PENDING | | | Describes four gates that do not exist yet; completed when Brief 2 builds them |
 | MAP.md and its generator | PENDING | | | Not started; no generator written. Brief 2 |
-| Named Working Method paths in this file's header, briefs/README.md and logs/README.md | PENDING | | | Ruling needed on whether they count as pointers into the private vault, like the README.md one removed on 2026-09-26. The never-commit gate's pattern depends on it. Evidence in logs/2026-09-26-generator-and-content-model.md, round 3 |
+| Named Working Method paths in this file's header, briefs/README.md and logs/README.md | DONE | [VERIFIED] | 2026-09-26 | logs/2026-09-26-generator-and-content-model.md, round 4. Ruled pointers by the chat and removed by it; a scan of the working tree finds none left. They remain in pushed history. The Brief 2 never-commit gate must catch any path segment naming the Working Method or its templates |
 
 ## Repository
 
@@ -111,7 +112,7 @@ verification of .gitattributes, and the as-of month.
 | Project venv at .venv/, requirements.txt pinning Jinja2 as the one top-level dependency and MarkupSafe as its requirement | DONE | [VERIFIED] | 2026-09-26 | ADR-0006 Changes; logs/2026-09-26-generator-and-content-model.md |
 | .gitattributes forcing LF, so a checkout under autocrlf matches a fresh build | DONE | [VERIFIED] | 2026-09-26 | Same log, round 2; proven by fresh clones with and without it |
 | Gates: state file moves with work, map is current, never-commit paths, missing tool is a hard failure | PENDING | | | Brief 2. Built before the first feature, each proven to fire. The state-file gate is a pre-push hook over the whole range being pushed, not a pre-commit hook, so a series of commits by concern with bookkeeping last passes (chat's decision after Brief 1 round 2) |
-| First push of the Brief 1 commits | DONE | [VERIFIED] | 2026-09-26 | logs/2026-09-26-generator-and-content-model.md, round 3 correction. Pushed from this clone at 20:46:30Z through the end of round 2, per the local reflog and git ls-remote, and not by the seat. It happened before the chat's instruction to hold the first push for Brief 2. Commits after it are held |
+| First push of the Brief 1 commits | DONE | [VERIFIED] | 2026-09-26 | logs/2026-09-26-generator-and-content-model.md, round 3 correction. Pushed from this clone at 20:46:30Z through the end of round 2, per the local reflog and git ls-remote, and not by the seat. It happened before the chat's instruction to hold the first push for Brief 2. Round 3's four commits were then pushed from this clone at 20:59:48Z, also not by the seat. The chat has since withdrawn the hold and authorised pushing |
 
 ## Build
 

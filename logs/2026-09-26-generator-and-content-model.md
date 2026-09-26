@@ -9,9 +9,11 @@ status: current
 Model: Claude Opus 5.5 (claude-opus-5-5). HEAD at start: fa68814.
 HEAD at end: round 1 left everything uncommitted. Round 2 committed eight
 commits ending 675652c, then da45bd6 carrying this log. Round 3 committed
-f7479f7 and ccee5b1, then 5e9ea57, then a correction commit. The commits
-through da45bd6 were pushed at 20:46:30Z, not by the seat; see round 3's
-correction. Round 3's commits are not pushed. Mode: mutating. Brief: 1. Previous log: none, this is the first.
+f7479f7 and ccee5b1, then 5e9ea57, then the correction d36549e. Round 4
+committed e843533, then the commit carrying this update. Pushes: through
+da45bd6 at 20:46:30Z and through d36549e at 20:59:48Z, neither by the seat;
+round 4's two commits pushed by the seat on the chat's authority. Mode:
+mutating. Brief: 1. Previous log: none, this is the first.
 
 The first file this session wrote, `.venv/pyvenv.cfg`, is timestamped
 2026-09-26T18:45Z. The
@@ -507,3 +509,41 @@ Consequences, as findings, not decisions:
   visitor to the domain root sees today.
 - The three remaining named Working Method paths are served as raw files
   on the live site as well as in the repository.
+
+## Round 4, 2026-09-26 (UTC)
+
+### What was asked
+
+The chat verified round 3 and confirmed that all three remaining template
+paths were its own. It ruled that they are pointers into the private vault,
+removed them in the working tree, and told the seat to commit them. The
+Brief 2 never-commit gate must catch any path segment naming the Working
+Method or its templates, not only the master CV; a brief that needs a path
+carries it.
+
+Pushing is authorised, withdrawing the round 3 hold: push the four held
+commits, then commit and push the pointer fixes. The chat will record the
+tier-order check and the pre-push gate shape, and will move ADR-0006 A3 to
+measured on the Pages observation. Whether `.nojekyll` or a workflow
+source explains the no-Jekyll result stays unverified, not guessed, and
+Brief 2 names it as an open check for the operator.
+
+### What was done
+
+- **The four held commits were already pushed.** [VERIFIED] Before
+  pushing, `git ls-remote` showed the remote main at d36549e, the local
+  HEAD, and the local reflog records `update by push` at 20:59:48Z. The
+  seat did not push them. So the push step was already done, by someone
+  else from this clone.
+- **The chat's pointer fixes, checked then committed.** [VERIFIED] Each of
+  the three files now names the template or procedure and says the vault
+  is deliberately not linked. The scan finds no vault pointer left in the
+  working tree; history still holds 7 in 6 files, now all outside the
+  tree. A wider search for template paths, vault folder names, drive
+  letters and doubled parent segments found only a false positive in
+  build.py. Committed as e843533.
+- **STATE.md.** The pointer row is DONE, the first-push row records the
+  second push, and the headline no longer says commits are held.
+- **Pushed** e843533 and the commit that carries this log. The push, and
+  the served site afterwards, are checked in the seat's report for this
+  round.
