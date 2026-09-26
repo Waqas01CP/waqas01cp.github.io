@@ -13,9 +13,11 @@ Every job CV became one page on 2026-09-21, so most of the evidence in the
 master CV has nowhere else to live. This site is where it goes. It serves
 employers first and Masters admissions readers second, from one version.
 
-**Nothing is built yet.** This folder holds the document skeleton and two
-accepted decisions. There is no code, no prototype, and no git repository.
-`STATE.md` is the honest picture.
+**The generator runs and one item renders.** This repository holds the
+document skeleton, six accepted decisions, and a Python generator that
+produces unstyled semantic HTML from a structured content file. There is no
+visual design yet, and only one item of content. `STATE.md` is the honest
+picture.
 
 The repository is public, per ADR-0002. `CHAT_STATE.md` is the one file that
 is never committed, because it names blockers and errors; it is in
@@ -27,8 +29,9 @@ file, not a link rewrite.
 
 ## How this project is run
 
-Three seats, described in
-`..\..\Working Method\02 Working Method.md`:
+Three seats, described in the operator's cross-project Working Method. That
+document lives in his private vault and is deliberately not linked from
+here, because this repository is public.
 
 - **Operator, Waqas:** decides scope and cost, approves every non-trivial
   decision.
@@ -48,10 +51,11 @@ each export is committed by hand with a log entry.
 | What exists, what is blocked and on whom | `STATE.md` |
 | How to work here: authority, claim rules, scope floor | `CLAUDE.md` |
 | Why a choice was made | `docs/decisions/`, indexed in its README |
-| The evidence behind the structure decisions | `docs/research/` |
+| The evidence behind the decisions | `docs/research/` |
 | What was deliberately not built, and what would reopen it | `docs/deferred/` |
+| What the content schema is and how to add an item | `src/content/README.md` |
 | What prior implementing sessions did | `logs/README.md` |
-| The architecture chat's own ledger | `CHAT_STATE.md` |
+| Why briefs are not committed | `briefs/README.md` |
 | Completed work moved out of the state file | `docs/reference/completed.md` |
 
 ## The rule that governs every claim
