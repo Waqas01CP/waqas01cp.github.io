@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit e843533, the last commit before this file's
-update, 2026-09-26T21:12Z, by the Brief 1 implementing session.** This is
+**Verified against commit cb20f35, the last commit before this file's
+update, 2026-09-26T22:15Z, by the Brief 2 implementing session.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -44,38 +44,18 @@ Update the verified-against line whenever you touch this file.
 
 ## Headline
 
-Nothing is built. No site, no prototype, no repository, no code of any kind.
-What exists is the document skeleton and three accepted decisions. ADR-0001
-settles the sectioned structure with projects ranked by importance. ADR-0002
-settles that it is a public GitHub Pages user site at waqas01cp.github.io,
-on no budget, contacted by email. ADR-0003 settles a hand-built vertical
-timeline section, which reverses one clause of ADR-0001.
+**The site is live at the domain root**, serving one item, Rahzaan, as
+unstyled semantic HTML. A small Python generator builds it from structured
+content (ADR-0006), fails the build on a missing source, a missing proof
+route or a tier out of order, and records the month the page is as of.
+Eight decisions are accepted. Five repository gates guard every commit and
+push (ADR-0007), each proven by the case built to defeat it. They enforce
+only in a clone where `core.hooksPath` is set.
 
-The master CV was corrected on 2026-09-23: the degree gained its Sep 2022
-start date, and three of four certificate dates were wrong by one to two
-years. That correction is the reason ADR-0003 exists.
-
-What still blocks everything downstream is the scope floor: twelve of
-fifteen proposed lines are agreed, and three need research before they can
-be concluded.
-
-**Superseded 2026-09-25.** The floor closed as ADR-0004 at **fourteen**
-lines, not fifteen. The count of fifteen came from the original proposal of
-2026-09-23, which included "no timeline" as line 6; ADR-0003 reversed that
-line the same day and the count was carried forward without recounting. The
-chat made this error twice before catching it. What now blocks the first
-commit is `CLAUDE.md`, whose runtime and commands sections are still
-undecided.
-
-**Superseded 2026-09-26 (UTC), Brief 1.** The repository has commits, six
-decisions are accepted, and ADR-0006 settled the build. The generator now
-exists and renders one item, Rahzaan, as unstyled HTML with both content
-gates proven. It is committed as a series of commits by concern. The
-commits through the end of round 2 were pushed on 2026-09-26 at 20:46Z,
-not by the implementing seat, and **the site is live at the domain root**,
-serving that unstyled output. Every later Brief 1 commit is pushed too,
-the chat having withdrawn its hold. Next, Brief 2: the four gates, the map generator,
-verification of .gitattributes, and the as-of month.
+Not started: visual design, which is the operator's to run in Claude
+Design, and every item other than Rahzaan, which arrives with the sections
+ADR-0008 names. How the repository got here is in the session logs, not in
+this file.
 
 ## Documents
 
@@ -96,9 +76,12 @@ verification of .gitattributes, and the as-of month.
 | Log index created, no logs yet | DONE | [VERIFIED] | 2026-09-23 | logs/README.md, read back after writing |
 | CLAUDE.md scope floor section | DONE | [VERIFIED] | 2026-09-26 | Written before Brief 1; this row was stale and was corrected by that session, evidence in logs/2026-09-26-generator-and-content-model.md |
 | CLAUDE.md runtime and conventions sections | DONE | [VERIFIED] | 2026-09-26 | ADR-0006; written before Brief 1, row corrected by that session, same log |
-| CLAUDE.md commands section | PARTIAL | [VERIFIED] | 2026-09-26 | logs/2026-09-26-generator-and-content-model.md. Environment, build and dependency check recorded and each run. The map generator and rebuild gate the section requires are Brief 2 |
-| CLAUDE.md hook blocks section | PENDING | | | Describes four gates that do not exist yet; completed when Brief 2 builds them |
-| MAP.md and its generator | PENDING | | | Not started; no generator written. Brief 2 |
+| CLAUDE.md commands section | DONE | [VERIFIED] | 2026-09-26 | logs/2026-09-26-gates-map-and-as-of.md. Environment, gates activation, build with and without --as-of, monthly refresh, map and dependency check, each run |
+| CLAUDE.md hook blocks section | DONE | [VERIFIED] | 2026-09-26 | Same log. Each of the five gates with what it blocks and the case that defeats it |
+| MAP.md and its generator, with a check mode against the staged files | DONE | [VERIFIED] | 2026-09-26 | Same log. No file needed frontmatter added |
+| ADR-0005 concluded and written | DONE | [VERIFIED] | 2026-09-25 | ADR-0005 |
+| ADR-0007, the repository gates, concluded and written | DONE | [VERIFIED] | 2026-09-26 | ADR-0007 |
+| ADR-0008, sections, tiers and depth, concluded and written | DONE | [VERIFIED] | 2026-09-26 | ADR-0008 |
 | Named Working Method paths in this file's header, briefs/README.md and logs/README.md | DONE | [VERIFIED] | 2026-09-26 | logs/2026-09-26-generator-and-content-model.md, round 4. Ruled pointers by the chat and removed by it; a scan of the working tree finds none left. They remain in pushed history. The Brief 2 never-commit gate must catch any path segment naming the Working Method or its templates |
 
 ## Repository
@@ -110,15 +93,19 @@ verification of .gitattributes, and the as-of month.
 | .gitignore excluding CHAT_STATE.md written | DONE | [VERIFIED] | 2026-09-23 | ADR-0002 |
 | git init and first commit | DONE | [VERIFIED] | 2026-09-25 | Done before Brief 1; this row was stale and was corrected by that session, evidence in logs/2026-09-26-generator-and-content-model.md |
 | Project venv at .venv/, requirements.txt pinning Jinja2 as the one top-level dependency and MarkupSafe as its requirement | DONE | [VERIFIED] | 2026-09-26 | ADR-0006 Changes; logs/2026-09-26-generator-and-content-model.md |
-| .gitattributes forcing LF, so a checkout under autocrlf matches a fresh build | DONE | [VERIFIED] | 2026-09-26 | Same log, round 2; proven by fresh clones with and without it |
-| Gates: state file moves with work, map is current, never-commit paths, missing tool is a hard failure | PENDING | | | Brief 2. Built before the first feature, each proven to fire. The state-file gate is a pre-push hook over the whole range being pushed, not a pre-commit hook, so a series of commits by concern with bookkeeping last passes (chat's decision after Brief 1 round 2) |
+| .gitattributes forcing LF, so a checkout under autocrlf matches a fresh build | DONE | [VERIFIED] | 2026-09-26 | logs/2026-09-26-generator-and-content-model.md, round 2, fresh clones with and without it; logs/2026-09-26-gates-map-and-as-of.md, a fresh clone under the machine's system-level autocrlf checks out every text file as LF |
+| Gate A, never-commit paths and private paths in content, pre-commit | DONE | [VERIFIED] | 2026-09-26 | logs/2026-09-26-gates-map-and-as-of.md; ADR-0007. Defeated by CHAT_STATE.md staged with -f and by a planted template path; control: prose naming the Working Method passes |
+| Gate B, rebuild against the recorded as-of month, pre-commit | DONE | [VERIFIED] | 2026-09-26 | Same log. Defeated by a one-character edit to index.html and by items.json changed without rebuilding; control: rebuilt and staged passes |
+| Gate C, map current against the staged files, pre-commit | DONE | [VERIFIED] | 2026-09-26 | Same log. Defeated by a new Markdown file without a regenerated map |
+| Gate D, a missing tool is a hard failure, every hook | DONE | [VERIFIED] | 2026-09-26 | Same log. Defeated by renaming the map generator and by moving the venv |
+| Gate E, STATE.md moved across the pushed range, pre-push | DONE | [VERIFIED] | 2026-09-26 | Same log. Defeated by pushing a src/ change with no STATE.md change; control: a series with STATE.md only in its last commit passes. Its implementation-path list is Brief 2's, not yet a record's |
 | First push of the Brief 1 commits | DONE | [VERIFIED] | 2026-09-26 | logs/2026-09-26-generator-and-content-model.md, round 3 correction. Pushed from this clone at 20:46:30Z through the end of round 2, per the local reflog and git ls-remote, and not by the seat. It happened before the chat's instruction to hold the first push for Brief 2. Round 3's four commits were then pushed from this clone at 20:59:48Z, also not by the seat. The chat has since withdrawn the hold and authorised pushing |
 
 ## Build
 
 | Task | Status | Evidence | Date | Proof |
 |---|---|---|---|---|
-| Design prototype | PENDING | | | Gated on where it is built, CHAT_STATE item 4 |
+| Design prototype | PENDING | | | Not blocked. Built in Claude Design's standalone experience, design system first (docs/decisions/README.md, Pending, closed 2026-09-26); the operator's to run |
 | Framework and rendering strategy decided | DONE | [VERIFIED] | 2026-09-26 | ADR-0006; row corrected by the Brief 1 session |
 | Generator: reads content, computes timeline rows, renders, copies static files, byte-identical on rebuild | DONE | [VERIFIED] | 2026-09-26 | logs/2026-09-26-generator-and-content-model.md |
 | Content schema, JSON, documented beside the content file | DONE | [VERIFIED] | 2026-09-26 | Same log |
@@ -126,24 +113,22 @@ verification of .gitattributes, and the as-of month.
 | Gate: an item with neither or both of proof and verification fails the build, naming it | DONE | [VERIFIED] | 2026-09-26 | Same log; proven both ways |
 | Rahzaan rendered end to end, unstyled, every layer readable without scripts | DONE | [VERIFIED] | 2026-09-26 | Same log |
 | Rahzaan layer 1 and layer 2 wording approved by the operator | DONE | [BELIEVED] | 2026-09-26 | Same log, round 2. Approved before Brief 1 was written; the brief's draft marker was left in by mistake. Stated by the architecture chat, not seen first-hand by the seat. Not in the master CV word for word; that is expected of layers 1 and 2 |
-| Tier applied to order and prominence | PENDING | | | ADR-0005 Changes. Decided by the chat after Brief 1 round 2: the build fails when the content file's order contradicts tier, rather than sorting by tier, so there is one source of order. Not built; due when a second item arrives. Not yet in a record |
-| Rebuild gate: committed output equals a fresh build | PENDING | | | Brief 2. Reads the as-of month recorded in the output, not the build date (ADR-0006 Changes). The recording format and the build's as-of input land together in Brief 2 |
+| Tier order: the build fails when the content file's order contradicts tier | DONE | [VERIFIED] | 2026-09-26 | logs/2026-09-26-gates-map-and-as-of.md; ADR-0005 Changes, ADR-0008. Defeated by a synthetic tier 3 item above Rahzaan in a scratch copy; control: the same item below builds |
+| As-of month: build.py --as-of, recorded in the output as a meta element | DONE | [VERIFIED] | 2026-09-26 | Same log; ADR-0006 Changes. With the clock a month ahead, the gate's rebuild is unchanged; --as-of with the next month changes the element and Rahzaan's span |
 | Screen reader reaches the collapsed layer 3 | PENDING | | | ADR-0005 Confirmation; must be done before the first content page ships. Not run |
-| What .nojekyll actually does when Pages is enabled | DONE | [VERIFIED] | 2026-09-26 | Same log, round 3 correction. Jekyll did not process the site: Markdown files are served raw with their front matter, /README.html is 404, and /.nojekyll itself is served. The live index.html and stylesheet are byte-identical to the committed ones. Whether .nojekyll is the cause, rather than a workflow-based Pages source, is not verified |
+| What .nojekyll actually does when Pages is enabled | DONE | [VERIFIED] | 2026-09-26 | Same log, round 3 correction. Jekyll did not process the site: Markdown files are served raw with their front matter, /README.html is 404, and /.nojekyll itself is served. The live index.html and stylesheet are byte-identical to the committed ones. The cause is .nojekyll, settled by inference in ADR-0006 A3: the Pages source is "Deploy from a branch", which runs Jekyll by default, and Jekyll did not run |
 
 ## Blocked, and on whom
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
-| The design prototype | The four-check test on Claude Design | Operator | 2026-09-22 |
+
+Nothing is blocked. The design prototype was listed here, blocked on a
+four-check test; that question closed on 2026-09-26 and the design system
+is the operator's to run.
 
 ## Known unverified
 
-- The Pages source setting (a branch or a workflow) and who enabled Pages.
-  The GitHub CLI is not installed here, so the configuration was not read.
-  What Pages serves was measured instead: on 2026-09-26 at 20:56Z it served
-  the committed index.html and stylesheet byte for byte from the root,
-  which settles the gap ADR-0006 A3 records.
 - CSS `animation-timeline` is marked Limited availability by MDN and is not
   Baseline, checked 2026-09-23. Any use is progressive enhancement only.
 - GSAP's licence text has not been read, only its pricing page.
