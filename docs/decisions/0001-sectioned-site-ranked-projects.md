@@ -29,7 +29,9 @@ The site serves employers first and Masters admissions readers second, from one 
 ## Assumptions
 
 - A1. Readers of this site skim and prefer curated work, as NN/g's surveyed hiring managers do. **Sourced**: NN/g, "5 Steps to Creating a UX-Design Portfolio", 2019, reporting a survey of 204 UX professionals in charge of hiring. The surveyed population was UX hiring managers, not engineering hiring managers, so applying it here extends the source rather than restating it.
-- A2. Entry length and date spread in the master CV are as counted above. **Measured**: counted from `Operating Plan\Waqas_Sharif_Master.md`, read 2026-09-23.
+- A2. Entry length and date spread in the master CV are as counted above.
+  **Measured**: counted from the master CV in the operator's private vault,
+  read 2026-09-23. The path is deliberately not recorded here, per CLAUDE.md.
 
 ## Considered Options
 
@@ -98,3 +100,4 @@ We will not build a timeline view. **Reversed 2026-09-23 by ADR-0003. See Change
 | Date | Change | Why |
 |---|---|---|
 | 2026-09-23 | The rule "We will not build a timeline view" is reversed by ADR-0003. The other three rules stay in force and are not carried into ADR-0003, so this is an annotation, not a supersession. | Two facts in this record's Context changed. The degree gained a Sep 2022 start date, and three of four certificate dates in the master CV were wrong by one to two years. Corrected, certificates became spans rather than undated points and Sep to Dec 2025 holds five or six concurrent items. The premise that the material was too thin and too crowded for a timeline no longer held. |
+| 2026-09-27 | Assumption A2 no longer names the master CV's path inside the operator's private vault. The basis is unchanged: still measured, still from the master, still read 2026-09-23. | This repository is public and CLAUDE.md forbids pointing at a private location. The chat wrote that rule and breached it in two files; it caught one and the implementing seat caught this one. The path remains in pushed history, which the operator has accepted as not worth a history rewrite. |

@@ -168,3 +168,8 @@ output differs from a fresh build.
   proves unable to catch hand-edited output.
 
 ## Changes
+
+| Date | Change | Why |
+|---|---|---|
+| 2026-09-27 | The three items this record deferred to the first implementing brief are now settled and recorded here: **repository layout** is `build.py` and `requirements.txt` at the root, `src/content/`, `src/templates/`, `src/static/`, `.venv/`, with generated `index.html` and `static/` committed at the root; **the content file** is `src/content/items.json`; **the templating dependency** is `Jinja2==3.1.6`, with MarkupSafe pinned alongside it. | Brief 1 decided all three and the brief is working space that is overwritten and never committed, so the choices would otherwise have survived nowhere. That is exactly the gap `briefs/README.md` warns about. JSON replaced the brief's proposed YAML because the standard library has no YAML parser and a parser would be a second dependency, which scope floor line 14 forbids. |
+| 2026-09-27 | The rebuild gate reads an as-of month recorded in the generated output rather than the build date. | Rule 5 of this record commits the output to the repository and the gate fails when a fresh build differs from it. An item with `end: present` resolves to the build's month, so from 2026-10-01 the gate would have failed on every repository without any content having changed. Recording the as-of month keeps the gate deterministic and makes a monthly refresh a deliberate commit. Raised by the implementing seat, 2026-09-27. |
