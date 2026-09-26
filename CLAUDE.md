@@ -10,10 +10,10 @@ Personal portfolio website for Waqas Sharif. It carries the evidence a
 one-page CV cannot hold, for employers first and Masters admissions readers
 second, from one version.
 
-The scope floor, runtime and conventions below are settled. **Commands are
-empty because the build does not exist yet**, not because the decision is
-open. Do not infer a command, and do not treat the empty section as
-permission. Stop and ask.
+The scope floor, runtime and conventions below are settled. **Commands
+records the build and its environment, which exist. The map generator and
+the rebuild gate do not exist yet.** Do not infer a command for them, and do
+not treat their absence as permission. Stop and ask.
 
 ## Reading order
 
@@ -170,13 +170,46 @@ cost is documentation; a comment restating the next line is noise.
 
 ## Commands
 
-The build, the map generator and the gates are created by the first
-implementing brief and their exact invocations are recorded here by that
-session. Until then this section is empty by fact, not by omission.
+Recorded by Brief 1, 2026-09-26 (UTC). Every command runs from the
+repository root. Each was run in that session and exited as described.
 
-What must exist when it is filled: a build command, a map generator with a
-check mode, and a rebuild gate that fails when committed output differs from
-a fresh build.
+**Environment.** The build runs only inside the project venv at `.venv/`,
+with the versions pinned in `requirements.txt`: Jinja2, and MarkupSafe,
+which is Jinja2's own requirement. `build.py` reads those pins from
+`requirements.txt` and refuses to run outside a virtual environment or
+against any other installed version, because a different version can
+produce different output with no visible cause. Create or recreate the venv:
+
+```
+python -m venv .venv
+.venv\Scripts\python -m pip install -r requirements.txt
+```
+
+Activate it before building:
+
+```
+.venv\Scripts\Activate.ps1          PowerShell
+source .venv/Scripts/activate       Git Bash
+```
+
+**Build.** Writes `index.html` and `static/` at the root. Exit 0 on
+success. On any content failure it exits 1, names every failing item, and
+writes nothing.
+
+```
+python build.py
+```
+
+**One-dependency check** (ADR-0006). Expected: `Jinja2` and `pip`, nothing
+else. MarkupSafe is Jinja2's own requirement and so is not listed.
+
+```
+python -m pip list --not-required
+```
+
+**Not yet created, Brief 2:** the map generator with its check mode, and
+the rebuild gate that fails when committed output differs from a fresh
+build. Until they exist, this section is not complete.
 
 ## The hook blocks
 
