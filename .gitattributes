@@ -1,0 +1,5 @@
+# LF in the repository and in every checkout. With core.autocrlf on, as it is
+# on the operator's Windows machine, git would otherwise check files out with
+# CRLF, while build.py writes LF. The rebuild gate would then fail on line
+# endings alone. Brief 1, round 2.
+* text=auto eol=lf
