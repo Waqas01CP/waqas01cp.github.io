@@ -1,0 +1,37 @@
+{# One item with all three reading layers (ADR-0005). Layer 3 sits inside
+   <details>: collapsed by default, but present in the initial HTML, so a
+   crawler or a reader without scripts gets every word of it.
+   The proof links follow layer 1 because they are what makes it checkable. #}
+<article id="{{ item.id }}">
+<h3>{{ item.title }}</h3>
+<p>{{ item.layer1 }}</p>
+<dl>
+<dt>Dates</dt>
+<dd>{{ when(item.when) }}</dd>
+{% if item.stack %}
+<dt>Stack</dt>
+<dd>{{ item.stack }}</dd>
+{% endif %}
+{% if item.proof %}
+<dt>Proof</dt>
+{% for link in item.proof %}
+<dd><a href="{{ link.url }}">{{ link.label }}</a></dd>
+{% endfor %}
+{% else %}
+<dt>Verification</dt>
+<dd>{{ item.verification }}</dd>
+{% endif %}
+</dl>
+<p>{{ item.layer2 }}</p>
+<details>
+<summary>In depth</summary>
+<ul>
+{# |safe here and on no other field. Layer 3 blocks are HTML fragments that
+   build.py has already limited to <strong> and <a href>, and the content is
+   the operator's own, with no input path from visitors (Brief 1, 8a). #}
+{% for block in item.layer3 %}
+<li>{{ block|safe }}</li>
+{% endfor %}
+</ul>
+</details>
+</article>

@@ -1,0 +1,16 @@
+{# The timeline: every dated entry as an ordered list in date order
+   (ADR-0003). The list is the content itself, and so also the text
+   equivalent and the crawler's copy. The visual is drawn on top of it.
+   Rows come from build.grid_position, four per month from January 2024.
+   The column is the lane's named grid line in static/timeline.css. #}
+<section id="timeline">
+<h2>Timeline</h2>
+<ol class="timeline">
+{% for entry in timeline %}
+<li style="grid-row: {{ entry.row }} / span {{ entry.span }}; grid-column: {{ entry.lane }};"{% if entry.before_axis %} class="starts-before-axis"{% endif %}>
+<a href="#{{ entry.id }}">{{ entry.title }}</a>
+<p>{{ entry.lane_label }}, {{ when(entry.when) }}</p>
+</li>
+{% endfor %}
+</ol>
+</section>
