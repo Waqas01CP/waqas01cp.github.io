@@ -9,8 +9,9 @@ status: current
 **Verified against commit 5e9ea57, the last commit before this file's
 update, 2026-09-26T20:58Z, by the Brief 1 implementing session.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
-architecture chat, from the procedure in
-`Working Method\03 New Project Setup.md`.
+architecture chat, from the new-project setup procedure in the operator's cross-project Working
+Method, which lives in his private vault and is deliberately not linked from
+here.
 
 This file is where to start, not where to stop. It outranks memory. It does
 not outrank the code or the data: where a row disagrees with them, the row

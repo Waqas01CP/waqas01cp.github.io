@@ -37,8 +37,9 @@ a row per round, each naming the same file.
 
 ## Log format
 
-`Working Method\Templates\session-log.md`. File name
-`logs/YYYY-MM-DD-short-description.md`, dated in UTC. There is no
+The session-log template in the operator's cross-project Working Method,
+which lives in his private vault and is deliberately not linked from here.
+File name `logs/YYYY-MM-DD-short-description.md`, dated in UTC. There is no
 project-specific log-format record yet.
 
 ## Reorganisation

@@ -10,7 +10,10 @@ status: current
 the architecture chat hands to a fresh implementing session. It is written,
 executed, ticked, and overwritten by the next one.
 
-Format: `Working Method\Templates\brief.md`.
+Format: the brief template in the operator's cross-project Working Method.
+That document set lives in his private vault and is deliberately not linked
+from here, because this repository is public. A brief that needs the path
+carries it, and a brief is never committed.
 
 ## Why the briefs themselves are not committed
 
