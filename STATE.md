@@ -6,12 +6,11 @@ status: current
 
 # STATE
 
-**Not yet verified against any commit.** This folder is not a git repository
-yet: no `git init` has been run and no commit exists. Created
-2026-09-23T01:00Z by the architecture chat, from the procedure in
-`Working Method\03 New Project Setup.md`. When the repository is
-initialised, this line becomes the verified-against line and is the only
-line in this file that names a commit.
+**Verified against commit 675652c, the last commit before this file's
+update, 2026-09-26T20:44Z, by the Brief 1 implementing session.** This is
+the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
+architecture chat, from the procedure in
+`Working Method\03 New Project Setup.md`.
 
 This file is where to start, not where to stop. It outranks memory. It does
 not outrank the code or the data: where a row disagrees with them, the row
@@ -67,6 +66,13 @@ chat made this error twice before catching it. What now blocks the first
 commit is `CLAUDE.md`, whose runtime and commands sections are still
 undecided.
 
+**Superseded 2026-09-26 (UTC), Brief 1.** The repository has commits, six
+decisions are accepted, and ADR-0006 settled the build. The generator now
+exists and renders one item, Rahzaan, as unstyled HTML with both content
+gates proven. It is committed as a series of commits by concern, of which
+this file's update is the last. Next: the map generator, the rebuild gate
+and the hook gates, Brief 2.
+
 ## Documents
 
 | Task | Status | Evidence | Date | Proof |
@@ -84,8 +90,10 @@ undecided.
 | Research 0002 written, tool findings captured before loss | DONE | [VERIFIED] | 2026-09-23 | docs/research/0002-tools-and-libraries.md |
 | Deferred entry for the timeline written | DONE | [VERIFIED] | 2026-09-23 | docs/deferred/projects-timeline.md, read back after writing |
 | Log index created, no logs yet | DONE | [VERIFIED] | 2026-09-23 | logs/README.md, read back after writing |
-| CLAUDE.md scope floor section | PENDING | | | Unblocked 2026-09-25 by ADR-0004; not yet written into the file |
-| CLAUDE.md runtime, conventions, commands, hooks | PENDING | | | Blocked on the framework decision |
+| CLAUDE.md scope floor section | DONE | [VERIFIED] | 2026-09-26 | Written before Brief 1; this row was stale and was corrected by that session, evidence in logs/2026-09-26-generator-and-content-model.md |
+| CLAUDE.md runtime and conventions sections | DONE | [VERIFIED] | 2026-09-26 | ADR-0006; written before Brief 1, row corrected by that session, same log |
+| CLAUDE.md commands section | PARTIAL | [VERIFIED] | 2026-09-26 | logs/2026-09-26-generator-and-content-model.md. Environment, build and dependency check recorded and each run. The map generator and rebuild gate the section requires are Brief 2 |
+| CLAUDE.md hook blocks section | PENDING | | | Describes four gates that do not exist yet; completed when Brief 2 builds them |
 | MAP.md and its generator | PENDING | | | Not started; no generator written |
 
 ## Repository
@@ -95,7 +103,9 @@ undecided.
 | Repository name chosen | DONE | [VERIFIED] | 2026-09-23 | ADR-0002; folder renamed to waqas01cp.github.io |
 | Public or private decided | DONE | [VERIFIED] | 2026-09-23 | ADR-0002; public, with CHAT_STATE.md never committed |
 | .gitignore excluding CHAT_STATE.md written | DONE | [VERIFIED] | 2026-09-23 | ADR-0002 |
-| git init and first commit | PENDING | | | Blocked on the scope floor, since CLAUDE.md carries it |
+| git init and first commit | DONE | [VERIFIED] | 2026-09-25 | Done before Brief 1; this row was stale and was corrected by that session, evidence in logs/2026-09-26-generator-and-content-model.md |
+| Project venv at .venv/, requirements.txt pinning Jinja2 as the one top-level dependency and MarkupSafe as its requirement | DONE | [VERIFIED] | 2026-09-26 | ADR-0006 Changes; logs/2026-09-26-generator-and-content-model.md |
+| .gitattributes forcing LF, so a checkout under autocrlf matches a fresh build | DONE | [VERIFIED] | 2026-09-26 | Same log, round 2; proven by fresh clones with and without it |
 | Gates: state file moves with work, map is current, never-commit paths, missing tool is a hard failure | PENDING | | | Built before the first feature, each proven to fire |
 
 ## Build
@@ -103,18 +113,30 @@ undecided.
 | Task | Status | Evidence | Date | Proof |
 |---|---|---|---|---|
 | Design prototype | PENDING | | | Gated on where it is built, CHAT_STATE item 4 |
-| Framework and rendering strategy decided | PENDING | | | Constrained by research 0001 |
-| Any site code | PENDING | | | Nothing written |
+| Framework and rendering strategy decided | DONE | [VERIFIED] | 2026-09-26 | ADR-0006; row corrected by the Brief 1 session |
+| Generator: reads content, computes timeline rows, renders, copies static files, byte-identical on rebuild | DONE | [VERIFIED] | 2026-09-26 | logs/2026-09-26-generator-and-content-model.md |
+| Content schema, JSON, documented beside the content file | DONE | [VERIFIED] | 2026-09-26 | Same log |
+| Gate: an item with no source fails the build, naming it | DONE | [VERIFIED] | 2026-09-26 | Same log; proven by deleting Rahzaan's source |
+| Gate: an item with neither or both of proof and verification fails the build, naming it | DONE | [VERIFIED] | 2026-09-26 | Same log; proven both ways |
+| Rahzaan rendered end to end, unstyled, every layer readable without scripts | DONE | [VERIFIED] | 2026-09-26 | Same log |
+| Rahzaan layer 1 and layer 2 wording approved by the operator | DONE | [BELIEVED] | 2026-09-26 | Same log, round 2. Approved before Brief 1 was written; the brief's draft marker was left in by mistake. Stated by the architecture chat, not seen first-hand by the seat. Not in the master CV word for word; that is expected of layers 1 and 2 |
+| Tier applied to order and prominence | PENDING | | | ADR-0005 Changes. The build validates tier but orders by content-file position only |
+| Rebuild gate: committed output equals a fresh build | PENDING | | | Brief 2. Reads the as-of month recorded in the output, not the build date (ADR-0006 Changes). The generator does not record it yet |
+| Screen reader reaches the collapsed layer 3 | PENDING | | | ADR-0005 Confirmation; must be done before the first content page ships. Not run |
+| What .nojekyll actually does when Pages is enabled | PENDING | | | Pages not enabled; the operator enables it |
 
 ## Blocked, and on whom
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
-| CLAUDE.md being finished, the first commit, and every brief | The runtime and commands sections, which need the framework decision | Chat, then operator | 2026-09-25 |
 | The design prototype | The four-check test on Claude Design | Operator | 2026-09-22 |
 
 ## Known unverified
 
+- That GitHub Pages serves committed, locally generated files from the
+  repository root. Brief 1 states GitHub's documentation was read for this
+  on 2026-09-26; the Brief 1 session did not re-read it. ADR-0006 A3 records
+  the same gap.
 - CSS `animation-timeline` is marked Limited availability by MDN and is not
   Baseline, checked 2026-09-23. Any use is progressive enhancement only.
 - GSAP's licence text has not been read, only its pricing page.

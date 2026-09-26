@@ -51,6 +51,7 @@ before the root becomes unscannable, not after.
 
 | Date (UTC) | Log file | Session | What was done | Outcome |
 |---|---|---|---|---|
+| 2026-09-26 | [2026-09-26-generator-and-content-model.md](2026-09-26-generator-and-content-model.md) | Brief 1, round 2 | Chat's answers applied: MarkupSafe pinned, .gitattributes LF, vault path removed from README.md, draft status dropped; nine commits by concern | Committed; version check confirmed to read requirements.txt; round 1's git diff finding corrected |
+| 2026-09-26 | [2026-09-26-generator-and-content-model.md](2026-09-26-generator-and-content-model.md) | Brief 1 | Python generator, JSON content schema, two content gates, Rahzaan rendered unstyled, CLAUDE.md commands | Built and verified, uncommitted pending operator; YAML replaced by JSON; case-study link made root-relative |
 
-No implementing session has run yet. The architecture chat's own history is
-in `CHAT_STATE.md`, not here.
+The architecture chat's own history is in `CHAT_STATE.md`, not here.
