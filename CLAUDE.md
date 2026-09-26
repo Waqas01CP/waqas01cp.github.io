@@ -11,9 +11,9 @@ one-page CV cannot hold, for employers first and Masters admissions readers
 second, from one version.
 
 The scope floor, runtime and conventions below are settled. **Commands
-records the build and its environment, which exist. The map generator and
-the rebuild gate do not exist yet.** Do not infer a command for them, and do
-not treat their absence as permission. Stop and ask.
+records every command that exists: the environment, the build, the gates
+and the map.** Do not infer a command that is not there, and do not treat
+its absence as permission. Stop and ask.
 
 ## Reading order
 
@@ -27,8 +27,8 @@ documented file set.
    backwards only as far as you need.
 4. docs/decisions/README.md. The record index and the Pending list.
 
-Then the brief for your task. There is no MAP.md yet; when a generator
-exists, it is generated and never edited by hand.
+Then the brief for your task. MAP.md lists every documented file with its
+description; it is generated and never edited by hand.
 
 ## When documents disagree
 
@@ -170,8 +170,9 @@ cost is documentation; a comment restating the next line is noise.
 
 ## Commands
 
-Recorded by Brief 1, 2026-09-26 (UTC). Every command runs from the
-repository root. Each was run in that session and exited as described.
+Recorded by Brief 1 and Brief 2, 2026-09-26 (UTC). Every command runs from
+the repository root. Each was run in the session that recorded it and
+exited as described.
 
 **Environment.** The build runs only inside the project venv at `.venv/`,
 with the versions pinned in `requirements.txt`: Jinja2, and MarkupSafe,
@@ -192,13 +193,44 @@ Activate it before building:
 source .venv/Scripts/activate       Git Bash
 ```
 
+**Gates.** Activate the hooks once per clone:
+
+```
+git config core.hooksPath .githooks
+```
+
+**A fresh clone has no gates until this is run, and nothing catches the
+omission.** ADR-0007 accepts that weakness. `--no-verify` bypasses every
+gate and is never used.
+
 **Build.** Writes `index.html` and `static/` at the root. Exit 0 on
 success. On any content failure it exits 1, names every failing item, and
 writes nothing.
 
 ```
-python build.py
+python build.py                    as of the current UTC month
+python build.py --as-of YYYY-MM    as of the given month
 ```
+
+The as-of month is what `present` resolves to, and the output records it
+as `<meta name="as-of">`. The rebuild gate reads that month back and
+rebuilds with it, never with the clock.
+
+**Monthly refresh.** While an item ends `present`, the page stays as of the
+month it was built. To move it on, run `python build.py` in the new month
+and commit `index.html` and `static/`. The gate reads the new month from the
+output like any other build.
+
+**Map.** `MAP.md` is generated from every tracked Markdown file's
+frontmatter. Stage the files first, then regenerate and stage `MAP.md`.
+
+```
+python tools/generate_map.py            write MAP.md
+python tools/generate_map.py --check    compare the staged MAP.md with the staged files
+```
+
+Exit 0 means current, 1 means a file needs fixing (no frontmatter or no
+description), 2 means stale.
 
 **One-dependency check** (ADR-0006). Expected: `Jinja2` and `pip`, nothing
 else. MarkupSafe is Jinja2's own requirement and so is not listed.
@@ -207,23 +239,28 @@ else. MarkupSafe is Jinja2's own requirement and so is not listed.
 python -m pip list --not-required
 ```
 
-**Not yet created, Brief 2:** the map generator with its check mode, and
-the rebuild gate that fails when committed output differs from a fresh
-build. Until they exist, this section is not complete.
-
 ## The hook blocks
 
-**No gates exist yet.** Four are required before the first feature, each
-proven to fire by the case built to defeat it:
+Five gates, ADR-0007, in `tools/gates.py`, called by `.githooks/pre-commit`
+and `.githooks/pre-push`. Each was proven by the case built to defeat it,
+and each case was also shown to get through with its gate neutered. They
+enforce only once `core.hooksPath` is set (Commands); until then they are
+requests, so treat them as binding anyway.
 
-- STATE.md moves with implementation work.
-- The map is current, checked by running the generator in check mode.
-- Anything that must never be committed is blocked by path or pattern,
-  including private vault paths if this repository is public.
-- A missing tool is a hard failure, never a skip.
+| Gate | When | Blocks | Defeated by |
+|---|---|---|---|
+| A, never-commit | pre-commit | `CHAT_STATE.md` at any path; anything in `briefs/` but its README; any staged text file holding a filesystem path into the operator's private material: a drive-letter absolute path, a climb out of the repository, a path segment naming the Working Method or the Operating Plan folder, the master CV's file name, or the vault's root folder name. Prints the file, line and matched text. | Staging `CHAT_STATE.md` with `-f`; a planted template path. Control: prose naming the Working Method passes. |
+| B, rebuild | pre-commit | Staged output that differs from a fresh build of the staged source, as of the month recorded in the staged `index.html`. | A one-character edit to `index.html`; `items.json` changed without rebuilding. |
+| C, map | pre-commit | A `MAP.md` that is stale against the staged files. | A new Markdown file committed without regenerating the map. |
+| D, missing tool | every hook | A missing venv interpreter, gate script, map generator or `build.py`: a refusal naming it, never a skip. | Renaming the map generator; moving the venv. |
+| E, STATE.md moved | pre-push | A push whose range touches `build.py`, `requirements.txt`, `index.html`, `src/`, `static/`, `tools/` or `.githooks/` with no commit in the range touching `STATE.md`. The last commit of a series is enough. | Pushing a `src/` change with no `STATE.md` change. Control: a series with `STATE.md` only in its last commit passes. |
 
-Until they exist, the rules above are requests, not enforcement. Treat them
-as binding anyway and say when one was not checked.
+Gate A matches path forms, never prose, and cannot match its own source.
+Every pattern is written so the source never contains the text it matches,
+and the vault's root folder name, which has never been committed, is held
+only as a digest. A brief that needs a private path carries it, and briefs
+are never committed. Gate E's list of implementation paths is Brief 2's,
+not yet a record's.
 
 ## Writing
 
