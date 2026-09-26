@@ -1,0 +1,4 @@
+Jinja2==3.1.6
+# Jinja2's own requirement, pinned so the output is reproducible. Not a
+# second top-level dependency. ADR-0006 Changes, 2026-09-27.
+MarkupSafe==3.0.3

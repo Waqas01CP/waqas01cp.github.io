@@ -6,6 +6,8 @@ CHAT_STATE.md
 briefs/*
 !briefs/README.md
 
-# Local build output and dependencies, named once the framework is decided.
+# Local build environment and Python artefacts. The venv is recreated from
+# requirements.txt, which is committed. Brief 1.
+.venv/
 __pycache__/
 *.pyc
