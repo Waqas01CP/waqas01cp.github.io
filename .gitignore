@@ -1,4 +1,11 @@
 # The architecture chat's ledger is never committed. ADR-0002.
 CHAT_STATE.md
 
+# Briefs are working space, overwritten each round. Only the README is
+# tracked. See briefs/README.md.
+briefs/*
+!briefs/README.md
+
 # Local build output and dependencies, named once the framework is decided.
+__pycache__/
+*.pyc

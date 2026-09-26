@@ -1,35 +1,50 @@
 ---
-type: index
-description: The brief index. One numbered brief per implementing round, with what it asked for and which seat report answered it.
+type: reference
+description: What the briefs folder is and how it behaves. Working scratch space, not a record. Briefs are overwritten; the durable trace is the session log.
 status: current
 ---
 
 # Briefs
 
-One brief per implementing round, handed to a fresh session. Format:
-`Working Method\Templates\brief.md`.
+**This folder is working space, not a record.** A brief is the specification
+the architecture chat hands to a fresh implementing session. It is written,
+executed, ticked, and overwritten by the next one.
 
-## How to use this file
+Format: `Working Method\Templates\brief.md`.
 
-Read this table first. It says what each round was asked to do and whether
-a report came back. Open a brief only when you need its detail.
+## Why the briefs themselves are not committed
+
+Only this file is tracked. The briefs are in `.gitignore`.
+
+A brief is transient by design, so committing every version would build a
+pile of superseded specifications that no reader needs. The durable trace
+already exists elsewhere and is better:
+
+| Question | Where the answer lives |
+|---|---|
+| Why was this decided | `docs/decisions/` |
+| What was asked for in that round | the session log's own summary |
+| What actually happened | `logs/`, indexed in `logs/README.md` |
+| What the state is now | `STATE.md` |
+
+**So the session log carries the brief's substance.** A log that records only
+what was built, without what was asked, breaks that chain. Write it so the
+chain holds after the brief is gone.
+
+There is a second reason. A brief can carry content that is not approved
+yet, including wording drafted about the operator by the chat rather than by
+him. This repository is public.
+
+## Rank
 
 A brief ranks below `CLAUDE.md` and every accepted record. Where it
-contradicts one, follow the record and report the contradiction. The only
-exception is a brief that names the record and clause and states the
-operator approved the override.
+contradicts one, follow the record and report the contradiction.
 
-## How to maintain it
+The only exception is a brief that names the record and the clause and
+states that the operator approved the override.
 
-Append the row when the brief is written, not when it is answered. Fill the
-report column when the seat reports back.
+## Convention
 
-Never edit a sent brief. A correction is a new brief, or a note in the next
-one's "Corrections to the brief" handling.
-
-## Index
-
-| # | Brief | Asked for | Report |
-|---|---|---|---|
-
-No brief has been sent yet.
+One brief in flight at a time. Number it, tick it when the seat reports back
+and the chat has verified the report against the repository, then let the
+next brief replace it.
