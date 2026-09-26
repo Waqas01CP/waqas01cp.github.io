@@ -1,0 +1,20 @@
+/* Structural only: what the timeline grid needs to place its entries.
+   Nothing here is visual design. Row height, lane width, colour, type and
+   spacing belong to the design work. ADR-0003 leaves the size of one layout
+   unit open, so no row size is set, and empty rows collapse until one is.
+
+   Columns are named after the content lanes, so build.py places an entry
+   with `grid-column: <lane>`. Builds and Open source sit left of the spine,
+   Work and Certifications right of it (ADR-0003). `grid-column: band`
+   resolves to band-start / band-end, so the degree band spans every lane.
+   Columns are auto-sized, so a lane with no entries (today, Open source)
+   adds no width of its own. */
+.timeline {
+  display: grid;
+  grid-template-columns:
+    [band-start builds] auto
+    [opensource] auto
+    [spine] auto
+    [work] auto
+    [certifications] auto [band-end];
+}
