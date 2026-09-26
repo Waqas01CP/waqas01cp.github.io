@@ -1,15 +1,16 @@
 ---
 type: log
-description: Brief 1 in two rounds. Python generator, JSON content schema, two content gates and Rahzaan rendered unstyled, all verified with defeating cases; YAML replaced by JSON, case-study link made root-relative; MarkupSafe pinned, LF forced, committed as nine commits by concern.
+description: Brief 1 in three rounds. Python generator, JSON content schema, two content gates and Rahzaan rendered unstyled, all verified with defeating cases; YAML replaced by JSON, case-study link made root-relative; MarkupSafe pinned, LF forced; committed by concern, not pushed; three Working Method paths await a ruling.
 status: current
 ---
 
 # 2026-09-26 (UTC): Generator, content model, one item end to end
 
 Model: Claude Opus 5.5 (claude-opus-5-5). HEAD at start: fa68814.
-HEAD at end: round 1 uncommitted; round 2 committed everything as eight
-commits after fa68814, ending 675652c, plus the commit that carries this
-log. Mode: mutating. Brief: 1. Previous log: none, this is the first.
+HEAD at end: round 1 left everything uncommitted. Round 2 committed eight
+commits ending 675652c, then da45bd6 carrying this log. Round 3 committed
+f7479f7 and ccee5b1, then the commit carrying this update. Nothing is
+pushed. Mode: mutating. Brief: 1. Previous log: none, this is the first.
 
 The first file this session wrote, `.venv/pyvenv.cfg`, is timestamped
 2026-09-26T18:45Z. The
@@ -381,3 +382,90 @@ Recommendations, not decisions:
 - R8. When a second item arrives, have the build fail when the content
   file's order contradicts tier, rather than sort by tier. That keeps one
   source of order and makes a contradiction visible.
+
+## Round 3, 2026-09-26 (UTC)
+
+### What was asked
+
+The chat verified round 2 and accepted the answer on version pins,
+including where its coverage stops; it is not to change. The chat
+corrected the three errors round 2 raised in its records: local-date
+stamps, the gate attributed to rule 5 instead of rule 6, and the UC Davis
+date. It also updated README.md itself, reporting a fourth vault pointer
+there and six in total across four files. The corrected files were to go
+into the next commit.
+
+Decisions, in the chat's message and not yet in a record:
+
+- **Tier order.** The build fails when the content file's order
+  contradicts tier, rather than sorting by tier.
+- **As-of month.** Accepted for Brief 2, with the format and the build's
+  as-of input landing together.
+- **State-file gate.** A pre-push hook checking the whole range being
+  pushed, not a pre-commit hook.
+- **Commits by concern with bookkeeping last** is the correct shape. It is
+  recorded here as such, not as a defect; round 2's finding 8 and that
+  bookkeeping commit's "departs from" note are superseded by this ruling.
+- **No push.** Brief 2 covers the four gates, the map generator,
+  `.gitattributes` verification and the as-of month. The first push
+  follows it.
+
+### What was done
+
+- **Chat's changes read, then committed by concern.** [VERIFIED] Record
+  dates are now UTC, ADR-0006 attributes the gate to rule 6, and UC Davis
+  closes 2026-09-25, matching STATE.md. README.md: six accepted records,
+  every path in its table exists, no stale phrasing, no em-dashes.
+  Commits: f7479f7 (records), ccee5b1 (README.md), then this log with its
+  index row and STATE.md.
+- **Vault-pointer scan over all history.** [VERIFIED] A scratch script
+  scanned every commit up to ccee5b1, and the working tree, for file paths
+  under either of the two vault folders this repository has named, with
+  or without leading parent-directory segments. It found 7 distinct
+  pointers in 6 files. This log names them by what they point at, not by
+  their text, so that it does not become an eighth. Four are gone from the
+  tree: the master CV's path in CLAUDE.md, ADR-0001 and README.md, and
+  README.md's relative path to the Working Method document. Three remain,
+  each present since the first or second commit:
+  - STATE.md's header: the Working Method's new-project setup procedure.
+  - `briefs/README.md`: the Working Method's brief template.
+  - `logs/README.md`: the Working Method's session-log template.
+
+  The script's pattern found a planted pointer and ignored the prose
+  phrase "cross-project Working Method". Not edited: whether a named
+  template path counts is the chat's ruling, and the never-commit gate's
+  pattern depends on it.
+- **STATE.md.** [VERIFIED] Rows now carry the tier-order decision, the
+  pre-push shape of the state-file gate, the as-of month for Brief 2, the
+  held first push, and the three remaining paths awaiting a ruling.
+
+### Errors this round found in the seat's own work
+
+1. **The vault-path checks in rounds 1 and 2 could not fail on this class
+   of pointer.** They searched only for the master CV's folder and file
+   names and the vault's top-level folder name, so a path under the
+   Working Method folder passed unseen. Round 2's "a search of every file
+   git sees for the vault path" was true only for the master CV's path.
+   The first attempt this round also failed silently: the backslash pattern
+   was mangled on its way through the shell and matched nothing. Caught by
+   comparing it with the Grep tool's result on text already known to be
+   there. The scan was then rewritten as a file and given the self-test
+   above.
+2. **Round 1 carried a pointer forward.** Rewriting STATE.md's header, the
+   seat kept the Working Method path in it without treating it as a vault
+   pointer.
+3. **This round's first draft of this log quoted all four Working Method
+   paths while reporting them.** Re-running the scan before committing
+   caught it: 4 new pointers, found only in the working tree and all in
+   this file. The passages were rewritten to name each pointer by its
+   target. The scan was run again afterwards.
+
+### Findings
+
+1. The chat's count, six pointers in four files, differs from the scan's
+   seven in six. The difference is the three named template paths still in
+   the tree.
+2. The tier-order and state-gate decisions exist only in the chat's message
+   and this log. Recommendation, not a decision: record them. The tier
+   check could go in ADR-0005 Changes, and the pre-push shape wherever the
+   gates are recorded.

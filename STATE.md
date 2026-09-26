@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit 675652c, the last commit before this file's
-update, 2026-09-26T20:44Z, by the Brief 1 implementing session.** This is
+**Verified against commit ccee5b1, the last commit before this file's
+update, 2026-09-26T20:53Z, by the Brief 1 implementing session.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the procedure in
 `Working Method\03 New Project Setup.md`.
@@ -70,8 +70,9 @@ undecided.
 decisions are accepted, and ADR-0006 settled the build. The generator now
 exists and renders one item, Rahzaan, as unstyled HTML with both content
 gates proven. It is committed as a series of commits by concern, of which
-this file's update is the last. Next: the map generator, the rebuild gate
-and the hook gates, Brief 2.
+this file's update is the last, and is not pushed: the first push waits
+for Brief 2. Next, Brief 2: the four gates, the map generator,
+verification of .gitattributes, and the as-of month.
 
 ## Documents
 
@@ -94,7 +95,8 @@ and the hook gates, Brief 2.
 | CLAUDE.md runtime and conventions sections | DONE | [VERIFIED] | 2026-09-26 | ADR-0006; written before Brief 1, row corrected by that session, same log |
 | CLAUDE.md commands section | PARTIAL | [VERIFIED] | 2026-09-26 | logs/2026-09-26-generator-and-content-model.md. Environment, build and dependency check recorded and each run. The map generator and rebuild gate the section requires are Brief 2 |
 | CLAUDE.md hook blocks section | PENDING | | | Describes four gates that do not exist yet; completed when Brief 2 builds them |
-| MAP.md and its generator | PENDING | | | Not started; no generator written |
+| MAP.md and its generator | PENDING | | | Not started; no generator written. Brief 2 |
+| Named Working Method paths in this file's header, briefs/README.md and logs/README.md | PENDING | | | Ruling needed on whether they count as pointers into the private vault, like the README.md one removed on 2026-09-26. The never-commit gate's pattern depends on it. Evidence in logs/2026-09-26-generator-and-content-model.md, round 3 |
 
 ## Repository
 
@@ -106,7 +108,8 @@ and the hook gates, Brief 2.
 | git init and first commit | DONE | [VERIFIED] | 2026-09-25 | Done before Brief 1; this row was stale and was corrected by that session, evidence in logs/2026-09-26-generator-and-content-model.md |
 | Project venv at .venv/, requirements.txt pinning Jinja2 as the one top-level dependency and MarkupSafe as its requirement | DONE | [VERIFIED] | 2026-09-26 | ADR-0006 Changes; logs/2026-09-26-generator-and-content-model.md |
 | .gitattributes forcing LF, so a checkout under autocrlf matches a fresh build | DONE | [VERIFIED] | 2026-09-26 | Same log, round 2; proven by fresh clones with and without it |
-| Gates: state file moves with work, map is current, never-commit paths, missing tool is a hard failure | PENDING | | | Built before the first feature, each proven to fire |
+| Gates: state file moves with work, map is current, never-commit paths, missing tool is a hard failure | PENDING | | | Brief 2. Built before the first feature, each proven to fire. The state-file gate is a pre-push hook over the whole range being pushed, not a pre-commit hook, so a series of commits by concern with bookkeeping last passes (chat's decision after Brief 1 round 2) |
+| First push of the Brief 1 commits | PENDING | | | Held by the chat until Brief 2 lands, so the first push carries a gated repository |
 
 ## Build
 
@@ -120,8 +123,8 @@ and the hook gates, Brief 2.
 | Gate: an item with neither or both of proof and verification fails the build, naming it | DONE | [VERIFIED] | 2026-09-26 | Same log; proven both ways |
 | Rahzaan rendered end to end, unstyled, every layer readable without scripts | DONE | [VERIFIED] | 2026-09-26 | Same log |
 | Rahzaan layer 1 and layer 2 wording approved by the operator | DONE | [BELIEVED] | 2026-09-26 | Same log, round 2. Approved before Brief 1 was written; the brief's draft marker was left in by mistake. Stated by the architecture chat, not seen first-hand by the seat. Not in the master CV word for word; that is expected of layers 1 and 2 |
-| Tier applied to order and prominence | PENDING | | | ADR-0005 Changes. The build validates tier but orders by content-file position only |
-| Rebuild gate: committed output equals a fresh build | PENDING | | | Brief 2. Reads the as-of month recorded in the output, not the build date (ADR-0006 Changes). The generator does not record it yet |
+| Tier applied to order and prominence | PENDING | | | ADR-0005 Changes. Decided by the chat after Brief 1 round 2: the build fails when the content file's order contradicts tier, rather than sorting by tier, so there is one source of order. Not built; due when a second item arrives. Not yet in a record |
+| Rebuild gate: committed output equals a fresh build | PENDING | | | Brief 2. Reads the as-of month recorded in the output, not the build date (ADR-0006 Changes). The recording format and the build's as-of input land together in Brief 2 |
 | Screen reader reaches the collapsed layer 3 | PENDING | | | ADR-0005 Confirmation; must be done before the first content page ships. Not run |
 | What .nojekyll actually does when Pages is enabled | PENDING | | | Pages not enabled; the operator enables it |
 
