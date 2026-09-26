@@ -56,10 +56,13 @@ each export is committed by hand with a log entry.
 
 ## The rule that governs every claim
 
-The master CV at `Operating Plan\Waqas_Sharif_Master.md` is the only source
-of truth for anything this site asserts. Every claim traces to it and every
-number carries its provenance.
+The operator's master CV is the only source of truth for anything this site
+asserts. It lives in his private vault, and its path is deliberately not
+recorded here, because this repository is public. Every claim traces to it
+and every number carries its provenance.
 
 ## How to run it
 
-Nothing to run yet.
+With the project venv active, `python build.py` writes `index.html` and
+`static/` at the root. Setting up the venv, and the other commands, are in
+`CLAUDE.md` under Commands.
