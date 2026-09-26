@@ -58,9 +58,9 @@ Decisions identified but not yet concluded.
 - Whether a duration or overlap view belongs in the work or projects
   section. **Closed 2026-09-23 by ADR-0003.**
 - Whether Professional Skills for the Workplace, UC Davis, Jun to Sep 2025,
-  is added to the master CV. **Closed 2026-09-26**: added, with its
+  is added to the master CV. **Closed 2026-09-25**: added, with its
   credential link.
-- What each `tier` value renders. **Closed 2026-09-27**: tier controls order
+- What each `tier` value renders. **Closed 2026-09-26**: tier controls order
   and prominence only, never which layers render. ADR-0005 Changes.
 - Section headings for the `work`, `opensource` and `band` lanes. The build
   fails if an item arrives in a lane with no section, so these are decided in
