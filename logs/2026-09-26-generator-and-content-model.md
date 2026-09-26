@@ -1,6 +1,6 @@
 ---
 type: log
-description: Brief 1 in three rounds. Python generator, JSON content schema, two content gates and Rahzaan rendered unstyled, all verified with defeating cases; YAML replaced by JSON, case-study link made root-relative; MarkupSafe pinned, LF forced; committed by concern, not pushed; three Working Method paths await a ruling.
+description: Brief 1 in three rounds. Python generator, JSON content schema, two content gates and Rahzaan rendered unstyled, all verified with defeating cases; YAML replaced by JSON, case-study link made root-relative; MarkupSafe pinned, LF forced; committed by concern; rounds 1 and 2 pushed by someone other than the seat and live at the domain root; three Working Method paths await a ruling.
 status: current
 ---
 
@@ -9,8 +9,9 @@ status: current
 Model: Claude Opus 5.5 (claude-opus-5-5). HEAD at start: fa68814.
 HEAD at end: round 1 left everything uncommitted. Round 2 committed eight
 commits ending 675652c, then da45bd6 carrying this log. Round 3 committed
-f7479f7 and ccee5b1, then the commit carrying this update. Nothing is
-pushed. Mode: mutating. Brief: 1. Previous log: none, this is the first.
+f7479f7 and ccee5b1, then 5e9ea57, then a correction commit. The commits
+through da45bd6 were pushed at 20:46:30Z, not by the seat; see round 3's
+correction. Round 3's commits are not pushed. Mode: mutating. Brief: 1. Previous log: none, this is the first.
 
 The first file this session wrote, `.venv/pyvenv.cfg`, is timestamped
 2026-09-26T18:45Z. The
@@ -469,3 +470,40 @@ Decisions, in the chat's message and not yet in a record:
    and this log. Recommendation, not a decision: record them. The tier
    check could go in ADR-0005 Changes, and the pre-push shape wherever the
    gates are recorded.
+
+### Correction: the Brief 1 commits were already pushed, and the site is live
+
+Found after committing 5e9ea57, which said nothing was pushed and that the
+first push was held. Both were false when written.
+
+- **The push.** [VERIFIED] `git status` showed main 3 ahead of
+  origin/main, not 12. The local reflog records `update by push` of
+  origin/main to da45bd6 at 2026-09-26T20:46:30Z, and `git ls-remote
+  origin` returns da45bd6 for main. The seat ran no `git push` in any
+  round. The push came
+  from this clone, so it is inferred to be the operator's, after report 1
+  round 2 and before the chat's instruction to hold the first push.
+- **The site is live.** [VERIFIED] At 20:56Z, `https://waqas01cp.github.io/`
+  returned 200, and its body is byte-identical to index.html at da45bd6
+  (6789 bytes). `/static/timeline.css` is byte-identical to the committed
+  file. `Last-Modified` is 20:46:44Z, 14 seconds after the push. Raw source
+  is served too: `/src/content/items.json` and `/STATE.md` return 200.
+- **What .nojekyll does,** as Brief 1 task 1 asked. [VERIFIED] Jekyll did
+  not process the site. `/README.md`, `/STATE.md` and
+  `/docs/decisions/README.md` are served as `text/markdown` with their
+  front matter, `/README.html` is 404, and `/.nojekyll` itself returns 200;
+  Jekyll would have converted the Markdown and skipped the dotfile.
+  Not verified: whether `.nojekyll` is the cause, or the Pages source is a
+  workflow. The GitHub CLI is not installed, so the configuration was not
+  read.
+- **ADR-0006 A3 is now measured.** Pages serves committed, locally
+  generated files from the root, byte for byte. The record says this was
+  not independently verified; the chat may annotate it.
+
+Consequences, as findings, not decisions:
+
+- The chat's plan that the first push carry a gated repository cannot hold.
+  The ungated Brief 1 state is public, and the unstyled page is what a
+  visitor to the domain root sees today.
+- The three remaining named Working Method paths are served as raw files
+  on the live site as well as in the repository.

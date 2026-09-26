@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit ccee5b1, the last commit before this file's
-update, 2026-09-26T20:53Z, by the Brief 1 implementing session.** This is
+**Verified against commit 5e9ea57, the last commit before this file's
+update, 2026-09-26T20:58Z, by the Brief 1 implementing session.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the procedure in
 `Working Method\03 New Project Setup.md`.
@@ -69,9 +69,10 @@ undecided.
 **Superseded 2026-09-26 (UTC), Brief 1.** The repository has commits, six
 decisions are accepted, and ADR-0006 settled the build. The generator now
 exists and renders one item, Rahzaan, as unstyled HTML with both content
-gates proven. It is committed as a series of commits by concern, of which
-this file's update is the last, and is not pushed: the first push waits
-for Brief 2. Next, Brief 2: the four gates, the map generator,
+gates proven. It is committed as a series of commits by concern. The
+commits through the end of round 2 were pushed on 2026-09-26 at 20:46Z,
+not by the implementing seat, and **the site is live at the domain root**,
+serving that unstyled output. Later commits are held until Brief 2. Next, Brief 2: the four gates, the map generator,
 verification of .gitattributes, and the as-of month.
 
 ## Documents
@@ -109,7 +110,7 @@ verification of .gitattributes, and the as-of month.
 | Project venv at .venv/, requirements.txt pinning Jinja2 as the one top-level dependency and MarkupSafe as its requirement | DONE | [VERIFIED] | 2026-09-26 | ADR-0006 Changes; logs/2026-09-26-generator-and-content-model.md |
 | .gitattributes forcing LF, so a checkout under autocrlf matches a fresh build | DONE | [VERIFIED] | 2026-09-26 | Same log, round 2; proven by fresh clones with and without it |
 | Gates: state file moves with work, map is current, never-commit paths, missing tool is a hard failure | PENDING | | | Brief 2. Built before the first feature, each proven to fire. The state-file gate is a pre-push hook over the whole range being pushed, not a pre-commit hook, so a series of commits by concern with bookkeeping last passes (chat's decision after Brief 1 round 2) |
-| First push of the Brief 1 commits | PENDING | | | Held by the chat until Brief 2 lands, so the first push carries a gated repository |
+| First push of the Brief 1 commits | DONE | [VERIFIED] | 2026-09-26 | logs/2026-09-26-generator-and-content-model.md, round 3 correction. Pushed from this clone at 20:46:30Z through the end of round 2, per the local reflog and git ls-remote, and not by the seat. It happened before the chat's instruction to hold the first push for Brief 2. Commits after it are held |
 
 ## Build
 
@@ -126,7 +127,7 @@ verification of .gitattributes, and the as-of month.
 | Tier applied to order and prominence | PENDING | | | ADR-0005 Changes. Decided by the chat after Brief 1 round 2: the build fails when the content file's order contradicts tier, rather than sorting by tier, so there is one source of order. Not built; due when a second item arrives. Not yet in a record |
 | Rebuild gate: committed output equals a fresh build | PENDING | | | Brief 2. Reads the as-of month recorded in the output, not the build date (ADR-0006 Changes). The recording format and the build's as-of input land together in Brief 2 |
 | Screen reader reaches the collapsed layer 3 | PENDING | | | ADR-0005 Confirmation; must be done before the first content page ships. Not run |
-| What .nojekyll actually does when Pages is enabled | PENDING | | | Pages not enabled; the operator enables it |
+| What .nojekyll actually does when Pages is enabled | DONE | [VERIFIED] | 2026-09-26 | Same log, round 3 correction. Jekyll did not process the site: Markdown files are served raw with their front matter, /README.html is 404, and /.nojekyll itself is served. The live index.html and stylesheet are byte-identical to the committed ones. Whether .nojekyll is the cause, rather than a workflow-based Pages source, is not verified |
 
 ## Blocked, and on whom
 
@@ -136,10 +137,11 @@ verification of .gitattributes, and the as-of month.
 
 ## Known unverified
 
-- That GitHub Pages serves committed, locally generated files from the
-  repository root. Brief 1 states GitHub's documentation was read for this
-  on 2026-09-26; the Brief 1 session did not re-read it. ADR-0006 A3 records
-  the same gap.
+- The Pages source setting (a branch or a workflow) and who enabled Pages.
+  The GitHub CLI is not installed here, so the configuration was not read.
+  What Pages serves was measured instead: on 2026-09-26 at 20:56Z it served
+  the committed index.html and stylesheet byte for byte from the root,
+  which settles the gap ADR-0006 A3 records.
 - CSS `animation-timeline` is marked Limited availability by MDN and is not
   Baseline, checked 2026-09-23. Any use is progressive enhancement only.
 - GSAP's licence text has not been read, only its pricing page.
