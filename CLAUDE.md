@@ -1,7 +1,7 @@
 ---
 type: instruction
-description: How to work in this repository. Reading order, authority order, scope floor, claim rules. Read before touching anything.
-status: draft
+description: How to work in this repository. Reading order, authority order, the fourteen-line scope floor, runtime and claim rules. Read before touching anything.
+status: current
 ---
 
 # CLAUDE.md
@@ -10,10 +10,10 @@ Personal portfolio website for Waqas Sharif. It carries the evidence a
 one-page CV cannot hold, for employers first and Masters admissions readers
 second, from one version.
 
-**This file is a draft.** Four sections below are marked "Not yet decided"
-because the decision behind each has not been made. Do not infer one, do not
-fill one in, and do not treat an unfilled section as permission. Stop and
-ask.
+The scope floor, runtime and conventions below are settled. **Commands are
+empty because the build does not exist yet**, not because the decision is
+open. Do not infer a command, and do not treat the empty section as
+permission. Stop and ask.
 
 ## Reading order
 
@@ -55,41 +55,75 @@ A claim whose only source is outside this repository says so.
 
 ## The source of truth for claims
 
-The master CV at `Operating Plan\Waqas_Sharif_Master.md` is the only source
-of truth for anything the site asserts about Waqas. Every claim on the site
-traces to it. Every number carries its provenance. Where another file
-disagrees with the master, the master wins and the disagreement is reported.
+The operator's master CV is the only source of truth for anything the site
+asserts about him. Every claim on the site traces to it. Every number
+carries its provenance. Where another file disagrees with the master, the
+master wins and the disagreement is reported.
+
+The master lives outside this repository, in the operator's private vault.
+**Its path is deliberately not recorded here**, because this repository is
+public. Content reaches this repository through a brief or through the
+operator, never by this repository pointing at a private location.
 
 This rule is not a preference. A site that states something the master does
 not is a claim he cannot stand behind in an interview.
 
 ## Scope floor
 
-**Not yet decided.** The operator has not stated the floor. ADR-0001 gives
-one line that belongs on it:
+Fourteen lines, all from ADR-0004, which carries the source of each. Do not
+propose, add or reintroduce any of them. When you refuse something on this
+floor, name the line.
 
-- No timeline view, in any form: no time axis, no career timeline, no
-  grouped overlap rows, no switchable second view. ADR-0001, which states it
-  in its Decision Outcome. The reopen trigger is in
-  `docs/deferred/projects-timeline.md`.
+1. No claim that is not in the master CV.
+2. No skill level anywhere: no bars, no percentages, no stars, no
+   years-per-technology.
+3. No testimonials, endorsements or quotes attributed to named people.
+4. No blog, no articles section, no currently block.
+5. No number that cannot be reproduced on demand.
+6. No login, no gated content, no CMS, no database.
+7. No feature that holds the only copy of a fact. Anything that must be read
+   sits in the initial HTML. Enhancement on top is permitted; there is no
+   exception to the rule itself.
+8. No autoplaying audio or video, and no motion that ignores
+   `prefers-reduced-motion`.
+9. No third-party embeds that phone home: chat widgets, social feeds,
+   comment systems.
+10. No cookies, no tracking, no consent banner.
+11. No collection of visitor data beyond what the host logs by default.
+12. No prices, quotes, invoicing or payment mechanism.
+13. No paid service without prior discussion.
+14. No dependency added by import.
 
-Everything else is pending. Until the floor is stated, treat any proposal
-that adds surface area as needing the operator's approval, and say so rather
-than assuming.
+Removing a line takes its own record. It is not an exception granted in
+passing.
 
 ## Runtime
 
-**Not yet decided.** No framework, no language version, no dependencies.
-Constrained by `docs/research/0001`: the major AI crawlers do not execute
-JavaScript, so anything that must be read has to be in the initial HTML
-response.
+Python. The site is built by a small generator in this repository, per
+ADR-0006. There is no site framework and there will not be one.
 
-Dependencies are added by discussion, not by import.
+One templating library, named in the first implementing brief. **No second
+dependency without a record**, which is scope floor line 14.
+
+The generator's output is committed. The build runs locally, not in a
+continuous integration service.
 
 ## Conventions
 
-**Not yet decided**, beyond the writing rules below and the documentation
-layering rule.
+Every item's content lives as structured data in one place. Markup is
+generated from it, never hand-written per item, so a date or a fact is
+written once. ADR-0006.
+
+Every internal link is root-relative. No absolute URL pointing at this
+site's own origin appears anywhere, so moving to a custom domain later is a
+DNS change and not a rewrite. ADR-0002.
+
+Every item carries three layers: a specific checkable fact, a summary, and
+full depth. All three ship in the initial HTML, collapsed by disclosure
+rather than deferred to a later fetch. ADR-0005.
+
+Layer 3 holds decisions, trade-offs, what failed and how each was verified.
+Not a changelog.
 
 ## Verification
 
@@ -136,8 +170,13 @@ cost is documentation; a comment restating the next line is noise.
 
 ## Commands
 
-**Not yet decided.** No environment, no test command, no build, no map
-generator, no hooks exist.
+The build, the map generator and the gates are created by the first
+implementing brief and their exact invocations are recorded here by that
+session. Until then this section is empty by fact, not by omission.
+
+What must exist when it is filled: a build command, a map generator with a
+check mode, and a rebuild gate that fails when committed output differs from
+a fresh build.
 
 ## The hook blocks
 
