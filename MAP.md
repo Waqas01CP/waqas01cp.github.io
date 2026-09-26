@@ -38,6 +38,8 @@ frontmatter. Decision records have no `type`; their `topic` is shown.
 | `docs/decisions/0004-scope-floor.md` | decision (process) | accepted | The scope floor. Fourteen things the site will not do, each with its source. Every brief carries it. Read before proposing anything that adds surface area. |
 | `docs/decisions/0005-three-reading-layers.md` | decision (content) | accepted | Every item on the site carries three reading layers, all in the initial HTML, disclosed rather than deferred. Read before writing any page content. |
 | `docs/decisions/0006-python-generator-build.md` | decision (build) | accepted | A small Python generator, no site framework, built locally with its output committed. Turns two of ADR-0005's review checks into build gates. Read before writing any build code. |
+| `docs/decisions/0007-repository-gates.md` | decision (process) | accepted | The repository gates. What each one blocks, where it fires, and the case that must defeat it. Read before building or changing any gate. |
+| `docs/decisions/0008-sections-tiers-and-depth.md` | decision (structure) | accepted | The seven sections and their order, the CV download, the project tiers, no separate project pages, and the Rahzaan case study as the only deeper destination. Read before laying out the page or adding a project. |
 | `docs/decisions/README.md` | index | current | The decision record index for the portfolio site, with the fixed topic list and the Pending list of decisions identified but not concluded. |
 
 ## docs/deferred

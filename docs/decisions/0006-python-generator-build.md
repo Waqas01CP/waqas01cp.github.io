@@ -49,11 +49,16 @@ the wrong month looks entirely normal.
   a handful of sections, counted 2026-09-25. If the item count multiplies,
   this assumption fails and the decision should be revisited.
 - A3. A committed build output can be served by GitHub Pages from the
-  repository root with no build service involved. **Sourced**: ADR-0002
-  records that a user site is served from a repository named
-  `<owner>.github.io` at the domain root. **Not independently verified** for
-  the specific case of committed generated files; the publishing-source
-  documentation was not read.
+  repository root with no build service involved. **Measured** 2026-09-26 by
+  the implementing seat: the site returns 200 at the root and its body is
+  byte-identical to the committed `index.html`, as is the stylesheet. Jekyll
+  did not process the site: Markdown files serve raw with their front matter
+  and `/README.html` is 404. **The cause is `.nojekyll`.** The operator read
+  the Pages configuration on 2026-09-27 local and Source is "Deploy from a
+  branch", which runs Jekyll by default. Jekyll did not run, and the only
+  thing in the repository that suppresses it is `.nojekyll`. That is an
+  inference from two observations rather than a direct test; a direct test
+  would mean removing the file from a live site, which is not worth doing.
 
 ## Considered Options
 
@@ -173,3 +178,4 @@ output differs from a fresh build.
 |---|---|---|
 | 2026-09-26 | The three items this record deferred to the first implementing brief are now settled and recorded here: **repository layout** is `build.py` and `requirements.txt` at the root, `src/content/`, `src/templates/`, `src/static/`, `.venv/`, with generated `index.html` and `static/` committed at the root; **the content file** is `src/content/items.json`; **the templating dependency** is `Jinja2==3.1.6`, with MarkupSafe pinned alongside it. | Brief 1 decided all three and the brief is working space that is overwritten and never committed, so the choices would otherwise have survived nowhere. That is exactly the gap `briefs/README.md` warns about. JSON replaced the brief's proposed YAML because the standard library has no YAML parser and a parser would be a second dependency, which scope floor line 14 forbids. |
 | 2026-09-26 | The rebuild gate in rule 6 reads an as-of month recorded in the generated output rather than the build date. | Rule 5 commits the output to the repository and rule 6's gate fails when a fresh build differs from it. An item with `end: present` resolves to the build's month, so from 2026-10-01 the gate would have failed on every repository without any content having changed. Recording the as-of month keeps the gate deterministic and makes a monthly refresh a deliberate commit. Raised by the implementing seat, which also corrected the chat's misattribution of the gate to rule 5. |
+| 2026-09-26 | Assumption A3 moved from sourced to **measured**. A committed build output is served from the repository root, byte for byte, with no build service. | The site went live on 2026-09-26 and the implementing seat compared the served bytes against the committed output and found them identical. What was an inference from the user-site rule is now an observation. One part stays unverified and is named in A3: whether `.nojekyll` is the cause or the publishing source is a workflow. |

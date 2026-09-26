@@ -44,6 +44,8 @@ Adding a topic is itself a decision.
 | [0004](0004-scope-floor.md) | The scope floor, fourteen lines | Accepted |
 | [0005](0005-three-reading-layers.md) | Three reading layers for every item | Accepted |
 | [0006](0006-python-generator-build.md) | Build with a small Python generator | Accepted |
+| [0007](0007-repository-gates.md) | The repository gates | Accepted |
+| [0008](0008-sections-tiers-and-depth.md) | Sections, project tiers, and where depth lives | Accepted |
 
 ## Pending
 
@@ -80,17 +82,26 @@ Decisions identified but not yet concluded.
 - The framework and rendering approach. **Closed 2026-09-26 by ADR-0006.**
 - The repository layout, the templating library by name, and where the
   structured content file lives. Left to the first implementing brief by
-  ADR-0006.
+  ADR-0006. **Closed 2026-09-26**: recorded in ADR-0006 Changes.
 - A page-weight budget. ADR-0005 ships every layer on first load, so the
-  budget is set by the deepest page. None exists yet.
-- Where the design prototype is built: a dedicated design chat using the
-  Design artifact type, or the standalone experience at claude.ai/design.
-  Gated on the four-check test in `CHAT_STATE.md` item 4.
+  budget is set by the deepest page. None exists yet. The operator's stance,
+  2026-09-26: not extremely conservative; the oldest phone worth designing
+  for is a 2020 to 2022 model. The threshold is to be taken from a published
+  standard and dated when it is recorded, and it doubles as the test that
+  decides whether 3D ships.
+- Where the design prototype is built. **Closed 2026-09-26**: the standalone
+  experience at claude.ai/design, design system first. Standalone HTML export
+  is confirmed by two independent tutorial transcripts the operator supplied,
+  not by first-party documentation.
 - Whether the site carries an AI assistant, and if so how it is prevented
   from stating anything not already on the page.
 - Whether the Rahzaan case study is folded into this site or linked to.
-  Folding it in imports claims that are not in the master CV.
+  **Closed 2026-09-26 by ADR-0008**: linked out, as the only deeper
+  destination.
 - Whether each project entry carries a visible date. Left open by ADR-0001.
+  **Closed 2026-09-26, ADR-0008 Changes**: yes, in the master CV's own date
+  forms, rendered from the same fields as the timeline.
 - Which projects are main, which are secondary, and which are omitted.
-- Framework and rendering strategy. Constrained by the evidence in
-  research 0001: the major AI crawlers do not run JavaScript.
+  **Closed 2026-09-26 by ADR-0008**: three tiers, order only, never labelled.
+- Framework and rendering strategy. **Duplicate of "The framework and
+  rendering approach" earlier in this list, closed 2026-09-26 by ADR-0006.**
