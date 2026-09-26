@@ -5,7 +5,15 @@ src/content/README.md, computes each item's timeline grid position, renders
 the templates in src/templates/, and writes index.html and static/ at the
 repository root, which is where GitHub Pages serves a user site (ADR-0002).
 
-Run with the project venv active:  python build.py
+Run with the project venv active:
+
+  python build.py                    as of the current UTC month
+  python build.py --as-of YYYY-MM    as of the given month
+
+The as-of month is what `present` resolves to, and it is written into the
+output as <meta name="as-of">. The rebuild gate reads it back from the
+staged index.html and rebuilds with it, so the gate never consults the
+clock and does not fail on the first of each month (ADR-0006 Changes).
 
 Every check runs before anything is written, so a failed build exits
 non-zero and leaves the previous output untouched.
@@ -13,6 +21,7 @@ non-zero and leaves the previous output untouched.
 
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import shutil
@@ -274,6 +283,7 @@ def check_item(raw, position: int, as_of: str) -> dict:
     return {
         "id": raw["id"],
         "title": raw["title"],
+        "tier": raw["tier"],
         "lane": raw["lane"],
         "lane_label": LANE_LABELS[raw["lane"]],
         "start": raw["start"],
@@ -318,6 +328,20 @@ def load_items(path: Path, as_of: str) -> list[dict]:
     problems += [f"item '{item['id']}': lane '{item['lane']}' has no page section yet; "
                  f"ADR-0001 names projects and certifications, and no heading is "
                  f"decided for this lane" for item in items if item["lane"] not in placed]
+
+    # Tier is an assertion about the content file's order, never a second
+    # order: within a section, tier must not decrease going down the file.
+    # Sorting by tier instead would let the file and the page disagree
+    # silently (ADR-0005 Changes, ADR-0008).
+    for lane, _, heading in SECTIONS:
+        highest = None
+        for item in (item for item in items if item["lane"] == lane):
+            if highest and item["tier"] < highest["tier"]:
+                problems.append(f"item '{highest['id']}' (tier {highest['tier']}) is above "
+                                f"item '{item['id']}' (tier {item['tier']}) in {heading}; "
+                                f"tier must not decrease down the content file")
+            if highest is None or item["tier"] > highest["tier"]:
+                highest = item
     if problems:
         raise BuildError("\n".join(problems))
     return items
@@ -347,7 +371,7 @@ def check_environment() -> None:
             raise BuildError(f"{name} {installed} is installed but requirements.txt pins {pinned}")
 
 
-def render(sections: list[dict], timeline: list[dict]) -> str:
+def render(sections: list[dict], timeline: list[dict], as_of: str) -> str:
     # Imported here, after check_environment, so a build outside the venv
     # reports that rather than a bare ImportError.
     import jinja2
@@ -363,13 +387,24 @@ def render(sections: list[dict], timeline: list[dict]) -> str:
         keep_trailing_newline=True,
     )
     try:
-        return env.get_template("base.html.j2").render(sections=sections, timeline=timeline)
+        return env.get_template("base.html.j2").render(
+            sections=sections, timeline=timeline, as_of=as_of)
     except jinja2.TemplateError as error:
         raise BuildError(f"template error: {error}") from None
 
 
-def main() -> int:
-    as_of = datetime.now(timezone.utc).strftime("%Y-%m")
+def _year_month(value: str) -> str:
+    if not YM_RE.match(value):
+        raise argparse.ArgumentTypeError(f"'{value}' is not a YYYY-MM month")
+    return value
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Build index.html and static/ from src/.")
+    parser.add_argument("--as-of", type=_year_month, metavar="YYYY-MM",
+                        help="the month 'present' resolves to; default: the current UTC month")
+    args = parser.parse_args(argv)
+    as_of = args.as_of or datetime.now(timezone.utc).strftime("%Y-%m")
     try:
         check_environment()
         items = load_items(CONTENT, as_of)
@@ -382,7 +417,7 @@ def main() -> int:
         # Date order by start month; items starting in the same month keep
         # their content-file order.
         timeline = sorted(items, key=lambda item: month_index(item["start"]))
-        html = render(sections, timeline)
+        html = render(sections, timeline, as_of)
     except BuildError as error:
         print(f"build failed:\n{error}", file=sys.stderr)
         return 1
@@ -392,7 +427,7 @@ def main() -> int:
         shutil.rmtree(OUT_STATIC)
     shutil.copytree(STATIC_SRC, OUT_STATIC, copy_function=shutil.copyfile)
     copied = sum(1 for path in OUT_STATIC.rglob("*") if path.is_file())
-    print(f"built index.html: {len(items)} item(s), timeline as of {as_of} UTC; "
+    print(f"built index.html: {len(items)} item(s), as of {as_of}; "
           f"copied {copied} static file(s)")
     return 0
 

@@ -14,6 +14,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+{# The month `present` resolved to. The rebuild gate reads it back and
+   rebuilds with it rather than with the clock (ADR-0006 Changes). #}
+<meta name="as-of" content="{{ as_of }}">
 <title>{{ site_name }}</title>
 <link rel="stylesheet" href="/static/timeline.css">
 </head>

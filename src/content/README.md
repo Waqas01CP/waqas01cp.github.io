@@ -24,10 +24,10 @@ master disagree, the master wins and the disagreement is reported.
 |---|---|---|---|
 | `id` | yes | text | Stable lowercase slug, letters, digits and single hyphens. Used as the item's anchor. Unique, and not one of the page's own ids: `main`, `timeline`, `projects`, `certifications`. |
 | `title` | yes | text | As written in the master CV. |
-| `tier` | yes | 1, 2 or 3 | Controls order and prominence, never which layers render: every item carries all three layers. Tier 1 additionally links out to a standalone case study. Never a visible label (ADR-0005 Changes, 2026-09-27). **Validated but not yet applied by the build**: order comes from this file alone. |
+| `tier` | yes | 1, 2 or 3 | Controls order and prominence, never which layers render: every item carries all three layers. Tier 1 additionally links out to a standalone case study. Never a visible label (ADR-0005 Changes, ADR-0008). The build fails if tier decreases down this file within a section; it never sorts by tier. |
 | `lane` | yes | text | `builds`, `opensource`, `work`, `certifications` or `band`. |
 | `start` | yes | `YYYY-MM` | |
-| `end` | yes | `YYYY-MM` or `present` | `present` resolves to the build's month, in UTC. |
+| `end` | yes | `YYYY-MM` or `present` | `present` resolves to the build's as-of month: the current UTC month, or the one given with `--as-of`. |
 | `stack` | no | text | The stack from the master's italic line. |
 | `source` | **yes** | text | Where in the master CV the item traces to, as `master-cv:<section>/<item>`. |
 | `proof` | one of | list of `{label, url}` | Public artefacts that check layer 1. |
@@ -79,14 +79,17 @@ The schema checks:
   (Projects) and `certifications` (Certifications) have a section, the two
   ADR-0001 names. The headings for `work`, `opensource` and `band` are not
   decided.
+- Within a section, an item of a higher tier number above one of a lower
+  tier number fails, naming both, for example
+  `item 'x' (tier 3) is above item 'y' (tier 2)`.
 
 ## Order
 
-Within a page section, items appear in the order they appear in this file.
-ADR-0001 orders projects by importance, so this file's order is the
-importance order. ADR-0005 now says tier controls order; the build does not
-yet apply it, so keep tier 1 items above tier 2 and tier 2 above tier 3 by
-hand.
+Within a page section, items appear in the order they appear in this file,
+and that is the only order. ADR-0001 orders projects by importance and
+ADR-0008 sets the tiers, so this file lists tier 1 first, then tier 2, then
+tier 3. Tier is an assertion this order must satisfy, checked by the build,
+never a second sort (ADR-0005 Changes).
 
 The timeline sorts every item by `start`, and items that start in the same
 month keep this file's order.
