@@ -64,8 +64,9 @@ Decisions identified but not yet concluded.
   credential link.
 - What each `tier` value renders. **Closed 2026-09-26**: tier controls order
   and prominence only, never which layers render. ADR-0005 Changes.
-- Page placement for the `opensource` and `band` lanes. The `work` lane's
-  section is Work, ADR-0008. The build fails if an item arrives in a lane
+- Page placement for the `opensource` lane. The `work` lane's section is
+  Work, and the degree (`band`) is a line in the Intro plus the timeline
+  band, both ADR-0008. The build fails if an item arrives in a lane
   with no section, so these are decided before the brief that brings those
   items.
 - A `.gitattributes` forcing LF line endings, so the rebuild gate cannot fail
