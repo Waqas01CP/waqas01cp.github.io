@@ -30,8 +30,8 @@ about what month it is.
 
 ## Decision Drivers
 
-- The vault-pointer incident: a documented rule with no enforcement failed
-  seven times in four days.
+- The vault-pointer incident: a documented rule with no enforcement was
+  breached by seven pointers in six files (ADR-0001 Changes, 2026-09-26).
 - ADR-0006 rule 6 requires a rebuild gate, and rule 5 commits the output.
 - ADR-0005 makes tier an assertion about order that something has to check.
 - The Working Method's four gates, and its rule that a gate which cannot fail
@@ -77,7 +77,7 @@ built, and record that case beside the gate.
 
 ### Consequences
 
-- Positive: the rule that failed seven times becomes a blocked commit.
+- Positive: the rule breached by seven pointers becomes a blocked commit.
 - Positive: pre-push for the state gate lets commits stay one per concern,
   with bookkeeping riding the last one.
 - Positive: the as-of month stops the rebuild gate failing every repository
@@ -101,8 +101,10 @@ other.
   file and the matched text. Fail: committed.**
 - Hand-edit one character of `index.html` and commit. **Pass: refused.**
 - Change `items.json` without rebuilding and commit. **Pass: refused.**
-- Set the clock forward one month and rebuild. **Pass: output unchanged,
-  because the as-of month is read from the output. Fail: output changes.**
+- Set the clock forward one month and run gate B's rebuild. **Pass: output
+  unchanged, because gate B reads the as-of month from the staged output.
+  Fail: output changes.** A plain `python build.py` in the new month is
+  meant to change the output; that is the monthly refresh, not a failure.
 - Add a file with frontmatter and commit without regenerating the map.
   **Pass: refused.**
 - Rename the map generator and commit. **Pass: hard failure. Fail: a skip
@@ -148,8 +150,9 @@ other.
 - The pointer gate's pattern is wider than the incident that caused it: the
   ruling on 2026-09-26 was that a named template path is a pointer, not only
   a path to the master CV.
-- Not decided here: where the hooks live and how they are installed. That is
-  the implementing brief's call, within these rules.
+- Where the hooks live and how they are installed was left to the
+  implementing brief, within these rules. Changes, 2026-09-26, records what
+  Brief 2 settled.
 - The seventh pointer and the third file were both found by the implementing
   seat, not by the chat. The gate exists because the chat's own checking was
   recollection rather than search.
@@ -161,3 +164,4 @@ other.
 | Date | Change | Why |
 |---|---|---|
 | 2026-09-26 | Context corrected: the breach was in six files, not "four files ... and in README.md and two folder indexes", which read as seven. | A factual error in the chat's own drafting, found on re-read before the record was committed. The next sentence already gave the right figure, seven pointers across six files. |
+| 2026-09-26 | Records what Brief 2 settled within these rules. **Hooks** live in `.githooks/`, with the gate logic in `tools/gates.py`, installed once per clone by `git config core.hooksPath .githooks`. **Gate E's implementation paths** are `build.py`, `requirements.txt`, `index.html`, `src/`, `static/`, `tools/` and `.githooks/`. **Gate A** holds the vault's root folder name only as a SHA-256 digest. Also corrected: the incident is described as seven pointers in six files, not "seven times in four days", and the clock case in Confirmation names gate B's rebuild. | Brief 2 is overwritten, so these choices would otherwise live only in code and a session log, and gate E's path list decides which pushes need a `STATE.md` change, which is a rule. The digest keeps the folder name out of the gate's own source; it has never been in pushed history. "Four days" was never measured. A plain rebuild in a new month changes the output by design; only gate B's rebuild must not. Raised by the implementing seat's Brief 2 report; the digest was recomputed by the chat on 2026-09-26 and matches. |

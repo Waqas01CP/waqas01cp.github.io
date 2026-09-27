@@ -11,3 +11,7 @@ briefs/*
 .venv/
 __pycache__/
 *.pyc
+
+# The architecture chat's pending commit message. The implementing seat
+# commits with it and deletes it. CLAUDE.md, Commands.
+.commitmsg

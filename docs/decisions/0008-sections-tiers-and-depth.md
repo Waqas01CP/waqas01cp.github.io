@@ -105,9 +105,11 @@ request, the same rule ADR-0003 applies to the timeline lane.
   which puts weight on the page-weight budget that does not exist yet.
 - Negative: the job-aggregator cannot appear until the operator writes its
   master CV entry, per scope floor line 1.
-- Neutral: section headings for the timeline's `work`, `opensource` and
-  `band` lanes are still undecided. Brief 1's build refuses an item in a lane
-  with no section, which is the correct behaviour until they are.
+- Neutral: the `work` lane's page section is Work, from the section list
+  above. Still undecided: where an `opensource` item appears on the page once
+  one qualifies, and whether the degree (`band`) appears anywhere outside the
+  timeline. Brief 1's build refuses an item in a lane with no section, which
+  is the correct behaviour until they are.
 
 ### Confirmation
 
@@ -154,9 +156,9 @@ request, the same rule ADR-0003 applies to the timeline lane.
   None of ADR-0001's rules is reversed.
 - The external case study lives at `/Rahzaan/`, a project site from a
   separate repository, root-relative per ADR-0002.
-- Still open and not decided here: whether each project entry carries a
-  visible date, the section headings for the three undecided lanes, and
-  navigation.
+- Still open and not decided here: the page placement of the `opensource`
+  and `band` lanes, and navigation. The visible date on each project entry
+  was decided afterwards; see Changes.
 - Revisit if a second project grows a standalone case study, which would
   make the case for a per-project page again.
 
@@ -165,3 +167,4 @@ request, the same rule ADR-0003 applies to the timeline lane.
 | Date | Change | Why |
 |---|---|---|
 | 2026-09-26 | Closes one item this record left open: **each project entry shows its dates**, in the master CV's own forms such as "Feb 2026 to Present", rendered from the same `start` and `end` fields as the timeline. Already produced by Brief 1's `date_phrase()` and item template; this row records it as decided rather than incidental. | Decided by the operator 2026-09-26. The timeline and the entry answer different questions: the timeline shows what ran concurrently, visually and at length; the entry states when this one ran, in a line. The chat had recommended against, arguing it wrote a fact twice. That confused display with storage: the date is stored once, in `items.json`, and rendered twice, which ADR-0006 permits. |
+| 2026-09-26 | Consequences and More Information corrected. The `work` lane was listed as having no heading although the section list above gives it the Work section. The visible project date is closed by the row above and no longer listed as open. What remains open is named: page placement for `opensource` and `band` items, and navigation. | The record contradicted itself, and the build acts on it: its section list still omits `work` and must gain it, with Timeline placed between Projects and Work. Found on the chat's re-read after the implementing seat's Brief 2 report. No decision changes. |

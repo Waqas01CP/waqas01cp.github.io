@@ -203,6 +203,26 @@ git config core.hooksPath .githooks
 omission.** ADR-0007 accepts that weakness. `--no-verify` bypasses every
 gate and is never used.
 
+**Commits carried for the architecture chat.** Added by the chat on
+2026-09-26 (UTC) at the operator's instruction, and not yet run. The chat
+edits files but does not commit or push. When it leaves changes
+uncommitted, it writes `.commitmsg` at the repository root, gitignored,
+holding its commit message. The subject starts with `[chat]` and the body
+lists every changed file under `Files:`. Before any work of its own, the
+implementing seat checks for `.commitmsg`. If it is present:
+
+```
+git status --short          must show exactly the listed files, nothing else
+git add <each listed file>
+git commit -F .commitmsg    through the gates, as written
+```
+
+Then delete `.commitmsg`. That commit stays separate from the seat's own:
+never amended, squashed or combined with other changes, and its message is
+not edited. If the tree differs from the list, or a gate refuses, stop and
+report; do not fix the chat's files. The seat's own subjects never start
+with `[chat]`.
+
 **Build.** Writes `index.html` and `static/` at the root. Exit 0 on
 success. On any content failure it exits 1, names every failing item, and
 writes nothing.
@@ -259,8 +279,8 @@ Gate A matches path forms, never prose, and cannot match its own source.
 Every pattern is written so the source never contains the text it matches,
 and the vault's root folder name, which has never been committed, is held
 only as a digest. A brief that needs a private path carries it, and briefs
-are never committed. Gate E's list of implementation paths is Brief 2's,
-not yet a record's.
+are never committed. Gate E's list of implementation paths is recorded
+in ADR-0007 Changes, 2026-09-26.
 
 ## Writing
 
