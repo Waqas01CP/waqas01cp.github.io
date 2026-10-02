@@ -204,23 +204,26 @@ omission.** ADR-0007 accepts that weakness. `--no-verify` bypasses every
 gate and is never used.
 
 **Commits carried for the architecture chat.** Added by the chat on
-2026-09-26 (UTC) at the operator's instruction, and not yet run. The chat
-edits files but does not commit or push. When it leaves changes
-uncommitted, it writes `.commitmsg` at the repository root, gitignored,
-holding its commit message. The subject starts with `[chat]` and the body
-lists every changed file under `Files:`. Before any work of its own, the
-implementing seat checks for `.commitmsg`. If it is present:
+2026-09-26 (UTC) at the operator's instruction; revised 2026-10-02. The
+chat edits files but does not commit or push. When it leaves changes
+uncommitted, it writes one message file per commit in `.commitmsg/` at the
+repository root, gitignored, numbered in the order they are to be made
+(`1-...txt`, `2-...txt`). Each subject starts with `[chat]` and each body
+lists that commit's files under `Files:`. **The operator runs these
+commits himself**, from commands the chat gives him; the implementing seat
+does so only when he hands them over. For each file, in number order:
 
 ```
-git status --short          must show exactly the listed files, nothing else
-git add <each listed file>
-git commit -F .commitmsg    through the gates, as written
+git status --short --untracked-files=all
+git add <each file listed in the message>
+git commit -F .commitmsg/<n>-<name>.txt
 ```
 
-Then delete `.commitmsg`. That commit stays separate from the seat's own:
+The commit runs the gates like any other. When all are made, push, then
+delete the message files and the folder. A chat commit stays separate:
 never amended, squashed or combined with other changes, and its message is
-not edited. If the tree differs from the list, or a gate refuses, stop and
-report; do not fix the chat's files. The seat's own subjects never start
+not edited. If the tree differs from the lists, or a gate refuses, stop and
+report; nobody fixes the chat's files in passing. Only chat commits start
 with `[chat]`.
 
 **Build.** Writes `index.html` and `static/` at the root. Exit 0 on
