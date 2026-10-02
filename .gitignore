@@ -15,3 +15,7 @@ __pycache__/
 # The architecture chat's pending commit message. The implementing seat
 # commits with it and deletes it. CLAUDE.md, Commands.
 .commitmsg
+
+# The operator's local instructions for replacing the CV PDF. Never
+# published. cv/ itself is tracked.
+cv/UPDATING.md
