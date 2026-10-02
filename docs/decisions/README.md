@@ -46,6 +46,7 @@ Adding a topic is itself a decision.
 | [0006](0006-python-generator-build.md) | Build with a small Python generator | Accepted |
 | [0007](0007-repository-gates.md) | The repository gates | Accepted |
 | [0008](0008-sections-tiers-and-depth.md) | Sections, project tiers, and where depth lives | Accepted |
+| [0009](0009-performance-goals.md) | Performance goals instead of a page-weight figure | Accepted |
 
 ## Pending
 
@@ -91,6 +92,8 @@ Decisions identified but not yet concluded.
   for is a 2020 to 2022 model. The threshold is to be taken from a published
   standard and dated when it is recorded, and it doubles as the test that
   decides whether 3D ships.
+  **Closed 2026-10-02 by ADR-0009**: Core Web Vitals goals under
+  Lighthouse's default mobile run, not a byte figure.
 - Where the design prototype is built. **Closed 2026-09-26**: the standalone
   experience at claude.ai/design, design system first. Standalone HTML export
   is confirmed by two independent tutorial transcripts the operator supplied,

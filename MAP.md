@@ -40,6 +40,7 @@ frontmatter. Decision records have no `type`; their `topic` is shown.
 | `docs/decisions/0006-python-generator-build.md` | decision (build) | accepted | A small Python generator, no site framework, built locally with its output committed. Turns two of ADR-0005's review checks into build gates. Read before writing any build code. |
 | `docs/decisions/0007-repository-gates.md` | decision (process) | accepted | The repository gates. What each one blocks, where it fires, and the case that must defeat it. Read before building or changing any gate. |
 | `docs/decisions/0008-sections-tiers-and-depth.md` | decision (structure) | accepted | The seven sections and their order, the CV download, the project tiers, no separate project pages, and the Rahzaan case study as the only deeper destination. Read before laying out the page or adding a project. |
+| `docs/decisions/0009-performance-goals.md` | decision (build) | accepted | The site's speed is held to Google's "good" Core Web Vitals under Lighthouse's default mobile run, not to a page-weight figure. Heavy elements, 3D included, are added one at a time and kept only if the goals still hold. Read before adding any heavy element or motion. |
 | `docs/decisions/README.md` | index | current | The decision record index for the portfolio site, with the fixed topic list and the Pending list of decisions identified but not concluded. |
 
 ## docs/deferred
