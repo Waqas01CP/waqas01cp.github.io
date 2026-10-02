@@ -47,6 +47,7 @@ frontmatter. Decision records have no `type`; their `topic` is shown.
 | File | Type | Status | Description |
 |---|---|---|---|
 | `docs/deferred/projects-timeline.md` | deferred | closed | A date-ordered timeline of projects and roles. Deferred 2026-09-22, reopened and built 2026-09-23 as ADR-0003. Kept as the record of why it was refused first. |
+| `docs/deferred/screen-reader-speech-test.md` | deferred | open | Hearing a real screen reader announce a collapsed and an expanded disclosure. Deferred 2026-10-02 to the styled site, because styling can change what is exposed. Trigger and method inside. |
 
 ## docs/reference
 

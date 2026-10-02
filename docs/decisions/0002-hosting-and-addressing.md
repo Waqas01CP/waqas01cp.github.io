@@ -165,3 +165,7 @@ without prices, quotes, invoicing or any payment mechanism.
 - Revisit the contact route if email proves unusable, not before.
 
 ## Changes
+
+| Date | Change | Why |
+|---|---|---|
+| 2026-10-02 | **Contact routes are email, LinkedIn and GitHub**, all three taken from the master CV's header. Each shows its official icon, a label and one line saying what it is for, in the Contact section, with a compact row of the same three in the Intro. LinkedIn's mark only in blue, black or white and unmodified; GitHub's unmodified. The icon files are served from this repository, so nothing loads from either site. **Still no form and no form service.** This replaces "by email link only" in the Decision Outcome; the rest of the record stands. | Decided by the operator 2026-10-02. NYU Tandon's Experiential Learning Center says to include how the audience can get in touch and to put that contact method on every page; WPI's Career Development Center lists LinkedIn among contact routes. Both read 2026-10-02. Brand terms read the same day: LinkedIn permits its mark as a link to a profile in those three colours; GitHub permits its mark as a social button linking to a profile, unmodified. Scope floor lines 9 and 10 are why the icons are local files. |
