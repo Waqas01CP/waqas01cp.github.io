@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design system specimen: Waqas Sharif portfolio</title>
+<meta name="description" content="Tokens and components for the portfolio site, in both themes.">
+<link rel="preload" href="fonts/SourceSerif4-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+html, body { margin: 0; }
+body { background: var(--paper); }
+.wrap { max-width: var(--measure-page); margin: 0 auto; padding: var(--space-6) var(--space-4) var(--space-9); }
+@media (min-width: 720px) { .wrap { padding-left: var(--space-5); padding-right: var(--space-5); } }
+.spec-section { margin-top: var(--space-8); }
+@media (min-width: 720px) { .spec-section { margin-top: var(--space-9); } }
+.spec-bar { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); align-items: center; font-family: var(--font-mono); font-size: 13px; color: var(--ink-muted); }
+.spec-bar fieldset { border: 0; margin: 0; padding: 0; display: flex; gap: var(--space-1); align-items: center; }
+.spec-bar legend { float: left; margin-right: var(--space-2); }
+.spec-bar button { font: inherit; color: var(--ink); background: transparent; border: 1px solid var(--rule-strong); border-radius: var(--radius-1); padding: 4px 10px; min-height: 32px; cursor: pointer; }
+.spec-bar button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.spec-note { font-family: var(--font-mono); font-size: 13px; line-height: 20px; color: var(--ink-muted); max-width: var(--measure-prose); margin: 0 0 var(--space-5); }
+</style>
+</head>
+<body class="ds-page">
+<div class="wrap">
+<header>
+<p class="spec-note" style="margin:0 0 var(--space-3)">Design system specimen. Not the site.</p>
+<div class="spec-bar">
+<fieldset><legend>Theme</legend><button type="button" data-theme-set="" aria-pressed="true">System</button><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="false">Dark</button></fieldset>
+<fieldset><legend>Prose</legend><button type="button" data-type-set="a" aria-pressed="true">A serif</button><button type="button" data-type-set="b" aria-pressed="false">B sans</button></fieldset>
+</div>
+</header>
+<main>
+<section class="spec-section" aria-labelledby="s-intro" style="margin-top:var(--space-7)"><h2 id="s-intro" class="vh">Long-form text</h2><div class="prose">
+<p class="mono" style="font-size:13px;line-height:20px;color:var(--ink-muted);margin:0">AI Engineer <span aria-hidden="true">|</span> LLM Reliability <span aria-hidden="true">|</span> Agentic Systems in Production</p>
+<h1 style="font-size:clamp(34px,6vw,44px);line-height:1.1;font-weight:600;letter-spacing:-0.01em;margin:var(--space-2) 0 0;text-wrap:balance">Waqas Sharif</h1>
+<p class="lede">Software Engineering graduate (BESE, KIET) specialising in LLM reliability and behavioural testing, with production agentic-system experience.</p>
+<p>Primary architect and director of Rahzaan, a deployed AI career guidance platform maintained through an evaluation harness of 19 behavioural probes, 60 per-turn traces and 592 automated tests over a 24-node LangGraph pipeline at 3.7-second first-response latency.</p>
+<p>Independent research naming three reproducible LLM failure modes, with controlled sampling experiments and adversarial red-teaming across multiple deployed projects.</p>
+<p class="source">BE Software Engineering, KIET, Sep 2022 to Aug 2026, CGPA 3.47. Karachi, Pakistan (UTC+5). Open to remote.</p>
+<h2>Education</h2>
+<p><strong>BE Software Engineering</strong>, Karachi Institute of Economics and Technology (KIET), Karachi, <time datetime="2022-09">Sep 2022</time> to <time datetime="2026-08">Aug 2026</time>. CGPA 3.47 / 4.0.</p>
+<p>Relevant coursework: AI and Neural Networks, Design and Analysis of Algorithms, Probability and Statistics, Linear Algebra, Discrete Structures, Automata Theory and Formal Languages, Formal Methods in Software Engineering, Software Quality Engineering, Database Management Systems, Software Design and Architecture, Data Structures, Software Construction, Object Oriented Programming, Computer Architecture, Mobile Application Development, Technology Entrepreneurship, and Calculus and Analytical Geometry.</p>
+</div></section>
+<section class="spec-section" aria-labelledby="s-graph"><div class="section-head"><h2 id="s-graph">Pipeline graph</h2><span class="count">3D prototype, isolated</span></div><figure class="graph">
+<div class="graph__stage"><canvas data-pipeline-graph aria-hidden="true"></canvas></div>
+<figcaption>Rahzaan's pipeline: 24 LangGraph nodes. Nine run concurrently from the start, fan in through a central dispatcher, then pass through two further stages.<span class="note">Drawn from the graph definition. The travelling light shows the order nodes depend on each other, not measured timing.</span></figcaption>
+</figure></section>
+<section class="spec-section" aria-labelledby="s-projects"><div class="section-head"><h2 id="s-projects">Projects</h2><span class="count">Dated entries with collapsible detail</span></div><article class="entry" id="rahzaan">
+<header class="entry__head"><h3 class="entry__title">Rahzaan: AI Career Guidance Platform</h3><span class="entry__when"><time datetime="2026-02">Feb 2026</time> to Present</span></header>
+<p class="entry__fact">Deployed agentic career guidance platform for Pakistani secondary school students. A 24-node LangGraph pipeline at 3.7-second first-response latency, maintained through 592 automated behavioural tests.</p>
+<dl class="entry__meta"><dt>Stack</dt><dd class="stack">Python, LangGraph, FastAPI, Flutter, Supabase</dd><dt>Proof</dt><dd class="links"><span><a href="/Rahzaan/">Case study</a><span class="domain">waqas01cp.github.io</span></span><span><a href="https://fyp-career-guidance.vercel.app/">Live app</a><span class="domain">vercel.app</span></span></dd></dl>
+<p class="entry__summary">Primary architect and director. The hard part is reasoning truthfully about eligibility: multiple exam boards with different percentage conversions, five streams, regulatory gating by several councils with distinct minima, and merit rules that are often unpublished.</p>
+<details class="depth">
+<summary><span class="verb"></span><span class="what">in depth: Rahzaan</span><span class="n">9 points</span></summary>
+<div class="depth__body"><ol><li>Built the evaluation harness the platform is maintained through: <strong>five named personas</strong> and a <strong>ten-scenario</strong> curriculum matrix producing <strong>60 per-turn traces</strong>, <strong>19 behavioural probes</strong> using paired before-and-after measurement and single-criterion isolation to attribute cause, a separated run-and-analyse pipeline, and a <strong>46-file behavioural test suite of 592 automated tests</strong> catching regressions before users hit them.</li><li>Refuted my own diagnosis of why the system over-asserted. I assumed thin data caused it; measuring across <strong>five data-completeness levels</strong> showed the opposite, the thinnest persona was the most honest, declining outright rather than fabricating. The real trigger was <strong>internal signal divergence</strong>, the model inventing an affective bridge to reconcile conflicting academic and psychometric inputs, so the scarcity guard I had planned would have fixed nothing. Redirected the fix to the divergence path, then added a deterministic post-generation gate as backstop after establishing that negative directives carry a reliability ceiling.</li><li>Architected a <strong>24-node LangGraph pipeline</strong>: fan-out across 9 concurrent nodes, fan-in through a central dispatcher, then two further stages, with 52 typed state fields and concurrent-write reducers. Cut first-response latency from 20 to 25 seconds down to <strong>3.7 seconds</strong>. Per-node model routing lets any node's LLM be swapped through environment config alone, with <strong>LangSmith</strong> tracing for per-turn execution, node latency, and token usage.</li><li>Built a production <strong>FastAPI</strong> backend: <strong>22 REST endpoints</strong>, <strong>LangGraph</strong> checkpoint persistence to <strong>PostgreSQL</strong>, SSE streaming with a parallel keepalive task that defeats the host's 30-second proxy timeout, JWT authentication with bcrypt, rate limiting, 11 Alembic migrations against live data, a deterministic refresh endpoint that regenerates recommendations with zero LLM calls, and a profile summary generator running six parallel LLM calls plus synthesis off the event loop. Automated a 15-day job-market pipeline mapping <strong>14,595 job titles</strong> to canonical career fields via Gemini.</li><li>Engineered two model-independent LLM guardrails: a <strong>9-criterion reflection gate</strong> that applies surgical corrections before any response streams, including a check that blocks unfounded emotional or clinical claims about a user, and deterministic context stripping, built after finding the model ignores "do not include" instructions but cannot discuss data it never receives. Verified across two model versions, alongside three callable tool interfaces and PII handling kept as concerns separate from the agents themselves.</li><li>Shipped a <strong>29-route Flutter frontend</strong>: onboarding, six assessment flows, O/A Level grade conversion, live streaming chat, recommendation dashboard, and a profile hub. Riverpod state management and cold-start timeout handling. Web build deployed on Vercel (<a href="https://fyp-career-guidance.vercel.app/">live</a>), with a contract test on the frontend asserting the same merit-tier contract the backend enforces.</li><li>Designed the recommendation engine: a <strong>265-item session drawn from item banks of 1,409</strong>, sized so a student who reassesses is not asked the same questions twice, across seven construct-grounded psychometric instruments including an original one derived from work-adjustment theory, with MBTI rejected on published reliability evidence. Scored by a multi-dimensional model blending interest-profile geometry, measured capability, and deterministic tier validation with no LLM call. <strong>Fully bilingual: every instrument and the entire session exist in English and Roman Urdu, and the conversation follows whichever the student uses, including mixed script within a sentence.</strong></li><li>Ran the build through a <strong>two-tier development harness</strong> of my own design, now my default method for any system of size: an architecture conversation producing versioned specifications, an implementer working from them under a written rules file across five role-scoped instruction sets, and LangSmith traces pulled back through a fetch skill to close the loop. Recorded across <strong>334 session records</strong> in four months with the model and reasoning tier attributed per session, <strong>53 audit documents</strong> over six whole-system audit phases, and a status register tagging every claim live-verified or believed so that doubt stays pointed at the unverified set.</li><li>Coordinated two contributors through written setup guides, versioned interface contracts and <strong>17 dated change notices</strong>, against a governance document versioned to v2.27 carrying 80+ locked decisions, with rehearsal runs before every destructive data operation and a documentation toolchain generating both the architecture view and the dissertation itself from code.</li></ol></div>
+</details>
+</article>
+<article class="entry" id="applied-llm">
+<header class="entry__head"><h3 class="entry__title">Applied LLM Workflow Research</h3><span class="entry__when"><time datetime="2025-09">Sep</time> to <time datetime="2025-12">Dec 2025</time></span></header>
+<p class="entry__fact">Behavioural study of Gemini 2.5 Pro identifying reproducible failure modes in production LLM workflows.</p>
+<dl class="entry__meta"><dt>Stack</dt><dd class="stack">Python, Streamlit</dd><dt>Proof</dt><dd class="links"><span><a href="https://applied-llm-workflow-research.streamlit.app/">Live app</a><span class="domain">streamlit.app</span></span></dd></dl>
+
+<details class="depth" open>
+<summary><span class="verb"></span><span class="what">in depth: Applied LLM Workflow Research</span><span class="n">3 points</span></summary>
+<div class="depth__body"><ol><li>Identified and named <strong>three failure modes</strong>: Optimal Answer Trap (the model locks onto its first acceptable answer and resists valid redirection), Final Synthesis Bias (output collapses toward a synthesised endpoint regardless of instruction), and Conversational Gravity (accumulated context progressively narrows model behaviour), each reproduced through documented prompt sequences.</li><li>Ran controlled experiments across temperature, top-p, and top-k sampling; 1M-token context stress tests; adversarial red-teaming with hallucination injection; and context-ordering trials showing a <strong>~30% retrieval error rate</strong> when context follows rather than precedes the instruction.</li><li>Shipped a <strong>5-stage prompting protocol</strong> combining intent decomposition, strict output schemas, and adversarial self-critique, deployed as an interactive Streamlit application with a failure-mode comparison view and a prompt template playground.</li></ol></div>
+</details>
+</article>
+<article class="entry" id="hubit">
+<header class="entry__head"><h3 class="entry__title">AI Automation Engineer (Intern), HubIT</h3><span class="entry__when"><time datetime="2026-06">June 2026</time> to <time datetime="2026-07">July 2026</time></span></header>
+<p class="entry__fact">Built a Python pipeline extracting recurring utility documents into schema-validated billing records for a residential property management client, replacing a manual data entry step.</p>
+<dl class="entry__meta"><dt>Verify</dt><dd>Client work with the client unnamed. No public artefact; verifiable by reference.</dd></dl>
+
+
+</article></section>
+<section class="spec-section" aria-labelledby="s-timeline"><div class="section-head"><h2 id="s-timeline">Timeline</h2><span class="count">Jan 2024 to Oct 2026, four rows a month</span></div><div class="tl" style="--months:34">
+<p class="tl__legend" aria-hidden="true"><span><span class="shape shape--builds"></span>Builds</span><span><span class="shape shape--work"></span>Work</span><span><span class="shape shape--certifications"></span>Certifications</span><span><span class="shape shape--band"></span>Degree</span></p>
+<div class="tl__lanes" aria-hidden="true"><span class="l-builds">Builds <span class="shape shape--builds"></span></span><span class="l-spine">Month</span><span class="l-work"><span class="shape shape--work"></span> Work</span><span class="l-certs"><span class="shape shape--certifications"></span> Certifications</span></div>
+<div class="tl__body">
+<div class="tl__axis" aria-hidden="true">
+<div class="tl__band" style="--row:1;--span:128"></div>
+<div class="tl__spine"><ul class="tl__years"><li style="--m:0">2024</li><li class="q" style="--m:3">Apr</li><li class="q" style="--m:6">Jul</li><li class="q" style="--m:9">Oct</li><li style="--m:12">2025</li><li class="q" style="--m:15">Apr</li><li class="q" style="--m:18">Jul</li><li class="q" style="--m:21">Oct</li><li style="--m:24">2026</li><li class="q" style="--m:27">Apr</li><li class="q" style="--m:30">Jul</li><li class="q" style="--m:33">Oct</li></ul></div>
+</div>
+<ol class="tl__list">
+<li class="tl__item tl__item--band" style="--row:1;--span:128" data-side="right">
+<span class="shape shape--band" aria-hidden="true"></span>
+<span class="tl__text"><span class="tl__title"><a href="#degree">BE Software Engineering, KIET</a></span>
+<span class="tl__when"><span class="tl__lane-name">Degree, </span><time datetime="2022-09">Sep 2022</time> to <time datetime="2026-08">Aug 2026</time>, starts before this axis</span></span>
+</li><li class="tl__item" style="--row:1;--span:8;--col:work" data-side="right">
+<span class="shape shape--work" aria-hidden="true"></span>
+<span class="tl__text"><span class="tl__title"><a href="#pac">Engineering Intern, PAC Kamra</a></span>
+<span class="tl__when"><span class="tl__lane-name">Work, </span><time datetime="2024-01">Jan 2024</time> to <time datetime="2024-02">Feb 2024</time></span></span>
+</li><li class="tl__item" style="--row:29;--span:24;--col:certifications-a" data-side="right">
+<span class="shape shape--certifications" aria-hidden="true"></span>
+<span class="tl__text"><span class="tl__title"><a href="#python3">Python 3 Programming Specialization, Michigan</a></span>
+<span class="tl__when"><span class="tl__lane-name">Certifications, </span><time datetime="2024-08">Aug 2024</time> to <time datetime="2025-01">Jan 2025</time></span></span>
+</li><li class="tl__item" style="--row:53;--span:4;--col:builds-a" data-side="left">
+<span class="shape shape--builds" aria-hidden="true"></span>
+<span class="tl__text"><span class="tl__title"><a href="#wordpy">WordPy Autonomous Solver</a></span>
+<span class="tl__when"><span class="tl__lane-name">Builds, </span><time datetime="2025-02">Feb 2025</time></span></span>
+</li><li class="tl__item" style="--row:69;--span:16;--col:certifications-a" data-side="right">
+<span class="shape shape--certifications" aria-hidden="true"></span>
+<span class="tl__text"><span class="tl__title"><a href="#ucdavis">Professional Skills for the Workplace, UC Davis</a></span>
+<span class="tl__when"><span class="tl__lane-name">Certifications, </span><time datetime="2025-06">Jun 2025</time> to <time datetime="2025-09">Sep 2025</time></span></span>
+</li><li class="tl__item" style="--row:81;--span:4;--col:certifications-b" data-side="right">
+<span class="shape shape--certifications" aria-hidden="true"></span>
+<span class="tl__text"><span class="tl__title"><a href="#google-prompting">Google Prompting Essentials</a></span>
+<span class="tl__when"><span class="tl__lane-name">Certifications, </span><time datetime="2025-09">Sep 2025</time></span></span>
+</li><li class="tl__item" style="--row:81;--span:16;--col:builds-a" data-side="left">
+<span class="shape shape--builds" aria-hidden="true"></span>
+<span class="tl__text"><span class="tl__title"><a href="#applied-llm">Applied LLM Workflow Research</a></span>
+<span class="tl__when"><span class="tl__lane-name">Builds, </span><time datetime="2025-09">Sep 2025</time> to <time datetime="2025-12">Dec 2025</time></span></span>
+</li><li class="tl__item" style="--row:85;--span:12;--col:certifications-a" data-side="right">
+<span class="shape shape--certifications" aria-hidden="true"></span>
+<span class="tl__text"><span class="tl__title"><a href="#vanderbilt">Prompt Engineering Specialization, Vanderbilt</a></span>
+<span class="tl__when"><span class="tl__lane-name">Certifications, </span><time datetime="2025-10">Oct 2025</time> to <time datetime="2025-12">Dec 2025</time></span></span>
+</li><li class="tl__item" style="--row:89;--span:8;--col:certifications-b" data-side="right">
+<span class="shape shape--certifications" aria-hidden="true"></span>
+<span class="tl__text"><span class="tl__title"><a href="#kaggle">5-Day AI Agents Intensive, Google and Kaggle</a></span>
+<span class="tl__when"><span class="tl__lane-name">Certifications, </span><time datetime="2025-11">Nov 2025</time> to <time datetime="2025-12">Dec 2025</time></span></span>
+</li><li class="tl__item" style="--row:89;--span:8;--col:builds-b" data-side="left">
+<span class="shape shape--builds" aria-hidden="true"></span>
+<span class="tl__text"><span class="tl__title"><a href="#concierge">Autonomous Research Concierge</a></span>
+<span class="tl__when"><span class="tl__lane-name">Builds, </span><time datetime="2025-11">Nov 2025</time> to <time datetime="2025-12">Dec 2025</time></span></span>
+</li><li class="tl__item" style="--row:101;--span:36;--col:builds-a" data-side="left" data-open>
+<span class="shape shape--builds" aria-hidden="true"></span>
+<span class="tl__text"><span class="tl__title"><a href="#rahzaan">Rahzaan</a></span>
+<span class="tl__when"><span class="tl__lane-name">Builds, </span><time datetime="2026-02">Feb 2026</time> to Present</span></span>
+</li><li class="tl__item" style="--row:101;--span:4;--col:builds-b" data-side="left">
+<span class="shape shape--builds" aria-hidden="true"></span>
+<span class="tl__text"><span class="tl__title"><a href="#crypto">Crypto Accumulation Scanner</a></span>
+<span class="tl__when"><span class="tl__lane-name">Builds, </span><time datetime="2026-02">Feb 2026</time></span></span>
+</li><li class="tl__item" style="--row:117;--span:8;--col:work" data-side="right">
+<span class="shape shape--work" aria-hidden="true"></span>
+<span class="tl__text"><span class="tl__title"><a href="#hubit">AI Automation Engineer, HubIT</a></span>
+<span class="tl__when"><span class="tl__lane-name">Work, </span><time datetime="2026-06">Jun 2026</time> to <time datetime="2026-07">Jul 2026</time></span></span>
+</li>
+</ol>
+</div>
+</div></section>
+<section class="spec-section" aria-labelledby="s-certs"><div class="section-head"><h2 id="s-certs">Certifications</h2><span class="count">5</span></div><ul class="certs"><li class="cert">
+<h3 class="cert__name">5-Day AI Agents Intensive<span class="cert__issuer">, Google and Kaggle</span></h3>
+<span class="cert__when">Nov to Dec 2025</span>
+<span class="cert__proof"><a class="ext" href="https://www.kaggle.com/certification/badges/muhammadwaqassharif/105">View credential<span class="vh">: 5-Day AI Agents Intensive</span></a><span class="domain">kaggle.com</span></span>
+</li><li class="cert">
+<h3 class="cert__name">Prompt Engineering Specialization<span class="cert__issuer">, Vanderbilt</span></h3>
+<span class="cert__when">Oct to Dec 2025</span>
+<span class="cert__proof"><a class="ext" href="https://www.coursera.org/account/accomplishments/specialization/5SAAF3SUHFLZ?utm_source=link&amp;utm_medium=certificate&amp;utm_content=cert_image&amp;utm_campaign=sharing_cta&amp;utm_product=s12n">View credential<span class="vh">: Prompt Engineering Specialization</span></a><span class="domain">coursera.org</span></span>
+</li><li class="cert">
+<h3 class="cert__name">Google Prompting Essentials</h3>
+<span class="cert__when">Sep 2025</span>
+<span class="cert__proof"><a class="ext" href="https://www.coursera.org/account/accomplishments/specialization/MA4Y827NXZFR?utm_source=link&amp;utm_medium=certificate&amp;utm_content=cert_image&amp;utm_campaign=sharing_cta&amp;utm_product=s12n">View credential<span class="vh">: Google Prompting Essentials</span></a><span class="domain">coursera.org</span></span>
+</li><li class="cert">
+<h3 class="cert__name">Professional Skills for the Workplace<span class="cert__issuer">, UC Davis</span></h3>
+<span class="cert__when">Jun to Sep 2025</span>
+<span class="cert__proof"><a class="ext" href="https://coursera.org/verify/specialization/LAM1PDD8F3JA">View credential<span class="vh">: Professional Skills for the Workplace</span></a><span class="domain">coursera.org</span></span>
+</li><li class="cert">
+<h3 class="cert__name">Python 3 Programming Specialization<span class="cert__issuer">, Michigan</span></h3>
+<span class="cert__when">Aug 2024 to Jan 2025</span>
+<span class="cert__proof"><a class="ext" href="https://www.coursera.org/account/accomplishments/specialization/7H66LW1GNIBG?utm_source=link&amp;utm_medium=certificate&amp;utm_content=cert_image&amp;utm_campaign=sharing_cta&amp;utm_product=s12n">View credential<span class="vh">: Python 3 Programming Specialization</span></a><span class="domain">coursera.org</span></span>
+</li></ul></section>
+<section class="spec-section" aria-labelledby="s-skills"><div class="section-head"><h2 id="s-skills">Skills</h2></div><dl class="skills"><div class="skills__row"><dt>Agentic AI and LLM</dt><dd><ul><li>LangGraph</li><li>Google ADK</li><li>Gemini API</li><li>OpenAI API</li><li>Anthropic API</li></ul></dd></div><div class="skills__row"><dt>Languages</dt><dd><ul><li>Python (primary)</li><li>JavaScript</li><li>Dart</li><li>C/C++</li><li>C#</li><li>Java</li></ul></dd></div><div class="skills__row"><dt>Backend and Infrastructure</dt><dd><ul><li>FastAPI</li><li>PostgreSQL</li><li>Supabase</li><li>MySQL</li><li>Docker</li><li>Railway</li><li>Render</li><li>Vercel</li><li>Server-Sent Events (SSE)</li><li>Data Pipelines (ETL)</li></ul></dd></div><div class="skills__row"><dt>Frontend</dt><dd><ul><li>Flutter</li><li>Streamlit</li></ul></dd></div><div class="skills__row"><dt>AI Engineering Practices</dt><dd><ul><li>Context Engineering</li><li>Prompt Engineering</li><li>Evaluation Design</li><li>Behavioural Testing</li><li>Red Teaming</li><li>Chain of Density</li><li>Tree of Thoughts</li><li>Token Sampling</li></ul></dd></div><div class="skills__row"><dt>Tools</dt><dd><ul><li>Git / GitHub</li><li>GitHub Actions</li><li>Claude Code</li><li>Agent Skills</li><li>Antigravity</li><li>LangSmith</li><li>Google AI Studio</li><li>Google Apps Script</li></ul></dd></div><div class="skills__row"><dt>Coursework (ML and .NET)</dt><dd><ul><li>NumPy</li><li>Pandas (EDA, feature engineering)</li><li>scikit-learn</li><li>TensorFlow</li><li>Keras</li><li>YOLO</li><li>CNNs</li><li>.NET</li><li>ASP.NET</li></ul></dd></div><div class="skills__row"><dt>Coursework (QA and test automation)</dt><dd><ul><li>Selenium</li><li>Playwright</li><li>test case design</li><li>defect reporting</li></ul></dd></div></dl></section>
+<section class="spec-section" aria-labelledby="s-contact"><div class="section-head"><h2 id="s-contact">Contact</h2></div><div class="contact">
+<p class="contact__lede">Email is the fastest route. Karachi, Pakistan (UTC+5). Open to remote.</p>
+<ul class="contact__list">
+<li class="contact__item">
+<span class="contact__icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect class="glyph" x="2.75" y="5.75" width="18.5" height="12.5" rx="1"/><path class="glyph" d="M3 6.5l9 6.5 9-6.5"/></svg></span>
+<span class="contact__label">Email</span>
+<a class="contact__value" href="mailto:ma.sharif.waqas@gmail.com">ma.sharif.waqas@gmail.com</a>
+<button type="button" class="contact__copy" data-copy="ma.sharif.waqas@gmail.com">Copy address</button>
+</li>
+<li class="contact__item">
+<span class="contact__icon"><span class="mark-slot" title="Official LinkedIn mark: file not yet supplied"></span></span>
+<span class="contact__label">LinkedIn</span>
+<a class="contact__value" href="https://linkedin.com/in/ma-waqas-sharif">linkedin.com/in/ma-waqas-sharif</a>
+</li>
+<li class="contact__item">
+<span class="contact__icon"><svg class="mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"/></svg></span>
+<span class="contact__label">GitHub</span>
+<a class="contact__value" href="https://github.com/Waqas01CP">github.com/Waqas01CP</a>
+</li>
+</ul>
+</div></section>
+<section class="spec-section" aria-labelledby="s-types"><div class="section-head"><h2 id="s-types">Type directions</h2><span class="count">Pick one</span></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:var(--space-7) var(--space-8)"><section class="" style="min-width:0">
+<p class="mono" style="font-size:12px;line-height:16px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted);margin:0 0 var(--space-3)">A. Serif prose</p>
+<p style="font-family:var(--prose);font-size:40px;line-height:44px;font-weight:600;margin:0;letter-spacing:-0.01em">Waqas Sharif</p>
+<p class="mono" style="font-size:13px;line-height:20px;color:var(--ink-muted);margin:var(--space-2) 0 var(--space-5)">Source Serif 4, variable weight</p>
+<header class="entry__head"><h3 class="entry__title">Rahzaan: AI Career Guidance Platform</h3><span class="entry__when">Feb 2026 to Present</span></header>
+<p class="entry__fact">Deployed agentic career guidance platform for Pakistani secondary school students. A 24-node LangGraph pipeline at 3.7-second first-response latency, maintained through 592 automated behavioural tests.</p>
+<p class="entry__summary">Primary architect and director. The hard part is reasoning truthfully about eligibility: multiple exam boards with different percentage conversions, five streams, regulatory gating by several councils with distinct minima, and merit rules that are often unpublished.</p>
+<p style="margin-top:var(--space-3);font-style:italic">Python, LangGraph, FastAPI, Flutter, Supabase</p>
+<p class="mono" style="font-size:13px;line-height:20px;color:var(--ink-muted);margin-top:var(--space-4)">Upright 50.8 KB, italic 51.5 KB. With Plex Mono: 117.0 KB.</p>
+</section><section class="type-b" style="min-width:0">
+<p class="mono" style="font-size:12px;line-height:16px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted);margin:0 0 var(--space-3)">B. Sans prose</p>
+<p style="font-family:var(--prose);font-size:40px;line-height:44px;font-weight:600;margin:0;letter-spacing:-0.01em">Waqas Sharif</p>
+<p class="mono" style="font-size:13px;line-height:20px;color:var(--ink-muted);margin:var(--space-2) 0 var(--space-5)">Atkinson Hyperlegible Next, variable weight</p>
+<header class="entry__head"><h3 class="entry__title">Rahzaan: AI Career Guidance Platform</h3><span class="entry__when">Feb 2026 to Present</span></header>
+<p class="entry__fact">Deployed agentic career guidance platform for Pakistani secondary school students. A 24-node LangGraph pipeline at 3.7-second first-response latency, maintained through 592 automated behavioural tests.</p>
+<p class="entry__summary">Primary architect and director. The hard part is reasoning truthfully about eligibility: multiple exam boards with different percentage conversions, five streams, regulatory gating by several councils with distinct minima, and merit rules that are often unpublished.</p>
+<p style="margin-top:var(--space-3);font-style:italic">Python, LangGraph, FastAPI, Flutter, Supabase</p>
+<p class="mono" style="font-size:13px;line-height:20px;color:var(--ink-muted);margin-top:var(--space-4)">Upright 34.0 KB, italic 37.6 KB. With Plex Mono: 86.3 KB.</p>
+</section></div></section>
+</main>
+</div>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.getAttribute('data-copy');
+    var done = function (ok) {
+      b.textContent = ok ? 'Copied' : 'Select and copy';
+      b.dataset.state = ok ? 'done' : '';
+      if (!ok) { var r = document.createRange(); r.selectNodeContents(b.previousElementSibling); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+      setTimeout(function () { b.textContent = 'Copy address'; b.dataset.state = ''; }, 2200);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function () { done(true); }, function () { done(false); });
+    else done(false);
+  });
+});
+(function () {
+  var root = document.documentElement;
+  document.querySelectorAll('[data-theme-set]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = b.getAttribute('data-theme-set');
+      if (v) root.setAttribute('data-theme', v); else root.removeAttribute('data-theme');
+      document.querySelectorAll('[data-theme-set]').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+    });
+  });
+  document.querySelectorAll('[data-type-set]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.body.classList.toggle('type-b', b.getAttribute('data-type-set') === 'b');
+      document.querySelectorAll('[data-type-set]').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+    });
+  });
+})();
+</script>
+<script src="pipeline-graph.js" defer></script>
+</body>
+</html>
