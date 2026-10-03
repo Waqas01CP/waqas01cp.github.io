@@ -42,11 +42,12 @@ Adding a topic is itself a decision.
 | [0002](0002-hosting-and-addressing.md) | Public user site at waqas01cp.github.io, no custom domain yet | Accepted |
 | [0003](0003-vertical-timeline-section.md) | A hand-built vertical timeline section | Accepted |
 | [0004](0004-scope-floor.md) | The scope floor, fourteen lines | Accepted |
-| [0005](0005-three-reading-layers.md) | Three reading layers for every item | Accepted |
+| [0005](0005-three-reading-layers.md) | Three reading layers for every item | Superseded by 0010 |
 | [0006](0006-python-generator-build.md) | Build with a small Python generator | Accepted |
 | [0007](0007-repository-gates.md) | The repository gates | Accepted |
 | [0008](0008-sections-tiers-and-depth.md) | Sections, project tiers, and where depth lives | Accepted |
 | [0009](0009-performance-goals.md) | Performance goals instead of a page-weight figure | Accepted |
+| [0010](0010-reading-layers.md) | Reading layers, consolidated | Accepted, supersedes 0005 |
 
 ## Pending
 

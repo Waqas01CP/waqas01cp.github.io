@@ -118,12 +118,14 @@ Every internal link is root-relative. No absolute URL pointing at this
 site's own origin appears anywhere, so moving to a custom domain later is a
 DNS change and not a rewrite. ADR-0002.
 
-Every item carries three layers: a specific checkable fact, a summary, and
-full depth. All three ship in the initial HTML, collapsed by disclosure
-rather than deferred to a later fetch. ADR-0005.
+Every item carries a specific checkable fact; a summary and full depth
+follow only where the master CV has material for them. Every layer an item
+has ships in the initial HTML, collapsed by disclosure rather than deferred
+to a later fetch. ADR-0010, which supersedes ADR-0005.
 
-Layer 3 holds decisions, trade-offs, what failed and how each was verified.
-Not a changelog.
+Layer 3 holds decisions, trade-offs, what failed, how each was verified,
+and production-scope facts an interviewer would probe. Not a changelog.
+Each layer 3 disclosure is named for its item.
 
 ## Verification
 

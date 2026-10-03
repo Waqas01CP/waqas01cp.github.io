@@ -144,3 +144,4 @@ We will not set a page-weight figure in bytes.
 
 | Date | Change | Why |
 |---|---|---|
+| 2026-10-03 | **The check can fail, shown.** Lighthouse 12.8.2, default mobile, in the chat's cloud container, on the design-system specimen page: five runs gave a median of 2102 ms largest contentful paint, 0 layout shift, 68 ms Total Blocking Time (runs 0, 0, 68, 74, 327), a pass. The same page with a 600 ms synchronous script added to its head gave 1183, 1242 and 1254 ms Total Blocking Time over three runs, a fail. Largest contentful paint stayed under 2.5 s in the slow runs, so that metric alone would not have caught this case. | Confirmation's third item. Run by the chat 2026-10-03. Results from this machine are comparable only with each other, per Consequences. |

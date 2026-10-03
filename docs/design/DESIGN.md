@@ -20,7 +20,12 @@ collapsible detail, a vertical timeline with items on both sides of a
 centre spine, and three contact routes (email, LinkedIn, GitHub).
 
 ## How to work
-Explore. Try ideas, including 3D, and keep what earns its place. Add any
+Explore. Try ideas, including 3D, and keep what earns its place. Here 3D
+means depth in the interface itself: elements that respond in three
+dimensions when hovered or touched, sections and a timeline that a reader
+can interact with. It does not mean illustrations of a project's internals,
+which belong in that project's case study. Anything that responds to hover
+must also work by touch, because phones have no hover. Add any
 heavy element one at a time, so the cost of each one is visible on its own
 and it can be kept or cut on that basis.
 
@@ -33,7 +38,10 @@ and it can be kept or cut on that basis.
   machine. Input response needs real visitors to measure, so the lab run
   uses Total Blocking Time under 200 milliseconds as its stand-in.
   Anything, 3D included, stays only if the page still meets this with it.
-- **Every width.** Works at 360 px wide and on a desktop.
+- **Every width.** Works at 360 px wide and on a desktop. On a wide screen,
+  use the width with layout rather than leaving it empty, while keeping
+  running text to readable lines: WCAG 1.4.8 sets no more than 80
+  characters.
 - **Both themes.** Light and dark both hold.
 
 ## Hard limits
