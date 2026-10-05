@@ -48,6 +48,7 @@ Adding a topic is itself a decision.
 | [0008](0008-sections-tiers-and-depth.md) | Sections, project tiers, and where depth lives | Accepted |
 | [0009](0009-performance-goals.md) | Performance goals instead of a page-weight figure | Accepted |
 | [0010](0010-reading-layers.md) | Reading layers, consolidated | Accepted, supersedes 0005 |
+| [0011](0011-visual-system.md) | The visual system | Accepted |
 
 ## Pending
 

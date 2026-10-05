@@ -19,3 +19,8 @@ __pycache__/
 # The operator's local instructions for replacing the CV PDF. Never
 # published. cv/ itself is tracked.
 cv/UPDATING.md
+
+# The Claude Design prototype export: the build's visual reference, kept
+# locally only. It loads its framework from a third-party CDN, so it must
+# never be served from this site. ADR-0011.
+docs/design/prototype/

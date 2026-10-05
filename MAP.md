@@ -42,6 +42,7 @@ frontmatter. Decision records have no `type`; their `topic` is shown.
 | `docs/decisions/0008-sections-tiers-and-depth.md` | decision (structure) | accepted | The seven sections and their order, the CV download, the project tiers, no separate project pages, and the Rahzaan case study as the only deeper destination. Read before laying out the page or adding a project. |
 | `docs/decisions/0009-performance-goals.md` | decision (build) | accepted | The site's speed is held to Google's "good" Core Web Vitals under Lighthouse's default mobile run, not to a page-weight figure. Heavy elements, 3D included, are added one at a time and kept only if the goals still hold. Read before adding any heavy element or motion. |
 | `docs/decisions/0010-reading-layers.md` | decision (content) | accepted | The reading layers as they now stand. Layer 1 on every item, layers 2 and 3 only where the master has material, all in the initial HTML, layer 3 scoped to what an interviewer probes and named per item. Supersedes ADR-0005. Read before writing any page content. |
+| `docs/decisions/0011-visual-system.md` | decision (design) | accepted | The site's visual system as settled from the Claude Design prototype: typefaces, colour, theme behaviour, the one 3D element and the motion rules, each tied to the goals it must meet. Read before styling any template. |
 | `docs/decisions/README.md` | index | current | The decision record index for the portfolio site, with the fixed topic list and the Pending list of decisions identified but not concluded. |
 
 ## docs/deferred
