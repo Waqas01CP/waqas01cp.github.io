@@ -24,7 +24,7 @@ Every claim in these files traces to the operator's master CV, the only
 source of truth (scope floor line 1). Where they and the master disagree,
 the master wins and the disagreement is reported. One paragraph in
 `site.json` is not in the master: `approved`, the Intro's second paragraph,
-approved by the operator on 2026-10-06. It says so in the file, and
+approved by the operator on 2026-10-05. It says so in the file, and
 `tools/check_content.py` reports it on every run.
 
 ## Written once, and shortened text checked

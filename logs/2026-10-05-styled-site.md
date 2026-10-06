@@ -248,6 +248,10 @@ its terms permit the Invertocat as a social button linking to a profile.
    the master with the same following word, and the trace reports it on
    every run. Recommendation: add it to the master, so scope floor line 1
    holds without a named exception.
+   *Annotated 2026-10-06 by the Brief 4 session: the approval was
+   2026-10-05 UTC. The pack carried the chat's local date; this session
+   wrote the paragraph into a scratch file at 22:43Z on 2026-10-05.
+   Corrected in the content files; logs/2026-10-06-before-push.md.*
 2. ADR-0008's Changes row of 2026-10-02 counts 17 courses; the master now
    lists 26, all on the page.
 3. ADR-0008's Confirmation says no tier word appears in the rendered text.

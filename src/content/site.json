@@ -11,7 +11,7 @@
   "summary": "Software Engineering graduate (BESE, KIET) specialising in LLM reliability and behavioural testing, with production agentic-system experience. Primary architect and director of Rahzaan, a deployed AI career guidance platform maintained through an evaluation harness of 19 behavioural probes, 60 per-turn traces and 592 automated tests over a 24-node LangGraph pipeline at 3.7-second first-response latency. Independent research naming three reproducible LLM failure modes, with controlled sampling experiments and adversarial red-teaming across multiple deployed projects.",
   "approved": {
     "text": "I architect the systems I build: I define the problem, set the design and the decisions, and hold the implementation to them through a systematic framework of written specifications, automated tests and independent audits. Rahzaan ran through 334 session records and 53 audit documents; the job aggregator carries 55 decision records, 754 tests and 410 recorded mutations that deliberately break the code to prove the tests notice.",
-    "approved_by": "the operator on 2026-10-06, as the architecture chat's content pack for Brief 3 records; not in the master CV"
+    "approved_by": "the operator on 2026-10-05, as the architecture chat's content pack for Brief 3 records; not in the master CV"
   },
   "email": "ma.sharif.waqas@gmail.com",
   "linkedin": {
