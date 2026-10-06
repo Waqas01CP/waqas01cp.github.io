@@ -19,6 +19,9 @@ Proof is a commit, a decision record or a log filename. Never a file path.
 | Build refuses shortened text that is not a cut of its source, and a missing proof link outside ADR-0010's three | [VERIFIED] | 2026-10-05 | 9fbd407; same log, 27 generator checks each failing as built |
 | Content trace of the built page against the master CV, with its command | [VERIFIED] | 2026-10-05 | 037a50e; same log, check 3, five planted changes each failing |
 | Lighthouse, default mobile, medians of five, with and without each heavy element | [VERIFIED] | 2026-10-05 | Same log, check 10. One machine; results comparable only with each other (ADR-0009) |
+| Intro paragraph's approval dated in UTC, 2026-10-05, in the content file and its schema note | [VERIFIED] | 2026-10-06 | 06f97c6; logs/2026-10-06-before-push.md |
+| content-visibility on the sections measured both ways: Lighthouse, layout time, the accessibility tree at load in both modes, anchors and axe. Removed, failed ADR-0009 here, restored with a comment saying what was measured | [VERIFIED] | 2026-10-06 | e0e876c, 9a2043b; same log. The keep-or-remove decision is a STATE.md row |
+| STATE.md's 44 DONE rows moved here, each verbatim | [VERIFIED] | 2026-10-06 | 9d06c61; same log |
 
 ## Moved from STATE.md, 2026-10-06
 
