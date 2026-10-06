@@ -172,9 +172,9 @@ cost is documentation; a comment restating the next line is noise.
 
 ## Commands
 
-Recorded by Brief 1 and Brief 2, 2026-09-26 (UTC). Every command runs from
-the repository root. Each was run in the session that recorded it and
-exited as described.
+Recorded by Brief 1 and Brief 2, 2026-09-26 (UTC), and by Brief 3,
+2026-10-05 (UTC). Every command runs from the repository root. Each was run
+in the session that recorded it and exited as described.
 
 **Environment.** The build runs only inside the project venv at `.venv/`,
 with the versions pinned in `requirements.txt`: Jinja2, and MarkupSafe,
@@ -263,6 +263,24 @@ else. MarkupSafe is Jinja2's own requirement and so is not listed.
 ```
 python -m pip list --not-required
 ```
+
+**Content trace.** Added by Brief 3. Reads the built `index.html` and traces
+every block of text on it, the title, description, alt text and labels
+included, to the master CV, or to the interface text and the
+operator-approved paragraph the tool names; then checks that every master
+bullet, the summary, each sentence of each italic line, each skills line,
+course and certificate appears on the page whole, in the master's word
+order. The master is given by its path each time and never stored, because
+this repository is public. Run it after any content change, before
+committing it.
+
+```
+python tools/check_content.py --master <path to the master CV>
+```
+
+Exit 0 means every block traces and nothing is missing; 1 means a block
+does not trace or master text is missing, each printed; 2 means no file at
+the path given.
 
 ## The hook blocks
 
