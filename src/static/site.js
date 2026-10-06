@@ -238,10 +238,8 @@
      a reading line marks the month at 55% of the viewport on a wide
      screen, and the faded section words drift.
 
-     The sections below the Intro skip their layout while off screen
-     (content-visibility in site.css). Reading a position inside one would
-     force that layout and undo the saving, so positions are read only in
-     sections that are on screen, which are laid out already. */
+     Positions are read, and effects moved, only in sections that are on
+     screen, so a scroll frame touches only what the reader can see. */
   const spineFill = $("[data-spine-fill]");
   const mspineFill = $("[data-mspine-fill]");
   const readLine = $("[data-tl-read]");
