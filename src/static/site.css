@@ -659,12 +659,21 @@ img { display: block; max-width: 100%; }
   overflow-x: clip;
 }
 .sec-last { padding-bottom: clamp(64px, 8vw, 110px); }
-/* No content-visibility on the sections. It was here until Brief 4: in
-   headless Chromium it left 25 of 26 headings out of the accessibility
-   tree at load, and in full accessibility mode, the one screen readers
-   use, it exposed the collapsed "In depth" panels. Without it, Total
-   Blocking Time on one machine was a median of 171 ms over 15 Lighthouse
-   runs against ADR-0009's 200 ms. logs/2026-10-06-before-push.md. */
+/* Off-screen sections skip layout until they near the viewport. Measured
+   2026-10-06 on one machine, Lighthouse default mobile, medians of five:
+   Total Blocking Time 29 and 41 ms with this rule; 164, 250, 171 and
+   249 ms without it, against ADR-0009's 200 ms. Measured cost, headless
+   Chrome at load: 1 of the page's 26 headings is in the accessibility
+   tree; in full accessibility mode, the one screen readers switch on,
+   the five collapsed "In depth" panels are in it. Find-in-page was not
+   tested. logs/2026-10-06-before-push.md. The size is an estimate,
+   replaced by the real one once a section has been shown. */
+.page > .sec { content-visibility: auto; contain-intrinsic-size: auto 1400px; }
+/* An anchor in the address bar, from a link on the page or one shared,
+   lays every section out first, so the jump lands exactly where it should
+   rather than where the estimated sizes put it. Pure CSS, so it holds
+   without a script too. */
+html:has(:target) .page > .sec { content-visibility: visible; }
 .sec-head { position: relative; margin-bottom: clamp(32px, 4vw, 56px); }
 .fade-word {
   position: absolute;
