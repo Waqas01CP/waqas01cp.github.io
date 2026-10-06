@@ -85,4 +85,4 @@ frontmatter. Decision records have no `type`; their `topic` is shown.
 
 | File | Type | Status | Description |
 |---|---|---|---|
-| `src/content/README.md` | reference | current | The content schema. What every item in items.json carries, which rules the build enforces on it, and how to add an item. Read before adding or editing content. |
+| `src/content/README.md` | reference | current | The content schema. What items.json and site.json carry, which rules the build enforces on them, how shortened text is checked against its source, and how to add an item. Read before adding or editing content. |

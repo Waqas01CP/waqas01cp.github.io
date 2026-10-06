@@ -1,0 +1,10 @@
+{# The footer. The CV link renders only when the PDF exists in the tree being
+   built (ADR-0008), exactly as in the Intro. #}
+<footer class="foot">
+<p class="foot-name serif">{{ site.name }}</p>
+<p class="foot-loc">{{ site.location }}</p>
+{% if cv %}
+<p><a class="foot-link" href="{{ cv }}" download>Download CV (PDF)</a></p>
+{% endif %}
+<p><a class="foot-link" href="#intro">Back to top <span aria-hidden="true">&uarr;</span></a></p>
+</footer>

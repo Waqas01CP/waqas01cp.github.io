@@ -1,0 +1,43 @@
+{# Contact: email, LinkedIn and GitHub, from the master's header, and no
+   form (ADR-0002 Changes, 2026-10-02). The LinkedIn and GitHub marks are
+   the official files, unmodified, served from this site: LinkedIn's in
+   blue on the light page and white on the dark one, GitHub's Invertocat in
+   white or black against its card. Only one of each pair shows, and the
+   hidden one is never fetched because it loads lazily. #}
+{% import "macros.html.j2" as m %}
+{# build.py checks that contact lists email, linkedin and github in that order. #}
+{% set email, linkedin, github = site.contact %}
+<section id="contact" class="sec sec-last" aria-labelledby="h-contact" data-section>
+<div class="wrap">
+{{ m.head(sections[7]) }}
+<ul class="routes">
+<li><a class="route route-email" href="mailto:{{ site.email }}" data-tilt>
+<span class="glare" aria-hidden="true"></span>
+<div class="route-top"><span class="route-icon" aria-hidden="true">{{ m.icon("mail", 28) }}</span>{{ m.icon("out", 22) }}</div>
+<div class="route-body">
+<p class="route-label">{{ email.label }}</p>
+<p class="route-line">{{ site.availability }}.</p>
+<p class="route-addr">{{ site.email }}</p>
+</div>
+</a></li>
+<li><a class="route route-linkedin" href="{{ site.linkedin.url }}" data-tilt>
+<span class="glare" aria-hidden="true"></span>
+<div class="route-top"><span class="route-mark"><img class="page-light-only" src="/static/img/linkedin-in-bug-blue.png" width="635" height="540" alt="LinkedIn" loading="lazy" decoding="async"><img class="page-dark-only" src="/static/img/linkedin-in-bug-white.png" width="840" height="779" alt="LinkedIn" loading="lazy" decoding="async"></span>{{ m.icon("out", 22) }}</div>
+<div class="route-body">
+<p class="route-label">{{ linkedin.label }}</p>
+<p class="route-line">{{ linkedin.line }}</p>
+<p class="route-addr">{{ site.linkedin.text }}</p>
+</div>
+</a></li>
+<li><a class="route route-github" href="{{ site.github.url }}" data-tilt>
+<span class="glare" aria-hidden="true"></span>
+<div class="route-top"><span class="route-mark"><img class="page-light-only" src="/static/img/github-invertocat-white.svg" width="98" height="96" alt="GitHub" loading="lazy" decoding="async"><img class="page-dark-only" src="/static/img/github-invertocat-black.svg" width="98" height="96" alt="GitHub" loading="lazy" decoding="async"></span>{{ m.icon("out", 22) }}</div>
+<div class="route-body">
+<p class="route-label">{{ github.label }}</p>
+<p class="route-line">{{ github.line }}</p>
+<p class="route-addr">{{ site.github.text }}</p>
+</div>
+</a></li>
+</ul>
+</div>
+</section>

@@ -1,0 +1,28 @@
+{# Education: the degree and its Relevant Coursework (ADR-0008 Changes,
+   2026-10-02). The degree's name carries the visual weight; the CGPA is set
+   at the size of the other facts (ADR-0011). #}
+{% import "macros.html.j2" as m %}
+<section id="education" class="sec" aria-labelledby="h-education" data-section>
+<div class="wrap">
+{{ m.head(sections[4]) }}
+{% if degree %}
+<article id="{{ degree.id }}" class="degree" aria-labelledby="h-{{ degree.id }}">
+<div class="degree-glow" aria-hidden="true"></div>
+<div class="degree-head">
+<p class="job-top"><span class="tile" aria-hidden="true">{{ m.icon("cap", 22) }}</span><span class="job-dates">{{ m.when(degree.when) }}</span></p>
+<h3 id="h-{{ degree.id }}">{{ degree.title }}</h3>
+<p class="degree-org">{{ degree.org }}</p>
+<p class="degree-cgpa">CGPA: <span class="mono">{{ degree.cgpa }} / {{ degree.cgpa_scale }}</span></p>
+</div>
+<div class="degree-courses">
+<h4>Relevant Coursework</h4>
+<ul class="chips chips-soft">
+{% for c in degree.coursework %}
+<li>{{ c }}</li>
+{% endfor %}
+</ul>
+</div>
+</article>
+{% endif %}
+</div>
+</section>

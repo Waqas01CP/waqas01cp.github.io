@@ -1,0 +1,55 @@
+{# The Intro: always dark (ADR-0011). The knot is a canvas the script draws
+   on after the content is visible; it carries no words. The results are
+   cuts of master text, checked by the build against their sources. #}
+{% import "macros.html.j2" as m %}
+{% set first_name, last_name = site.name.split(" ", 1) %}
+<section id="intro" class="intro dark" aria-label="{{ sections[0].label }}" data-section>
+<div class="intro-glow" aria-hidden="true"></div>
+<canvas class="knot" aria-hidden="true" data-knot></canvas>
+<div class="wrap">
+<p class="avail"><span class="avail-dot" aria-hidden="true"></span>{{ site.availability }}.</p>
+<h1 class="intro-name"><span>{{ first_name }}</span> <span class="serif">{{ last_name }}</span></h1>
+<p class="headline">{% for part in site.headline %}{% if not loop.first %}<span class="sep"> | </span>{% endif %}{{ part }}{% endfor %}</p>
+<div class="intro-grid">
+<div class="intro-main">
+<ul class="facts">
+<li><span class="arrow" aria-hidden="true">&rarr;</span> <span>{{ site.location }}.</span></li>
+{% if degree %}
+{# The degree line, rendered from the degree's own fields (ADR-0008 Changes). #}
+<li><span class="arrow" aria-hidden="true">&rarr;</span> <span><span>{{ degree.title }}, {{ degree.org_short }},</span> <span>{{ degree.when_text }},</span> <span>CGPA {{ degree.cgpa }}</span></span></li>
+{% endif %}
+</ul>
+<p class="lede">{{ site.summary }}</p>
+{% if site.approved %}
+<p class="lede">{{ site.approved.text }}</p>
+{% endif %}
+<ul class="cta">
+<li><a class="btn btn-acc" href="mailto:{{ site.email }}">{{ m.icon("mail", 18) }}Email me</a></li>
+<li><a class="btn" href="{{ site.linkedin.url }}">LinkedIn{{ m.icon("out", 14) }}</a></li>
+<li><a class="btn" href="{{ site.github.url }}">GitHub{{ m.icon("out", 14) }}</a></li>
+{% if cv %}
+<li><a class="btn" href="{{ cv }}" download>Download CV (PDF)</a></li>
+{% endif %}
+</ul>
+</div>
+<ul class="results" aria-label="Results">
+{% for h in site.highlights %}
+<li class="result" data-tilt>
+<span class="glare" aria-hidden="true"></span>
+<p class="result-label">{{ h.label }}</p>
+<p class="result-fig">
+{%- if h.before %}<span class="result-text">{{ h.before }}</span> {% endif -%}
+{%- if h.figure_parts.number %}<span class="result-num">{{ h.figure_parts.number }}<span class="result-suffix">{{ h.figure_parts.suffix }}</span></span>{% else %}<span class="result-word">{{ h.figure_parts.word }}</span>{% endif %} <span class="result-text">{{ h.text }}</span></p>
+</li>
+{% endfor %}
+</ul>
+</div>
+</div>
+{# The availability strip. Without a script it is a static line; the script
+   sets it moving after load, with a pause control, and never under reduced
+   motion. #}
+<div class="strip" data-strip>
+<p class="strip-static wrap"><span>{{ site.availability }}</span> <span class="sq" aria-hidden="true"></span> <span>{{ site.location }}</span></p>
+<button type="button" class="strip-pause" data-strip-pause hidden>{{ m.icon("pause") }}<span data-strip-label>Pause</span><span class="vh"> the moving strip</span></button>
+</div>
+</section>

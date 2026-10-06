@@ -1,16 +1,82 @@
-{# The timeline: every dated entry as an ordered list in date order
-   (ADR-0003). The list is the content itself, and so also the text
-   equivalent and the crawler's copy. The visual is drawn on top of it.
-   Rows come from build.grid_position, four per month from January 2024.
-   The column is the lane's named grid line in static/timeline.css. #}
-<section id="timeline">
-<h2>Timeline</h2>
-<ol class="timeline">
-{% for entry in timeline %}
-<li style="grid-row: {{ entry.row }} / span {{ entry.span }}; grid-column: {{ entry.lane }};"{% if entry.before_axis %} class="starts-before-axis"{% endif %}>
-<a href="#{{ entry.id }}">{{ entry.title }}</a>
-<p>{{ entry.lane_label }}, {{ when(entry.when) }}</p>
+{# The timeline (ADR-0003 and its Changes). The ordered list is the content,
+   newest first, and so also the text equivalent and the crawler's copy; the
+   visual is drawn on it by the stylesheet.
+
+   Wide screen: to scale. Each entry is placed on a grid of four rows per
+   month, row 1 the as-of month, by build.grid_position; overlapping entries
+   in one lane sit side by side, at x and w per cent of the lane. Builds sit
+   left of the spine, Work and Certifications right of it, and the degree is
+   a band behind them all that runs past the bottom edge. The axis marks are
+   decoration, hidden from assistive technology: each entry states its own
+   dates.
+
+   Phone: one spine, every lane interleaved, each entry marked with its lane
+   by shape and by label, and filter chips. Not to scale.
+
+   Each entry's detail is a native disclosure, so it opens without a script.
+   The Open source lane is in the data model and is not drawn while it is
+   empty. #}
+{% import "macros.html.j2" as m %}
+{% set t = timeline %}
+<section id="timeline" class="sec" aria-labelledby="h-timeline" data-section>
+<div class="wrap">
+{{ m.head(sections[2]) }}
+<div class="tl" style="--rows: {{ t.rows }}" data-tl data-top="{{ as_of }}" data-months="{{ t.months }}">
+<div class="tl-lanes">
+{% for lane in t.lanes %}
+<span class="tl-head lane-{{ lane.key }}" aria-hidden="true"><span class="shape" aria-hidden="true"></span>{{ lane.label }}</span>
+{% endfor %}
+<div class="tl-filters" role="group" aria-label="Show or hide lanes" data-js hidden>
+{% for lane in t.lanes %}
+<button type="button" class="tl-filter lane-{{ lane.key }}" aria-pressed="true" data-lane="{{ lane.key }}"><span class="shape" aria-hidden="true"></span><span class="tl-filter-label">{{ lane.label }}</span></button>
+{% endfor %}
+</div>
+<span class="tl-scale" aria-hidden="true">Months<br>to scale</span>
+</div>
+<p class="tl-empty" data-tl-empty hidden>No lanes selected.</p>
+<div class="tl-body">
+<div class="tl-axis" aria-hidden="true">
+<div class="tl-spine"><span class="tl-spine-fill" data-spine-fill></span><span class="tl-chip" data-tl-chip></span></div>
+{% for mark in t.marks %}
+<span class="tl-month" style="--row: {{ mark.row }}">{{ mark.label }}</span>
+{% endfor %}
+{% for y in t.years %}
+<span class="tl-year" style="--row: {{ y.row }}">{{ y.year }}</span>
+{% if y.line %}
+<span class="tl-year-line" style="--row: {{ y.row }}"></span>
+{% endif %}
+{% endfor %}
+<span class="tl-read" data-tl-read></span>
+</div>
+<span class="tl-mspine" aria-hidden="true"><span class="tl-spine-fill" data-mspine-fill></span></span>
+<ol class="tl-list" role="list" data-tl-list>
+{% for e in t.entries %}
+{% if e.lane == "band" %}
+<li class="tl-band" style="--row: {{ e.row }}; --span: {{ e.span }}">
+<span class="tl-band-bg" aria-hidden="true"></span>
+<p class="tl-band-label"><a href="#{{ e.id }}">{{ e.title }}, {{ e.org_short }}</a> <span class="sq" aria-hidden="true"></span> <span>{{ m.when(e.when_compact) }}</span></p>
+<p class="tl-band-end" aria-hidden="true"><span>&darr;</span> {{ t.band_start_text }}</p>
 </li>
+{% else %}
+{% set name = e.name if e.lane == "builds" else e.title %}
+<li class="tl-entry lane-{{ e.lane }}{% if e.band_place %} {{ e.band_place }}{% endif %}" style="--row: {{ e.row }}; --span: {{ e.span }}; --x: {{ e.x }}%; --w: {{ e.w }}%; --gl: {{ e.gl }}px; --gr: {{ e.gr }}px" data-lane="{{ e.lane }}" data-year="{{ e.year }}"{% if e.year_mark %} data-year-mark{% endif %}{% if e.months == 1 %} data-short{% endif %}>
+<span class="tl-yr" aria-hidden="true">{{ e.year }}</span>
+<span class="tl-mark" aria-hidden="true"></span>
+<details class="tl-card" name="tl" data-tl-card>
+<summary><span class="tl-meta"><span class="tl-lane">{{ e.lane_label }}</span> <span class="tl-sign" aria-hidden="true"></span></span> <span class="tl-dates">{{ m.when(e.when_compact) }}</span> <span class="tl-title">{{ name }}</span>{% if e.lane != "builds" and e.org_short %} <span class="tl-org">{{ e.org_short }}</span>{% endif %}</summary>
+<div class="tl-pop">
+<button type="button" class="tl-close" aria-label="Close: {{ name }}" data-tl-close data-js hidden>&times;</button>
+{% if e.detail %}
+<p class="tl-detail">{{ e.detail }}</p>
+{% endif %}
+<p class="tl-links">{% for link in e.proof if link.label == "Credential" %}<a href="{{ link.url }}">Credential<span class="vh">: {{ name }}</span> <span aria-hidden="true">&#8599;</span></a> {% endfor %}<a href="#{{ e.id }}" data-tl-go>Go to full entry<span class="vh">: {{ name }}</span> <span aria-hidden="true">&darr;</span></a></p>
+</div>
+</details>
+</li>
+{% endif %}
 {% endfor %}
 </ol>
+</div>
+</div>
+</div>
 </section>

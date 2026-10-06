@@ -1,0 +1,180 @@
+{
+  "source": "master-cv:header, professional-summary, technical-skills",
+  "name": "Waqas Sharif",
+  "headline": [
+    "AI Engineer",
+    "LLM Reliability",
+    "Agentic Systems in Production"
+  ],
+  "location": "Karachi, Pakistan (UTC+5)",
+  "availability": "Open to remote, freelance and contract work",
+  "summary": "Software Engineering graduate (BESE, KIET) specialising in LLM reliability and behavioural testing, with production agentic-system experience. Primary architect and director of Rahzaan, a deployed AI career guidance platform maintained through an evaluation harness of 19 behavioural probes, 60 per-turn traces and 592 automated tests over a 24-node LangGraph pipeline at 3.7-second first-response latency. Independent research naming three reproducible LLM failure modes, with controlled sampling experiments and adversarial red-teaming across multiple deployed projects.",
+  "approved": {
+    "text": "I architect the systems I build: I define the problem, set the design and the decisions, and hold the implementation to them through a systematic framework of written specifications, automated tests and independent audits. Rahzaan ran through 334 session records and 53 audit documents; the job aggregator carries 55 decision records, 754 tests and 410 recorded mutations that deliberately break the code to prove the tests notice.",
+    "approved_by": "the operator on 2026-10-06, as the architecture chat's content pack for Brief 3 records; not in the master CV"
+  },
+  "email": "ma.sharif.waqas@gmail.com",
+  "linkedin": {
+    "url": "https://linkedin.com/in/ma-waqas-sharif",
+    "text": "linkedin.com/in/ma-waqas-sharif"
+  },
+  "github": {
+    "url": "https://github.com/Waqas01CP",
+    "text": "github.com/Waqas01CP"
+  },
+  "highlights": [
+    {
+      "item": "rahzaan",
+      "from": "rahzaan/bullets/3",
+      "figure": "24-node",
+      "text": "LangGraph pipeline"
+    },
+    {
+      "item": "rahzaan",
+      "from": "site/summary",
+      "figure": "3.7-second",
+      "text": "first-response latency"
+    },
+    {
+      "item": "applied-llm-workflow-research",
+      "from": "applied-llm-workflow-research/bullets/1",
+      "before": "Identified and named",
+      "figure": "three",
+      "text": "failure modes"
+    },
+    {
+      "item": "job-aggregator",
+      "from": "job-aggregator/bullets/2",
+      "figure": "30",
+      "text": "production runs over 13.6 days with zero retries and zero failed requests"
+    }
+  ],
+  "feature": {
+    "item": "rahzaan",
+    "from": "rahzaan/bullets/1",
+    "label": "evaluation harness",
+    "figure": "592",
+    "text": "automated tests",
+    "pairs": [
+      {
+        "figure": "19",
+        "text": "behavioural probes"
+      },
+      {
+        "figure": "60",
+        "text": "per-turn traces"
+      }
+    ],
+    "note": "A 46-file behavioural test suite catching regressions before users hit them."
+  },
+  "skills": [
+    {
+      "label": "Agentic AI and LLM",
+      "items": [
+        "LangGraph",
+        "Google ADK",
+        "Gemini API",
+        "OpenAI API",
+        "Anthropic API"
+      ]
+    },
+    {
+      "label": "Languages",
+      "items": [
+        "Python (primary)",
+        "JavaScript",
+        "Dart",
+        "C/C++",
+        "C#",
+        "Java"
+      ]
+    },
+    {
+      "label": "Backend and Infrastructure",
+      "items": [
+        "FastAPI",
+        "PostgreSQL",
+        "Supabase",
+        "MySQL",
+        "Docker",
+        "Railway",
+        "Render",
+        "Vercel",
+        "Server-Sent Events (SSE)",
+        "Data Pipelines (ETL)"
+      ]
+    },
+    {
+      "label": "Frontend",
+      "items": [
+        "Flutter",
+        "Streamlit"
+      ]
+    },
+    {
+      "label": "AI Engineering Practices",
+      "items": [
+        "Context Engineering",
+        "Prompt Engineering",
+        "Evaluation Design",
+        "Behavioural Testing",
+        "Red Teaming",
+        "Chain of Density",
+        "Tree of Thoughts",
+        "Token Sampling"
+      ]
+    },
+    {
+      "label": "Tools",
+      "items": [
+        "Git / GitHub",
+        "GitHub Actions",
+        "Claude Code",
+        "Agent Skills",
+        "Antigravity",
+        "LangSmith",
+        "Google AI Studio",
+        "Google Apps Script"
+      ]
+    },
+    {
+      "label": "Coursework (ML and .NET)",
+      "items": [
+        "NumPy",
+        "Pandas (EDA, feature engineering)",
+        "scikit-learn",
+        "TensorFlow",
+        "Keras",
+        "YOLO",
+        "CNNs",
+        ".NET",
+        "ASP.NET"
+      ]
+    },
+    {
+      "label": "Coursework (QA and test automation)",
+      "items": [
+        "Selenium",
+        "Playwright",
+        "test case design",
+        "defect reporting"
+      ]
+    }
+  ],
+  "contact": [
+    {
+      "route": "email",
+      "label": "Email me"
+    },
+    {
+      "route": "linkedin",
+      "label": "Let's connect",
+      "line": "Work history, education and certifications."
+    },
+    {
+      "route": "github",
+      "label": "See the code",
+      "line": "Public repositories and project code."
+    }
+  ]
+}
