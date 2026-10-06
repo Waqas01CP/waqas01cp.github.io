@@ -182,7 +182,7 @@ dated items, plus the degree as a band.
 |---|---|---|---|
 | BE Software Engineering, KIET | Band | Sep 2022 | Aug 2026 |
 | Engineering Intern, PAC Kamra | Work | Jan 2024 | Feb 2024 |
-| Python 3 Specialization, Michigan | Certifications | Aug 2024 | Jan 2025 |
+| Python 3 Programming Specialization, Michigan | Certifications | Aug 2024 | Jan 2025 |
 | WordPy Autonomous Solver | Builds | Feb 2025 | Feb 2025 |
 | Professional Skills for the Workplace, UC Davis | Certifications | Jun 2025 | Sep 2025 |
 | Google Prompting Essentials | Certifications | Sep 2025 | Sep 2025 |
@@ -217,3 +217,4 @@ dated items, plus the degree as a band.
 | 2026-10-03 | The UC Davis certificate is **no longer blocked**: the master CV carries its credential link, https://coursera.org/verify/specialization/LAM1PDD8F3JA, read 2026-09-27 and again 2026-10-03. The "Open, and blocking one entry" line in More Information is closed by this row. | Raised by the design-system session of 2026-10-03, checked by the chat against the master the same day. |
 | 2026-10-03 | **Newest at the top.** The axis runs from the as-of month at the top down to January 2024, with the degree band running past the bottom edge carrying the marker that it starts earlier. The ordered list in the HTML follows the same order, newest first. This reverses the axis direction implied by "start the axis at January 2024" and "running past the top edge"; scale, lanes and the list-first markup stand. | Decided by the operator 2026-10-03, on seeing the design-system specimen: the latest work should be what a reader meets first. |
 | 2026-10-05 | **On a phone, one spine with all lanes interleaved**, newest at the top, each entry marked with its lane by icon and label, and filter chips to show or hide lanes. Not to scale on a phone; the desktop timeline stays to scale. Closes the collapse-behaviour question this record left open. | Chosen by the operator 2026-10-05 from the prototype's two phone versions (option 2a), after viewing both on his phone. The other, one lane at a time behind tabs, was not chosen. |
+| 2026-10-06 | Inventory name corrected to the master's: **Python 3 Programming Specialization**. Name only; lane and dates unchanged. | Found by the implementing seat in Report 3; checked by the chat against the master. |

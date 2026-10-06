@@ -2,7 +2,7 @@
 status: accepted
 topic: design
 description: The site's visual system as settled from the Claude Design prototype: typefaces, colour, theme behaviour, the one 3D element and the motion rules, each tied to the goals it must meet. Read before styling any template.
-date: 2026-10-06
+date: 2026-10-05
 decision-makers: Waqas Sharif
 # consulted:
 # informed:
@@ -15,7 +15,7 @@ decision-makers: Waqas Sharif
 `docs/design/DESIGN.md` set goals and six hard limits and left the look
 open. Claude Design built a full prototype from it, the operator's six
 reference sites and the content pack, and the operator reviewed it on
-2026-10-05 and 2026-10-06. The look now has to be fixed in one place before
+2026-10-05. The look now has to be fixed in one place before
 the generator is styled, or the build will re-decide it.
 
 Two tensions shape it. The operator wants a polished, current site with
@@ -30,7 +30,7 @@ device to light or dark for comfort expect the page to respect it.
 - ADR-0009: Core Web Vitals goals; heavy elements added one at a time.
 - ADR-0004 lines 7 to 10: content as real text, reduced motion, nothing
   loaded from other sites, no cookies.
-- The operator's choices on the prototype, 2026-10-05 and 2026-10-06.
+- The operator's choices on the prototype, 2026-10-05.
 
 ## Assumptions
 
@@ -38,12 +38,12 @@ device to light or dark for comfort expect the page to respect it.
   ships them from its own fonts folder; Manrope, Instrument Serif and
   JetBrains Mono are published under the SIL Open Font License. **Not
   re-verified by the chat**; the build brief checks each licence file.
-- A2. The prototype's colours pass WCAG AA. **Measured** 2026-10-06 by an
+- A2. The prototype's colours pass WCAG AA. **Measured** 2026-10-05 by an
   automated accessibility check (axe-core 4) on the rendered prototype in
   light and dark at 1366 and 360 px: no contrast violations.
 - A3. The 3D knot's cost on a phone is unknown. **Not measured**: the
   prototype renders through a design framework, so its Lighthouse figures
-  (LCP 3.6 to 3.8 s, TBT 296 to 413 ms, three runs, 2026-10-06) measure
+  (LCP 3.6 to 3.8 s, TBT 296 to 413 ms, three runs, 2026-10-05) measure
   the framework, not the knot. The build measures it per ADR-0009.
 
 ## Considered Options
@@ -119,10 +119,12 @@ shown at the size of the other facts, not as a display figure.
   ADR-0003's Changes row of 2026-10-05.
 - The prototype export is kept locally in `docs/design/prototype/`,
   gitignored, as the build's visual reference; the operator decided on
-  2026-10-06 not to keep it in history.
+  2026-10-05 not to keep it in history.
 - Revisit if the built page fails ADR-0009 with the knot or the fonts.
 
 ## Changes
 
 | Date | Change | Why |
 |---|---|---|
+| 2026-10-06 | Dates corrected to UTC. The record was written with the local date, 2026-10-06 (UTC+5); everything in it happened on 2026-10-05 UTC: the file was written at 21:52Z and committed as ca5e461 at 22:07Z. | ADR-0006 sets UTC. Found by the chat comparing file times with Report 3. |
+| 2026-10-06 | **A3 measured; all four heavy elements stay.** On the built page, Lighthouse default mobile, median of five. Implementing seat, Lighthouse 13.5.0: with all four, LCP 2108 ms, CLS 0, TBT 17 ms; without the knot, 2116 ms, 0, 24 ms; without tilt, strip or scroll effects, TBT 0 ms each. Chat, Lighthouse 12.8.2, with all four: LCP 2125 ms, CLS 0, TBT 6 ms. A1 checked by the build: each font ships with its OFL text from google/fonts. | The Decision Outcome keeps each element only if ADR-0009 holds with it; it does, with a wide margin. Report 3 and the chat's own runs, 2026-10-06. |

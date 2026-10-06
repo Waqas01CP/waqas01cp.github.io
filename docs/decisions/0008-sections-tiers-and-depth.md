@@ -1,7 +1,7 @@
 ---
 status: accepted
 topic: structure
-description: The seven sections and their order, the CV download, the project tiers, no separate project pages, and the Rahzaan case study as the only deeper destination. Read before laying out the page or adding a project.
+description: The eight sections and their order, the CV download, the project tiers, no separate project pages, and the Rahzaan case study as the only deeper destination. Read before laying out the page or adding a project.
 date: 2026-09-26
 decision-makers: Waqas Sharif
 # consulted:
@@ -121,7 +121,9 @@ request, the same rule ADR-0003 applies to the timeline lane.
 - The build fails when the content file's order contradicts tier (ADR-0005
   Changes). Test: move a tier 3 item above a tier 2 item and build. **Pass:
   failure naming both. Fail: a successful build.**
-- No tier number or tier word appears in the rendered text.
+- No tier number or tier label appears in the rendered text. Uses of "tier"
+  inside the master's own wording, such as "two-tier" and "merit-tier", are
+  content, not labels.
 
 ## Pros and Cons of the Options
 
@@ -171,3 +173,4 @@ request, the same rule ADR-0003 applies to the timeline lane.
 | 2026-09-27 | The degree appears as one line in the Intro, worded from the master CV, and is not a section. The section count stays seven. This closes the `band` lane's placement: the band renders on the timeline, and the Intro line is its only other appearance. | Decided by the operator 2026-09-27. The section list above had no place for the degree, so it existed only as the timeline band. The chat's reasoning, not sourced: the degree is among the first things a Masters admissions reader, the site's second audience, looks for, and one Intro line gives it without an eighth section. |
 | 2026-10-02 | **Eight sections, in this order: Intro, Projects, Timeline, Work, Education, Certifications, Skills, Contact.** Education holds the degree and the master's Relevant Coursework list, 17 courses, counted 2026-10-02. The Intro keeps its single degree line: BE Software Engineering, KIET, Sep 2022 to Aug 2026, CGPA 3.47. This reverses "is not a section" in the row of 2026-09-27; the Intro line stands. Confirmation's "exactly the seven sections" now reads eight. | Decided by the operator 2026-10-02. NYU Tandon's Experiential Learning Center puts education and graduation date in the About content; none of the sources read 2026-10-02 (NYU Tandon, WashU, WPI, Santa Clara) places coursework. What decided it: a heading makes the coursework findable by readers who scan headings and by screen-reader heading navigation, and the Intro stays brief. More courses can appear only after they enter the master, per scope floor line 1. |
 | 2026-10-03 | **Navigation: one page with a section menu that stays in view**, listing the eight sections, highlighting the one in view, and jumping to each. Projects open their depth in place. No separate pages. The alternative, separate pages per section, is kept in `docs/deferred/multi-page-site.md`. | Decided by the operator 2026-10-03, after reviewing six reference sites he chose, three of each kind. Closes navigation, open since 2026-09-22. |
+| 2026-10-06 | Confirmation reads **"tier label"**, not "tier word": the master's own bullets use "two-tier", "merit-tier", "reasoning tier", "tier validation" and "market-cap tier", and those are content. **Relevant Coursework now holds 26 courses**, the master's list as updated from the transcript on 2026-10-05; the count of 17 in the row of 2026-10-02 is history. Frontmatter description now says eight sections. | Found by the implementing seat in Report 3; checked by the chat against the master on 2026-10-06: 26 courses, five uses of "tier" on the built page, all in master text. |
