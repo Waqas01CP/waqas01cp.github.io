@@ -79,6 +79,7 @@ frontmatter. Decision records have no `type`; their `topic` is shown.
 |---|---|---|---|
 | `logs/2026-09-26-gates-map-and-as-of.md` | log | current | Brief 2. Five repository gates from ADR-0007, each proven by its defeating case and by sabotage; the map generator; the as-of month in the output; tier order enforced by the build. Two departures from the brief, both reported. |
 | `logs/2026-09-26-generator-and-content-model.md` | log | current | Brief 1 in three rounds. Python generator, JSON content schema, two content gates and Rahzaan rendered unstyled, all verified with defeating cases; YAML replaced by JSON, case-study link made root-relative; MarkupSafe pinned, LF forced; committed by concern; rounds 1 and 2 pushed by someone other than the seat and live at the domain root; three Working Method paths await a ruling. |
+| `logs/2026-10-05-styled-site.md` | log | current | Brief 3. The approved Claude Design prototype rebuilt in the generator with every item from the master CV in eight sections; content traced to the master; ten verification checks, each shown able to fail; Lighthouse with and without each heavy element. Committed in series, not pushed. |
 | `logs/README.md` | index | current | The session log index. Read this first for what prior sessions did, then chain backwards through the most recent relevant log only as far as needed. |
 
 ## src/content

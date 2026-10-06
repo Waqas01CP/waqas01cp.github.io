@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit cb20f35, the last commit before this file's
-update, 2026-09-26T22:15Z, by the Brief 2 implementing session.** This is
+**Verified against commit 037a50e, the last commit before this file's
+update, 2026-10-06T00:10Z, by the Brief 3 implementing session.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -44,18 +44,24 @@ Update the verified-against line whenever you touch this file.
 
 ## Headline
 
-**The site is live at the domain root**, serving one item, Rahzaan, as
-unstyled semantic HTML. A small Python generator builds it from structured
-content (ADR-0006), fails the build on a missing source, a missing proof
-route or a tier out of order, and records the month the page is as of.
-Eight decisions are accepted. Five repository gates guard every commit and
-push (ADR-0007), each proven by the case built to defeat it. They enforce
-only in a clone where `core.hooksPath` is set.
+**The styled site is built and committed, and not pushed.** Brief 3
+rebuilt the approved Claude Design prototype in the generator: one page,
+the eight sections of ADR-0008, every item from the master CV, styled to
+ADR-0011, with every word in the first response. The ten checks of Brief 3
+pass, each shown able to fail, and Lighthouse's medians meet ADR-0009 with
+every heavy element. **The live site is still the earlier unstyled page,
+serving Rahzaan alone, until the push**, which waits on the screen-reader
+speech test and the chat's checks (Blocked, below).
 
-Not started: visual design, which is the operator's to run in Claude
-Design, and every item other than Rahzaan, which arrives with the sections
-ADR-0008 names. How the repository got here is in the session logs, not in
-this file.
+A small Python generator builds the page from two content files
+(ADR-0006), fails on a missing source, a missing proof link, a tier out of
+order or shortened text that is not a cut of its source, and records the
+month the page is as of. `tools/check_content.py` traces the built page to
+the master CV. Ten decisions are in force, and ADR-0005 is superseded by
+ADR-0010. Five repository gates guard
+every commit and push (ADR-0007); they enforce only in a clone where
+`core.hooksPath` is set. How the repository got here is in the session
+logs, not in this file.
 
 ## Documents
 
@@ -105,27 +111,24 @@ this file.
 
 | Task | Status | Evidence | Date | Proof |
 |---|---|---|---|---|
-| Design prototype | PENDING | | | Not blocked. Built in Claude Design's standalone experience, design system first (docs/decisions/README.md, Pending, closed 2026-09-26); the operator's to run |
 | Framework and rendering strategy decided | DONE | [VERIFIED] | 2026-09-26 | ADR-0006; row corrected by the Brief 1 session |
 | Generator: reads content, computes timeline rows, renders, copies static files, byte-identical on rebuild | DONE | [VERIFIED] | 2026-09-26 | logs/2026-09-26-generator-and-content-model.md |
 | Content schema, JSON, documented beside the content file | DONE | [VERIFIED] | 2026-09-26 | Same log |
 | Gate: an item with no source fails the build, naming it | DONE | [VERIFIED] | 2026-09-26 | Same log; proven by deleting Rahzaan's source |
 | Gate: an item with neither or both of proof and verification fails the build, naming it | DONE | [VERIFIED] | 2026-09-26 | Same log; proven both ways |
 | Rahzaan rendered end to end, unstyled, every layer readable without scripts | DONE | [VERIFIED] | 2026-09-26 | Same log |
-| Rahzaan layer 1 and layer 2 wording approved by the operator | DONE | [BELIEVED] | 2026-09-26 | Same log, round 2. Approved before Brief 1 was written; the brief's draft marker was left in by mistake. Stated by the architecture chat, not seen first-hand by the seat. Not in the master CV word for word; that is expected of layers 1 and 2 |
+| Rahzaan layer 1 and layer 2 wording approved by the operator | DONE | [BELIEVED] | 2026-09-26 | Same log, round 2. Approved before Brief 1 was written; the brief's draft marker was left in by mistake. Stated by the architecture chat, not seen first-hand by the seat. Not in the master CV word for word; that is expected of layers 1 and 2. **Superseded 2026-10-05 by Brief 3**: Rahzaan's layer 1 is now the content pack's cut of its first bullet and its layer 2 the master's italic line, both checked against the master; logs/2026-10-05-styled-site.md |
 | Tier order: the build fails when the content file's order contradicts tier | DONE | [VERIFIED] | 2026-09-26 | logs/2026-09-26-gates-map-and-as-of.md; ADR-0005 Changes, ADR-0008. Defeated by a synthetic tier 3 item above Rahzaan in a scratch copy; control: the same item below builds |
 | As-of month: build.py --as-of, recorded in the output as a meta element | DONE | [VERIFIED] | 2026-09-26 | Same log; ADR-0006 Changes. With the clock a month ahead, the gate's rebuild is unchanged; --as-of with the next month changes the element and Rahzaan's span |
-| Screen reader reaches the collapsed layer 3 | PENDING | | | ADR-0005 Confirmation; must be done before the first content page ships. Not run |
+| Screen reader reaches the collapsed layer 3 | PARTIAL | [VERIFIED] | 2026-10-05 | logs/2026-10-05-styled-site.md. On the styled site, in headless Chrome by keyboard: each "In depth" control is a button named for its item, collapsed, its layer 3 absent from the accessibility tree; Enter expands it and layer 3 enters the tree. The speech half, NVDA's Speech Viewer, is not run: docs/deferred/screen-reader-speech-test.md, the operator's, before the push |
+| Push of Brief 3's commits, replacing the live unstyled page | PENDING | | | Blocked, below. The commits are local only |
 | What .nojekyll actually does when Pages is enabled | DONE | [VERIFIED] | 2026-09-26 | Same log, round 3 correction. Jekyll did not process the site: Markdown files are served raw with their front matter, /README.html is 404, and /.nojekyll itself is served. The live index.html and stylesheet are byte-identical to the committed ones. The cause is .nojekyll, settled by inference in ADR-0006 A3: the Pages source is "Deploy from a branch", which runs Jekyll by default, and Jekyll did not run |
 
 ## Blocked, and on whom
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
-
-Nothing is blocked. The design prototype was listed here, blocked on a
-four-check test; that question closed on 2026-09-26 and the design system
-is the operator's to run.
+| Push of Brief 3's commits | The screen-reader speech test, whose trigger is before the styled site replaces the live one, and the two checks Brief 3 reserves for the chat and the operator | Operator and chat | 2026-10-05 |
 
 ## Known unverified
 
@@ -137,10 +140,16 @@ is the operator's to run.
 - The remaining open checks are listed in `docs/research/0002`, section
   "Not verified".
 
-- Whether the Design artifact type exports a Claude Code handoff bundle and
-  standalone HTML, whether it keeps version history, and whether a shared
-  link opens without a Claude account. The four-check test in `CHAT_STATE.md`
-  item 4 would check all four.
+- Whether the Design artifact type keeps version history, and whether a
+  shared link opens without a Claude account. Its standalone HTML export
+  exists and was opened locally by Brief 3's session; the handoff to
+  Claude Code through its MCP server was not available to that session.
+- Lighthouse figures come from one machine (ADR-0009). Not measured on a
+  real 2020 to 2022 phone, and the local server did not compress; GitHub
+  Pages does.
+- The knot's worker on Safari: OffscreenCanvas in a worker is documented
+  for recent Safari but was not run there. A browser without it shows no
+  knot. `content-visibility` and `:has()` were exercised in Chrome only.
 - Whether the Vercel and MERJ crawler findings, measured Dec 2024, still
   hold. Re-measuring is not possible without a live site; the site's own
   server logs would check it after launch.

@@ -13,11 +13,12 @@ Every job CV became one page on 2026-09-21, so most of the evidence in the
 master CV has nowhere else to live. This site is where it goes. It serves
 employers first and Masters admissions readers second, from one version.
 
-**The generator runs and one item renders.** This repository holds the
-document skeleton, six accepted decisions, and a Python generator that
-produces unstyled semantic HTML from a structured content file. There is no
-visual design yet, and only one item of content. `STATE.md` is the honest
-picture.
+**The styled site is built, with every item from the master CV, and not
+yet live.** A Python generator renders one page in eight sections from two
+structured content files, styled to the visual system of ADR-0011, with a
+little script for the menu, the theme switch, the disclosures and the
+motion. Until the next push, the live site is still the earlier unstyled
+page. `STATE.md` is the honest picture.
 
 The repository is public, per ADR-0002. `CHAT_STATE.md` is the one file that
 is never committed, because it names blockers and errors; it is in
@@ -54,6 +55,7 @@ each export is committed by hand with a log entry.
 | The evidence behind the decisions | `docs/research/` |
 | What was deliberately not built, and what would reopen it | `docs/deferred/` |
 | What the content schema is and how to add an item | `src/content/README.md` |
+| How the page is checked against the master CV | `CLAUDE.md`, Commands, the content trace |
 | What prior implementing sessions did | `logs/README.md` |
 | Why briefs are not committed | `briefs/README.md` |
 | Completed work moved out of the state file | `docs/reference/completed.md` |
