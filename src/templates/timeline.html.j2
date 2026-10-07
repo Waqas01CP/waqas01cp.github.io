@@ -64,7 +64,7 @@
 <span class="tl-yr" aria-hidden="true">{{ e.year }}</span>
 <span class="tl-mark" aria-hidden="true"></span>
 <details class="tl-card" name="tl" data-tl-card>
-<summary><span class="tl-meta"><span class="tl-lane">{{ e.lane_label }}</span> <span class="tl-sign" aria-hidden="true"></span></span> <span class="tl-dates">{{ m.when(e.when_compact) }}</span> <span class="tl-title">{{ name }}</span>{% if e.lane != "builds" and e.org_short %} <span class="tl-org">{{ e.org_short }}</span>{% endif %}</summary>
+<summary><span class="tl-meta"><span class="tl-lane">{{ e.lane_label }}</span> <span class="tl-sign" aria-hidden="true"></span></span>{{ m.sp() }} <span class="tl-dates">{{ m.when(e.when_compact) }}</span>{{ m.sp() }} <span class="tl-title">{{ name }}</span>{% if e.lane != "builds" and e.org_short %}{{ m.sp() }} <span class="tl-org">{{ e.org_short }}</span>{% endif %}</summary>
 <div class="tl-pop">
 <button type="button" class="tl-close" aria-label="Close: {{ name }}" data-tl-close data-js hidden aria-hidden="true">&times;</button>
 {% if e.detail %}

@@ -27,7 +27,7 @@
 <nav class="mbar dark" aria-label="Sections" data-nav-box>
 <div class="mbar-pill" data-mbar-pill>
 <details class="mnav" data-mnav>
-<summary><span class="mnav-n" data-active-n>{{ sections[0].n }}</span> <span class="mnav-label" data-active-label>{{ sections[0].label }}</span> <span class="mnav-pct" aria-hidden="true" data-pct></span> <span class="vh">Sections menu</span>{{ m.icon("menu", 18) }}</summary>
+<summary><span class="mnav-n" data-active-n>{{ sections[0].n }}</span>{{ m.sp() }} <span class="mnav-label" data-active-label>{{ sections[0].label }}</span>{{ m.sp() }} <span class="mnav-pct" aria-hidden="true" data-pct></span> <span class="vh">Sections menu</span>{{ m.icon("menu", 18) }}</summary>
 <div class="mnav-panel">
 <ol>
 {% for s in sections %}

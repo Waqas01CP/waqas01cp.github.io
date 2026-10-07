@@ -18,10 +18,10 @@
 <div class="feature dark">
 <div class="feature-glow" aria-hidden="true"></div>
 <p class="feature-label">{{ f.name }} <span aria-hidden="true">&middot;</span> {{ f.label }}</p>
-<p class="feature-main"><span class="feature-num">{{ f.figure }}</span> <span class="feature-text serif">{{ f.text }}</span></p>
+<p class="feature-main"><span class="feature-num">{{ f.figure }}</span>{{ m.sp() }} <span class="feature-text serif">{{ f.text }}</span></p>
 <ul class="feature-pairs">
 {% for p in f.pairs %}
-<li><span class="num">{{ p.figure }}</span> <span>{{ p.text }}</span></li>
+<li><span class="num">{{ p.figure }}</span>{{ m.sp() }} <span>{{ p.text }}</span></li>
 {% endfor %}
 </ul>
 <p class="feature-note">{{ f.note }}</p>

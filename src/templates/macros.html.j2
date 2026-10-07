@@ -6,6 +6,14 @@
 {%- if w.end_text %} to {% if w.end %}<time datetime="{{ w.end }}">{{ w.end_text }}</time>{% else %}{{ w.end_text }}{% endif %}{% endif %}
 {%- endmacro %}
 
+{# A space a screen reader keeps. Where pieces of one line are laid out as
+   separate boxes (flex or grid items, or blocks), the space between them
+   in the markup is never rendered, and NVDA reads them as one word:
+   "WaqasSharif", "Dec 20255-Day". This space is hidden from sight but
+   rendered, so it reaches the accessibility tree (.vh keeps it).
+   logs/2026-10-07-tree-parity.md, round 3. #}
+{% macro sp() %}<span class="vh"> </span>{% endmacro %}
+
 {# A section heading: the number and the faded word are decoration, hidden
    from assistive technology; the h2 is the name. #}
 {% macro head(s) -%}
