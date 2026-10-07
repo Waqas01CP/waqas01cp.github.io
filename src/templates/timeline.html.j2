@@ -60,7 +60,7 @@
 </li>
 {% else %}
 {% set name = e.name if e.lane == "builds" else e.title %}
-<li class="tl-entry lane-{{ e.lane }}{% if e.band_place %} {{ e.band_place }}{% endif %}" style="--row: {{ e.row }}; --span: {{ e.span }}; --x: {{ e.x }}%; --w: {{ e.w }}%; --gl: {{ e.gl }}px; --gr: {{ e.gr }}px" data-lane="{{ e.lane }}" data-year="{{ e.year }}"{% if e.year_mark %} data-year-mark{% endif %}{% if e.months == 1 %} data-short{% endif %}>
+<li class="tl-entry lane-{{ e.lane }}{% if e.band_place %} {{ e.band_place }}{% endif %}" style="--row: {{ e.row }}; --span: {{ e.span }}; --x: {{ e.x }}%; --w: {{ e.w }}%; --gl: {{ e.gl }}px; --gr: {{ e.gr }}px" data-lane="{{ e.lane }}" data-year="{{ e.year }}"{% if e.year_mark %} data-year-mark{% endif %}>
 <span class="tl-yr" aria-hidden="true">{{ e.year }}</span>
 <span class="tl-mark" aria-hidden="true"></span>
 <details class="tl-card" name="tl" data-tl-card>
