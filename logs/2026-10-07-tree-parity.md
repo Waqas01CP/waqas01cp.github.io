@@ -1,6 +1,6 @@
 ---
 type: log
-description: Brief 5. content-visibility kept on the sections, and the accessibility tree at load in full mode made to match the page without it, at 360 and 1366 px, both themes, scripts on and off, by marking everything hidden inside the sections aria-hidden. Found the styled site already pushed before the speech test. Standing checks written down. Round 2, after the operator's push: checked on the live site in Chrome and Edge; NVDA steps written into the deferred entry. Round 3: his NVDA capture showed words run together; fixed with visually hidden spaces. Round 5: the speech test passed in NVDA 2026.2. Round 6: two timeline inconsistencies fixed; a pixel check corrected.
+description: Brief 5. content-visibility kept on the sections, and the accessibility tree at load in full mode made to match the page without it, at 360 and 1366 px, both themes, scripts on and off, by marking everything hidden inside the sections aria-hidden. Found the styled site already pushed before the speech test. Standing checks written down. Round 2, after the operator's push: checked on the live site in Chrome and Edge; NVDA steps written into the deferred entry. Round 3: his NVDA capture showed words run together; fixed with visually hidden spaces. Round 5: the speech test passed in NVDA 2026.2. Round 6: two timeline inconsistencies fixed; a pixel check corrected. Round 7: research 0004, on listing this site and opening it for reuse.
 status: current
 ---
 
@@ -606,3 +606,41 @@ their rendering off screen come out blank in both images.
   annotated in place.
 
 **Waiting.** The operator's push.
+
+## Round 7: two questions, researched
+
+From about 21:20Z on 2026-10-07 (02:20 on 2026-10-08 local). The
+operator asked whether round 6's correction meant he must supply
+screenshots (no: the screenshots are this seat's own, taken headless).
+He then asked two questions:
+
+- should this site, and what he learned building it, go on the site;
+- should it be opened for others to reuse, for credit, stars and
+  contributions.
+
+**Research 0004** answers both from evidence, without deciding. Its
+main findings [VERIFIED, sources in the document]:
+
+- Nothing reaches the site before the master CV: scope floor line 1. The
+  checkable part is the process (11 decision records, 5 gates, a content
+  trace, measured performance, an NVDA test). Languages written by AI
+  seats are not defensible as skills.
+- The repository has no licence, so copies today are unlicensed and
+  uncredited. MIT keeps only a notice; Creative Commons advises against
+  its licences for software. The operator's content needs excluding
+  explicitly.
+- A fork shows "forked from" (checked on a real fork); GitHub's
+  documentation describes no such credit for a template copy.
+- This repository is the operator's site with his gates; a reusable
+  version would be a separate repository.
+- Precedents run to 2,300 to 8,300 stars over years. Fake stars are
+  documented at scale (ICSE 2026). No source links stars to hiring.
+- emmabostian/developer-portfolios (26,996 stars) lists portfolios by
+  pull request, a cheaper route to visibility.
+
+Three of the document's statements were corrected before commit, after
+checking them: the precedents' languages, a description of
+choosealicense.com, and the wording of the NN/g finding.
+
+**Waiting.** The operator's choice on the master CV; the chat's records.
+
