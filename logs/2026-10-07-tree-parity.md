@@ -1,6 +1,6 @@
 ---
 type: log
-description: Brief 5. content-visibility kept on the sections, and the accessibility tree at load in full mode made to match the page without it, at 360 and 1366 px, both themes, scripts on and off, by marking everything hidden inside the sections aria-hidden. Found the styled site already pushed before the speech test. Standing checks written down. Round 2, after the operator's push: checked on the live site in Chrome and Edge; NVDA steps written into the deferred entry.
+description: Brief 5. content-visibility kept on the sections, and the accessibility tree at load in full mode made to match the page without it, at 360 and 1366 px, both themes, scripts on and off, by marking everything hidden inside the sections aria-hidden. Found the styled site already pushed before the speech test. Standing checks written down. Round 2, after the operator's push: checked on the live site in Chrome and Edge; NVDA steps written into the deferred entry. Round 3: his NVDA capture showed words run together; fixed with visually hidden spaces.
 status: current
 ---
 
@@ -399,3 +399,92 @@ anything only he can do.
 
 **Waiting.** The NVDA test, on the operator. Report 5's check, ADR-0009's
 Changes row and the contact marks' alt text, on the chat.
+
+## Round 3: the operator's NVDA run, and words run together
+
+From about 12:30Z. The operator ran NVDA (laptop keyboard layout, Caps
+Lock as its key) on the live page at 6812c4f and reported a pass for the
+checks at load: no heading beginning "In depth" in the Elements list, at
+normal zoom and at 300%, and the contact links reading their names once.
+He could not run the per-control steps, because the laptop has no Home
+key, and he sent his Speech Viewer text.
+
+**What the capture showed.** [VERIFIED from his text] Words run together
+wherever pieces of one line are laid out as separate boxes. Examples:
+
+- "Darktheme" and "WaqasSharif";
+- "Identified and namedthreefailure modes" and "592automated tests";
+- "OPEN TO REMOTE, FREELANCE AND CONTRACT WORKKARACHI" and "PAUSETHE
+  MOVING STRIP";
+- every timeline entry, such as "BUILDSSep 2026 to PresentJob Aggregator";
+- every certificate, such as "Nov to Dec 20255-Day AI Agents
+  IntensiveGoogle and KaggleView credential", where 2025 and 5-Day
+  become one number.
+
+The markup has spaces there. Chrome's computed names are right ("Waqas
+Sharif"), so a control reached by Tab is spoken correctly. Browse-mode
+reading joins the text pieces, and a space between flex, grid or block
+boxes is never rendered, so it is not in the tree. The capture also shows
+no collapsed panel text and no "No lanes selected.", consistent with the
+round 1 fix.
+
+**A model of NVDA's lines.** [VERIFIED] Chrome's full tree is read with
+every section laid out. Lines break at non-ignored nodes whose display
+is not inline. A join is two touching pieces where the DOM has whitespace
+between them. Against 94 lines sampled from the capture, it reproduced 94
+of 94, with every join and none extra.
+
+Two earlier versions failed, and both failures are kept here:
+
+- reading at load gave 62 of 94, because labels have no text-transform
+  until laid out;
+- scrolling and returning gave timing-dependent results, as far sections
+  skip again.
+
+It finds 58 joins at 1366 px and 45 at 360 px on 6812c4f. At 360 px they
+include "01IntroSections menu", the phone menu bar.
+
+**The fix (c97b99e).**
+
+- `.vh` takes `white-space: pre` in place of `nowrap`: it still never
+  wraps, and it keeps a space at either end. That alone fixed "Dark
+  theme" and "Pause the moving strip".
+- `m.sp()` adds a visually hidden space, placed between the pieces of
+  each joined line: the name, the Intro results, the strip, the feature
+  figures, the timeline entries, the certificates and the phone menu bar.
+
+Rejected:
+
+- a no-break space, because the content trace matches interface phrases
+  with plain spaces;
+- commas between fields, because they would add text, which the chat
+  may want;
+- relaying out the boxes as inline text, a design change.
+
+**Results.** [VERIFIED]
+
+| Check | Defeated by | Result |
+|---|---|---|
+| Joins, NVDA model | 6812c4f: 58 at 1366 px, 45 at 360 px | 0 and 0, in Chrome 154 and Edge 154 |
+| Visually unchanged: full-page screenshots, reduced motion, 360 and 1366 px, light and dark | The separators made visible: page height 17,193 to 18,674 px at 360, 11,414 to 11,907 at 1366 | Same size, 0 pixels over 2/255 in all four; two captures of the unchanged page differ by up to 117 pixels at 2/255 at 1366 px, which set the tolerance |
+| Builds | As of 2026-11: hashes differ | Three at 2026-10 identical |
+| Content trace | 592 made 593 in a copy of the new page: exit 1 | 394 traced, 0 not; coverage whole |
+| Tree parity, full mode | (round 1) | 16 of 16 loads match |
+| Keyboard | (round 1) | 60 of 60 |
+| axe | (round 1) | 0 in 12 cells |
+| Anchors | (round 1) | 132 of 132 |
+| Lighthouse, five interleaved, uncompressed | (round 1) | TBT 26 ms against 29; LCP median 2254 ms against 2107 |
+
+**The LCP step.** [VERIFIED] The 150 ms LCP rise came from HTML size in
+Lighthouse's simulation, not from the markup. The current page padded
+with a comment of the same 1,450 bytes rose the same: LCP 2255 ms against
+2109, with the fixed page at 2254. Served gzip-compressed, as GitHub Pages
+serves it, there was no change, five runs each: LCP 1514 and 1512 ms, TBT
+34 and 27 ms. The compressed page is 14,357 bytes. Served locally with
+gzip, TBT stays near 30 ms, so the live site's higher TBT (95 to 138 ms,
+round 2) comes from the real network path, not from compression. Cause
+not investigated.
+
+**Waiting.** The push of this round's commits, the operator's. Then his
+NVDA re-run on the live page: the per-control steps, and a Say All read
+for joined words, with steps in the deferred entry.

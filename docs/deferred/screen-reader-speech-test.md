@@ -32,6 +32,16 @@ condition requires; by keyboard, each control is named for its item,
 Enter opens it and its text enters the tree, Close returns focus to it.
 logs/2026-10-07-tree-parity.md.
 
+2026-10-07, by the operator, in NVDA with its laptop keyboard layout, on
+the live page at 6812c4f, reported as passing: at load, the Elements
+list's headings held none beginning "In depth", at normal zoom and at
+300%; the LinkedIn and GitHub contact links read their names once. Not
+yet run: steps 3 and 4 of the method (each control's spoken state, Enter,
+reading on into the panel); the laptop has no Home key. His Speech Viewer
+capture showed words run together wherever pieces of one line are laid
+out as separate boxes, such as "WaqasSharif" and "Nov to Dec 20255-Day";
+fixed in c97b99e, round 3 of the same log.
+
 ## What is deferred, and why
 
 What a real screen reader actually says. The accessibility tree is the input
@@ -84,10 +94,17 @@ condition that a screen reader at load meets the same page as without it.
 3. At load: NVDA+F7, Headings. Pass: no heading begins "In depth".
    Links: the LinkedIn and GitHub links each say their name once.
 4. Steps 3 to 5 of the method, for each of the five "In depth" controls.
-   After Enter, press Down Arrow: reading continues into the panel,
-   starting with its "In depth" heading. Tab to its Close button and press
-   Enter. Pass: focus returns and the control is spoken as collapsed.
+   To start from the top without a Home key, reload with Ctrl+F5; or press
+   B, which in browse mode moves to the next button. After Enter, press
+   Down Arrow: reading continues into the panel, starting with its "In
+   depth" heading. Press B to reach its Close button and press Enter.
+   Pass: focus returns and the control is spoken as collapsed. Keep the
+   mouse pointer still: NVDA also reads whatever is under it.
 5. Zoom to 300% with Ctrl and Plus, reload with Ctrl+F5, and repeat step
    3. This gives the phone layout, where the panels were once exposed.
    Ctrl+0 restores the zoom.
-6. Repeat in Microsoft Edge.
+6. Reading: reload with Ctrl+F5 and start Say All (NVDA+Down Arrow on
+   the desktop layout, NVDA+A on the laptop layout); Ctrl stops it. Pass:
+   no words run together, for example "Waqas Sharif", "592 automated
+   tests" and "Nov to Dec 2025 5-Day AI Agents Intensive".
+7. Repeat in Microsoft Edge.

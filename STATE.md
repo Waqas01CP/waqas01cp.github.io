@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit 6812c4f, the last commit before this file's
-update, 2026-10-07T12:08Z, by the Brief 5 implementing session, round 2.** This is
+**Verified against commit c97b99e, the last commit before this file's
+update, 2026-10-07T14:49Z, by the Brief 5 implementing session, round 3.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -60,8 +60,10 @@ lanes selected." line and the hidden theme's contact marks. Brief 5 makes
 everything hidden inside the sections also `aria-hidden`. The operator
 pushed it at 11:41:22Z; the live site serves its exact bytes, and on the
 live site the tree matches at 360 and 1366 px, both themes, scripts on
-and off, in Chrome 154 and Edge 154. What a real screen reader says is
-the operator's NVDA test (Blocked, below).
+and off, in Chrome 154 and Edge 154. The operator's NVDA run passed the
+checks at load and showed words run together wherever pieces of one line
+are separate boxes ("WaqasSharif", "Dec 20255-Day"); c97b99e adds
+visually hidden spaces there, committed and not pushed (Blocked, below).
 
 A small Python generator builds the page from two content files
 (ADR-0006), fails on a missing source, a missing proof link, a tier out of
@@ -85,13 +87,15 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 
 | Task | Status | Evidence | Date | Proof |
 |---|---|---|---|---|
-| Screen reader reaches the collapsed layer 3 | PARTIAL | [VERIFIED] | 2026-10-07 | logs/2026-10-05-styled-site.md. On the styled site, in headless Chrome by keyboard: each "In depth" control is a button named for its item, collapsed, its layer 3 absent from the accessibility tree; Enter expands it and layer 3 enters the tree. **Corrected by logs/2026-10-06-before-push.md**: at load, in full accessibility mode, the five collapsed panels were in the tree. **Fixed by Brief 5**, logs/2026-10-07-tree-parity.md: at load, in full mode, no collapsed panel is in the tree, and the keyboard check passes for all five panels at 360 and 1366 px. The same holds on the live site in Edge 154 (round 2 of that log). The speech half, NVDA's Speech Viewer, is not run: docs/deferred/screen-reader-speech-test.md, the operator's, now with steps for this page. Its trigger, before the styled site replaces the unstyled one, passed unmet at the 2026-10-07T10:25Z push |
+| Words a screen reader reads run together | PARTIAL | [VERIFIED] | 2026-10-07 | logs/2026-10-07-tree-parity.md, round 3. Found in the operator's NVDA capture; c97b99e adds visually hidden spaces. A model of NVDA's lines, checked against the capture (94 of 94 lines), finds 58 and 45 joins on 6812c4f and 0 on c97b99e at 1366 and 360 px, Chrome and Edge; the page is pixel-identical. Not pushed; NVDA's own reading of it not yet heard |
+| Screen reader reaches the collapsed layer 3 | PARTIAL | [VERIFIED] | 2026-10-07 | logs/2026-10-05-styled-site.md. On the styled site, in headless Chrome by keyboard: each "In depth" control is a button named for its item, collapsed, its layer 3 absent from the accessibility tree; Enter expands it and layer 3 enters the tree. **Corrected by logs/2026-10-06-before-push.md**: at load, in full accessibility mode, the five collapsed panels were in the tree. **Fixed by Brief 5**, logs/2026-10-07-tree-parity.md: at load, in full mode, no collapsed panel is in the tree, and the keyboard check passes for all five panels at 360 and 1366 px. The same holds on the live site in Edge 154 (round 2 of that log). The speech half, NVDA's Speech Viewer, is not run: docs/deferred/screen-reader-speech-test.md, the operator's, now with steps for this page. The operator ran its checks at load on 2026-10-07 and they passed; the per-control steps are not yet run. Its trigger, before the styled site replaces the unstyled one, passed unmet at the 2026-10-07T10:25Z push |
 
 ## Blocked, and on whom
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
-| The speech half of the layer 3 check | The operator running NVDA in Chrome and Edge, by the steps in the deferred entry, and sending back the Speech Viewer text | Operator | 2026-10-07 |
+| Push of c97b99e and its records | The operator | Operator | 2026-10-07 |
+| The speech half of the layer 3 check, and NVDA's reading of c97b99e | The operator running the deferred entry's steps 4 and 6 in Chrome and Edge after the push, and sending back the Speech Viewer text | Operator | 2026-10-07 |
 | Brief 5's report checked; ADR-0009's Changes row recording its condition met; the contact marks' alt text confirmed | The architecture chat | Chat | 2026-10-07 |
 
 ## Known unverified
@@ -117,7 +121,15 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
   machine on 2026-10-07: TBT medians 138 and 95 ms (LCP 1721 and
   1739 ms), against 41 ms for the same bytes served locally in the same
   set. It meets ADR-0009 with a narrower margin; one run of ten reached
-  208 ms. Why the live page blocks longer is not known.
+  208 ms. Served locally with gzip, TBT stays near 30 ms, so the gap is
+  the real network path, not compression; not investigated. A change
+  that adds HTML bytes moves Lighthouse's simulated LCP in steps by size
+  alone when served uncompressed (150 ms for 1.4 kB on 2026-10-07), and
+  not when gzipped.
+- The model of NVDA's lines that the joins check uses was checked against
+  one capture, NVDA with its laptop layout at desktop width. Other
+  versions, widths and screen readers may join or break lines
+  differently.
 - Why axe sometimes reports 22 contrast failures on the certificate cards
   at 1366 px, device dark, as loaded, with content-visibility: Brief 4,
   2 of 21 runs (0 of 9 without the rule); the chat, 0 of 20; Brief 5, 1 of

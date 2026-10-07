@@ -1,6 +1,6 @@
 ---
 type: reference
-description: The checks every change to the built page runs before it is committed, each with its pass line and the case built to defeat it. Includes the accessibility tree at load, in both modes, that ADR-0009 makes a condition of layout skipping.
+description: The checks every change to the built page runs before it is committed, each with its pass line and the case built to defeat it. Includes the accessibility tree at load that ADR-0009 makes a condition of layout skipping, words a screen reader hears run together, and a pixel check for changes meant to be invisible.
 status: current
 ---
 
@@ -49,6 +49,8 @@ html:has(:target) .page > .sec { content-visibility: visible; }
 | Keyboard | Every "In depth" panel: Tab reaches its control; Enter opens it and its text enters the tree; Tab moves into it; Close closes it and focus returns to the control; the control closes it too. A Tab walk to the footer never stops inside `aria-hidden`, and `aria-hidden="true"` is never set on an element holding focus | The Close handler hiding the panel before moving focus; for the walk, the contact links marked `aria-hidden` |
 | axe-core, its default rules, which include the WCAG 2.x A and AA ones | 0 violations at 1366 and 360 px; light, dark by the device, dark by the switch (read 3 s after it, once the colours have settled); as loaded, and with every panel and timeline card open, each opened as the script opens it | Faint text and an image without alt planted in the page |
 | Anchors | Every in-page target, by a link and by a URL with its hash, scripts on and off, at 1366 and 360 px, lands within 3 px of its scroll margin or at the page's end | The rule without its `:has(:target)` undo |
+| Words run together for a screen reader | No join at 360 and 1366 px, in Chrome and Edge, by the model of NVDA's lines below | The page at 6812c4f: 58 joins at 1366 px, 45 at 360 px |
+| Visually unchanged, for a change meant to be invisible | Full-page screenshots under reduced motion, every section laid out, at 360 and 1366 px, light and dark: same size, and no pixel differs by more than 2 of 255 in any channel, the noise two captures of one unchanged page show | The same change made visible, such as its hidden spaces shown: the page's height changes |
 | Lighthouse | Default mobile, median of five, meets ADR-0009: LCP at most 2.5 s, CLS at most 0.1, TBT under 200 ms. Variants run interleaved so drift falls on all alike. A fail on any machine is a fail (ADR-0009 Changes, 2026-10-06) | A 600 ms synchronous script in the head |
 
 ## The accessibility tree at load
@@ -93,3 +95,32 @@ what `hidden` or CSS hides. So anything hidden inside a section must also
 carry `aria-hidden`; `setShown` in `static/site.js` keeps the two
 together. Mechanism inferred from the measurements in
 `logs/2026-10-07-tree-parity.md`, not from Chromium's source.
+
+## Words run together for a screen reader
+
+Added 2026-10-07. NVDA's browse mode reads a line as the text pieces of
+the accessibility tree joined end to end. A space between two pieces that
+the page lays out as separate boxes (flex or grid items, or blocks) is
+never rendered, so it is not in the tree, and NVDA reads "WaqasSharif" or
+"Dec 20255-Day". The fix is `m.sp()` in `src/templates/macros.html.j2`.
+
+**The model.** Every section laid out first. The text pieces are the
+non-ignored text nodes of Chrome's full tree, in order. A line breaks at
+the start and end of any non-ignored node whose element's computed display
+is not inline; ignored nodes, such as plain spans, never break a line.
+Within a line pieces are joined with nothing between them. A join is two
+touching pieces, neither with a space at the touching end, where the DOM
+between them holds whitespace, read with a Range in the page.
+
+**Validated, not proven.** Against the operator's Speech Viewer capture
+of 2026-10-07 in NVDA at desktop width, the model reproduced 94 of 94
+sampled lines, every join among them, and no join he did not hear. It is
+a model of one NVDA version at one width; NVDA itself remains the test.
+`logs/2026-10-07-tree-parity.md`, round 3.
+
+**Lighthouse and page size.** A change that adds bytes moves Lighthouse's
+simulated paint time in steps, by size alone: on 2026-10-07, 1.4 kB more
+HTML served uncompressed raised the LCP median by 150 ms, and the same
+bytes added as a comment did the same; served gzip-compressed, as GitHub
+Pages serves it, LCP did not move. Measure size-sensitive changes
+compressed as well.
