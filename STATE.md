@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit c0937d0, the last commit before this file's
-update, 2026-10-07T21:36Z, by the Brief 5 implementing session, round 7.** This is
+**Verified against commit 9d49149, the last commit before this file's
+update, 2026-10-07T21:37Z, by the Brief 5 implementing session, round 7.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -88,15 +88,12 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 
 ## Build
 
-| Task | Status | Evidence | Date | Proof |
-|---|---|---|---|---|
-| Timeline: certificate diamonds spaced like the other markers, and dates shown on one-month entries | PARTIAL | [VERIFIED] | 2026-10-07 | 7e97c5b; logs/2026-10-07-tree-parity.md, round 6. Every standing check passes; committed, not pushed |
+No open rows. Finished ones are in `docs/reference/completed.md`.
 
 ## Blocked, and on whom
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
-| Push of 7e97c5b and its records | The operator | Operator | 2026-10-07 |
 | Whether this site goes on itself as a project, and whether its code is opened for reuse (research 0004) | The operator, for the master CV; then the chat, for placement, a licence and any separate repository | Operator and chat | 2026-10-07 |
 | Brief 5's report checked; ADR-0009's Changes row recording its condition met; ADR-0010's Changes row recording the speech test passed; the contact marks' alt text and the m.sp() convention confirmed | The architecture chat | Chat | 2026-10-07 |
 
