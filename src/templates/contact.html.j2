@@ -3,7 +3,10 @@
    the official files, unmodified, served from this site: LinkedIn's in
    blue on the light page and white on the dark one, GitHub's Invertocat in
    white or black against its card. Only one of each pair shows, and the
-   hidden one is never fetched because it loads lazily. #}
+   hidden one is never fetched because it loads lazily. Both images are
+   decorative and the name is text beside them: in a section that skips its
+   layout, a screen reader's tree at load also holds the hidden image, and
+   two alt texts made the name "LinkedIn LinkedIn". #}
 {% import "macros.html.j2" as m %}
 {# build.py checks that contact lists email, linkedin and github in that order. #}
 {% set email, linkedin, github = site.contact %}
@@ -22,7 +25,7 @@
 </a></li>
 <li><a class="route route-linkedin" href="{{ site.linkedin.url }}" data-tilt>
 <span class="glare" aria-hidden="true"></span>
-<div class="route-top"><span class="route-mark"><img class="page-light-only" src="/static/img/linkedin-in-bug-blue.png" width="635" height="540" alt="LinkedIn" loading="lazy" decoding="async"><img class="page-dark-only" src="/static/img/linkedin-in-bug-white.png" width="840" height="779" alt="LinkedIn" loading="lazy" decoding="async"></span>{{ m.icon("out", 22) }}</div>
+<div class="route-top"><span class="route-mark"><img class="page-light-only" src="/static/img/linkedin-in-bug-blue.png" width="635" height="540" alt="" loading="lazy" decoding="async"><img class="page-dark-only" src="/static/img/linkedin-in-bug-white.png" width="840" height="779" alt="" loading="lazy" decoding="async"><span class="vh">LinkedIn</span></span>{{ m.icon("out", 22) }}</div>
 <div class="route-body">
 <p class="route-label">{{ linkedin.label }}</p>
 <p class="route-line">{{ linkedin.line }}</p>
@@ -31,7 +34,7 @@
 </a></li>
 <li><a class="route route-github" href="{{ site.github.url }}" data-tilt>
 <span class="glare" aria-hidden="true"></span>
-<div class="route-top"><span class="route-mark"><img class="page-light-only" src="/static/img/github-invertocat-white.svg" width="98" height="96" alt="GitHub" loading="lazy" decoding="async"><img class="page-dark-only" src="/static/img/github-invertocat-black.svg" width="98" height="96" alt="GitHub" loading="lazy" decoding="async"></span>{{ m.icon("out", 22) }}</div>
+<div class="route-top"><span class="route-mark"><img class="page-light-only" src="/static/img/github-invertocat-white.svg" width="98" height="96" alt="" loading="lazy" decoding="async"><img class="page-dark-only" src="/static/img/github-invertocat-black.svg" width="98" height="96" alt="" loading="lazy" decoding="async"><span class="vh">GitHub</span></span>{{ m.icon("out", 22) }}</div>
 <div class="route-body">
 <p class="route-label">{{ github.label }}</p>
 <p class="route-line">{{ github.line }}</p>

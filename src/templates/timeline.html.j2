@@ -14,6 +14,7 @@
    by shape and by label, and filter chips. Not to scale.
 
    Each entry's detail is a native disclosure, so it opens without a script.
+   What starts hidden is also aria-hidden: see setShown in site.js.
    The Open source lane is in the data model and is not drawn while it is
    empty. #}
 {% import "macros.html.j2" as m %}
@@ -26,14 +27,14 @@
 {% for lane in t.lanes %}
 <span class="tl-head lane-{{ lane.key }}" aria-hidden="true"><span class="shape" aria-hidden="true"></span>{{ lane.label }}</span>
 {% endfor %}
-<div class="tl-filters" role="group" aria-label="Show or hide lanes" data-js hidden>
+<div class="tl-filters" role="group" aria-label="Show or hide lanes" data-js hidden aria-hidden="true">
 {% for lane in t.lanes %}
 <button type="button" class="tl-filter lane-{{ lane.key }}" aria-pressed="true" data-lane="{{ lane.key }}"><span class="shape" aria-hidden="true"></span><span class="tl-filter-label">{{ lane.label }}</span></button>
 {% endfor %}
 </div>
 <span class="tl-scale" aria-hidden="true">Months<br>to scale</span>
 </div>
-<p class="tl-empty" data-tl-empty hidden>No lanes selected.</p>
+<p class="tl-empty" data-tl-empty hidden aria-hidden="true">No lanes selected.</p>
 <div class="tl-body">
 <div class="tl-axis" aria-hidden="true">
 <div class="tl-spine"><span class="tl-spine-fill" data-spine-fill></span><span class="tl-chip" data-tl-chip></span></div>
@@ -65,7 +66,7 @@
 <details class="tl-card" name="tl" data-tl-card>
 <summary><span class="tl-meta"><span class="tl-lane">{{ e.lane_label }}</span> <span class="tl-sign" aria-hidden="true"></span></span> <span class="tl-dates">{{ m.when(e.when_compact) }}</span> <span class="tl-title">{{ name }}</span>{% if e.lane != "builds" and e.org_short %} <span class="tl-org">{{ e.org_short }}</span>{% endif %}</summary>
 <div class="tl-pop">
-<button type="button" class="tl-close" aria-label="Close: {{ name }}" data-tl-close data-js hidden>&times;</button>
+<button type="button" class="tl-close" aria-label="Close: {{ name }}" data-tl-close data-js hidden aria-hidden="true">&times;</button>
 {% if e.detail %}
 <p class="tl-detail">{{ e.detail }}</p>
 {% endif %}

@@ -5,7 +5,8 @@
 
    Without a script every panel is open, under its card. The script closes
    them and shows each card's "In depth" control, and the grid then places
-   an open panel under its card's row. A project with one bullet has no
+   an open panel under its card's row. A control that starts hidden is
+   also aria-hidden, as is a closed panel: see setShown in site.js. A project with one bullet has no
    panel: its two layers already carry the whole bullet, which the build
    checks. #}
 {% import "macros.html.j2" as m %}
@@ -53,7 +54,7 @@
 <a class="btn btn-sm" href="{{ link.url }}">{{ link.label }}<span class="vh">: {{ p.name }}</span>{{ m.icon("out") }}</a>
 {% endfor %}
 {% if p.has_depth %}
-<button type="button" class="depth-toggle" id="toggle-{{ p.id }}" aria-expanded="false" aria-controls="depth-{{ p.id }}" data-depth-toggle data-js hidden>In depth<span class="vh">: {{ p.name }}</span><span class="sign" aria-hidden="true"></span></button>
+<button type="button" class="depth-toggle" id="toggle-{{ p.id }}" aria-expanded="false" aria-controls="depth-{{ p.id }}" data-depth-toggle data-js hidden aria-hidden="true">In depth<span class="vh">: {{ p.name }}</span><span class="sign" aria-hidden="true"></span></button>
 {% endif %}
 </div>
 </div>
@@ -68,7 +69,7 @@
 {% for link in p.proof %}
 <a class="btn btn-sm" href="{{ link.url }}">{{ link.label }}<span class="vh">: {{ p.name }}</span>{{ m.icon("out") }}</a>
 {% endfor %}
-<button type="button" class="btn btn-sm" aria-label="Close in depth: {{ p.name }}" data-depth-close="{{ p.id }}" data-js hidden>Close<span class="mono" aria-hidden="true">&minus;</span></button>
+<button type="button" class="btn btn-sm" aria-label="Close in depth: {{ p.name }}" data-depth-close="{{ p.id }}" data-js hidden aria-hidden="true">Close<span class="mono" aria-hidden="true">&minus;</span></button>
 </div>
 </div>
 <ol class="depth-list">

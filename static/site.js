@@ -27,8 +27,26 @@
   // stands in, so no animation frame is ever requested.
   const nextFrame = (fn) => (reduced ? setTimeout(fn, 50) : requestAnimationFrame(fn));
 
+  // Shows or hides an element inside the sections. A section that skips
+  // its layout (content-visibility in site.css) has no style yet, and at
+  // load Chromium's full accessibility tree, the one a screen reader reads,
+  // then exposes what `hidden` or CSS hides there, the closed "In depth"
+  // panels among it. aria-hidden is read from the DOM, so it holds there,
+  // and it changes with `hidden`; a shown element carries none (ADR-0009
+  // Changes, 2026-10-06; logs/2026-10-07-tree-parity.md).
+  const setShown = (el, shown) => {
+    el.hidden = !shown;
+    if (shown) el.removeAttribute("aria-hidden");
+    else el.setAttribute("aria-hidden", "true");
+  };
+
+  // Controls that need a script start hidden, and inside the sections also
+  // aria-hidden. The rail outside them keeps its aria-hidden: decoration.
   root.classList.add("js");
-  $$("[data-js]").forEach((el) => { el.hidden = false; });
+  $$("[data-js]").forEach((el) => {
+    if (el.closest("[data-section]")) setShown(el, true);
+    else el.hidden = false;
+  });
 
   /* Theme. The page follows the device; the switch overrides it for this
      visit only, by an attribute on <html> that a reload discards. */
@@ -110,7 +128,7 @@
   function setDepth(toggle, open) {
     const panel = panelOf(toggle);
     toggle.setAttribute("aria-expanded", String(open));
-    panel.hidden = !open;
+    setShown(panel, open);
     toggle.closest(".proj").classList.toggle("is-open", open);
   }
   depthToggles.forEach((toggle) => {
@@ -130,11 +148,13 @@
   });
   $$("[data-depth-close]").forEach((button) => button.addEventListener("click", () => {
     const toggle = doc.getElementById("toggle-" + button.dataset.depthClose);
+    // Focus leaves the panel before it is hidden, so it never rests inside
+    // an aria-hidden element.
+    toggle.focus({ preventScroll: true });
     setDepth(toggle, false);
     placeTicks();
     const card = toggle.closest(".proj");
     card.scrollIntoView({ block: "start", behavior: reduced ? "auto" : "smooth" });
-    toggle.focus({ preventScroll: true });
   }));
 
   /* Timeline: each entry's detail is a native disclosure. On a wide screen
@@ -182,7 +202,7 @@
   function applyFilters() {
     const hidden = filters.filter((b) => b.getAttribute("aria-pressed") === "false").map((b) => b.dataset.lane);
     tl.dataset.hide = hidden.join(" ");
-    if (empty) empty.hidden = hidden.length < filters.length;
+    if (empty) setShown(empty, hidden.length === filters.length);
     // The year pill on a phone marks the first shown entry of each year.
     const seen = new Set();
     entries.forEach((entry) => {
