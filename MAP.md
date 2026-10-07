@@ -64,6 +64,7 @@ frontmatter. Decision records have no `type`; their `topic` is shown.
 | File | Type | Status | Description |
 |---|---|---|---|
 | `docs/reference/completed.md` | reference | current | Where DONE rows from STATE.md move, so the state file holds only what is unsettled. Nothing is ever deleted from here. |
+| `docs/reference/standing-checks.md` | reference | current | The checks every change to the built page runs before it is committed, each with its pass line and the case built to defeat it. Includes the accessibility tree at load, in both modes, that ADR-0009 makes a condition of layout skipping. |
 
 ## docs/research
 
