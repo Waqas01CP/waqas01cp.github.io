@@ -1,6 +1,6 @@
 ---
 type: log
-description: Brief 5. content-visibility kept on the sections, and the accessibility tree at load in full mode made to match the page without it, at 360 and 1366 px, both themes, scripts on and off, by marking everything hidden inside the sections aria-hidden. Found the styled site already pushed before the speech test. Standing checks written down. Round 2, after the operator's push: checked on the live site in Chrome and Edge; NVDA steps written into the deferred entry. Round 3: his NVDA capture showed words run together; fixed with visually hidden spaces. Round 5: the speech test passed in NVDA 2026.2.
+description: Brief 5. content-visibility kept on the sections, and the accessibility tree at load in full mode made to match the page without it, at 360 and 1366 px, both themes, scripts on and off, by marking everything hidden inside the sections aria-hidden. Found the styled site already pushed before the speech test. Standing checks written down. Round 2, after the operator's push: checked on the live site in Chrome and Edge; NVDA steps written into the deferred entry. Round 3: his NVDA capture showed words run together; fixed with visually hidden spaces. Round 5: the speech test passed in NVDA 2026.2. Round 6: two timeline inconsistencies fixed; a pixel check corrected.
 status: current
 ---
 
@@ -466,7 +466,7 @@ Rejected:
 | Check | Defeated by | Result |
 |---|---|---|
 | Joins, NVDA model | 6812c4f: 58 at 1366 px, 45 at 360 px | 0 and 0, in Chrome 154 and Edge 154 |
-| Visually unchanged: full-page screenshots, reduced motion, 360 and 1366 px, light and dark | The separators made visible: page height 17,193 to 18,674 px at 360, 11,414 to 11,907 at 1366 | Same size, 0 pixels over 2/255 in all four; two captures of the unchanged page differ by up to 117 pixels at 2/255 at 1366 px, which set the tolerance |
+| Visually unchanged: full-page screenshots, reduced motion, 360 and 1366 px, light and dark | The separators made visible: page height 17,193 to 18,674 px at 360, 11,414 to 11,907 at 1366 | Same size, 0 pixels over 2/255 in all four; two captures of the unchanged page differ by up to 117 pixels at 2/255 at 1366 px, which set the tolerance. **Annotated in round 6:** these captures painted only near the viewport, so the lower sections were blank in both, and the defeat case failed by height alone; redone with every section painted, still identical |
 | Builds | As of 2026-11: hashes differ | Three at 2026-10 identical |
 | Content trace | 592 made 593 in a copy of the new page: exit 1 | 394 traced, 0 not; coverage whole |
 | Tree parity, full mode | (round 1) | 16 of 16 loads match |
@@ -552,3 +552,57 @@ Its ADR-0010 Changes row is the chat's to write, drafted in Report 5.
 STATE.md has no open build rows; the two finished rows moved to
 completed.md. The chat's checks remain.
 
+## Round 6: two timeline inconsistencies, and a correction
+
+After 16:02Z; the fix was committed at 17:33Z. The operator confirmed hearing "collapsed" and
+"expanded" in the NVDA run and declined a run in Edge. He reported two
+visual inconsistencies on the wide timeline, with screenshots:
+
+- certificate entries set their diamond flush against the date;
+- three one-month entries (WordPy, Crypto Accumulation Scanner, Google
+  Prompting Essentials) show no date line.
+
+**Causes.** [VERIFIED] The certificate diamond's rule set `margin: 0
+1px`, overriding the 7px right margin all date markers share. One-month
+entries carried `data-short`, and a rule hid their date line, marker
+included, from sight; the date was still read. The rule came with Brief
+3's rebuild (9fbd407); the prototype, the records and the design
+documents do not ask for it, and Brief 3's log gives no reason.
+
+**The fix (7e97c5b).** The diamond keeps 8px on its right: turned 45
+degrees it is wider than its 7px box, and 8px starts its date where the
+square's and the circle's start. The `data-short` rule and attribute are
+removed.
+
+**Measured.** [VERIFIED]
+
+- The one-month cards are 60px tall at every wide width from 1180 to
+  1920 px. With the date shown, the two-line titles end 5px above the
+  card's bottom, against 6px in other cards; nothing is clipped,
+  checked on 2x screenshots.
+- Joins 0 at both widths; tree parity 16 of 16 in full mode, no added
+  node in default mode; axe 0 in 12 cells, the newly visible dates
+  among them; keyboard 60 of 60; anchors 132 of 132; trace 394 of 394;
+  builds identical.
+- Lighthouse, five interleaved: TBT 53 against 48 ms, LCP 2255 ms both.
+- No text of the accessibility tree changes, since the dates were
+  already read, so NVDA need not be run again.
+
+**A correction to round 3.** [VERIFIED] The first pixel comparison of
+this change found no difference at 1366 px, which could not be right. A
+full-page capture paints only near the viewport, so sections that skip
+their rendering off screen come out blank in both images.
+
+- Round 3's "pixel-identical" therefore covered the top of the page only.
+  Its defeat case failed by changing the page's height, which hid the
+  gap.
+- The capture now makes every section render first. Redone that way, the
+  page with c97b99e is still identical to the page before it: 0 pixels
+  over tolerance at both widths and themes.
+- This change shows the check now sees the lower sections: 360 px is
+  identical; at 1366 px about 10,500 pixels change, all inside the
+  timeline (y 4716 to 5585, the section spanning 3803 to 6580).
+- The standing check's method is corrected, and round 3's row is
+  annotated in place.
+
+**Waiting.** The operator's push.

@@ -52,6 +52,7 @@ before the root becomes unscannable, not after.
 
 | Date (UTC) | Log file | Session | What was done | Outcome |
 |---|---|---|---|---|
+| 2026-10-07 | [2026-10-07-tree-parity.md](2026-10-07-tree-parity.md) | Brief 5, round 6 | Certificate diamond gap and one-month dates fixed on the wide timeline; round 3's pixel check found to cover the top of the page only, redone with every section painted | Fix 7e97c5b passes every check; round 3's result still holds; not pushed |
 | 2026-10-07 | [2026-10-07-tree-parity.md](2026-10-07-tree-parity.md) | Brief 5, round 5 | eaee932 deployed c97b99e; operator's NVDA 2026.2 run in Chrome passed every step; his text matched the model 45 of 45, 0 joins live | Speech test closed; STATE has no open build rows; ADR rows left to the chat |
 | 2026-10-07 | [2026-10-07-tree-parity.md](2026-10-07-tree-parity.md) | Brief 5, round 4 | c97b99e pushed but its Pages build never started (no runner); operator's second NVDA text found to be of the old page and a page copy, not speech; NVDA 2026.2 recorded | Fix not live until the next push; NVDA re-run waits on it |
 | 2026-10-07 | [2026-10-07-tree-parity.md](2026-10-07-tree-parity.md) | Brief 5, round 3 | Operator's NVDA run recorded (checks at load pass); his capture showed words run together; NVDA line model built and checked against it (94 of 94); visually hidden spaces added; LCP shift traced to page size | 0 joins in Chrome and Edge, pixel-identical page, all checks pass; c97b99e committed, not pushed |

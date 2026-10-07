@@ -52,7 +52,9 @@ words run together. The text he sent reads the Rahzaan panel once
 opened and none of the four closed ones, names each of the five
 controls differently, and matches a model of NVDA's lines on 45 of 45
 sampled lines, with no joined words. It holds no role or state words, so
-the spoken states rest on his report of what he heard. Method step 5,
+the spoken states rest on his report of what he heard; asked, he
+confirmed hearing "collapsed" and "expanded". He declined a run in
+Edge, which the method does not ask for. Method step 5,
 no two disclosures sharing a name, was met by hearing each control
 named for its item; the Elements list was opened for headings and links,
 not buttons. logs/2026-10-07-tree-parity.md, round 5.
