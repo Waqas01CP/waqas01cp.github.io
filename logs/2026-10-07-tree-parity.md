@@ -1,6 +1,6 @@
 ---
 type: log
-description: Brief 5. content-visibility kept on the sections, and the accessibility tree at load in full mode made to match the page without it, at 360 and 1366 px, both themes, scripts on and off, by marking everything hidden inside the sections aria-hidden. Found the styled site already pushed before the speech test. Standing checks written down. Round 2, after the operator's push: checked on the live site in Chrome and Edge; NVDA steps written into the deferred entry. Round 3: his NVDA capture showed words run together; fixed with visually hidden spaces.
+description: Brief 5. content-visibility kept on the sections, and the accessibility tree at load in full mode made to match the page without it, at 360 and 1366 px, both themes, scripts on and off, by marking everything hidden inside the sections aria-hidden. Found the styled site already pushed before the speech test. Standing checks written down. Round 2, after the operator's push: checked on the live site in Chrome and Edge; NVDA steps written into the deferred entry. Round 3: his NVDA capture showed words run together; fixed with visually hidden spaces. Round 5: the speech test passed in NVDA 2026.2.
 status: current
 ---
 
@@ -517,4 +517,38 @@ holds no collapsed panel text and no "No lanes selected."
 
 **Waiting.** The operator's push of this round's commit, which redeploys,
 and then his NVDA run with speech on.
+
+## Round 5: the speech test passed
+
+From about 15:55Z. The operator pushed eaee932 at 15:34:10Z, and its
+Pages deployment succeeded (15:40:52Z). All 14 live files are
+byte-identical to the build, which carries c97b99e. [VERIFIED]
+
+He ran the deferred entry's steps in NVDA 2026.2, laptop layout, in
+Chrome, and reported every step heard correctly and clearly:
+
+- each "In depth" control named for its item, collapsed;
+- Enter spoken as expanded, reading continuing into the panel;
+- Close returning to the control, spoken collapsed;
+- all five controls;
+- a Say All read without words run together.
+
+He also sent the text he copied. [VERIFIED from his text]
+
+- It reads the Rahzaan panel's points once opened, and none of the four
+  closed panels.
+- It names the five controls differently.
+- On the live page, the model of NVDA's lines reproduces 45 of 45
+  sampled lines of it, every formerly joined line among them, and finds
+  0 joins at 1366 and 360 px.
+- It holds no role or state words, so the spoken states rest on his
+  report of what he heard.
+- Method step 5 (no two disclosures share a name) was met by hearing
+  each control named for its item; the Elements list was opened for
+  headings and links, not buttons.
+
+**Recorded.** The deferred speech-test entry is closed with this result.
+Its ADR-0010 Changes row is the chat's to write, drafted in Report 5.
+STATE.md has no open build rows; the two finished rows moved to
+completed.md. The chat's checks remain.
 

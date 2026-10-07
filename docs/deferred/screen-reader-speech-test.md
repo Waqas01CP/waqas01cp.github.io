@@ -1,7 +1,7 @@
 ---
 type: deferred
-description: Hearing a real screen reader announce a collapsed and an expanded disclosure. Deferred 2026-10-02 to the styled site, because styling can change what is exposed. Trigger and method inside.
-status: open
+description: Hearing a real screen reader announce a collapsed and an expanded disclosure. Deferred 2026-10-02 to the styled site. Passed 2026-10-07 in NVDA 2026.2 on the live styled site, Chrome; closed. Method and record inside.
+status: closed
 ---
 
 # Screen reader speech test of the disclosures
@@ -42,6 +42,21 @@ capture showed words run together wherever pieces of one line are laid
 out as separate boxes, such as "WaqasSharif" and "Nov to Dec 20255-Day";
 fixed in c97b99e, round 3 of the same log.
 
+**Passed, 2026-10-07**, by the operator, in NVDA 2026.2 (2026.2.0.57664)
+with its laptop layout, in Chrome, on the live page at eaee932, which
+carries c97b99e (deployed 15:40Z). Reported heard: each "In depth"
+control spoken with its item's name and collapsed state; Enter spoken as
+expanded, reading continuing into the panel; Close returning to the
+control, spoken collapsed; all five controls; a Say All read with no
+words run together. The text he sent reads the Rahzaan panel once
+opened and none of the four closed ones, names each of the five
+controls differently, and matches a model of NVDA's lines on 45 of 45
+sampled lines, with no joined words. It holds no role or state words, so
+the spoken states rest on his report of what he heard. Method step 5,
+no two disclosures sharing a name, was met by hearing each control
+named for its item; the Elements list was opened for headings and links,
+not buttons. logs/2026-10-07-tree-parity.md, round 5.
+
 ## What is deferred, and why
 
 What a real screen reader actually says. The accessibility tree is the input
@@ -77,7 +92,8 @@ phrase as text, so the result can be captured and recorded.
    disclosures share a name.
 
 Record the Speech Viewer text and the result in ADR-0010's Changes table
-and close this entry. (Reference corrected 2026-10-07 from ADR-0005,
+and close this entry. Closed 2026-10-07 on the result above; its ADR-0010
+Changes row is the architecture chat's to write (drafted in Report 5). (Reference corrected 2026-10-07 from ADR-0005,
 which ADR-0010 superseded on 2026-10-03 and whose Confirmation carries
 this test.)
 

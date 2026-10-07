@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit afbcf8f, the last commit before this file's
-update, 2026-10-07T15:32Z, by the Brief 5 implementing session, round 4.** This is
+**Verified against commit eaee932, the last commit before this file's
+update, 2026-10-07T16:02Z, by the Brief 5 implementing session, round 5.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -63,9 +63,10 @@ live site the tree matches at 360 and 1366 px, both themes, scripts on
 and off, in Chrome 154 and Edge 154. The operator's NVDA run passed the
 checks at load and showed words run together wherever pieces of one line
 are separate boxes ("WaqasSharif", "Dec 20255-Day"); c97b99e adds
-visually hidden spaces there. It was pushed at 15:06:30Z, but GitHub
-could not start the Pages build, so the live page is still e89755d's
-output until the next push deploys it (Blocked, below).
+visually hidden spaces there, live since 15:40Z (its first deployment
+never started; the next push, eaee932, deployed it). On that page the
+operator's NVDA test passed in Chrome, and the deferred speech test is
+closed. What waits is the chat's (Blocked, below).
 
 A small Python generator builds the page from two content files
 (ADR-0006), fails on a missing source, a missing proof link, a tier out of
@@ -87,18 +88,13 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 
 ## Build
 
-| Task | Status | Evidence | Date | Proof |
-|---|---|---|---|---|
-| Words a screen reader reads run together | PARTIAL | [VERIFIED] | 2026-10-07 | logs/2026-10-07-tree-parity.md, round 3. Found in the operator's NVDA capture; c97b99e adds visually hidden spaces. A model of NVDA's lines, checked against the capture (94 of 94 lines), finds 58 and 45 joins on 6812c4f and 0 on c97b99e at 1366 and 360 px, Chrome and Edge; the page is pixel-identical. Pushed 15:06:30Z; its Pages deployment failed to start (GitHub found no runner), so it is not live; NVDA's own reading of it not yet heard |
-| Screen reader reaches the collapsed layer 3 | PARTIAL | [VERIFIED] | 2026-10-07 | logs/2026-10-05-styled-site.md. On the styled site, in headless Chrome by keyboard: each "In depth" control is a button named for its item, collapsed, its layer 3 absent from the accessibility tree; Enter expands it and layer 3 enters the tree. **Corrected by logs/2026-10-06-before-push.md**: at load, in full accessibility mode, the five collapsed panels were in the tree. **Fixed by Brief 5**, logs/2026-10-07-tree-parity.md: at load, in full mode, no collapsed panel is in the tree, and the keyboard check passes for all five panels at 360 and 1366 px. The same holds on the live site in Edge 154 (round 2 of that log). The speech half, NVDA's Speech Viewer, is not run: docs/deferred/screen-reader-speech-test.md, the operator's, now with steps for this page. The operator ran its checks at load on 2026-10-07 and they passed; the per-control steps are not yet run. Its trigger, before the styled site replaces the unstyled one, passed unmet at the 2026-10-07T10:25Z push |
+No open rows. Finished ones are in `docs/reference/completed.md`.
 
 ## Blocked, and on whom
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
-| Deploying c97b99e: its Pages build never started (run 37642288804) | The operator's next push, which starts a new deployment | Operator | 2026-10-07 |
-| The speech half of the layer 3 check, and NVDA's reading of c97b99e | The operator running the deferred entry's steps 4 and 6 in Chrome and Edge once c97b99e is live, with NVDA's speech on, and sending back the Speech Viewer text | Operator | 2026-10-07 |
-| Brief 5's report checked; ADR-0009's Changes row recording its condition met; the contact marks' alt text confirmed | The architecture chat | Chat | 2026-10-07 |
+| Brief 5's report checked; ADR-0009's Changes row recording its condition met; ADR-0010's Changes row recording the speech test passed; the contact marks' alt text and the m.sp() convention confirmed | The architecture chat | Chat | 2026-10-07 |
 
 ## Known unverified
 
@@ -140,8 +136,9 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
   hover layer, ratio 1.64. Not caught on a screenshot. Bounded, not
   explained.
 - The tree-at-load parity holds in headless Chrome 154 and Edge 154, on
-  the live site. NVDA's reading, Firefox, and Safari with VoiceOver are
-  not measured, and why Chromium
+  the live site, and NVDA 2026.2 in Chrome was heard reading it on
+  2026-10-07. NVDA in Edge, other screen readers, Firefox, Safari with
+  VoiceOver and phones are not measured, and why Chromium
   ignores `hidden` and CSS in a skipped section is inferred from the
   measurements, not read in its source.
 - The knot's worker on Safari: OffscreenCanvas in a worker is documented
