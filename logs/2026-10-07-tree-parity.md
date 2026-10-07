@@ -1,6 +1,6 @@
 ---
 type: log
-description: Brief 5. content-visibility kept on the sections, and the accessibility tree at load in full mode made to match the page without it, at 360 and 1366 px, both themes, scripts on and off, by marking everything hidden inside the sections aria-hidden. Found the styled site already pushed before the speech test. Standing checks written down. Committed in series, not pushed.
+description: Brief 5. content-visibility kept on the sections, and the accessibility tree at load in full mode made to match the page without it, at 360 and 1366 px, both themes, scripts on and off, by marking everything hidden inside the sections aria-hidden. Found the styled site already pushed before the speech test. Standing checks written down. Round 2, after the operator's push: checked on the live site in Chrome and Edge; NVDA steps written into the deferred entry.
 status: current
 ---
 
@@ -330,3 +330,72 @@ screenshot, and this session took none.
   closing one panel with the rule (31 became 27): not re-examined; the
   keyboard check now finds each panel's heading out of the tree after it
   closes.
+
+## Round 2: after the push
+
+From about 11:50Z. The operator reported that everything was pushed,
+said that launching Chrome directly opens its profile picker (he has
+several profiles), asked for the NVDA test's steps, asked about Edge and
+whether GitHub needs any setting, and asked this seat to do all work not
+waiting on him or the chat, with full steps for what does.
+
+**The push.** [VERIFIED] origin/main is at 6812c4f, moved by a push from
+this clone at 2026-10-07T11:41:22Z. All 14 live files (the page and
+`static/`) are byte-identical to the committed output; Last-Modified
+11:41:39Z. GitHub Pages serves them gzip-compressed.
+
+**GitHub settings.** [VERIFIED] Nothing to set. The repository is public,
+`has_pages` is true, its default branch is main, and the live site took
+the pushed commit's exact bytes 17 seconds after the push. The Pages
+settings endpoint itself needs a login and was not read.
+
+**Edge.** Microsoft Edge 154.0.4258.62, headless, through the same
+harnesses with only the executable changed. [VERIFIED]
+
+- The page as built at 0403c68, served locally: the same defect as in
+  Chrome, to the number (31 headings and 5 Close buttons at 360 px; the
+  empty-lanes line and the marks at both widths; the controls without a
+  script). So Edge needed the fix as much as Chrome.
+- The live site, against the committed bytes without the rule served
+  locally, both widths, both themes, scripts on and off, two loads per
+  cell: full mode matches in 16 of 16 loads; default mode adds no node in
+  16 of 16.
+- Keyboard and focus on the live site: 60 of 60. The Tab-walk defeat
+  (contact links marked aria-hidden) fails at both widths.
+- axe on the live site: 0 in all 12 cells. The planted defeat is flagged
+  in all 12.
+
+**Chrome on the live site.** [VERIFIED] The same parity run: full mode 16
+of 16 match, default mode no added node in 16.
+
+**Lighthouse on the live site**, Chrome 154, default mobile. [VERIFIED]
+
+| Set | Live, compressed | Same bytes, local, uncompressed |
+|---|---|---|
+| 1 | TBT 138, 102, 139, 208, 21: median 138 ms; LCP median 1721 ms; CLS 0; 113,387 bytes | not run |
+| 2, interleaved | TBT 144, 95, 117, 87, 44: median 95 ms; LCP median 1739 ms; CLS 0 | TBT 144, 6, 41, 165, 22: median 41 ms; LCP median 2107 ms |
+
+Both medians meet ADR-0009. The live page blocks longer than the same
+bytes served locally and paints sooner; one live run of ten reached
+208 ms. Why is not known and was not investigated. 24 `chrome.exe`
+processes were running during set 2, the operator's browser among them.
+
+**`.commitmsg/`.** Both files were compared with their commits' messages,
+35d54dd and 8909ec5, found identical, both commits on origin, and then
+deleted with the folder, as CLAUDE.md's chat-commit procedure says once
+they are pushed. Brief 5 had kept them "until the push".
+
+**The deferred speech test.** `docs/deferred/screen-reader-speech-test.md`:
+
+- its "What has been run" section records this session's browser half;
+- a dated annotation records that its trigger passed unmet;
+- its reference to ADR-0005's Changes table is corrected to ADR-0010,
+  which superseded ADR-0005 and carries the test in its Confirmation;
+- steps for this page are added below the unchanged method.
+
+**Memory.** Two notes saved outside the repository for later sessions: do
+not launch the operator's visible Chrome, and give full steps for
+anything only he can do.
+
+**Waiting.** The NVDA test, on the operator. Report 5's check, ADR-0009's
+Changes row and the contact marks' alt text, on the chat.
