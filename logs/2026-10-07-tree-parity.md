@@ -488,3 +488,33 @@ not investigated.
 **Waiting.** The push of this round's commits, the operator's. Then his
 NVDA re-run on the live page: the per-control steps, and a Say All read
 for joined words, with steps in the deferred entry.
+
+## Round 4: the fix pushed, not deployed
+
+From about 15:25Z. The operator pushed c97b99e and afbcf8f at 15:06:30Z
+and ran NVDA 2026.2 (2026.2.0.57664) again. He heard nothing, and sent
+text copied with Ctrl+A and Ctrl+C.
+
+**The deployment failed.** [VERIFIED] GitHub's "pages build and
+deployment" run for afbcf8f (run 37642288804, 15:06:31Z to 15:11:01Z)
+ended in failure: "The job was not started because it repeatedly failed
+to be acquired (5 attempts)". GitHub found no runner for the build job.
+Nothing in the repository caused it. The live page still carries
+e89755d's output (Last-Modified 12:51:24Z, none of c97b99e's hidden
+spaces). A new push triggers a new deployment.
+
+**His second text is of the old page.** [VERIFIED from his text] Its laid
+out parts read as the first capture did ("WaqasSharif", "BUILDSSep 2026
+to PresentJob Aggregator"), as expected without the fix. The lower
+sections came out in mixed case with many blank lines, so they had not
+yet been laid out when copied. Without layout the DOM's whitespace
+reaches the tree, so those lines read with spaces. The text has no roles
+or states ("button", "heading", "collapsed"), so it is the page's text
+copied in browse mode, not Speech Viewer's record of speech. Together
+with the silence, that is consistent with NVDA's speech being switched
+off (NVDA+S cycles the speech modes): inferred, not tested. It again
+holds no collapsed panel text and no "No lanes selected."
+
+**Waiting.** The operator's push of this round's commit, which redeploys,
+and then his NVDA run with speech on.
+

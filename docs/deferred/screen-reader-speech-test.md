@@ -32,7 +32,7 @@ condition requires; by keyboard, each control is named for its item,
 Enter opens it and its text enters the tree, Close returns focus to it.
 logs/2026-10-07-tree-parity.md.
 
-2026-10-07, by the operator, in NVDA with its laptop keyboard layout, on
+2026-10-07, by the operator, in NVDA 2026.2 with its laptop keyboard layout, on
 the live page at 6812c4f, reported as passing: at load, the Elements
 list's headings held none beginning "In depth", at normal zoom and at
 300%; the LinkedIn and GitHub contact links read their names once. Not
@@ -88,7 +88,11 @@ on this page, and add one check at load: ADR-0009 keeps layout skipping on
 condition that a screen reader at load meets the same page as without it.
 
 1. Start NVDA first, then open the browser, so the browser has its
-   accessibility on from the first load. Open Speech Viewer.
+   accessibility on from the first load. Open Speech Viewer. NVDA should
+   be heard as you move; if it is silent, check the Windows volume and
+   press NVDA+S until it reports speech mode talk. Copy the record from
+   the Speech Viewer window, not from the page: the page's own text has
+   no roles or states.
 2. Open `https://waqas01cp.github.io/` and reload with Ctrl+F5. Do not
    scroll. Wait three seconds.
 3. At load: NVDA+F7, Headings. Pass: no heading begins "In depth".
