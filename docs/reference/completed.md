@@ -22,6 +22,9 @@ Proof is a commit, a decision record or a log filename. Never a file path.
 | Intro paragraph's approval dated in UTC, 2026-10-05, in the content file and its schema note | [VERIFIED] | 2026-10-06 | 06f97c6; logs/2026-10-06-before-push.md |
 | content-visibility on the sections measured both ways: Lighthouse, layout time, the accessibility tree at load in both modes, anchors and axe. Removed, failed ADR-0009 here, restored with a comment saying what was measured | [VERIFIED] | 2026-10-06 | e0e876c, 9a2043b; same log. The keep-or-remove decision is a STATE.md row |
 | STATE.md's 44 DONE rows moved here, each verbatim | [VERIFIED] | 2026-10-06 | 9d06c61; same log |
+| content-visibility on the sections: kept, on ADR-0009's condition that the tree at load in full accessibility mode matches the page without it; the condition met | [VERIFIED] | 2026-10-07 | 8909ec5, ADR-0009 Changes 2026-10-06, keeps it on that condition; e3af5c2 meets it: match in all 32 full-mode loads, 360 and 1366 px, both themes, scripts on and off; logs/2026-10-07-tree-parity.md |
+| Push of Brief 3's and Brief 4's commits, replacing the live unstyled page | [VERIFIED] | 2026-10-07 | Pushed from this clone at 2026-10-07T10:25:54Z, to 8909ec5 (origin/main reflog: update by push); no session log records it. Live page fetched 10:31Z, byte-identical to 8909ec5's output. It came before the speech test it was blocked on, so the live page fails ADR-0009's accessibility condition until Brief 5's commits are pushed; logs/2026-10-07-tree-parity.md |
+| The standing checks written down, with the accessibility tree at load in both modes | [VERIFIED] | 2026-10-07 | d2fca3f, 67ea21b; same log |
 
 ## Moved from STATE.md, 2026-10-06
 

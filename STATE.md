@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit 9d06c61, the last commit before this file's
-update, 2026-10-06T10:58Z, by the Brief 4 implementing session.** This is
+**Verified against commit 67ea21b, the last commit before this file's
+update, 2026-10-07T11:29Z, by the Brief 5 implementing session.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -44,20 +44,24 @@ Update the verified-against line whenever you touch this file.
 
 ## Headline
 
-**The styled site is built and committed, and not pushed.** Brief 3
-rebuilt the approved Claude Design prototype in the generator: one page,
-the eight sections of ADR-0008, every item from the master CV, styled to
-ADR-0011, with every word in the first response. The ten checks of Brief 3
-pass, each shown able to fail, and Lighthouse's medians meet ADR-0009 with
-every heavy element. **The live site is still the earlier unstyled page,
-serving Rahzaan alone, until the push**, which waits on the screen-reader
-speech test and the chat's checks (Blocked, below).
+**The styled site is live, and Brief 5's fix to it is committed and not
+pushed.** Brief 3 rebuilt the approved Claude Design prototype in the
+generator: one page, the eight sections of ADR-0008, every item from the
+master CV, styled to ADR-0011, with every word in the first response.
+Brief 3's and Brief 4's commits, with the chat's 8909ec5, were pushed from
+this clone at 2026-10-07T10:25:54Z; no session log records that push, and
+it came before the screen-reader speech test its row waited on. The live
+page was fetched at 10:31Z and is byte-identical to 8909ec5's output.
 
-Brief 4 measured `content-visibility` on the sections both ways. Without
-it every section is in the accessibility tree at load, but Total Blocking
-Time failed ADR-0009 on this machine in two of four medians of five, so
-it stays. With it, a screen reader's tree at load holds the five
-collapsed "In depth" panels. That trade waits on the chat.
+ADR-0009 keeps `content-visibility` on the sections on one condition: in
+full accessibility mode, the tree at load matches the page without the
+rule. The live page fails it: a screen reader's tree at load holds the
+five collapsed "In depth" panels at 360 px, and at both widths the "No
+lanes selected." line and the hidden theme's contact marks, measured on
+the same bytes served locally. Brief 5 makes everything hidden inside the
+sections also `aria-hidden`, and the tree then matches at 360 and
+1366 px, both themes, scripts on and off. That fix is local until the
+speech test runs on it (Blocked, below).
 
 A small Python generator builds the page from two content files
 (ADR-0006), fails on a missing source, a missing proof link, a tier out of
@@ -81,15 +85,14 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 
 | Task | Status | Evidence | Date | Proof |
 |---|---|---|---|---|
-| Screen reader reaches the collapsed layer 3 | PARTIAL | [VERIFIED] | 2026-10-06 | logs/2026-10-05-styled-site.md. On the styled site, in headless Chrome by keyboard: each "In depth" control is a button named for its item, collapsed, its layer 3 absent from the accessibility tree; Enter expands it and layer 3 enters the tree. **Corrected by logs/2026-10-06-before-push.md**: that holds once the section has been rendered. At load, in full accessibility mode, the five collapsed panels are in the tree, an effect of content-visibility on the sections; without the rule they are not. The speech half, NVDA's Speech Viewer, is not run: docs/deferred/screen-reader-speech-test.md, the operator's, before the push |
-| content-visibility on the sections: keep it, or remove it and amend ADR-0009 | PENDING | [VERIFIED] | 2026-10-06 | logs/2026-10-06-before-push.md. Kept, because without it TBT failed ADR-0009 on this machine (medians 164, 250, 171, 249 ms; with it 29, 41, 54). Its accessibility cost is measured; the trade is the chat's |
-| Push of Brief 3's and Brief 4's commits, replacing the live unstyled page | PENDING | | | Blocked, below. The commits are local only |
+| Screen reader reaches the collapsed layer 3 | PARTIAL | [VERIFIED] | 2026-10-07 | logs/2026-10-05-styled-site.md. On the styled site, in headless Chrome by keyboard: each "In depth" control is a button named for its item, collapsed, its layer 3 absent from the accessibility tree; Enter expands it and layer 3 enters the tree. **Corrected by logs/2026-10-06-before-push.md**: at load, in full accessibility mode, the five collapsed panels were in the tree. **Fixed by Brief 5**, logs/2026-10-07-tree-parity.md: at load, in full mode, no collapsed panel is in the tree, and the keyboard check passes for all five panels at 360 and 1366 px. The speech half, NVDA's Speech Viewer, is not run: docs/deferred/screen-reader-speech-test.md, the operator's. Its trigger, before the styled site replaces the unstyled one, passed unmet at the 2026-10-07T10:25Z push |
+| Push of Brief 5's commits, replacing the live page that fails ADR-0009's accessibility condition | PENDING | | | Blocked, below. The commits are local only |
 
 ## Blocked, and on whom
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
-| Push of Brief 3's and Brief 4's commits | The screen-reader speech test, whose trigger is before the styled site replaces the live one; the chat's check of Report 4; and the chat's ruling on content-visibility, which changes what a screen reader meets at load | Operator and chat | 2026-10-05 |
+| Push of Brief 5's commits | The screen-reader speech test, which Brief 5 says runs once, on the page that ships, after this fix; the chat's check of Report 5 | Operator and chat | 2026-10-07 |
 
 ## Known unverified
 
@@ -108,12 +111,20 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 - Lighthouse figures come from this machine and the chat's container,
   which disagree on what content-visibility saves: TBT 31 ms with it and
   176 without here, pooled medians; 6 and 41 in the chat's. ADR-0009
-  names neither machine. Not measured on a real 2020 to
+  names neither machine; since 2026-10-06 a fail on either is a fail.
+  Not measured on a real 2020 to
   2022 phone, and the local server did not compress; GitHub Pages does.
-- Why axe twice reported 22 contrast failures on the certificate cards at
-  1366 px, device dark, as loaded, with content-visibility (2 of 21 runs;
-  0 of 9 without it; 0 in Brief 3's and the chat's runs). axe read the
-  card's text against its lime hover layer. Not caught on a screenshot.
+- Why axe sometimes reports 22 contrast failures on the certificate cards
+  at 1366 px, device dark, as loaded, with content-visibility: Brief 4,
+  2 of 21 runs (0 of 9 without the rule); the chat, 0 of 20; Brief 5, 1 of
+  20 on the page as built and 1 of 40 on its own page, each the first run
+  after a browser started. axe read the card's text against its lime
+  hover layer, ratio 1.64. Not caught on a screenshot. Bounded, not
+  explained.
+- The tree-at-load parity holds in headless Chrome 154. NVDA's reading,
+  Firefox, and Safari with VoiceOver are not measured, and why Chromium
+  ignores `hidden` and CSS in a skipped section is inferred from the
+  measurements, not read in its source.
 - The knot's worker on Safari: OffscreenCanvas in a worker is documented
   for recent Safari but was not run there. A browser without it shows no
   knot. `content-visibility` and `:has()` were exercised in Chrome only.
