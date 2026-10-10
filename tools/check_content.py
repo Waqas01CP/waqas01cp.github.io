@@ -28,7 +28,9 @@ Two checks, both reported in full:
 
   Coverage. Every master bullet, the summary, every sentence of every
   project's italic line, every skills line, every course and every
-  certificate must appear on the page whole, in the master's word order.
+  certificate must appear on the page whole, in the master's word order;
+  and every link that ends a project's italic line must be on the page as
+  a link, with its label and its address.
 
 Exit 0 when both pass, 1 when either fails, 2 on a usage error.
 """
@@ -42,10 +44,20 @@ import re
 import sys
 from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent
 PAGE = ROOT / "index.html"
 SITE = ROOT / "src" / "content" / "site.json"
+
+# This site's host is written once, in build.py (ADR-0002).
+sys.path.insert(0, str(ROOT))
+from build import SITE_HOST  # noqa: E402
+
+# A project's italic line in the master ends in its links:
+# "([GitHub](url))", or since 2026-10-10 "([Case study](url) | [Live app](url))".
+LINK_GROUP_RE = re.compile(r"\s*\(((?:\[[^\]]+\]\([^)]+\)\s*(?:\|\s*)?)+)\)\s*$")
+LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 
 LONG_MONTHS = {"january": "jan", "february": "feb", "march": "mar", "april": "apr",
                "june": "jun", "july": "jul", "august": "aug", "september": "sep",
@@ -101,6 +113,12 @@ def numbers_hold(text: str, source: list[str]) -> bool:
 
 # The master.
 
+def plain(line: str) -> str:
+    """A master line as text: emphasis dropped, a link kept as its text."""
+    text = re.sub(r"\[(.+?)\]\((.+?)\)", r"\1", line)
+    return text.replace("**", "").replace("*", "").lstrip("- ").strip()
+
+
 def read_master(path: Path) -> tuple[list[list[str]], list[dict]]:
     """Paragraphs, as word lists, and entries: a heading with the lines
     under it. Markdown emphasis is dropped; a link keeps its text."""
@@ -109,8 +127,7 @@ def read_master(path: Path) -> tuple[list[list[str]], list[dict]]:
         line = raw.strip()
         if not line:
             continue
-        text = re.sub(r"\[(.+?)\]\((.+?)\)", r"\1", line)
-        text = text.replace("**", "").replace("*", "").lstrip("- ").strip()
+        text = plain(line)
         heading = re.fullmatch(r"\*\*[^*].*\*\*", line) is not None
         if heading:
             entry = {"heading": text, "lines": [], "raw": [line]}
@@ -293,7 +310,19 @@ def main(argv: list[str] | None = None) -> int:
                 if raw.startswith("-   "):
                     add("bullets", line)
                 elif raw.startswith("*") and not raw.startswith("**"):
-                    italic = re.sub(r"\s*\(GitHub\)$", "", line)
+                    # The links ending the line are checked as links: the
+                    # label on the page, and the address among the page's
+                    # links, this site's own in the root-relative form the
+                    # site uses (ADR-0002). The words before them are the
+                    # italic line.
+                    italic = line
+                    tail = LINK_GROUP_RE.search(raw)
+                    if tail:
+                        for label, url in LINK_RE.findall(tail.group(1)):
+                            parts = urlsplit(url)
+                            href = (parts.path or "/") if parts.hostname == SITE_HOST else url
+                            add("project links", f"{label} ({url})", present(label) and href in page.hrefs)
+                        italic = plain(raw[:tail.start()])
                     for sentence in re.split(r"(?<=\.) ", italic):
                         add("italic-line sentences", sentence)
                 elif raw.startswith("**Relevant Coursework"):
