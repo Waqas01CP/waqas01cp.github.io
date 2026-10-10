@@ -19,5 +19,8 @@ Not covered by this notice:
 
 - The fonts in src/static/fonts/ and static/fonts/ are under the SIL Open
   Font License, version 1.1, whose texts sit beside them.
+- The fonts in docs/design/system/fonts/, from the design-system draft, are
+  under the SIL Open Font License, version 1.1, whose texts sit in
+  docs/design/system/licences/.
 - The LinkedIn and GitHub marks in src/static/img/ and static/img/ belong to
   their owners.

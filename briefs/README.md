@@ -6,9 +6,10 @@ status: current
 
 # Briefs
 
-**This folder is working space, not a record.** A brief is the specification
-the architecture chat hands to a fresh implementing session. It is written,
-executed, ticked, and overwritten by the next one.
+**This folder is working space, not a record.** It holds the latest brief or
+report addressed to each seat. A brief is the specification the architecture
+chat hands to a fresh implementing session. Each file is written, executed,
+ticked, and overwritten by the next one.
 
 Format: the brief template in the operator's cross-project Working Method.
 That document set lives in his private vault and is deliberately not linked
@@ -48,6 +49,18 @@ states that the operator approved the override.
 
 ## Convention
 
-One brief in flight at a time. Number it, tick it when the seat reports back
-and the chat has verified the report against the repository, then let the
-next brief replace it.
+From 2026-10-11, one file per receiving seat, each overwritten by the next
+(the operator's Working Method, section 9.4; `CLAUDE.md`, Briefs):
+
+| File | From | To |
+|---|---|---|
+| `implementation-seat.md` | the architecture chat | the implementing seat |
+| `architecture.md` | the implementing seat | the architecture chat |
+| `implementing.md` | the implementing seat | its own next session, as a handoff |
+
+Each file is unexecuted, with an empty box on its first line and any
+addendum appended to it; executed, ticked with the date when the operator
+says it was acted on; and replaced only after it has been read for what it
+still says. The chat ticks its brief once it has verified the seat's report
+against the repository. The numbered briefs written before 2026-10-11 are
+history and are not executed again.

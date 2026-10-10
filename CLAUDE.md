@@ -305,6 +305,43 @@ only as a digest. A brief that needs a private path carries it, and briefs
 are never committed. Gate E's list of implementation paths is recorded
 in ADR-0007 Changes, 2026-09-26.
 
+## Committing and pushing
+
+One commit per piece of work, each passing the gates. Before committing,
+look for commits you did not make and say so. The operator pushes; this
+seat pushes only when he hands it a push. After a push, check that every
+live file equals the build.
+
+## Heavy work
+
+One Lighthouse set or browser harness at a time. Say a job's whole length
+before it starts. Before finishing, stop any process this seat started,
+and touch none it did not. Read a browser's version from its file; never
+launch the operator's own browser to get it.
+
+## Briefs
+
+briefs/, gitignored, one file per receiving seat:
+briefs/implementation-seat.md, the architecture chat's current brief to
+this seat; briefs/architecture.md, this seat's report to the chat;
+briefs/implementing.md, this seat's own handoff, written at session close
+and whenever the session may end without warning. Each file: unexecuted,
+with an empty box on its first line and addenda appended; executed, ticked
+with the date when the operator says so; replaced only after the old one
+is read for what it still says. Numbered briefs from before 2026-10-11
+are history.
+
+## CAPABILITIES.md
+
+Everything the site is and does, for a reader who opens nothing else.
+At the close of any session that changes a capability or a measured
+number, update its section, re-measuring the number with its date and
+source. This seat's lane: what it does and how, the stack, the qualities,
+the numbers, the limits, the built rows of the timeline. The architecture
+chat's: the purpose, where it is going, the decisions, the decided rows
+and the operator's role. Counter the other seat's line with evidence;
+never rewrite it silently.
+
 ## Writing
 
 No em-dashes. Lead with the verdict. Active voice. Numbers carry their
