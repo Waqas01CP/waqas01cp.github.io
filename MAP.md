@@ -18,6 +18,7 @@ frontmatter. Decision records have no `type`; their `topic` is shown.
 
 | File | Type | Status | Description |
 |---|---|---|---|
+| `CAPABILITIES.md` | explanation | current | Everything the portfolio site is and does, in one file: how it is built and served end to end, the stack, its engineering qualities and what enforces each, measured numbers with their sources, how it was built, and its limits. For any chat or person who will open nothing else. Kept current. |
 | `CLAUDE.md` | instruction | current | How to work in this repository. Reading order, authority order, the fourteen-line scope floor, runtime and claim rules. Read before touching anything. |
 | `README.md` | reference | current | What this project is, how it is organised, and where each document lives. The entry point for a reader who has never seen it. |
 | `STATE.md` | state | current | What exists right now for the portfolio site, what is blocked and on whom, and where the proof is. Where to start, then checked against the code and data. |
