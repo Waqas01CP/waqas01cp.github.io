@@ -1,6 +1,6 @@
 ---
 type: log
-description: Brief 5. content-visibility kept on the sections, and the accessibility tree at load in full mode made to match the page without it, at 360 and 1366 px, both themes, scripts on and off, by marking everything hidden inside the sections aria-hidden. Found the styled site already pushed before the speech test. Standing checks written down. Round 2, after the operator's push: checked on the live site in Chrome and Edge; NVDA steps written into the deferred entry. Round 3: his NVDA capture showed words run together; fixed with visually hidden spaces. Round 5: the speech test passed in NVDA 2026.2. Round 6: two timeline inconsistencies fixed; a pixel check corrected. Round 7: research 0004, on listing this site and opening it for reuse.
+description: Brief 5. content-visibility kept on the sections, and the accessibility tree at load in full mode made to match the page without it, at 360 and 1366 px, both themes, scripts on and off, by marking everything hidden inside the sections aria-hidden. Found the styled site already pushed before the speech test. Standing checks written down. Round 2, after the operator's push: checked on the live site in Chrome and Edge; NVDA steps written into the deferred entry. Round 3: his NVDA capture showed words run together; fixed with visually hidden spaces. Round 5: the speech test passed in NVDA 2026.2. Round 6: two timeline inconsistencies fixed; a pixel check corrected. Round 7: research 0004, on listing this site and opening it for reuse. Round 8: the content trace reads the master's project links; CAPABILITIES.md.
 status: current
 ---
 
@@ -644,3 +644,80 @@ choosealicense.com, and the wording of the NN/g finding.
 
 **Waiting.** The operator's choice on the master CV; the chat's records.
 
+## Round 8: the Working Method read, the trace mended, capabilities
+
+2026-10-10 UTC; this round's first measurement ran at 15:43Z. The
+operator asked:
+
+- which chats he must update, and in what order;
+- whether a reusable version should be a new repository or this one,
+  and whether downloads can be stopped so people fork instead;
+- that this seat read the Working Method folder end to end, the
+  capabilities files above all, as they matter for his CV;
+- for questions, and the sequence from here.
+
+**Read.** [VERIFIED] The operator's Working Method folder, all 17 files,
+1,918 lines by `wc -l`: the README, the starter prompt, the method
+(version 1.2 of 2026-10-09), the new-project setup and 13 templates. Also
+the job-aggregator's `CAPABILITIES.md` in full, 433 lines, the model the
+template names. From his Operating Plan, only the headers needed to name
+his chats: the portfolio chat is this repository's architecture chat; the
+CV chat is the resume-tailoring chat, whose brief already lists this site
+in its header links from 2026-10-10.
+
+**What the Working Method changes here.** Versions 1.1 and 1.2 (2026-10-08
+and 09) add a capabilities file (8.9), one brief file per receiving seat
+in `briefs/` (9.4), the implementing seat's own handoff (10), version
+files (8.10), and sections the CLAUDE.md template now carries. This
+repository has none of them yet. This seat wrote its own lane of
+`CAPABILITIES.md`, its report to the chat in `briefs/architecture.md` and
+its handoff in `briefs/implementing.md`, both gitignored. Changing
+`CLAUDE.md` is the chat's, by an update block (8.8).
+
+**The content trace failed.** [VERIFIED] Re-measuring for the capabilities
+file, the trace failed coverage: "italic-line sentences: 17 of 18,
+MISSING: (Case study | Live app)". The master CV changed at
+2026-10-09T22:11Z (2026-10-10 03:11 local): Rahzaan's italic line now ends
+in its case study and live app links, moved there from the CV header by
+the resume-tailoring chat's ruling of 2026-10-10. The page already carries
+both links, to the same addresses (the case study root-relative, per
+ADR-0002). The tool stripped only a trailing "(GitHub)" and checked no
+project link at all.
+
+**The fix (the trace commit of this round).** A link group ending a
+project's italic line is read as links: each must be on the page with its
+label and its address, this site's own compared root-relative, with the
+host from `build.py`'s `SITE_HOST`, so it is written once. Against the
+current master: project links 7 of 7, italic sentences 17 of 17, PASS.
+Defeated by:
+
+- a master copy with a wrong Live app address: 6 of 7, exit 1;
+- a page copy without WordPy's GitHub link: 6 of 7, exit 1;
+- a page copy whose case study link points elsewhere: 6 of 7, exit 1.
+
+**`CAPABILITIES.md`, the seat's lane.** Numbers re-measured on 2026-10-10
+(source sizes, the built page raw and gzipped, records, history, the
+trace), or dated 2026-10-07 from this log (performance, accessibility,
+NVDA). Corrected before commit: a timeline row had said the case study
+went live at the root on 2026-09-26; it is served from a separate
+repository, and what went live was this site's first page, unstyled,
+carrying the Rahzaan item alone.
+
+**Facts for the operator's questions.** [VERIFIED, GitHub's
+documentation, read 2026-10-10]
+
+- "Public repositories are accessible to everyone on the internet", and
+  to clone is "to download a full copy". Downloading cannot be switched
+  off.
+- Forking can be allowed or prevented only for a private repository owned
+  by an organization.
+- GitHub Free includes Pages "in public repositories" only, so a private
+  repository would take the site down or cost a paid plan (scope floor
+  line 13).
+- A copyright owner can ask GitHub to take down infringing copies by a
+  DMCA notice, naming each fork.
+
+**Waiting.** The operator: the push. The chat: Report 5 in
+`briefs/architecture.md`, its lane of `CAPABILITIES.md`, a CLAUDE.md
+update for the Working Method's newer rules, and research 0004's
+decisions.

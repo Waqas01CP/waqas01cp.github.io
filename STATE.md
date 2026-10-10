@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit 9d49149, the last commit before this file's
-update, 2026-10-07T21:37Z, by the Brief 5 implementing session, round 7.** This is
+**Verified against commit 502b6a5, the last commit before this file's
+update, 2026-10-10T15:51Z, by the Brief 5 implementing session, round 8.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -88,13 +88,16 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 
 ## Build
 
-No open rows. Finished ones are in `docs/reference/completed.md`.
+| Task | Status | Evidence | Date | Proof |
+|---|---|---|---|---|
+| CAPABILITIES.md, per the Working Method (section 8.9) | PARTIAL | [VERIFIED] | 2026-10-10 | logs/2026-10-07-tree-parity.md, round 8. The implementing seat's lane written, its numbers re-measured or dated; the architecture chat's sections marked as not yet written |
 
 ## Blocked, and on whom
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
 | Whether this site goes on itself as a project, and whether its code is opened for reuse (research 0004) | The operator, for the master CV; then the chat, for placement, a licence and any separate repository | Operator and chat | 2026-10-07 |
+| The architecture chat's lane of CAPABILITIES.md; a CLAUDE.md update block for the Working Method's newer rules (CAPABILITIES.md, briefs/ per receiving seat, the seat's handoff, version files) | The architecture chat, then the operator's approval | Chat | 2026-10-10 |
 | Brief 5's report checked; ADR-0009's Changes row recording its condition met; ADR-0010's Changes row recording the speech test passed; the contact marks' alt text and the m.sp() convention confirmed | The architecture chat | Chat | 2026-10-07 |
 
 ## Known unverified

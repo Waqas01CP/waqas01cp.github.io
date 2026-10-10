@@ -43,7 +43,7 @@ html:has(:target) .page > .sec { content-visibility: visible; }
 |---|---|---|
 | Build twice | Every generated file byte-identical across builds at the recorded month | A build as of another month: hashes differ |
 | Gates | Every commit passes A, B and C; a push passes E (ADR-0007) | The proofs in `logs/2026-09-26-gates-map-and-as-of.md` |
-| Content trace | `tools/check_content.py` exits 0 | One number changed in a scratch copy of the page, 592 to 593: exit 1 |
+| Content trace | `tools/check_content.py` exits 0: every block traces to the master, and every master bullet, sentence, skills line, course, certificate and project link is on the page | One number changed in a scratch copy of the page, 592 to 593: exit 1. For the project links: a master copy with a wrong address, and a page copy missing a link: exit 1, the link named |
 | Accessibility tree at load, full mode | Matches the page without the rule (below), in every load | The page as built at 0403c68 |
 | Accessibility tree at load, default mode | Holds no node the page without the rule lacks | A paragraph planted in the Intro that the reference lacks |
 | Keyboard | Every "In depth" panel: Tab reaches its control; Enter opens it and its text enters the tree; Tab moves into it; Close closes it and focus returns to the control; the control closes it too. A Tab walk to the footer never stops inside `aria-hidden`, and `aria-hidden="true"` is never set on an element holding focus | The Close handler hiding the panel before moving focus; for the walk, the contact links marked `aria-hidden` |
