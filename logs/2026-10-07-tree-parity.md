@@ -1,6 +1,6 @@
 ---
 type: log
-description: "Brief 5. content-visibility kept on the sections, and the accessibility tree at load in full mode made to match the page without it, at 360 and 1366 px, both themes, scripts on and off, by marking everything hidden inside the sections aria-hidden. Found the styled site already pushed before the speech test. Standing checks written down. Round 2, after the operator's push: checked on the live site in Chrome and Edge; NVDA steps written into the deferred entry. Round 3: his NVDA capture showed words run together; fixed with visually hidden spaces. Round 5: the speech test passed in NVDA 2026.2. Round 6: two timeline inconsistencies fixed; a pixel check corrected. Round 7: research 0004, on listing this site and opening it for reuse. Round 8: the content trace reads the master's project links; CAPABILITIES.md."
+description: "Brief 5. content-visibility kept on the sections, and the accessibility tree at load in full mode made to match the page without it, at 360 and 1366 px, both themes, scripts on and off, by marking everything hidden inside the sections aria-hidden. Found the styled site already pushed before the speech test. Standing checks written down. Round 2, after the operator's push: checked on the live site in Chrome and Edge; NVDA steps written into the deferred entry. Round 3: his NVDA capture showed words run together; fixed with visually hidden spaces. Round 5: the speech test passed in NVDA 2026.2. Round 6: two timeline inconsistencies fixed; a pixel check corrected. Round 7: research 0004, on listing this site and opening it for reuse. Round 8: the content trace reads the master's project links; CAPABILITIES.md. Round 9: frontmatter that YAML rejected, quoted; a licence, all rights reserved."
 status: current
 ---
 
@@ -721,3 +721,65 @@ documentation, read 2026-10-10]
 `briefs/architecture.md`, its lane of `CAPABILITIES.md`, a CLAUDE.md
 update for the Working Method's newer rules, and research 0004's
 decisions.
+
+## Round 9: the operator's answers, frontmatter, a licence
+
+2026-10-10 UTC. The operator answered round 8's two questions, in his
+words:
+
+- On the push of 2026-10-07 at 10:25:54Z: "yes, there was some things done
+  by the portfolio and nothing bypasses me. also the reader test was done
+  on that as well so there is no need for the reader test."
+- On the readers of `CAPABILITIES.md`: "yes, they should be correct and you
+  can keep those as long as they are relevant to this repo and its work and
+  even add others if required".
+
+He reported "an error in the file which says frontmatter cant be read",
+asked that `briefs/architecture.md` be brought current, asked whether the
+site is finished so the CV PDF can follow, and asked for a licence: this
+repository not to be used, a separate one to be, and no selling.
+
+**Frontmatter.** [VERIFIED] PyYAML 6.0.3, installed in a scratch
+environment outside the repository, rejected the frontmatter of 4 of the
+36 tracked Markdown files with "mapping values are not allowed here": a
+plain value holding a colon and a space. Those were `CAPABILITIES.md`,
+research 0004 and this log (this seat's), and ADR-0011 (the chat's, since
+it was written). Gate C never saw it, because `tools/generate_map.py`
+splits on the first colon. Each description is quoted, every word kept;
+the generator strips quotes, so `MAP.md` did not change. After: 0 of 36
+rejected. The same check found the four before the fix, so it can fail.
+
+**Licence.** [VERIFIED for the sources] `LICENSE`: all rights reserved;
+the repository may be read, not reused. It keeps what GitHub's Terms of
+Service, section D.5, give every user of a public repository, which no
+notice can remove: "you agree to allow others to view and 'fork' your
+repositories". It points to a template repository, planned. The fonts
+stay under the SIL Open Font License 1.1 (all three licence files say so);
+the marks belong to their owners. A first draft said the marks were "used
+under their brand guidelines": Brief 3's log supports that for GitHub's
+mark only, so the words were cut before commit.
+
+**README.md**, stale, corrected: it said the styled site was "not yet
+live", and that each prototype export is "committed by hand". The export
+has been kept locally only since ADR-0011, as `.gitignore` says.
+
+**The CV PDF.** [VERIFIED] The page is ready for it: `build.py` sets a
+download link when `cv/Waqas_Sharif_CV.pdf` exists, and the Intro then
+shows "Download CV (PDF)". The operator's local `cv/UPDATING.md`,
+gitignored, already sets the route: the first PDF goes in `cv/`, the
+architecture chat hands it to this seat with the rebuild; later
+replacements are his to commit. Gate A scans text files only, so a PDF's
+metadata is not checked by any gate; this seat checks it by hand before
+the first one is committed.
+
+**For a template repository's licence**, read 2026-10-10:
+
+- PolyForm Noncommercial 1.0.0 permits "any noncommercial purpose" and
+  requires every copy to carry its terms and any line beginning "Required
+  Notice:". Its personal-use clause reads "without any anticipated
+  commercial application", which a job-seeker's portfolio may not meet.
+- A licence that forbids commercial use is not open source: the Open
+  Source Definition's criterion 6 says a licence "may not restrict the
+  program from being used in a business".
+
+**`briefs/architecture.md`** rewritten for the chat with all of the above.

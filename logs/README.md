@@ -52,6 +52,7 @@ before the root becomes unscannable, not after.
 
 | Date (UTC) | Log file | Session | What was done | Outcome |
 |---|---|---|---|---|
+| 2026-10-10 | [2026-10-07-tree-parity.md](2026-10-07-tree-parity.md) | Brief 5, round 9 | Operator's answers recorded; 4 of 36 frontmatters YAML rejected, quoted; LICENSE, all rights reserved; README current; CV PDF route checked; template licence options read | 0 of 36 rejected; licence committed; report to the chat rewritten |
 | 2026-10-10 | [2026-10-07-tree-parity.md](2026-10-07-tree-parity.md) | Brief 5, round 8 | Working Method read in full; content trace found failing on the master's new project links and mended; CAPABILITIES.md, the seat's lane; report and handoff written to briefs/ | Trace passes, each defeat fails; the chat's lane and a CLAUDE.md update waiting |
 | 2026-10-07 | [2026-10-07-tree-parity.md](2026-10-07-tree-parity.md) | Brief 5, round 7 | Research 0004: whether this site goes on itself, and whether to open it for reuse; licences, forks against templates, precedents, fake stars | Evidence only; decisions listed for the operator and the chat |
 | 2026-10-07 | [2026-10-07-tree-parity.md](2026-10-07-tree-parity.md) | Brief 5, round 6 | Certificate diamond gap and one-month dates fixed on the wide timeline; round 3's pixel check found to cover the top of the page only, redone with every section painted | Fix 7e97c5b passes every check; round 3's result still holds; not pushed |
