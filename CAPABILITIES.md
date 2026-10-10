@@ -22,8 +22,11 @@ operator confirmed on 2026-10-10:
 **Current as of 2026-10-10 UTC**, against `main` at the commit that added
 this file. Written by the implementing seat, in its lane: what the site
 does and how, the stack, the qualities, the numbers, the limits, and the
-timeline's rows for what was built. **The sections marked as the
-architecture chat's are not yet written.**
+timeline's rows for what was built. **The architecture chat's sections**
+(the problem, where it is going, the operator's role, the excluded list
+and the timeline's decided rows) **were written 2026-10-11 UTC**, at `main`
+fd49b6e, each from a record or the commit history, or marked as the
+operator's own account.
 
 It decides nothing and is in no seat's reading order. Where it disagrees
 with the code, the data or a record, it is stale.
@@ -44,14 +47,44 @@ did not shift; a real screen reader (NVDA) read it correctly the same day.
 
 ## The problem it solves
 
-*The architecture chat's section, not yet written:* why it exists, for
-whom, and what was done before it.
+A one-page CV cannot hold the evidence behind its lines: what each project
+did, in what order, where to see it running, and how the claims were
+checked. The site carries that evidence for **employers first and Masters
+admissions readers second, from one version** (ADR-0001; `CLAUDE.md`).
+
+Its shape follows how those readers read. Hiring readers rarely read a
+portfolio word for word and want curated work (NN/g survey of 204 UX
+hiring managers, 2019), and they rely on signals they can verify quickly
+(Marlow and Dabbish, CSCW 2013); both in research 0001. So the strongest
+work comes first (ADR-0001, ADR-0008), each item opens with one checkable
+fact and goes deeper only on request (ADR-0010), and every item that has
+public proof links to it.
+
+Before it, the operator's work was carried by his CV and LinkedIn, and the
+Rahzaan case study stood alone at `/Rahzaan/`, served from its own
+repository (ADR-0002).
 
 ## Where it is going
 
-*The architecture chat's section, not yet written:* the end state and what
-waits. Open questions it will draw on: research 0004 (whether the site
-lists itself as a project, and whether its code is opened for reuse).
+**No version is defined yet** (Working Method 8.10); defining one is the
+operator's. The site as built carries every item in the master CV, and
+what waits is listed here with its source, as of 2026-10-11:
+
+- **A CV download.** The page shows a download link once
+  `cv/Waqas_Sharif_CV.pdf` exists (ADR-0008); the PDF is produced from the
+  master CV outside this repository and added with a rebuild.
+- **A template repository, `portfolio-gallery`,** planned on 2026-10-10 for
+  anyone who wants a site like this one; this repository stays read, not
+  reused (ADR-0012). Its licence is its own records' decision.
+- **Whether this site lists itself as a project.** It waits on the master
+  CV first (scope floor line 1; research 0004, decision 1).
+- **An open-source lane.** Its section placement is open in the decision
+  index's Pending list, to be decided before the brief that brings such
+  an item.
+- **Whether to list the site in emmabostian/developer-portfolios.** Open
+  (research 0004, decision 5).
+- **Monthly refresh.** While an item ends "present", the page is rebuilt
+  in each new month (`CLAUDE.md`, Commands).
 
 ## What it does, end to end
 
@@ -158,7 +191,7 @@ lists itself as a project, and whether its code is opened for reuse).
 
 | Seat | Who | Did |
 |---|---|---|
-| Operator | Waqas Sharif | *The architecture chat's to write, from the records and the operator's account* |
+| Operator | Waqas Sharif | Defined the site and its readers, made every recorded decision, owns the master CV every claim traces to, ran the screen-reader test, and runs every commit and push of the chat's work; see "The operator's role" |
 | Architecture chat | Claude, in a chat | Concluded the decisions, wrote the records and the briefs, checked each report against the repository |
 | Implementing seat | Claude Code | Built to the briefs: the generator, the templates, the stylesheet and scripts, the checks and gates; logged every session |
 | Design | Claude Design | Built the prototype the visual system was settled from (ADR-0011) |
@@ -168,24 +201,73 @@ architecture chat's.
 
 | Date | What changed |
 |---|---|
+| 2026-09-22 to 2026-09-23 | Decided: a sectioned site with projects ranked by importance (ADR-0001); a public user site on GitHub Pages, no custom domain yet (ADR-0002); a hand-built vertical timeline (ADR-0003) |
 | 2026-09-25 | First commit: the document skeleton and six accepted records |
+| 2026-09-25 | Decided: the scope floor, fourteen lines (ADR-0004); three reading layers (ADR-0005, since superseded by ADR-0010) |
 | 2026-09-26 | The generator and content model, and a first, unstyled page carrying the Rahzaan item alone, live at the root; then the five gates, the generated map and the as-of month |
+| 2026-09-26 | Decided: a small Python generator (ADR-0006); five repository gates (ADR-0007); eight sections, tiers as order only, no separate project pages (ADR-0008, as amended) |
+| 2026-10-02 | Decided: performance as Core Web Vitals goals, not a page-weight figure (ADR-0009) |
 | 2026-10-03 | A design-system draft and a 3D prototype |
+| 2026-10-03 | Decided: the reading layers consolidated, each item's depth only where the master has material (ADR-0010) |
+| 2026-10-05 | Decided: the visual system, from the Claude Design prototype (ADR-0011) |
 | 2026-10-06 | The styled site rebuilt in the generator from the approved prototype: one page, eight sections, every master item; the content trace tool |
 | 2026-10-06 | Layout skipping measured both ways and kept for speed |
+| 2026-10-06 | Decided: a fail on any measuring machine is a fail; layout skipping kept on the condition that a screen reader at load meets the same page (ADR-0009 Changes) |
 | 2026-10-07 | The styled site live; everything hidden in the sections also hidden from screen readers, so the tree at load matches; hidden spaces so a screen reader does not run words together; dates shown on one-month timeline entries; the NVDA speech test passed |
 | 2026-10-10 | The content trace reads the master's project links and checks them as links; every documented file's frontmatter parses as YAML; a licence notice, all rights reserved, at the operator's instruction |
+| 2026-10-10 | Decided: this repository read, not reused; reuse through a separate repository, `portfolio-gallery`, planned (ADR-0012, recorded 2026-10-11) |
 
 ## The operator's role
 
-*The architecture chat's section, not yet written:* what he defined,
-designed, decided, caught and did that only he could, each from a record or
-the commit history, or marked as his own account.
+Each line from a record or the commit history, or marked as his own
+account to the chat.
+
+- **Defined what the site is for and whom it serves**: the evidence a CV
+  cannot hold, employers first and Masters readers second, in dedicated
+  sections with the main projects first and a curated set (ADR-0001,
+  stated 2026-09-22).
+- **Made every decision on record.** He is the decision-maker on all 12
+  records, 2026-09-22 to 2026-10-11 (`docs/decisions/`), among them the
+  scope floor (ADR-0004), hosting free on GitHub Pages (ADR-0002), the
+  timeline he reopened from its deferral (ADR-0003, 2026-09-23) and the
+  visual system chosen from the prototype (ADR-0011, 2026-10-05).
+- **Owns the only source of truth.** Every claim on the page traces to his
+  master CV, which he keeps outside the repository (scope floor line 1;
+  `tools/check_content.py`). The one paragraph not in it, the Intro's
+  second, he approved on 2026-10-05 (`src/content/site.json`).
+- **Set the constraints the seats work within**: free services by default
+  (scope floor line 13), no em-dashes, dates in UTC (`CLAUDE.md`,
+  Writing).
+- **Tested it by ear.** He ran NVDA 2026.2 himself; his first run found
+  words read as one, which were fixed, and his second passed
+  (ADR-0010 Changes, 2026-10-07).
+- **Caught defects the seats missed**: two inconsistencies on the wide
+  timeline (7e97c5b, 2026-10-07) and frontmatter a YAML parser rejected
+  (73f2ab3, 2026-10-10).
+- **Holds the last step.** He runs every commit of the architecture
+  chat's work and every push of the site (`CLAUDE.md`, Commands). In his
+  words, 2026-10-10: "nothing bypasses me".
+- **Decided how the code may be reused**: this repository read, not
+  reused, and a separate repository for reuse (ADR-0012, 2026-10-10).
+- **Designed the working method the seats follow**: an architecture chat
+  that decides with him and writes the records and briefs, an
+  implementing seat that builds and logs, each report checked against the
+  repository. His own account to the chat; the method lives outside this
+  repository.
 
 ## What it does not do, and its limits
 
-**Excluded by decision:** the scope floor, fourteen lines, ADR-0004 and
-`CLAUDE.md`. *The architecture chat restates them here.*
+**Excluded by decision:** the scope floor, fourteen lines, from ADR-0004,
+restated in `CLAUDE.md`, which governs. In short: no claim outside the
+master CV; no skill levels of any kind; no testimonials; no blog or
+currently block; no number that cannot be reproduced; no login, CMS or
+database; no feature holding the only copy of a fact; no motion that
+ignores reduced motion; no embeds that phone home; no cookies or
+tracking; no visitor data beyond the host's logs; no prices or payments;
+no paid service without prior discussion; no dependency added by import.
+Also by decision: no separate project pages, with the Rahzaan case study
+the only deeper destination (ADR-0008), and no reuse of this repository
+(ADR-0012).
 
 **Limits, as measured:**
 
@@ -205,7 +287,7 @@ the commit history, or marked as his own account.
 
 ## Highlights
 
-*The seat's; the architecture chat adds its own.* Each true as written and
+*The seat's, then the architecture chat's.* Each true as written and
 dated.
 
 - A portfolio where every claim traces to a single source document, checked
@@ -219,6 +301,13 @@ dated.
   day (2026-10-07).
 - On the live site, Lighthouse medians of 1.7 s largest paint and zero
   layout shift on its default mobile run (2026-10-07).
+- Every non-obvious choice written as a decision record when it was made,
+  each assumption carrying its basis, measured, sourced or stated: 12
+  records, 2026-09-22 to 2026-10-11 (the architecture chat's).
+- Every implementing report checked against the repository by a second
+  seat before anything was acted on, and each seat's own errors logged
+  with what they cost (`logs/`, the chat's briefs; the architecture
+  chat's).
 
 ## Where the evidence lives
 
