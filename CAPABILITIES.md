@@ -1,18 +1,23 @@
 ---
 type: explanation
-description: Everything the portfolio site is and does, in one file: how it is built and served end to end, the stack, its engineering qualities and what enforces each, measured numbers with their sources, how it was built, and its limits. For any chat or person who will open nothing else. Kept current.
+description: "Everything the portfolio site is and does, in one file: how it is built and served end to end, the stack, its engineering qualities and what enforces each, measured numbers with their sources, how it was built, and its limits. For any chat or person who will open nothing else. Kept current."
 status: current
 ---
 
 # Capabilities
 
 **What this file is.** Everything this repository is and does, in one
-place, for a reader who will open nothing else. Its readers are those the
-operator's Working Method names as usual: any chat that needs to know the
-project, a chat drafting his CV among them, without exploring the
-repository; and a person, who reads `README.md` to set it up and this file
-for the nuance. *The operator sets the readers; this paragraph awaits his
-or the architecture chat's confirmation.*
+place, for a reader who will open nothing else. Its readers, as the
+operator confirmed on 2026-10-10:
+
+- **any chat** that needs to know the project, the resume-tailoring chat
+  drafting his CV among them, without exploring the repository;
+- **a person** setting the site up or changing it, who reads `README.md`
+  to run it and this file for the nuance;
+- **an outside reader of this public repository**, such as an interviewer
+  who follows the site from his CV, and wants the evidence without reading
+  the code. Added by the implementing seat on 2026-10-10, under the
+  operator's word that readers relevant to this repository may be added.
 
 **Current as of 2026-10-10 UTC**, against `main` at the commit that added
 this file. Written by the implementing seat, in its lane: what the site
@@ -100,6 +105,9 @@ lists itself as a project, and whether its code is opened for reuse).
   site (ADR-0004 lines 9 to 11).
 - **The master CV never enters the repository.** Gate A blocks any
   committed file holding a path into the operator's private material.
+- **The repository is published to be read, not reused.** All rights
+  reserved, beyond what GitHub's terms give every user of a public
+  repository, to view it and fork it on GitHub (`LICENSE`, 2026-10-10).
 
 ## Tech stack
 
@@ -166,7 +174,7 @@ architecture chat's.
 | 2026-10-06 | The styled site rebuilt in the generator from the approved prototype: one page, eight sections, every master item; the content trace tool |
 | 2026-10-06 | Layout skipping measured both ways and kept for speed |
 | 2026-10-07 | The styled site live; everything hidden in the sections also hidden from screen readers, so the tree at load matches; hidden spaces so a screen reader does not run words together; dates shown on one-month timeline entries; the NVDA speech test passed |
-| 2026-10-10 | The content trace reads the master's project links and checks them as links |
+| 2026-10-10 | The content trace reads the master's project links and checks them as links; every documented file's frontmatter parses as YAML; a licence notice, all rights reserved, at the operator's instruction |
 
 ## The operator's role
 
@@ -192,6 +200,8 @@ the commit history, or marked as his own account.
   find-in-page are not tested.
 - **The 3D knot needs a canvas handed to a worker;** a browser without that
   shows no knot. Not run on Safari.
+- **Not licensed for reuse** (`LICENSE`); a template repository with its
+  own licence is planned for anyone who wants a site like this one.
 
 ## Highlights
 
