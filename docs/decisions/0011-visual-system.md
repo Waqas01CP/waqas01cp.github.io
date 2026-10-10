@@ -1,7 +1,7 @@
 ---
 status: accepted
 topic: design
-description: The site's visual system as settled from the Claude Design prototype: typefaces, colour, theme behaviour, the one 3D element and the motion rules, each tied to the goals it must meet. Read before styling any template.
+description: "The site's visual system as settled from the Claude Design prototype: typefaces, colour, theme behaviour, the one 3D element and the motion rules, each tied to the goals it must meet. Read before styling any template."
 date: 2026-10-05
 decision-makers: Waqas Sharif
 # consulted:

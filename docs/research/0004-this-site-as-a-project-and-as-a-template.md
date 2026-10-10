@@ -1,6 +1,6 @@
 ---
 type: research
-description: Evidence on two questions the operator raised on 2026-10-07: whether this site belongs on itself as a project, and whether to open it for others to reuse, for credit. Licences, forks against templates, precedents with their numbers, what stars are worth. Evidence for decisions, never a decision.
+description: "Evidence on two questions the operator raised on 2026-10-07: whether this site belongs on itself as a project, and whether to open it for others to reuse, for credit. Licences, forks against templates, precedents with their numbers, what stars are worth. Evidence for decisions, never a decision."
 status: current
 ---
 
