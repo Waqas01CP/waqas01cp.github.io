@@ -203,6 +203,42 @@ For the architecture chat:
    project of its own, with maintenance that does not end.
 5. Whether to submit the site to emmabostian/developer-portfolios.
 
+## Addendum, 2026-10-10: the operator's priority, and the licence
+
+The operator set his priority for a template repository on 2026-10-10, in
+his words: "what i want now is credibility like if there is a choice
+between getting stars, forks and people starting to interact and do PRs and
+other practices then i would prefer this over even if later they sell the
+repo", and "i do not want a license that scares away people". He also
+proposed that someone who changes 30% or more may use it freely.
+
+- **Less restrictive licences draw more interest.** Stewart, Ammeter and
+  Maruping, Information Systems Research 17(2), 2006: users are most
+  attracted to projects that "employ nonrestrictive licenses" and are
+  sponsored by nonmarket organisations. Empirical, peer-reviewed; its
+  "restrictive" means copyleft, measured on Freshmeat projects, so applying
+  it to a noncommercial licence is an extension, which goes further than
+  copyleft in restricting use. Read from its abstract.
+- **A noncommercial licence is not open source** (Open Source Definition,
+  criterion 6, above), and its line between commercial and not is unclear
+  for a job-seeker's portfolio (PolyForm Noncommercial, above).
+- **There is no 30% rule.** "No statute or court precedent uses a numerical
+  formula" for how much change makes a work one's own (Nelson Mullins; also
+  Gerben Law: practitioner, two firms agreeing). A licence built on a
+  percentage would be unmeasurable, and a licence nobody can look up is the
+  kind that turns people away.
+- **Contributions take the repository's licence by default.** GitHub's
+  Terms of Service, D.6: "Whenever you add Content to a repository
+  containing notice of a license, you license that Content under the same
+  terms" ("inbound=outbound"). No contributor agreement is needed.
+- **The precedents' licences**, read 2026-10-07: of the five templates
+  above, three MIT, one GPL-3.0, one none; none noncommercial.
+
+What it adds up to, as evidence: against his stated priority, MIT fits and
+PolyForm Noncommercial does not. MIT lets anyone use, change, share and
+sell it, and keeps only his copyright notice in every copy; visible credit
+can be asked for, not required.
+
 ## Not verified
 
 - Whether a repository created from a template shows any visible link to
@@ -210,6 +246,7 @@ For the architecture chat:
 - Whether stars on a portfolio template, or a listing in a portfolio
   list, affect hiring. No source located.
 - Whether the precedents' numbers include fake stars. Not checked.
+- Stewart, Ammeter and Maruping (2006) beyond its abstract.
 - The full text of Marlow and Dabbish (2013); as in research 0001, read
   through its abstract and a summary only.
 
@@ -225,3 +262,8 @@ For the architecture chat:
 | emmabostian/developer-portfolios README and CONTRIBUTING.md | Primary | 2026-10-07 |
 | GitHub REST API, repository metadata and language counts for the six repositories above | First-party data | 2026-10-07, from 21:33Z |
 | Research 0001 of this repository (NN/g 2019; Marlow and Dabbish 2013) | As rated there | |
+| GitHub Terms of Service, sections D.5 and D.6 | First-party | 2026-10-10 |
+| Open Source Initiative, The Open Source Definition, criterion 6 | Primary | 2026-10-10 |
+| PolyForm Noncommercial License 1.0.0, from the PolyForm project's repository | Primary | 2026-10-10 |
+| Stewart, Ammeter and Maruping, Information Systems Research 17(2), 2006, abstract | Empirical, peer-reviewed | 2026-10-10 |
+| Nelson Mullins and Gerben Law, on the "30 percent rule" | Practitioner, two firms agreeing | 2026-10-10 |

@@ -52,6 +52,7 @@ before the root becomes unscannable, not after.
 
 | Date (UTC) | Log file | Session | What was done | Outcome |
 |---|---|---|---|---|
+| 2026-10-10 | [2026-10-07-tree-parity.md](2026-10-07-tree-parity.md) | Brief 5, round 10 | Operator's priority for a template repository recorded; licence evidence read (ISR 2006, no 30% rule, GitHub D.6); research 0004 addendum | MIT fits his priority, PolyForm Noncommercial does not; template to start as its own project |
 | 2026-10-10 | [2026-10-07-tree-parity.md](2026-10-07-tree-parity.md) | Brief 5, round 9 | Operator's answers recorded; 4 of 36 frontmatters YAML rejected, quoted; LICENSE, all rights reserved; README current; CV PDF route checked; template licence options read | 0 of 36 rejected; licence committed; report to the chat rewritten |
 | 2026-10-10 | [2026-10-07-tree-parity.md](2026-10-07-tree-parity.md) | Brief 5, round 8 | Working Method read in full; content trace found failing on the master's new project links and mended; CAPABILITIES.md, the seat's lane; report and handoff written to briefs/ | Trace passes, each defeat fails; the chat's lane and a CLAUDE.md update waiting |
 | 2026-10-07 | [2026-10-07-tree-parity.md](2026-10-07-tree-parity.md) | Brief 5, round 7 | Research 0004: whether this site goes on itself, and whether to open it for reuse; licences, forks against templates, precedents, fake stars | Evidence only; decisions listed for the operator and the chat |

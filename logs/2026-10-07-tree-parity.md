@@ -1,6 +1,6 @@
 ---
 type: log
-description: "Brief 5. content-visibility kept on the sections, and the accessibility tree at load in full mode made to match the page without it, at 360 and 1366 px, both themes, scripts on and off, by marking everything hidden inside the sections aria-hidden. Found the styled site already pushed before the speech test. Standing checks written down. Round 2, after the operator's push: checked on the live site in Chrome and Edge; NVDA steps written into the deferred entry. Round 3: his NVDA capture showed words run together; fixed with visually hidden spaces. Round 5: the speech test passed in NVDA 2026.2. Round 6: two timeline inconsistencies fixed; a pixel check corrected. Round 7: research 0004, on listing this site and opening it for reuse. Round 8: the content trace reads the master's project links; CAPABILITIES.md. Round 9: frontmatter that YAML rejected, quoted; a licence, all rights reserved."
+description: "Brief 5. content-visibility kept on the sections, and the accessibility tree at load in full mode made to match the page without it, at 360 and 1366 px, both themes, scripts on and off, by marking everything hidden inside the sections aria-hidden. Found the styled site already pushed before the speech test. Standing checks written down. Round 2, after the operator's push: checked on the live site in Chrome and Edge; NVDA steps written into the deferred entry. Round 3: his NVDA capture showed words run together; fixed with visually hidden spaces. Round 5: the speech test passed in NVDA 2026.2. Round 6: two timeline inconsistencies fixed; a pixel check corrected. Round 7: research 0004, on listing this site and opening it for reuse. Round 8: the content trace reads the master's project links; CAPABILITIES.md. Round 9: frontmatter that YAML rejected, quoted; a licence, all rights reserved. Round 10: the template repository's licence."
 status: current
 ---
 
@@ -783,3 +783,23 @@ the first one is committed.
   program from being used in a business".
 
 **`briefs/architecture.md`** rewritten for the chat with all of the above.
+
+## Round 10: the template repository's licence, and who builds it
+
+2026-10-10 UTC, after the operator pushed round 9. He set his priority for
+the template repository (quoted in research 0004's addendum): credibility
+through stars, forks and pull requests over preventing sale, and no licence
+that scares people away; he proposed a 30% change threshold, asked who
+should build the template, and whether a "portfolio store" is viable.
+
+**Read** [VERIFIED, sources in research 0004]: Stewart, Ammeter and
+Maruping (2006), less restrictive licences draw more user interest, from
+its abstract; two law firms, no percentage rule in copyright; GitHub's
+Terms D.6, contributions take the repository's licence ("inbound=outbound").
+
+**Recorded:** research 0004's addendum (MIT fits the stated priority,
+PolyForm Noncommercial does not) and its sources; the report to the chat,
+item 6.12. The template project is the operator's to start, with its own
+architecture chat; this seat gave him a starter prompt and a context
+block for it, in chat.
+
