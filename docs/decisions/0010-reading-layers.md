@@ -49,8 +49,8 @@ response. An interviewer wants the detail a recruiter skips.
   **Partly verified for assistive technology**: 2026-10-02, in headless
   Chromium with keyboard only, the disclosure is exposed with its name and
   state and its text enters the accessibility tree when opened. **Speech
-  not yet heard**: deferred to the styled site,
-  `docs/deferred/screen-reader-speech-test.md`. **Not verified for AI
+  heard** 2026-10-07 in NVDA 2026.2 (Changes),
+  `docs/deferred/screen-reader-speech-test.md`, closed. **Not verified for AI
   summarisers' weighting.**
 - A3. Eleven items carry a public artefact and three cannot. **Measured**
   from the master CV, read 2026-10-03: Rahzaan (case study and live app),
@@ -154,3 +154,4 @@ tier rather than sorting by it.
 
 | Date | Change | Why |
 |---|---|---|
+| 2026-10-07 | **A2's speech half verified; the deferred speech test is closed.** NVDA 2026.2 in Chrome, on the live styled site at eaee932: each "In depth" control spoken with its item's name and collapsed state; Enter spoken as expanded, and reading continued into layer 3; Close returned focus, spoken collapsed; all five, each named differently. The first run, on 6812c4f, found words run together between separately laid-out pieces, such as "592automated"; fixed in c97b99e before the passing run. The test ran after the styled site went live: the operator pushed it on 2026-10-07 at 10:25:54Z, which he confirmed on 2026-10-10, so the deferral's trigger passed unmet. | The operator's report of what he heard, confirmed on asking; his copied Speech Viewer text shows content and names, not states. Report 5, rounds 3 and 5; `logs/2026-10-07-tree-parity.md`. |

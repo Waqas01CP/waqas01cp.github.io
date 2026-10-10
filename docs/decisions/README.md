@@ -49,6 +49,7 @@ Adding a topic is itself a decision.
 | [0009](0009-performance-goals.md) | Performance goals instead of a page-weight figure | Accepted |
 | [0010](0010-reading-layers.md) | Reading layers, consolidated | Accepted, supersedes 0005 |
 | [0011](0011-visual-system.md) | The visual system | Accepted |
+| [0012](0012-not-licensed-for-reuse.md) | This repository is not licensed for reuse; reuse goes through a separate one | Accepted |
 
 ## Pending
 
