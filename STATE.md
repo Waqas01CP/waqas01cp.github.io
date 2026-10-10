@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit 334266d, the last commit before this file's
-update, 2026-10-10T16:34Z, by the Brief 5 implementing session, round 10.** This is
+**Verified against commit 59ed1c1, the last commit before this file's
+update, 2026-10-10T18:00Z, by the Brief 5 implementing session, round 11.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from

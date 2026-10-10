@@ -1,6 +1,6 @@
 ---
 type: log
-description: "Brief 5. content-visibility kept on the sections, and the accessibility tree at load in full mode made to match the page without it, at 360 and 1366 px, both themes, scripts on and off, by marking everything hidden inside the sections aria-hidden. Found the styled site already pushed before the speech test. Standing checks written down. Round 2, after the operator's push: checked on the live site in Chrome and Edge; NVDA steps written into the deferred entry. Round 3: his NVDA capture showed words run together; fixed with visually hidden spaces. Round 5: the speech test passed in NVDA 2026.2. Round 6: two timeline inconsistencies fixed; a pixel check corrected. Round 7: research 0004, on listing this site and opening it for reuse. Round 8: the content trace reads the master's project links; CAPABILITIES.md. Round 9: frontmatter that YAML rejected, quoted; a licence, all rights reserved. Round 10: the template repository's licence."
+description: "Brief 5. content-visibility kept on the sections, and the accessibility tree at load in full mode made to match the page without it, at 360 and 1366 px, both themes, scripts on and off, by marking everything hidden inside the sections aria-hidden. Found the styled site already pushed before the speech test. Standing checks written down. Round 2, after the operator's push: checked on the live site in Chrome and Edge; NVDA steps written into the deferred entry. Round 3: his NVDA capture showed words run together; fixed with visually hidden spaces. Round 5: the speech test passed in NVDA 2026.2. Round 6: two timeline inconsistencies fixed; a pixel check corrected. Round 7: research 0004, on listing this site and opening it for reuse. Round 8: the content trace reads the master's project links; CAPABILITIES.md. Round 9: frontmatter that YAML rejected, quoted; a licence, all rights reserved. Round 10: the template repository's licence. Round 11: the gallery repository, planned."
 status: current
 ---
 
@@ -802,4 +802,32 @@ PolyForm Noncommercial does not) and its sources; the report to the chat,
 item 6.12. The template project is the operator's to start, with its own
 architecture chat; this seat gave him a starter prompt and a context
 block for it, in chat.
+
+## Round 11: the gallery repository, planned
+
+2026-10-10 UTC. The operator named the template repository
+portfolio-gallery, asked that the way it is run become its rules for
+contributors, with a gallery of designs people use or add to, and that this
+seat build it beside this repository rather than a new chat, with its own
+chat once it stands alone. He asked whether to brief the portfolio chat now
+and whether the gallery must be discussed with it.
+
+**Read** [VERIFIED, GitHub's documentation, 2026-10-10]:
+- the fork and pull model: "You do not need permission from the upstream
+  repository to push to a fork you created"; it "reduces friction for new
+  contributors". The shared model, with branches in one repository, needs
+  push access and suits "small teams and organizations collaborating on
+  private projects";
+- "GitHub Actions usage is free for self-hosted runners and for public
+  repositories that use standard GitHub-hosted runners";
+- from a fork, "The GITHUB_TOKEN has read-only permissions in pull requests
+  from forked repositories" and secrets are not passed; a first-time
+  contributor's run "may need" a maintainer's approval.
+
+**Recommended to him:** designs as folders, contributed by fork, branch and
+pull request and checked automatically on each, not as branches in his
+repository; the name kept; the portfolio chat briefed now, with the gallery
+in an addendum to `briefs/architecture.md`, since it touches this project's
+code, licence and content. Decisions on the licence, contribution model,
+build and scope floor wait on him.
 
