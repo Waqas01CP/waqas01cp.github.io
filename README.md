@@ -13,12 +13,11 @@ Every job CV became one page on 2026-09-21, so most of the evidence in the
 master CV has nowhere else to live. This site is where it goes. It serves
 employers first and Masters admissions readers second, from one version.
 
-**The styled site is built, with every item from the master CV, and not
-yet live.** A Python generator renders one page in eight sections from two
-structured content files, styled to the visual system of ADR-0011, with a
-little script for the menu, the theme switch, the disclosures and the
-motion. Until the next push, the live site is still the earlier unstyled
-page. `STATE.md` is the honest picture.
+**The styled site is live,** with every item from the master CV. A Python
+generator renders one page in eight sections from two structured content
+files, styled to the visual system of ADR-0011, with a little script for
+the menu, the theme switch, the disclosures and the motion. `STATE.md` is
+the honest picture; `CAPABILITIES.md` describes everything the site does.
 
 The repository is public, per ADR-0002. `CHAT_STATE.md` is the one file that
 is never committed, because it names blockers and errors; it is in
@@ -42,13 +41,15 @@ here, because this repository is public.
 - **Implementing seat, Claude Code:** executes briefs, writes code and
   tests, logs every session, audits.
 
-Claude Design builds the visual prototype. It keeps no version history, so
-each export is committed by hand with a log entry.
+Claude Design built the visual prototype (ADR-0011). Its export is kept
+locally only and never served, because it loads a framework from a
+third-party CDN.
 
 ## Where the documents are
 
 | You want | Open |
 |---|---|
+| Everything the site is and does, for a reader who opens nothing else | `CAPABILITIES.md` |
 | What exists, what is blocked and on whom | `STATE.md` |
 | How to work here: authority, claim rules, scope floor | `CLAUDE.md` |
 | Why a choice was made | `docs/decisions/`, indexed in its README |
@@ -56,6 +57,7 @@ each export is committed by hand with a log entry.
 | What was deliberately not built, and what would reopen it | `docs/deferred/` |
 | What the content schema is and how to add an item | `src/content/README.md` |
 | How the page is checked against the master CV | `CLAUDE.md`, Commands, the content trace |
+| The checks every change to the page runs | `docs/reference/standing-checks.md` |
 | What prior implementing sessions did | `logs/README.md` |
 | Why briefs are not committed | `briefs/README.md` |
 | Completed work moved out of the state file | `docs/reference/completed.md` |
@@ -72,3 +74,9 @@ and every number carries its provenance.
 With the project venv active, `python build.py` writes `index.html` and
 `static/` at the root. Setting up the venv, and the other commands, are in
 `CLAUDE.md` under Commands.
+
+## Licence
+
+All rights reserved: see `LICENSE`. This repository is published to be
+read, not reused. A separate template repository, with its own licence, is
+planned for anyone who wants a site like this one.

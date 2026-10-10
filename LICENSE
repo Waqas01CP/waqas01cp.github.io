@@ -1,0 +1,23 @@
+Copyright (c) 2026 Waqas Sharif. All rights reserved.
+
+This repository is the source of Waqas Sharif's personal portfolio site. It
+holds his own content: his name, his CV text, his written descriptions of
+his work, and the records and notes of how the site was made. It is
+published so that anyone can read it. It is not licensed for reuse.
+
+No permission is granted to use, copy, modify, publish, distribute,
+sublicense or sell this repository or any part of it, including its code,
+its content and its design, beyond the rights GitHub's Terms of Service give
+every GitHub user for a public repository: to view it, and to fork it within
+GitHub. A fork carries no further permission.
+
+If you want a site like this one, do not copy this repository. A separate
+template repository, with its own licence, is planned for that purpose.
+When it is published, its address will be given here and in README.md.
+
+Not covered by this notice:
+
+- The fonts in src/static/fonts/ and static/fonts/ are under the SIL Open
+  Font License, version 1.1, whose texts sit beside them.
+- The LinkedIn and GitHub marks in src/static/img/ and static/img/ belong to
+  their owners.
