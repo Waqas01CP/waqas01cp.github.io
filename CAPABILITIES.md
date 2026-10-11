@@ -23,10 +23,11 @@ operator confirmed on 2026-10-10:
 this file. Written by the implementing seat, in its lane: what the site
 does and how, the stack, the qualities, the numbers, the limits, and the
 timeline's rows for what was built. **The architecture chat's sections**
-(the problem, where it is going, the operator's role, the excluded list
+(the problem, where it is going, Waqas Sharif's role, the excluded list
 and the timeline's decided rows) **were written 2026-10-11 UTC**, at `main`
-fd49b6e, each from a record or the commit history, or marked as the
-operator's own account.
+fd49b6e, each from a record or the commit history, or marked as his
+own account. The role section was brought to the master CV's wording on
+2026-10-11.
 
 It decides nothing and is in no seat's reading order. Where it disagrees
 with the code, the data or a record, it is stale.
@@ -60,14 +61,14 @@ work comes first (ADR-0001, ADR-0008), each item opens with one checkable
 fact and goes deeper only on request (ADR-0010), and every item that has
 public proof links to it.
 
-Before it, the operator's work was carried by his CV and LinkedIn, and the
+Before it, his work was carried by his CV and LinkedIn, and the
 Rahzaan case study stood alone at `/Rahzaan/`, served from its own
 repository (ADR-0002).
 
 ## Where it is going
 
-**No version is defined yet** (Working Method 8.10); defining one is the
-operator's. The site as built carries every item in the master CV, and
+**No version is defined yet** (Working Method 8.10); defining one is
+his. The site as built carries every item in the master CV, and
 what waits is listed here with its source, as of 2026-10-11:
 
 - **A CV download.** The page shows a download link once
@@ -191,7 +192,7 @@ what waits is listed here with its source, as of 2026-10-11:
 
 | Seat | Who | Did |
 |---|---|---|
-| Operator | Waqas Sharif | Defined the site and its readers, made every recorded decision, owns the master CV every claim traces to, ran the screen-reader test, and runs every commit and push of the chat's work; see "The operator's role" |
+| Architect and director | Waqas Sharif | Brought the blueprint and the architecture, made the trade-offs, set the standards, corrected the seats, and decided every brief and report; see "Waqas Sharif's role" |
 | Architecture chat | Claude, in a chat | Concluded the decisions, wrote the records and the briefs, checked each report against the repository |
 | Implementing seat | Claude Code | Built to the briefs: the generator, the templates, the stylesheet and scripts, the checks and gates; logged every session |
 | Design | Claude Design | Built the prototype the visual system was settled from (ADR-0011) |
@@ -217,43 +218,46 @@ architecture chat's.
 | 2026-10-10 | The content trace reads the master's project links and checks them as links; every documented file's frontmatter parses as YAML; a licence notice, all rights reserved, at the operator's instruction |
 | 2026-10-10 | Decided: this repository read, not reused; reuse through a separate repository, `portfolio-gallery`, planned (ADR-0012, recorded 2026-10-11) |
 
-## The operator's role
+## Waqas Sharif's role
 
-Each line from a record or the commit history, or marked as his own
-account to the chat.
+Updated 2026-10-11 UTC to the master CV's description of his role, which
+he approved that day: lead with what he does. His Working Method calls his
+seat "the operator"; the records and logs keep that term. Each line below
+comes from a record or the commit history, or is marked as his own
+account.
 
-- **Defined what the site is for and whom it serves**: the evidence a CV
-  cannot hold, employers first and Masters readers second, in dedicated
-  sections with the main projects first and a curated set (ADR-0001,
-  stated 2026-09-22).
-- **Made every decision on record.** He is the decision-maker on all 12
-  records, 2026-09-22 to 2026-10-11 (`docs/decisions/`), among them the
-  scope floor (ADR-0004), hosting free on GitHub Pages (ADR-0002), the
-  timeline he reopened from its deferral (ADR-0003, 2026-09-23) and the
-  visual system chosen from the prototype (ADR-0011, 2026-10-05).
-- **Owns the only source of truth.** Every claim on the page traces to his
+- **Brings the blueprint and the architecture.** He defined what the site
+  is for and whom it serves: the evidence a CV cannot hold, employers
+  first and Masters readers second, in dedicated sections with the main
+  projects first and a curated set (ADR-0001, stated 2026-09-22). The
+  architecture chat refines his design into records rather than starting
+  from nothing (his own account, through the master CV, 2026-10-11).
+- **Makes the engineering trade-offs.** He is the decision-maker on all 12
+  records, 2026-09-22 to 2026-10-11 (`docs/decisions/`). They include the
+  scope floor (ADR-0004), free hosting on GitHub Pages (ADR-0002), the
+  timeline he reopened from its deferral (ADR-0003, 2026-09-23), speed
+  goals set in readers' terms rather than bytes (ADR-0009), the visual
+  system chosen from the prototype (ADR-0011, 2026-10-05) and how the code
+  may be reused (ADR-0012).
+- **Sets the standards every seat works to.** Every claim traces to his
   master CV, which he keeps outside the repository (scope floor line 1;
-  `tools/check_content.py`). The one paragraph not in it, the Intro's
-  second, he approved on 2026-10-05 (`src/content/site.json`).
-- **Set the constraints the seats work within**: free services by default
-  (scope floor line 13), no em-dashes, dates in UTC (`CLAUDE.md`,
-  Writing).
-- **Tested it by ear.** He ran NVDA 2026.2 himself; his first run found
-  words read as one, which were fixed, and his second passed
-  (ADR-0010 Changes, 2026-10-07).
-- **Caught defects the seats missed**: two inconsistencies on the wide
-  timeline (7e97c5b, 2026-10-07) and frontmatter a YAML parser rejected
-  (73f2ab3, 2026-10-10).
-- **Holds the last step.** He runs every commit of the architecture
+  `tools/check_content.py`). Free services by default (scope floor
+  line 13). No em-dashes, and dates in UTC (`CLAUDE.md`, Writing). His
+  Working Method sets how the seats brief, build, log and check each
+  other.
+- **Corrects the seats' mistakes.**
+  - His screen-reader run found words read as one, which every automated
+    check had passed; they were fixed, and his second run passed
+    (ADR-0010 Changes, 2026-10-07).
+  - He found two inconsistencies on the wide timeline (7e97c5b,
+    2026-10-07) and frontmatter a YAML parser rejected (73f2ab3,
+    2026-10-10).
+- **Decides on every brief and report.** A brief is executed and a change
+  goes live only on his word. He makes every commit of the architecture
   chat's work and every push of the site (`CLAUDE.md`, Commands). In his
   words, 2026-10-10: "nothing bypasses me".
-- **Decided how the code may be reused**: this repository read, not
-  reused, and a separate repository for reuse (ADR-0012, 2026-10-10).
-- **Designed the working method the seats follow**: an architecture chat
-  that decides with him and writes the records and briefs, an
-  implementing seat that builds and logs, each report checked against the
-  repository. His own account to the chat; the method lives outside this
-  repository.
+- **The code is the implementing seat's**, written to his briefs and
+  records (commit history).
 
 ## What it does not do, and its limits
 
