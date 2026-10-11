@@ -20,8 +20,8 @@
 {% endif %}
 </ul>
 <p class="lede">{{ site.summary }}</p>
-{% if site.approved %}
-<p class="lede">{{ site.approved.text }}</p>
+{% if site.intro %}
+<p class="lede">{{ site.intro }}</p>
 {% endif %}
 <ul class="cta">
 <li><a class="btn btn-acc" href="mailto:{{ site.email }}">{{ m.icon("mail", 18) }}Email me</a></li>

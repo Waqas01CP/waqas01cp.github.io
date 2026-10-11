@@ -22,10 +22,11 @@ record.
 
 Every claim in these files traces to the operator's master CV, the only
 source of truth (scope floor line 1). Where they and the master disagree,
-the master wins and the disagreement is reported. One paragraph in
-`site.json` is not in the master: `approved`, the Intro's second paragraph,
-approved by the operator on 2026-10-05. It says so in the file, and
-`tools/check_content.py` reports it on every run.
+the master wins and the disagreement is reported. The Intro's second
+paragraph, `intro`, is the master's Portfolio Intro, written for this site
+and approved by the operator word for word; until the master carried it,
+on 2026-10-10, it was stored as `approved` and reported as not in the
+master on every trace.
 
 ## Written once, and shortened text checked
 
@@ -112,10 +113,10 @@ What each one is:
 | `name`, `headline`, `location`, `availability`, `email` | From the master's header. `headline` is a list, rendered joined by `|`. |
 | `linkedin`, `github` | `{url, text}` from the master's header. |
 | `summary` | The master's Professional Summary, whole. |
-| `approved` | `{text, approved_by}`: operator-approved text that is not in the master. Rendered as the Intro's second paragraph. |
+| `intro` | The master's Portfolio Intro, whole. Rendered as the Intro's second paragraph. |
 | `highlights` | The figures on the opening screen. Each names an `item`, a source in `from`, and a `figure` with the `text` after it and optionally `before` it. **The words, in order, must be a cut of the source**, which is `site/summary` or `<item>/bullets/<n>`, counted from 1. |
 | `feature` | The figure at the head of Projects: a `label`, a `figure` and its `text`, `pairs` and a `note`, **each a cut of its source**. |
-| `skills` | The master's eight groups, `{label, items}`, labels and items as written; the two Coursework groups keep that label. No levels (scope floor line 2). |
+| `skills` | The master's groups, ten since 2026-10-10, `{label, items}`, labels and items as written; the two Coursework groups keep that label. No levels (scope floor line 2). |
 | `contact` | Email, LinkedIn and GitHub, in that order, each with its label and, for LinkedIn and GitHub, the line saying what it is for. Email's line is `availability`. |
 
 ## What the build enforces

@@ -20,13 +20,14 @@ Two checks, both reported in full:
     - a run of such cuts from one master entry, split where the page's own
       markup splits it, such as a timeline entry's dates, then its title;
     - approved interface text: section names, labels, the contact lines,
-      "In depth", year and month markers and the like, listed below;
-    - the operator-approved text named in src/content/site.json, which is
-      reported as not in the master, and whose every number must still be
-      in the master, followed by the same word.
-  Anything else fails, with the block printed.
+      "In depth", year and month markers and the like, listed below.
+  Anything else fails, with the block printed. Until 2026-10-11 a third
+  route let through one operator-approved paragraph that was not in the
+  master; the master has carried it since 2026-10-10, as its Portfolio
+  Intro, so the route is gone.
 
-  Coverage. Every master bullet, the summary, every sentence of every
+  Coverage. Every master bullet, the summary, the Portfolio Intro, every
+  sentence of every
   project's italic line, every skills line, every course and every
   certificate must appear on the page whole, in the master's word order;
   and every link that ends a project's italic line must be on the page as
@@ -78,8 +79,10 @@ INTERFACE = sorted([
     "Work history, education and certifications", "Public repositories and project code",
     "Back to top", "Pause the moving strip", "Pause", "Play", "Download CV (PDF)",
 ], key=len, reverse=True)
-# Zero-padded section and item numbers, decoration beside the real name.
-ORDINAL_RE = re.compile(r"\b0[1-9]\b")
+# Section and item numbers, decoration beside the real name, dropped by
+# their markup. A pattern for them would also drop a figure: until
+# 2026-10-11 it matched 01 to 09, and the tenth skills group's "10" failed.
+ORDINAL_CLASSES = {"sec-n", "mnav-n", "mnav-num", "depth-n", "skill-n"}
 YEAR_RE = re.compile(r"^20\d\d$")
 
 BLOCK_TAGS = {"p", "li", "h1", "h2", "h3", "h4", "h5", "h6", "div", "section", "article",
@@ -150,6 +153,7 @@ class Blocks(HTMLParser):
         self.hrefs: list[str] = []
         self._pieces: list[str] = [""]
         self._skip = 0
+        self._ordinal = False
 
     def _flush(self) -> None:
         text = re.sub(r"\s+", " ", "".join(self._pieces)).strip()
@@ -165,6 +169,8 @@ class Blocks(HTMLParser):
         attrs = dict(attrs)
         if tag in ("script", "style"):
             self._skip += 1
+        if tag == "span" and ORDINAL_CLASSES & set((attrs.get("class") or "").split()):
+            self._ordinal = True
         if tag in BLOCK_TAGS:
             self._flush()
         elif tag == "br":
@@ -181,12 +187,16 @@ class Blocks(HTMLParser):
     def handle_endtag(self, tag):
         if tag in ("script", "style"):
             self._skip -= 1
+        if tag == "span":
+            self._ordinal = False
         if tag in BLOCK_TAGS:
             self._flush()
         else:
             self._pieces.append("")
 
     def handle_data(self, data):
+        if self._ordinal and re.fullmatch(r"\d{2}", data.strip()):
+            return
         if not self._skip:
             self._pieces[-1] += data
 
@@ -194,7 +204,7 @@ class Blocks(HTMLParser):
 def strip_interface(text: str) -> str:
     for phrase in INTERFACE:
         text = re.sub(r"(?<![\w'])" + re.escape(phrase) + r"(?![\w'])", " ", text, flags=re.I)
-    return ORDINAL_RE.sub(" ", text)
+    return text
 
 
 def is_cut(text: str, paragraphs: list[list[str]]) -> bool:
@@ -229,22 +239,17 @@ def main(argv: list[str] | None = None) -> int:
 
     paragraphs, entries = read_master(args.master)
     entry_paragraphs = [[words(e["heading"])] + [words(l) for l in e["lines"]] for e in entries]
-    master_words = [w for p in paragraphs for w in p]
-    site = json.loads(SITE.read_text(encoding="utf-8"))
-    approved = site.get("approved") or {}
-    approved_words = words(approved.get("text", ""))
 
     page = Blocks()
     page.feed(args.page.read_text(encoding="utf-8"))
     page.close()
 
-    failures, counts, approved_hits = [], {"cut": 0, "joined": 0, "interface": 0, "approved": 0}, 0
+    failures, counts = [], {"cut": 0, "joined": 0, "interface": 0}
     for text, pieces in page.blocks:
         block = words(text)
         if not block:
             continue
         stripped = strip_interface(text)
-        remainder = words(stripped)
         if is_cut(text, paragraphs):
             how = "cut"
         elif interface_only(text):
@@ -253,11 +258,6 @@ def main(argv: list[str] | None = None) -> int:
             how = "cut"
         elif joined(pieces, entry_paragraphs):
             how = "joined"
-        elif (approved_words and is_subsequence(remainder, approved_words)
-              and all(w in master_words for w in remainder if NUMBER_RE.match(w))
-              and numbers_hold(stripped, master_words)):
-            how = "approved"
-            approved_hits += 1
         else:
             how = None
         if how is None:
@@ -269,10 +269,6 @@ def main(argv: list[str] | None = None) -> int:
     print(f"  cut of one master paragraph:  {counts['cut']}")
     print(f"  pieces cut from one entry:    {counts['joined']}")
     print(f"  interface text only:          {counts['interface']}")
-    print(f"  operator-approved, not in the master: {counts['approved']}")
-    if approved_hits:
-        print(f"    approved by {approved.get('approved_by')}:")
-        print(f"    \"{approved.get('text')}\"")
     for text in failures:
         print(f"  NOT TRACED: {text[:160]}")
 
@@ -293,6 +289,12 @@ def main(argv: list[str] | None = None) -> int:
         raw_lines = e["raw"][1:]
         if e["heading"] == "PROFESSIONAL SUMMARY":
             add("summary", e["lines"][0])
+        elif e["heading"] == "PORTFOLIO INTRO":
+            # The italic line above the paragraph is the master's note on
+            # where the paragraph is used, not page text.
+            for raw, line in zip(raw_lines, e["lines"]):
+                if not raw.startswith("*"):
+                    add("portfolio intro", line)
         elif e["heading"] == "TECHNICAL SKILLS":
             for line in e["lines"]:
                 add("skills lines", line)

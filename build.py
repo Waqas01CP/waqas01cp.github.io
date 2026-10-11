@@ -546,10 +546,8 @@ def load_site(path: Path, items: list[dict]) -> dict:
             problems.append(f"site.json: {key} must be {{url, text}}")
         elif problem := url_problem(value["url"]):
             problems.append(f"site.json: {key}: {problem}")
-    approved = site.get("approved")
-    if approved is not None and not (isinstance(approved, dict) and _text(approved.get("text"))
-                                     and _text(approved.get("approved_by"))):
-        problems.append("site.json: approved must be {text, approved_by}")
+    if "intro" in site and not _text(site["intro"]):
+        problems.append("site.json: intro must be non-empty text")
     skills = site.get("skills")
     if not (isinstance(skills, list) and skills and all(
             isinstance(g, dict) and set(g) == {"label", "items"} and _text(g["label"])

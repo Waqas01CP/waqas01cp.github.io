@@ -1,5 +1,5 @@
 {
-  "source": "master-cv:header, professional-summary, technical-skills",
+  "source": "master-cv:header, professional-summary, portfolio-intro, technical-skills",
   "name": "Waqas Sharif",
   "headline": [
     "AI Engineer",
@@ -8,11 +8,8 @@
   ],
   "location": "Karachi, Pakistan (UTC+5)",
   "availability": "Open to remote, freelance and contract work",
-  "summary": "Software Engineering graduate (BESE, KIET) specialising in LLM reliability and behavioural testing, with production agentic-system experience. Primary architect and director of Rahzaan, a deployed AI career guidance platform maintained through an evaluation harness of 19 behavioural probes, 60 per-turn traces and 592 automated tests over a 24-node LangGraph pipeline at 3.7-second first-response latency. Independent research naming three reproducible LLM failure modes, with controlled sampling experiments and adversarial red-teaming across multiple deployed projects.",
-  "approved": {
-    "text": "I architect the systems I build: I define the problem, set the design and the decisions, and hold the implementation to them through a systematic framework of written specifications, automated tests and independent audits. Rahzaan ran through 334 session records and 53 audit documents; the job aggregator carries 55 decision records, 754 tests and 410 recorded mutations that deliberately break the code to prove the tests notice.",
-    "approved_by": "the operator on 2026-10-05, as the architecture chat's content pack for Brief 3 records; not in the master CV"
-  },
+  "summary": "Software Engineering graduate (BESE, KIET) specialising in LLM reliability and behavioural testing, with production agentic-system experience. Builds AI-native: sets the architecture, the engineering trade-offs and the standards, and directs AI seats that implement and audit to them. Primary architect and director of Rahzaan, a deployed AI career guidance platform maintained through an evaluation harness of 19 behavioural probes, 60 per-turn traces and 592 automated tests over a 24-node LangGraph pipeline at 3.7-second first-response latency. Independent research naming three reproducible LLM failure modes, with controlled sampling experiments and adversarial red-teaming across multiple deployed projects.",
+  "intro": "I architect the systems I build: I define the problem, set the design and the decisions, and hold the implementation to them through a systematic framework of written specifications, automated tests and independent audits. Rahzaan ran through 334 session records and 53 audit documents; the job aggregator carries 55 decision records, 754 tests and 410 recorded mutations that deliberately break the code to prove the tests notice.",
   "email": "ma.sharif.waqas@gmail.com",
   "linkedin": {
     "url": "https://linkedin.com/in/ma-waqas-sharif",
@@ -75,7 +72,21 @@
         "Google ADK",
         "Gemini API",
         "OpenAI API",
-        "Anthropic API"
+        "Anthropic API",
+        "Guardrails",
+        "Structured Outputs"
+      ]
+    },
+    {
+      "label": "AI-Native Development",
+      "items": [
+        "Claude Code",
+        "Claude Design",
+        "Agent Skills",
+        "Model Context Protocol (MCP)",
+        "Antigravity",
+        "Google AI Studio",
+        "Spec-Driven Development"
       ]
     },
     {
@@ -125,15 +136,20 @@
       ]
     },
     {
+      "label": "Software Engineering Practices",
+      "items": [
+        "Architecture Decision Records (ADRs)",
+        "Mutation Testing",
+        "Fitness Functions",
+        "Independent Code Audits"
+      ]
+    },
+    {
       "label": "Tools",
       "items": [
         "Git / GitHub",
         "GitHub Actions",
-        "Claude Code",
-        "Agent Skills",
-        "Antigravity",
         "LangSmith",
-        "Google AI Studio",
         "Google Apps Script"
       ]
     },

@@ -105,11 +105,10 @@ python -m pip list --not-required
 
 **Content trace.** Added by Brief 3. Reads the built `index.html` and traces
 every block of text on it, the title, description, alt text and labels
-included, to the master CV, or to the interface text and the
-operator-approved paragraph the tool names; then checks that every master
-bullet, the summary, each sentence of each italic line, each skills line,
-course and certificate appears on the page whole, in the master's word
-order. The master is given by its path each time and never stored, because
+included, to the master CV, or to the interface text the tool names;
+then checks that every master bullet, the summary, the Portfolio Intro,
+each sentence of each italic line, each skills line, course and
+certificate appears on the page whole, in the master's word order. The master is given by its path each time and never stored, because
 this repository is public. Run it after any content change, before
 committing it.
 
