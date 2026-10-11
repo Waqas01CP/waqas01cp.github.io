@@ -7,8 +7,8 @@ status: current
 # Capabilities
 
 **What this file is.** Everything this repository is and does, in one
-place, for a reader who will open nothing else. Its readers, as the
-operator confirmed on 2026-10-10:
+place, for a reader who will open nothing else. Its readers, as Waqas
+Sharif confirmed on 2026-10-10:
 
 - **any chat** that needs to know the project, the resume-tailoring chat
   drafting his CV among them, without exploring the repository;
@@ -16,11 +16,11 @@ operator confirmed on 2026-10-10:
   to run it and this file for the nuance;
 - **an outside reader of this public repository**, such as an interviewer
   who follows the site from his CV, and wants the evidence without reading
-  the code. Added by the implementing seat on 2026-10-10, under the
-  operator's word that readers relevant to this repository may be added.
+  the code. Added by the implementing seat on 2026-10-10, under his word
+  that readers relevant to this repository may be added.
 
-**Current as of 2026-10-10 UTC**, against `main` at the commit that added
-this file. Written by the implementing seat, in its lane: what the site
+**Current as of 2026-10-11 UTC**, the seat's lane re-measured at the close
+of Brief 6. Written by the implementing seat, in its lane: what the site
 does and how, the stack, the qualities, the numbers, the limits, and the
 timeline's rows for what was built. **The architecture chat's sections**
 (the problem, where it is going, Waqas Sharif's role, the excluded list
@@ -38,13 +38,14 @@ with the code, the data or a record, it is stale.
 
 A one-page portfolio site, live at `https://waqas01cp.github.io/`, that
 carries the evidence a one-page CV cannot hold. Every claim on it traces
-to the operator's master CV, and a tool checks that before any content
+to Waqas Sharif's master CV, and a tool checks that before any content
 change. It is built by a small Python generator from two content files
 into one HTML page, with every word in the first response, and served free
 by GitHub Pages. It sets no cookies, stores nothing and loads nothing from
 other sites. On the live site, measured 2026-10-07 in Lighthouse's default
 mobile run, the largest paint came at a median of 1.7 seconds and layout
 did not shift; a real screen reader (NVDA) read it correctly the same day.
+A one-page CV, made from the same master, downloads from the page.
 
 ## The problem it solves
 
@@ -89,7 +90,7 @@ what waits is listed here with its source, as of 2026-10-11:
 
 ## What it does, end to end
 
-1. **The source.** The operator's master CV, kept privately and never
+1. **The source.** His master CV, kept privately and never
    committed. Content reaches this repository through him or a brief
    (`CLAUDE.md`).
 2. **The content files.** `src/content/items.json` holds 14 items (6
@@ -103,13 +104,16 @@ what waits is listed here with its source, as of 2026-10-11:
    items ADR-0010 names), projects out of tier order (ADR-0008), or
    shortened text that is not a cut of its source. It resolves "present"
    to the month the page is as of and records it in the page. It renders
-   12 Jinja2 templates into `index.html` and copies `static/`. On any
-   content failure it writes nothing and exits 1. The output is committed.
+   12 Jinja2 templates into `index.html` and copies `static/`. When
+   `cv/Waqas_Sharif_CV.pdf` exists, the Intro and the footer link to it.
+   On any content failure it writes nothing and exits 1. The output is
+   committed.
 4. **The content trace.** `tools/check_content.py`, run before any content
    change is committed. Every block of text on the built page, its title,
    description, alt text and labels included, must be a cut of the master
    or approved interface text; and every master bullet, sentence, skills
-   line, course, certificate and project link must be on the page.
+   line, course, certificate and project link, the summary and the
+   Portfolio Intro must be on the page.
 5. **The gates.** Five, in `tools/gates.py`, run by git hooks (ADR-0007):
    nothing private committed; the committed page equal to a fresh build;
    the map current; no hook skipping a missing tool; and no push of
@@ -138,7 +142,7 @@ what waits is listed here with its source, as of 2026-10-11:
   tracking, no third-party requests; fonts and images are served from the
   site (ADR-0004 lines 9 to 11).
 - **The master CV never enters the repository.** Gate A blocks any
-  committed file holding a path into the operator's private material.
+  committed file holding a path into his private material.
 - **The repository is published to be read, not reused.** All rights
   reserved, beyond what GitHub's terms give every user of a public
   repository, to view it and fork it on GitHub (`LICENSE`, 2026-10-10).
@@ -152,7 +156,7 @@ what waits is listed here with its source, as of 2026-10-11:
 | Hosting | GitHub Pages on the free plan, from a public repository |
 | Repository checks | Git hooks running `tools/gates.py`; `tools/generate_map.py`; `tools/check_content.py` |
 | Browser checks, outside the repository | Headless Chrome 154 and Edge 154 through puppeteer-core 25.12.0, axe-core 4.14.0, Lighthouse 13.5.0; not dependencies of the repository (`docs/reference/standing-checks.md`) |
-| Design | A prototype built in Claude Design and reviewed by the operator on 2026-10-05 (ADR-0011) |
+| Design | A prototype built in Claude Design and reviewed by Waqas Sharif on 2026-10-05 (ADR-0011) |
 | AI tooling | Claude Code as the implementing seat; a Claude chat as the architecture seat |
 
 ## Engineering qualities, and what enforces each
@@ -174,16 +178,17 @@ what waits is listed here with its source, as of 2026-10-11:
 
 | What | Value | Date | Source |
 |---|---|---|---|
-| Hand-written source | `build.py` 770 lines; 3 tools, 784 lines; 12 templates, 501 lines; 1 stylesheet, 1,554 lines; 2 scripts, 643 lines; 2 content files, 518 lines | 2026-10-10 | `git ls-files`, `wc -l` |
-| Built page | `index.html` 75,222 bytes, 14,341 gzipped; stylesheet 51,253 and 11,888; `site.js` 21,323 and 6,823; `knot.js` 5,638 and 2,215; fonts 78,396 bytes | 2026-10-10 | `wc -c`; gzip level 6 |
+| Hand-written source | `build.py` 768 lines; 3 tools, 815 lines; 12 templates, 501 lines; 1 stylesheet, 1,554 lines; 2 scripts, 643 lines; 2 content files, 534 lines | 2026-10-11 | `git ls-files`, `wc -l` |
+| Built page | `index.html` 76,378 bytes, 14,649 gzipped; stylesheet 51,253 and 11,888; `site.js` 21,323 and 6,823; `knot.js` 5,638 and 2,215; fonts 78,396 bytes; the CV PDF 58,402 bytes, one A4 page | 2026-10-11 | `wc -c`; Python's gzip, level 6 |
 | Live performance | Lighthouse 13.5.0, default mobile, two medians of five: LCP 1,721 and 1,739 ms, CLS 0, TBT 138 and 95 ms; 113,387 and 115,692 bytes transferred. ADR-0009 limits: 2,500 ms, 0.1, 200 ms | 2026-10-07 | `logs/2026-10-07-tree-parity.md`, round 2 |
 | Accessibility, automated | axe-core 4.14.0: 0 violations in 12 cells (360 and 1366 px; light, device dark, switched dark; panels closed and open), in Chrome and in Edge | 2026-10-07 | Same log, rounds 1 to 2 |
 | Accessibility at load | The full-mode accessibility tree matches the page without layout skipping in 32 of 32 loads locally and 16 of 16 per browser on the live site | 2026-10-07 | Same log |
 | Screen reader | NVDA 2026.2 in Chrome: each "In depth" control named and its state spoken, reading into the panel, focus returned; no words run together | 2026-10-07 | Same log, rounds 3 and 5; `docs/deferred/screen-reader-speech-test.md` |
 | Keyboard | 60 of 60 checks at 360 and 1366 px | 2026-10-07 | Same log |
-| Content | 14 items; 394 blocks of text traced to the master, 0 not; 7 of 7 project links on the page | 2026-10-10 | `tools/check_content.py` |
-| Decision records | 11, 1 superseded; 34 dated Changes rows | 2026-10-10 | `docs/decisions/` |
-| History | 58 commits, the first at 2026-09-25T21:42Z, to `c186714`; 5 session logs, 15 rows in their index | 2026-10-10 | `git log`, `logs/` |
+| Content | 14 items and 10 skills groups; 376 blocks of text traced to the master, 0 not; every master bullet, italic sentence, skills line, course and certificate, the summary and the Portfolio Intro on the page; 7 of 7 project links | 2026-10-11 | `tools/check_content.py` |
+| Checks on Brief 6's page, locally | Tree at load in full mode matching the page without layout skipping in 32 of 32 loads, default mode adding no node in 32; keyboard 60 of 60; axe-core 0 violations in 12 cells; anchors 132 of 132; no joined words at 360 and 1366 px in Chrome 154 and Edge 155 | 2026-10-11 | `logs/2026-10-11-review-commands-cv.md` |
+| Decision records | 12, 1 superseded; 39 dated Changes rows | 2026-10-11 | `docs/decisions/` |
+| History | 74 commits, the first at 2026-09-25T21:42Z, to `ff73057`; 6 session logs, 20 rows in their index | 2026-10-11 | `git log`, `logs/` |
 | Cost | None | 2026-10-10 | Free plans only |
 
 ## How it was built
@@ -215,8 +220,9 @@ architecture chat's.
 | 2026-10-06 | Layout skipping measured both ways and kept for speed |
 | 2026-10-06 | Decided: a fail on any measuring machine is a fail; layout skipping kept on the condition that a screen reader at load meets the same page (ADR-0009 Changes) |
 | 2026-10-07 | The styled site live; everything hidden in the sections also hidden from screen readers, so the tree at load matches; hidden spaces so a screen reader does not run words together; dates shown on one-month timeline entries; the NVDA speech test passed |
-| 2026-10-10 | The content trace reads the master's project links and checks them as links; every documented file's frontmatter parses as YAML; a licence notice, all rights reserved, at the operator's instruction |
+| 2026-10-10 | The content trace reads the master's project links and checks them as links; every documented file's frontmatter parses as YAML; a licence notice, all rights reserved, at his instruction |
 | 2026-10-10 | Decided: this repository read, not reused; reuse through a separate repository, `portfolio-gallery`, planned (ADR-0012, recorded 2026-10-11) |
+| 2026-10-11 | The commands moved to their own reference file; the master's changes on the page (a summary sentence, ten skills groups, the job aggregator's role and method); the trace requires the Portfolio Intro and reads section numbers by markup; the CV PDF checked and added, with its download link |
 
 ## Waqas Sharif's role
 
@@ -299,7 +305,7 @@ dated.
 - Every word in the first response, readable without scripts, with no
   cookies, tracking or third-party requests.
 - Built by a small Python generator with one templating library and no
-  framework; 11 decision records and 5 repository gates (2026-10-10).
+  framework; 12 decision records and 5 repository gates (2026-10-11).
 - Verified with a real screen reader: NVDA found words read as one, such as
   "Dec 20255-Day"; fixed with hidden spaces and confirmed by ear the same
   day (2026-10-07).
