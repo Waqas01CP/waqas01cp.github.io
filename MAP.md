@@ -65,6 +65,7 @@ frontmatter. Decision records have no `type`; their `topic` is shown.
 
 | File | Type | Status | Description |
 |---|---|---|---|
+| `docs/reference/commands.md` | reference | current | Every command that exists in this repository, each with what it exits and why. The environment, the gates, the architecture chat's commits, the build, the monthly refresh, the map, the one-dependency check and the content trace. Read before running anything. |
 | `docs/reference/completed.md` | reference | current | Where DONE rows from STATE.md move, so the state file holds only what is unsettled. Nothing is ever deleted from here. |
 | `docs/reference/standing-checks.md` | reference | current | The checks every change to the built page runs before it is committed, each with its pass line and the case built to defeat it. Includes the accessibility tree at load that ADR-0009 makes a condition of layout skipping, words a screen reader hears run together, and a pixel check for changes meant to be invisible. |
 

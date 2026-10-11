@@ -85,7 +85,7 @@ what waits is listed here with its source, as of 2026-10-11:
 - **Whether to list the site in emmabostian/developer-portfolios.** Open
   (research 0004, decision 5).
 - **Monthly refresh.** While an item ends "present", the page is rebuilt
-  in each new month (`CLAUDE.md`, Commands).
+  in each new month (`docs/reference/commands.md`).
 
 ## What it does, end to end
 
@@ -254,7 +254,7 @@ account.
     2026-10-10).
 - **Decides on every brief and report.** A brief is executed and a change
   goes live only on his word. He makes every commit of the architecture
-  chat's work and every push of the site (`CLAUDE.md`, Commands). In his
+  chat's work and every push of the site (`docs/reference/commands.md`). In his
   words, 2026-10-10: "nothing bypasses me".
 - **The code is the implementing seat's**, written to his briefs and
   records (commit history).
@@ -317,7 +317,7 @@ dated.
 
 | Question | File |
 |---|---|
-| How to build it | `CLAUDE.md`, Commands |
+| How to build it | `docs/reference/commands.md` |
 | What exists now, and what is blocked | `STATE.md` |
 | What was finished, with proof | `docs/reference/completed.md` |
 | Why it is shaped as it is | `docs/decisions/`, indexed in its README |

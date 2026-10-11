@@ -682,7 +682,7 @@ def check_environment() -> None:
     committed output with no visible cause (Brief 1, task 2)."""
     if sys.prefix == sys.base_prefix:
         raise BuildError("not running inside a virtual environment. "
-                         "Activate .venv first; see CLAUDE.md, Commands")
+                         "Activate .venv first; see docs/reference/commands.md")
     for line in REQUIREMENTS.read_text(encoding="utf-8").splitlines():
         line = line.split("#", 1)[0].strip()
         if not line:

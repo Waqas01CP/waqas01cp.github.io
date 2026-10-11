@@ -14,7 +14,7 @@ py="$root/.venv/Scripts/python.exe"
 [ -f "$py" ] || py="$root/.venv/bin/python"
 if [ ! -f "$py" ]; then
   echo "PUSH REFUSED (gate D): missing tool: the project venv interpreter in .venv/." >&2
-  echo "  Create the venv as CLAUDE.md, Commands, describes." >&2
+  echo "  Create the venv as docs/reference/commands.md describes." >&2
   exit 1
 fi
 if [ ! -f "$root/tools/gates.py" ]; then

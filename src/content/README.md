@@ -174,4 +174,4 @@ staged tree agrees with the committed output.
 3. Put it where it belongs: tier order in Projects, newest first elsewhere.
 4. Run `python build.py` with the venv active and read what it reports.
 5. Run `python tools/check_content.py --master <path to the master CV>` and
-   read what it reports. See CLAUDE.md, Commands.
+   read what it reports. See `docs/reference/commands.md`.

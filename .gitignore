@@ -13,7 +13,7 @@ __pycache__/
 *.pyc
 
 # The architecture chat's pending commit message. The implementing seat
-# commits with it and deletes it. CLAUDE.md, Commands.
+# commits with it and deletes it. docs/reference/commands.md.
 .commitmsg
 
 # The operator's local instructions for replacing the CV PDF. Never

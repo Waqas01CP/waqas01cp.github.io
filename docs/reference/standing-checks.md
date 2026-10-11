@@ -20,7 +20,7 @@ unproven, not as passed.
 ## Where the harnesses live
 
 Only the build, the gates, the map and the content trace are commands in
-this repository (CLAUDE.md, Commands). The browser checks drive Chrome
+this repository (`docs/reference/commands.md`). The browser checks drive Chrome
 through puppeteer-core, Lighthouse and axe-core, which are not dependencies
 of this repository and cannot become one without a record (scope floor
 line 14, ADR-0006). Their scripts live in the session's scratch space and

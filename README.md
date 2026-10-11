@@ -56,7 +56,7 @@ third-party CDN.
 | The evidence behind the decisions | `docs/research/` |
 | What was deliberately not built, and what would reopen it | `docs/deferred/` |
 | What the content schema is and how to add an item | `src/content/README.md` |
-| How the page is checked against the master CV | `CLAUDE.md`, Commands, the content trace |
+| How the page is checked against the master CV | `docs/reference/commands.md`, the content trace |
 | The checks every change to the page runs | `docs/reference/standing-checks.md` |
 | What prior implementing sessions did | `logs/README.md` |
 | Why briefs are not committed | `briefs/README.md` |
@@ -73,7 +73,7 @@ and every number carries its provenance.
 
 With the project venv active, `python build.py` writes `index.html` and
 `static/` at the root. Setting up the venv, and the other commands, are in
-`CLAUDE.md` under Commands.
+`docs/reference/commands.md`.
 
 ## Licence
 
