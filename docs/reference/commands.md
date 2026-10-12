@@ -94,7 +94,9 @@ python tools/generate_map.py --check    compare the staged MAP.md with the stage
 ```
 
 Exit 0 means current, 1 means a file needs fixing (no frontmatter or no
-description), 2 means stale.
+description, or, since 2026-10-12, an unquoted header value GitHub would
+not read as written, named with its file and line; quote the value), 2
+means stale.
 
 **One-dependency check** (ADR-0006). Expected: `Jinja2` and `pip`, nothing
 else. MarkupSafe is Jinja2's own requirement and so is not listed.

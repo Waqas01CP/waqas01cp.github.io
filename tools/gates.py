@@ -18,7 +18,11 @@ Each gate, what it blocks, and the case built to defeat it:
      for byte. Defeated by a one-character hand edit to index.html, and by
      changing items.json without rebuilding.
   C  Map, pre-commit. Runs tools/generate_map.py --check against the staged
-     files. Defeated by adding a Markdown file without regenerating MAP.md.
+     files. Refuses a stale map, and since 2026-10-12 a staged Markdown
+     header GitHub would refuse to read (the generator's docstring lists
+     the patterns; ADR-0007 Changes). Defeated by adding a Markdown file
+     without regenerating MAP.md, and by a description holding an
+     unquoted ": ".
   D  Missing tool, every gate. A missing git, build.py or map generator is
      a refusal naming what is missing, never a skip. The hooks apply the
      same rule to the venv interpreter and to this file. Defeated by

@@ -9,7 +9,8 @@ Exit codes, so a caller can tell the causes apart:
 
   0  the map is current, or was written
   1  a structural error: a file with no frontmatter or no description, a
-     line the parser cannot read, or git failing. Fix the file.
+     line the parser cannot read, a value YAML would not read as written
+     (below), or git failing. Fix the file.
   2  the map is stale or missing. Regenerate it and stage it.
 
 A hook that read every non-zero exit as "stale" would announce a cause it
@@ -28,6 +29,23 @@ line rather than with a YAML library: `key: value`, blank lines and `#`
 comment lines. Decision records carry commented lines such as
 `# consulted:`, and those are skipped. Anything else fails loudly rather
 than being guessed at.
+
+Because this reader is not YAML, it once accepted four headers that GitHub
+then displayed as "Error in user YAML" (2026-10-10; ADR-0007 Changes,
+2026-10-12). So every unquoted value is also checked against the YAML 1.2.2
+rules for a plain scalar, and refused, naming the file, the line and the
+reason, when it:
+
+  - begins with an indicator character (production c-indicator), except
+    "-", "?" or ":" followed by a non-space character (ns-plain-first);
+  - holds ":" followed by a space, a tab or the end of the value, which
+    YAML reads as a mapping (ns-plain-char; the spec's ": " combination);
+  - holds "#" after a space or a tab, which YAML reads as the start of a
+    comment and so drops the rest of the value (the spec's " #").
+
+These are known patterns, not every YAML rule. A quoted value is not
+checked: a badly quoted one passes here and fails on GitHub. Brief 7's
+log records each case this check was compared on with a YAML parser.
 """
 
 from __future__ import annotations
@@ -42,6 +60,9 @@ MAP = "MAP.md"
 EXCLUDED = {MAP, "docs/design/DESIGN.md"}
 FRONTMATTER_RE = re.compile(r"\A---\r?\n(.*?)\r?\n---\r?\n", re.DOTALL)
 KEY_RE = re.compile(r"^([A-Za-z][\w-]*):\s*(.*)$")
+# YAML 1.2.2, production c-indicator: the characters that may not begin a
+# plain (unquoted) scalar, save the three ns-plain-first lets through.
+YAML_INDICATORS = set("-?:,[]{}#&*!|>'\"%@`")
 
 HEADER = """\
 ---
@@ -105,10 +126,32 @@ def frontmatter(path: str, text: str) -> dict[str, str]:
         parsed = KEY_RE.match(stripped)
         if not parsed:
             raise MapError(f"{path}, line {number}: cannot read frontmatter line {line!r}")
+        problem = plain_problem(parsed[2].strip())
+        if problem:
+            raise MapError(f"{path}, line {number}: GitHub would not read the "
+                           f"{parsed[1]} value as written: {problem}. Put the "
+                           f"value in double quotes")
         fields[parsed[1]] = parsed[2].strip().strip("'\"")
     if not fields.get("description"):
         raise MapError(f"{path}: frontmatter has no description")
     return fields
+
+
+def plain_problem(value: str) -> str | None:
+    """Why YAML would not read this unquoted value as written, or None.
+    Quoted values are not checked (module docstring)."""
+    if not value or value[0] in "'\"":
+        return None
+    first = value[0]
+    if first in YAML_INDICATORS and not (first in "-?:" and len(value) > 1
+                                         and not value[1].isspace()):
+        return (f"it begins with {first!r}, which YAML reserves at the start of "
+                f"an unquoted value")
+    if re.search(r":(\s|$)", value):
+        return "it holds a colon followed by a space or ending the value, which YAML reads as a mapping"
+    if re.search(r"\s#", value):
+        return "it holds \" #\", which YAML reads as a comment, dropping the rest"
+    return None
 
 
 def cell(value: str) -> str:
