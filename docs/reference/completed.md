@@ -28,6 +28,10 @@ Proof is a commit, a decision record or a log filename. Never a file path.
 | Content trace: the master's project links read and checked as links, after the master moved Rahzaan's links onto its project line | [VERIFIED] | 2026-10-10 | logs/2026-10-07-tree-parity.md, round 8. PASS against the current master; three defeat cases each exit 1 |
 | Every documented file's frontmatter readable as YAML: four descriptions holding a colon and a space quoted | [VERIFIED] | 2026-10-10 | logs/2026-10-07-tree-parity.md, round 9. PyYAML: 4 of 36 rejected before, 0 after |
 | A licence notice: all rights reserved, at the operator's instruction; README.md brought current | [VERIFIED] | 2026-10-10 | Same log, round 9 |
+| The CV PDF live, with its download link in the Intro and the footer; every live file equal to the build | [VERIFIED] | 2026-10-12 | ff73057, pushed by the operator; logs/2026-10-12-fonts-gate-c-survey.md. 15 live files by SHA-256 |
+| Gate C refuses a Markdown header GitHub would refuse to read | [VERIFIED] | 2026-10-12 | ae42aef; ADR-0007 Changes, 2026-10-12; same log. Agrees with PyYAML on 37 of 37 covered cases; refuses the four October headers |
+| The design-system draft's IBM Plex Mono and Source Serif 4 subsets removed; the draft made consistent | [VERIFIED] | 2026-10-12 | d7dc216; ADR-0012 Changes, 2026-10-12; same log |
+| Research 0005: listed portfolios, and what reusable templates offer | [VERIFIED] | 2026-10-12 | Same log. Evidence only; 200 sampled, one load each |
 | CAPABILITIES.md, per the Working Method (section 8.9): both lanes written | [VERIFIED] | 2026-10-11 | 502b6a5, 9a3ac31, 6e6b8cd; logs/2026-10-11-review-commands-cv.md. The chat's lane checked against its sources and accepted; the seat's lane re-measured |
 | The architecture chat's records after Report 5: ADR-0009 and ADR-0010 Changes rows, ADR-0011's two restyle rules, ADR-0012 | [VERIFIED] | 2026-10-11 | e79f227, 6ea3325; reviewed in logs/2026-10-11-review-commands-cv.md |
 | CLAUDE.md sections from Working Method 1.2 and the briefs convention | [VERIFIED] | 2026-10-11 | 6ea3325, the chat's, approved by the operator 2026-10-10 |

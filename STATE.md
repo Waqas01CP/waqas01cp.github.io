@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit ff73057, the last commit before this file's
-update, 2026-10-11T09:03Z, by the Brief 6 implementing session.** This is
+**Verified against commit 2cf9df2, the last commit before this file's
+update, 2026-10-12T16:41Z, by the Brief 7 implementing session.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -43,6 +43,11 @@ the clearing in the task's row.
 Update the verified-against line whenever you touch this file.
 
 ## Headline
+
+**Brief 7, 2026-10-12: gate C refuses a Markdown header GitHub would
+refuse to read; the design-system draft's reserved-name fonts removed;
+research 0005 written. Committed, for the operator's push. The page did
+not change.** Brief 6's work is live, every file checked. Before that:
 
 **Brief 6, 2026-10-11: the CV PDF added, with its download link in the Intro
 and the footer, and the master's changes of 10 and 11 Oct on the page;
@@ -95,17 +100,15 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 
 | Task | Status | Evidence | Date | Proof |
 |---|---|---|---|---|
-| The CV PDF live: the download link in the Intro and the footer serving `/cv/Waqas_Sharif_CV.pdf` | PENDING | [VERIFIED] locally | 2026-10-11 | logs/2026-10-11-review-commands-cv.md. Committed with the rebuilt page; live after the operator's push, then every live file checked against the build |
-| Research 0005: a survey of listed portfolios, evidence only (Brief 6, Addendum 2) | PENDING | | 2026-10-11 | Runs after the CV PDF is live |
+| No open rows. Finished ones are in `docs/reference/completed.md`. | | | | |
 
 ## Blocked, and on whom
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
 | Whether this site goes on itself as a project (research 0004, decision 1); reuse is settled by ADR-0012 | The operator, for the master CV; then the chat, for placement | Operator and chat | 2026-10-07 |
-| The push of Brief 6's commits | The operator | Operator | 2026-10-11 |
-| Report 6: IBM Plex Mono's licence text lacks the Reserved Font Name; ADR-0012's pre-publish search conflicts with an MIT copyright line; two lines of the chat's CAPABILITIES.md lane stale once the PDF is live | The architecture chat | Chat | 2026-10-11 |
-| Gate C, or the map generator, refusing frontmatter YAML would reject (Report 5, 6.9) | The operator's approval; a Changes row in ADR-0007 | Operator and chat | 2026-10-10 |
+| The push of Brief 7's commits | The operator | Operator | 2026-10-12 |
+| Report 7: research 0005's findings, and its two patterns for the site, which need the master CV first | The architecture chat, then the operator | Chat | 2026-10-12 |
 | portfolio-gallery: built in its own folder by a fresh session from this seat's brief, then reviewed by this seat (ADR-0012's search for the master's text among it) before the operator publishes | That session, then this seat, then the operator | Operator | 2026-10-11 |
 
 ## Known unverified
@@ -136,6 +139,9 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
   that adds HTML bytes moves Lighthouse's simulated LCP in steps by size
   alone when served uncompressed (150 ms for 1.4 kB on 2026-10-07), and
   not when gzipped.
+- Gate C's header check covers known patterns only: a badly quoted value
+  passes it and fails on GitHub (ADR-0007 Changes, 2026-10-12; PyYAML
+  rejected three such cases the check passed, 2026-10-12).
 - The joins check's defeat, the page at 6812c4f, finds 59 joins at 360 px on
   2026-10-11 where `docs/reference/standing-checks.md` records 45 from
   2026-10-07; 58 at 1366 px both times. Not explained.
