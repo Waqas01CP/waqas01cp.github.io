@@ -77,7 +77,7 @@ what waits is listed here with its source, as of 2026-10-11:
   linked from the Intro and the footer (ADR-0008).
 - **A template repository, `portfolio-gallery`,** planned on 2026-10-10 for
   anyone who wants a site like this one; this repository stays read, not
-  reused (ADR-0012). Its licence is MIT, as the operator confirmed and
+  reused (ADR-0012). Its licence is MIT, as Waqas Sharif confirmed and
   ADR-0012's Changes record; its own records will carry the decision.
 - **Whether this site lists itself as a project.** It waits on the master
   CV first (scope floor line 1; research 0004, decision 1).
