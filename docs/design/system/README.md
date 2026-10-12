@@ -20,17 +20,29 @@ in the repository. Nothing here is wired into the build yet.
 | components.css | Styles for every component, written against the tokens only. Includes the metric-matched fallback faces. |
 | pipeline-graph.js | The 3D prototype. Raw WebGL, no library. |
 | specimen.html | Every component on one page with theme and prose-face switches. Open it from a local server, not as a file, so the fonts load. |
-| fonts/ | Latin-subset woff2 files from fontsource 5.3.0. |
-| licences/ | The SIL Open Font License for each family. |
+| fonts/ | Atkinson Hyperlegible Next, Latin-subset woff2 files from fontsource 5.3.0. |
+| licences/ | The SIL Open Font License for Atkinson Hyperlegible Next. |
 
 ## Not decided yet
 
-- **Prose face.** A, Source Serif 4, or B, Atkinson Hyperlegible Next. The
-  site ships one. Both pair with IBM Plex Mono 400.
+- **Prose face.** A, a serif, or B, Atkinson Hyperlegible Next. The site
+  ships one. Until 2026-10-12, A was Source Serif 4 and both paired with IBM
+  Plex Mono 400 (below).
 - **Whether the 3D graph stays.** Measurements below.
 - **The timeline below 720px.** Proposed: one-sided, chronological, not to
   scale. ADR-0003 left the breakpoint behaviour open.
 - **The LinkedIn mark.** Its official file is not in this folder yet.
+
+## Fonts removed, 2026-10-12
+
+IBM Plex Mono and Source Serif 4 were removed from `fonts/` and
+`licences/`, by the operator's choice over renaming them or shipping the
+makers' complete files (ADR-0012 Changes). Both families reserve a font
+name, "Plex" and "Source", and the OFL treats a subset as a Modified
+Version, which may not carry a reserved name. Earlier commits still hold
+the files. Direction A and the mono text now use the reader's own faces;
+the measurements below were taken with the removed fonts. This draft is
+history: the site's faces were settled by ADR-0011.
 
 ## Changes the templates will need
 
