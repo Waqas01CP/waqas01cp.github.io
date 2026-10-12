@@ -77,6 +77,7 @@ frontmatter. Decision records have no `type`; their `topic` is shown.
 | `docs/research/0002-tools-and-libraries.md` | research | current | Tools and libraries considered for building the site. Frameworks, motion, 3D, timeline rendering, compute for an assistant, and the Claude Design surface. Evidence for decisions, never a decision. |
 | `docs/research/0003-skill-display-and-writing.md` | research | current | Evidence on whether to show skill levels and in what form, and on whether writing belongs on the site. Two floor lines were waiting on this. Evidence for decisions, never a decision. |
 | `docs/research/0004-this-site-as-a-project-and-as-a-template.md` | research | current | Evidence on two questions the operator raised on 2026-10-07: whether this site belongs on itself as a project, and whether to open it for others to reuse, for credit. Licences, forks against templates, precedents with their numbers, what stars are worth. Evidence for decisions, never a decision. |
+| `docs/research/0005-listed-portfolios-and-reusable-templates.md` | research | current | A seeded survey of 200 developer portfolios from emmabostian/developer-portfolios, one load each, on four questions: what most do; which of this site's practices are rare, measured; ideas within the scope floor; and what already does what portfolio-gallery would. Evidence for decisions, never a decision. |
 
 ## logs
 
