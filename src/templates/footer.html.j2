@@ -7,4 +7,10 @@
 <p><a class="foot-link" href="{{ cv }}" download>Download CV (PDF)</a></p>
 {% endif %}
 <p><a class="foot-link" href="#intro">Back to top <span aria-hidden="true">&uarr;</span></a></p>
+{% if site.footer %}
+{# The master's Portfolio Footer, word for word, its repository address a
+   link (ADR-0008 Changes, 2026-10-15). Text and link are inline in one
+   paragraph, so a screen reader reads one run and needs no hidden space. #}
+<p class="foot-note">{{ site.footer.before }}<a href="{{ site.footer.link.url }}">{{ site.footer.link.text }}</a>{{ site.footer.after }}</p>
+{% endif %}
 </footer>

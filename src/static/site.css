@@ -1540,6 +1540,10 @@ html:has(:target) .page > .sec { content-visibility: visible; }
 .foot-name { font-size: 30px; line-height: 1; }
 .foot-loc { font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
 .foot-link { font-size: 14px; font-weight: 700; color: var(--ink); }
+/* The Portfolio Footer line: a row of its own under the name and links,
+   at reading width. The address may break anywhere on a narrow screen. */
+.foot-note { flex-basis: 100%; max-width: 72ch; font-size: 14px; line-height: 1.65; color: var(--muted); }
+.foot-note a { overflow-wrap: anywhere; }
 
 /* Reduced motion: nothing moves. site.js also stops the knot, the strip,
    the tilt and the scroll effects, and requests no animation frame. */

@@ -114,6 +114,7 @@ What each one is:
 | `linkedin`, `github` | `{url, text}` from the master's header. |
 | `summary` | The master's Professional Summary, whole. |
 | `intro` | The master's Portfolio Intro, whole. Rendered as the Intro's second paragraph. |
+| `footer` | `{text, link: {text, url}}`: the master's Portfolio Footer line, whole, rendered in the footer as one paragraph. `link.text` must occur exactly once in `text`, and is rendered as a link to `link.url` (ADR-0008 Changes, 2026-10-15). |
 | `highlights` | The figures on the opening screen. Each names an `item`, a source in `from`, and a `figure` with the `text` after it and optionally `before` it. **The words, in order, must be a cut of the source**, which is `site/summary` or `<item>/bullets/<n>`, counted from 1. |
 | `feature` | The figure at the head of Projects: a `label`, a `figure` and its `text`, `pairs` and a `note`, **each a cut of its source**. |
 | `skills` | The master's groups, ten since 2026-10-10, `{label, items}`, labels and items as written; the two Coursework groups keep that label. No levels (scope floor line 2). |

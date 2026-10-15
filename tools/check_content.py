@@ -26,8 +26,8 @@ Two checks, both reported in full:
   master; the master has carried it since 2026-10-10, as its Portfolio
   Intro, so the route is gone.
 
-  Coverage. Every master bullet, the summary, the Portfolio Intro, every
-  sentence of every
+  Coverage. Every master bullet, the summary, the Portfolio Intro and the
+  Portfolio Footer, every sentence of every
   project's italic line, every skills line, every course and every
   certificate must appear on the page whole, in the master's word order;
   and every link that ends a project's italic line must be on the page as
@@ -289,12 +289,17 @@ def main(argv: list[str] | None = None) -> int:
         raw_lines = e["raw"][1:]
         if e["heading"] == "PROFESSIONAL SUMMARY":
             add("summary", e["lines"][0])
-        elif e["heading"] == "PORTFOLIO INTRO":
-            # The italic line above the paragraph is the master's note on
-            # where the paragraph is used, not page text.
+        elif e["heading"] in ("PORTFOLIO INTRO", "PORTFOLIO FOOTER"):
+            # The italic line above each paragraph is the master's note on
+            # where the paragraph is used, not page text. An address in the
+            # footer line must also be a link to it (ADR-0008 Changes,
+            # 2026-10-15).
+            group = e["heading"].lower()
             for raw, line in zip(raw_lines, e["lines"]):
                 if not raw.startswith("*"):
-                    add("portfolio intro", line)
+                    add(group, line)
+                    for address in re.findall(r"\b(?:[a-z0-9-]+\.)+[a-z]{2,}/\S+", line, re.I):
+                        add(f"{group} links", address, "https://" + address in page.hrefs)
         elif e["heading"] == "TECHNICAL SKILLS":
             for line in e["lines"]:
                 add("skills lines", line)

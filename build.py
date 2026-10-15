@@ -548,6 +548,18 @@ def load_site(path: Path, items: list[dict]) -> dict:
             problems.append(f"site.json: {key}: {problem}")
     if "intro" in site and not _text(site["intro"]):
         problems.append("site.json: intro must be non-empty text")
+    foot = site.get("footer")
+    if foot is not None:
+        link = foot.get("link") if isinstance(foot, dict) else None
+        if not (isinstance(foot, dict) and _text(foot.get("text")) and isinstance(link, dict)
+                and _text(link.get("text")) and _text(link.get("url"))):
+            problems.append("site.json: footer must be {text, link: {text, url}}")
+        elif foot["text"].count(link["text"]) != 1:
+            # The link is cut out of the line by its text, so the text must
+            # occur exactly once, or the page would not carry the line whole.
+            problems.append("site.json: footer: the link's text must occur exactly once in the line")
+        elif problem := url_problem(link["url"]):
+            problems.append(f"site.json: footer: {problem}")
     skills = site.get("skills")
     if not (isinstance(skills, list) and skills and all(
             isinstance(g, dict) and set(g) == {"label", "items"} and _text(g["label"])
@@ -581,7 +593,11 @@ def load_site(path: Path, items: list[dict]) -> dict:
         parts = [feature["label"], f"{feature['figure']} {feature['text']}", feature["note"]]
         parts += [f"{p['figure']} {p['text']}" for p in feature["pairs"]]
         feature = {**feature, "name": cut_checked("feature", feature, parts)}
-    return {**site, "highlights": highlights, "feature": feature}
+    foot = site.get("footer")
+    if foot:
+        before, after = foot["text"].split(foot["link"]["text"])
+        foot = {**foot, "before": before, "after": after}
+    return {**site, "highlights": highlights, "feature": feature, "footer": foot}
 
 
 # Layout.
