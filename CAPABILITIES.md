@@ -19,8 +19,8 @@ Sharif confirmed on 2026-10-10:
   the code. Added by the implementing seat on 2026-10-10, under his word
   that readers relevant to this repository may be added.
 
-**Current as of 2026-10-12 UTC**, the seat's lane re-measured at the close
-of Brief 7. Written by the implementing seat, in its lane: what the site
+**Current as of 2026-10-15 UTC**, the seat's lane re-measured at the close
+of Brief 8. Written by the implementing seat, in its lane: what the site
 does and how, the stack, the qualities, the numbers, the limits, and the
 timeline's rows for what was built. **The architecture chat's sections**
 (the problem, where it is going, Waqas Sharif's role, the excluded list
@@ -107,14 +107,18 @@ what waits is listed here with its source, as of 2026-10-11:
    to the month the page is as of and records it in the page. It renders
    12 Jinja2 templates into `index.html` and copies `static/`. When
    `cv/Waqas_Sharif_CV.pdf` exists, the Intro and the footer link to it.
+   The footer carries his own one-paragraph account of how the site is
+   built, the master's Portfolio Footer word for word, its address a
+   link to this repository (ADR-0008 Changes, 2026-10-15).
    On any content failure it writes nothing and exits 1. The output is
    committed.
 4. **The content trace.** `tools/check_content.py`, run before any content
    change is committed. Every block of text on the built page, its title,
    description, alt text and labels included, must be a cut of the master
    or approved interface text; and every master bullet, sentence, skills
-   line, course, certificate and project link, the summary and the
-   Portfolio Intro must be on the page.
+   line, course, certificate and project link, the summary, the
+   Portfolio Intro and the Portfolio Footer must be on the page, the
+   footer's address as a link.
 5. **The gates.** Five, in `tools/gates.py`, run by git hooks (ADR-0007):
    nothing private committed; the committed page equal to a fresh build;
    the map current, and every Markdown header one GitHub can read; no hook
@@ -180,17 +184,17 @@ what waits is listed here with its source, as of 2026-10-11:
 
 | What | Value | Date | Source |
 |---|---|---|---|
-| Hand-written source | `build.py` 768 lines; 3 tools, 862 lines; 12 templates, 501 lines; 1 stylesheet, 1,554 lines; 2 scripts, 643 lines; 2 content files, 534 lines | 2026-10-12 | `git ls-files`, `wc -l` |
-| Built page | `index.html` 76,378 bytes, 14,649 gzipped; stylesheet 51,253 and 11,888; `site.js` 21,323 and 6,823; `knot.js` 5,638 and 2,215; fonts 78,396 bytes; the CV PDF 58,402 bytes, one A4 page | 2026-10-11 | `wc -c`; Python's gzip, level 6 |
+| Hand-written source | `build.py` 784 lines; 3 tools, 867 lines; 12 templates, 507 lines; 1 stylesheet, 1,558 lines; 2 scripts, 643 lines; 2 content files, 541 lines | 2026-10-15 | `git ls-files`, `wc -l` |
+| Built page | `index.html` 76,746 bytes, 14,813 gzipped; stylesheet 51,550 and 11,981; `site.js` 21,323 and 6,823; `knot.js` 5,638 and 2,215; fonts 78,396 bytes; the CV PDF 58,402 bytes, one A4 page | 2026-10-15 | `wc -c`; Python's gzip, level 6 |
 | Live performance | Lighthouse 13.5.0, default mobile, median of five: LCP 1,685 ms, CLS 0, TBT 58 ms (runs 481, 58, 0, 57, 104); 116,128 bytes transferred. ADR-0009 limits: 2,500 ms, 0.1, 200 ms. On 2026-10-07: TBT medians 138 and 95 ms, LCP 1,721 and 1,739 ms | 2026-10-12 | `logs/2026-10-12-fonts-gate-c-survey.md` |
 | Accessibility, automated | axe-core 4.14.0: 0 violations in 12 cells (360 and 1366 px; light, device dark, switched dark; panels closed and open), in Chrome and in Edge | 2026-10-07 | Same log, rounds 1 to 2 |
 | Accessibility at load | The full-mode accessibility tree matches the page without layout skipping in 32 of 32 loads locally and 16 of 16 per browser on the live site | 2026-10-07 | Same log |
 | Screen reader | NVDA 2026.2 in Chrome: each "In depth" control named and its state spoken, reading into the panel, focus returned; no words run together | 2026-10-07 | Same log, rounds 3 and 5; `docs/deferred/screen-reader-speech-test.md` |
 | Keyboard | 60 of 60 checks at 360 and 1366 px | 2026-10-07 | Same log |
-| Content | 14 items and 10 skills groups; 376 blocks of text traced to the master, 0 not; every master bullet, italic sentence, skills line, course and certificate, the summary and the Portfolio Intro on the page; 7 of 7 project links | 2026-10-11 | `tools/check_content.py` |
-| Checks on the page, locally | Tree at load in full mode matching the page without layout skipping in 32 of 32 loads, default mode adding no node in 32; keyboard 60 of 60; axe-core 0 violations in 12 cells; anchors 132 of 132; no joined words at 360 and 1366 px in Chrome 154 and Edge 155. The page unchanged since 2026-10-11 | 2026-10-12 | `logs/2026-10-12-fonts-gate-c-survey.md` |
+| Content | 14 items and 10 skills groups; 377 blocks of text traced to the master, 0 not; every master bullet, italic sentence, skills line, course and certificate, the summary, the Portfolio Intro and the Portfolio Footer on the page; 7 of 7 project links and the footer's link | 2026-10-15 | `tools/check_content.py` |
+| Checks on the page, locally | Tree at load in full mode matching the page without layout skipping in 32 of 32 loads, default mode adding no node in 32; keyboard 60 of 60; axe-core 0 violations in 12 cells; anchors 132 of 132; no joined words at 360 and 1366 px in Chrome 154 and Edge 155, the footer line read as one line; Lighthouse locally, median LCP 2,255 ms, CLS 0, TBT 49 ms | 2026-10-15 | `logs/2026-10-15-footer-line.md` |
 | Decision records | 12, 1 superseded; 42 dated Changes rows | 2026-10-12 | `docs/decisions/` |
-| History | 80 commits, the first at 2026-09-25T21:42Z, to `2cf9df2`; 7 session logs, 21 rows in their index | 2026-10-12 | `git log`, `logs/` |
+| History | 84 commits, the first at 2026-09-25T21:42Z, to `327f2c1`; 8 session logs, 22 rows in their index | 2026-10-15 | `git log`, `logs/` |
 | Cost | None | 2026-10-10 | Free plans only |
 
 ## How it was built
@@ -226,6 +230,7 @@ architecture chat's.
 | 2026-10-10 | Decided: this repository read, not reused; reuse through a separate repository, `portfolio-gallery`, planned (ADR-0012, recorded 2026-10-11) |
 | 2026-10-11 | The commands moved to their own reference file; the master's changes on the page (a summary sentence, ten skills groups, the job aggregator's role and method); the trace requires the Portfolio Intro and reads section numbers by markup; the CV PDF checked and added, with its download link |
 | 2026-10-12 | Gate C refuses a Markdown header GitHub cannot read; the design-system draft's reserved-name fonts removed; a survey of 200 listed portfolios, research 0005 |
+| 2026-10-15 | The footer line on the page, the master's Portfolio Footer word for word, its address a link to this repository; the trace requires both |
 
 ## Waqas Sharif's role
 

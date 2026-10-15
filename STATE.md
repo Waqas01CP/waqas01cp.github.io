@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit 2cf9df2, the last commit before this file's
-update, 2026-10-12T16:41Z, by the Brief 7 implementing session.** This is
+**Verified against commit 327f2c1, the last commit before this file's
+update, 2026-10-15T22:47Z, by the Brief 8 implementing session.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -43,6 +43,12 @@ the clearing in the task's row.
 Update the verified-against line whenever you touch this file.
 
 ## Headline
+
+**Brief 8, 2026-10-15: the footer carries the master CV's Portfolio
+Footer line, word for word, its repository address a link to this
+repository (ADR-0008 Changes, 2026-10-15); the content trace requires
+it. Committed, for the operator's push.** Brief 7's work is live. Before
+that:
 
 **Brief 7, 2026-10-12: gate C refuses a Markdown header GitHub would
 refuse to read; the design-system draft's reserved-name fonts removed;
@@ -100,15 +106,16 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 
 | Task | Status | Evidence | Date | Proof |
 |---|---|---|---|---|
-| No open rows. Finished ones are in `docs/reference/completed.md`. | | | | |
+| The footer line live, every live file equal to the build | PENDING | [VERIFIED] locally | 2026-10-15 | logs/2026-10-15-footer-line.md. Committed; live after the operator's push, then checked |
 
 ## Blocked, and on whom
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
 | Whether this site goes on itself as a project (research 0004, decision 1); reuse is settled by ADR-0012 | The operator, for the master CV; then the chat, for placement | Operator and chat | 2026-10-07 |
-| The push of Brief 7's commits | The operator | Operator | 2026-10-12 |
-| Report 7: research 0005's findings, and its two patterns for the site, which need the master CV first | The architecture chat, then the operator | Chat | 2026-10-12 |
+| The push of Brief 8's commits | The operator | Operator | 2026-10-15 |
+| Report 8 | The architecture chat | Chat | 2026-10-15 |
+| Listing the site in emmabostian/developer-portfolios, once the footer line is live (Brief 8, next for him) | The operator | Operator | 2026-10-15 |
 | portfolio-gallery: built in its own folder by a fresh session from this seat's brief, then reviewed by this seat (ADR-0012's search for the master's text among it) before the operator publishes | That session, then this seat, then the operator | Operator | 2026-10-11 |
 
 ## Known unverified

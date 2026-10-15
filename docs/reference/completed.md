@@ -28,6 +28,8 @@ Proof is a commit, a decision record or a log filename. Never a file path.
 | Content trace: the master's project links read and checked as links, after the master moved Rahzaan's links onto its project line | [VERIFIED] | 2026-10-10 | logs/2026-10-07-tree-parity.md, round 8. PASS against the current master; three defeat cases each exit 1 |
 | Every documented file's frontmatter readable as YAML: four descriptions holding a colon and a space quoted | [VERIFIED] | 2026-10-10 | logs/2026-10-07-tree-parity.md, round 9. PyYAML: 4 of 36 rejected before, 0 after |
 | A licence notice: all rights reserved, at the operator's instruction; README.md brought current | [VERIFIED] | 2026-10-10 | Same log, round 9 |
+| The footer carries the master's Portfolio Footer line, its address a link; the trace requires both | [VERIFIED] | 2026-10-15 | ADR-0008 Changes, 2026-10-15; logs/2026-10-15-footer-line.md. Three trace defeats and two build defeats, each exit 1 |
+| Brief 7's commits live, every live file equal to the build | [VERIFIED] | 2026-10-15 | ae42aef to c499f1b, pushed by the operator; logs/2026-10-15-footer-line.md |
 | The CV PDF live, with its download link in the Intro and the footer; every live file equal to the build | [VERIFIED] | 2026-10-12 | ff73057, pushed by the operator; logs/2026-10-12-fonts-gate-c-survey.md. 15 live files by SHA-256 |
 | Gate C refuses a Markdown header GitHub would refuse to read | [VERIFIED] | 2026-10-12 | ae42aef; ADR-0007 Changes, 2026-10-12; same log. Agrees with PyYAML on 37 of 37 covered cases; refuses the four October headers |
 | The design-system draft's IBM Plex Mono and Source Serif 4 subsets removed; the draft made consistent | [VERIFIED] | 2026-10-12 | d7dc216; ADR-0012 Changes, 2026-10-12; same log |
