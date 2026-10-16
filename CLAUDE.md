@@ -225,7 +225,7 @@ briefs/implementing.md, this seat's own handoff, written at session close
 and whenever the session may end without warning. Each file: unexecuted,
 with an empty box on its first line and addenda appended; executed, ticked
 with the date when the operator says so; replaced only after the old one
-is read for what it still says. Numbered briefs from before 2026-10-11
+is read for what it still says. Numbered briefs from before 2026-10-10
 are history.
 
 ## CAPABILITIES.md

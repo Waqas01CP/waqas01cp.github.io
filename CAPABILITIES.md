@@ -24,7 +24,7 @@ of Brief 8. Written by the implementing seat, in its lane: what the site
 does and how, the stack, the qualities, the numbers, the limits, and the
 timeline's rows for what was built. **The architecture chat's sections**
 (the problem, where it is going, Waqas Sharif's role, the excluded list
-and the timeline's decided rows) **were written 2026-10-11 UTC**, at `main`
+and the timeline's decided rows) **were written 2026-10-10 UTC**, at `main`
 fd49b6e, each from a record or the commit history, or marked as his
 own account. The role section was brought to the master CV's wording on
 2026-10-11.
@@ -70,7 +70,7 @@ repository (ADR-0002).
 
 **No version is defined yet** (Working Method 8.10); defining one is
 his. The site as built carries every item in the master CV, and
-what waits is listed here with its source, as of 2026-10-11:
+what waits is listed here with its source, as of 2026-10-10, updated 2026-10-12:
 
 - **A CV download: done, 2026-10-11.** `cv/Waqas_Sharif_CV.pdf`, a one-page
   general CV produced from the master CV outside this repository, is live,
@@ -248,7 +248,7 @@ account.
   architecture chat refines his design into records rather than starting
   from nothing (his own account, through the master CV, 2026-10-11).
 - **Makes the engineering trade-offs.** He is the decision-maker on all 12
-  records, 2026-09-22 to 2026-10-11 (`docs/decisions/`). They include the
+  records, 2026-09-22 to 2026-10-10 (`docs/decisions/`). They include the
   scope floor (ADR-0004), free hosting on GitHub Pages (ADR-0002), the
   timeline he reopened from its deferral (ADR-0003, 2026-09-23), speed
   goals set in readers' terms rather than bytes (ADR-0009), the visual
@@ -324,7 +324,7 @@ dated.
   layout shift on its default mobile run (2026-10-07).
 - Every non-obvious choice written as a decision record when it was made,
   each assumption carrying its basis, measured, sourced or stated: 12
-  records, 2026-09-22 to 2026-10-11 (the architecture chat's).
+  records, 2026-09-22 to 2026-10-10 (the architecture chat's).
 - Every implementing report checked against the repository by a second
   seat before anything was acted on, and each seat's own errors logged
   with what they cost (`logs/`, the chat's briefs; the architecture

@@ -49,7 +49,7 @@ states that the operator approved the override.
 
 ## Convention
 
-From 2026-10-11, one file per receiving seat, each overwritten by the next
+From 2026-10-10 (UTC), one file per receiving seat, each overwritten by the next
 (the operator's Working Method, section 9.4; `CLAUDE.md`, Briefs):
 
 | File | From | To |
@@ -62,5 +62,5 @@ Each file is unexecuted, with an empty box on its first line and any
 addendum appended to it; executed, ticked with the date when the operator
 says it was acted on; and replaced only after it has been read for what it
 still says. The chat ticks its brief once it has verified the seat's report
-against the repository. The numbered briefs written before 2026-10-11 are
+against the repository. The numbered briefs written before 2026-10-10 are
 history and are not executed again.
