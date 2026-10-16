@@ -231,6 +231,7 @@ architecture chat's.
 | 2026-10-11 | The commands moved to their own reference file; the master's changes on the page (a summary sentence, ten skills groups, the job aggregator's role and method); the trace requires the Portfolio Intro and reads section numbers by markup; the CV PDF checked and added, with its download link |
 | 2026-10-12 | Gate C refuses a Markdown header GitHub cannot read; the design-system draft's reserved-name fonts removed; a survey of 200 listed portfolios, research 0005 |
 | 2026-10-15 | The footer line on the page, the master's Portfolio Footer word for word, its address a link to this repository; the trace requires both |
+| 2026-10-15 | Decided: the footer carries the master CV's Portfolio Footer line, word for word, its address a link to this repository, and the content trace requires it (ADR-0008 Changes) |
 
 ## Waqas Sharif's role
 
