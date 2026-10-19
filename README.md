@@ -29,21 +29,17 @@ file, not a link rewrite.
 
 ## How this project is run
 
-Three seats, described in the operator's cross-project Working Method. That
-document lives in his private vault and is deliberately not linked from
-here, because this repository is public.
-
-- **Operator, Waqas:** decides scope and cost, approves every non-trivial
-  decision.
-- **Architecture chat:** concludes decisions, writes records and briefs,
-  verifies what comes back against this repository rather than against the
-  report. Does not implement.
-- **Implementing seat, Claude Code:** executes briefs, writes code and
-  tests, logs every session, audits.
-
-Claude Design built the visual prototype (ADR-0011). Its export is kept
-locally only and never served, because it loads a framework from a
-third-party CDN.
+Waqas Sharif designs the architecture, its rules and the site's look,
+makes the trade-offs, sets the standards, reviews the logic and the tests,
+and decides every change; nothing goes live without his word.
+Implementation is delegated, for speed, to Claude Code, which builds to
+specifications he approves, writes the tests, runs the checks and logs
+every session. Claude, in a separate chat, works his decisions into the
+records in `docs/decisions/` and checks each report against this
+repository. Claude Design built the visual prototype (ADR-0011); its
+export is kept locally and never served, because it loads a framework
+from a third-party CDN. How the work is organised is his own Working
+Method, kept in his private vault and deliberately not linked from here.
 
 ## Where the documents are
 

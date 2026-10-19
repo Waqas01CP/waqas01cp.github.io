@@ -233,47 +233,72 @@ architecture chat's.
 | 2026-10-15 | The footer line on the page, the master's Portfolio Footer word for word, its address a link to this repository; the trace requires both |
 | 2026-10-19 | The master's role wording on the page: the summary, a skills item, the job aggregator's role line and two bullets; a new CV PDF, the same wording |
 | 2026-10-15 | Decided: the footer carries the master CV's Portfolio Footer line, word for word, its address a link to this repository, and the content trace requires it (ADR-0008 Changes) |
+| 2026-10-19 | Decided: his name may appear in `portfolio-gallery`'s showcase, never in what a copy receives (ADR-0012 Changes) |
 
 ## Waqas Sharif's role
 
-Updated 2026-10-11 UTC to the master CV's description of his role, which
-he approved that day: lead with what he does. His Working Method calls his
-seat "the operator"; the records and logs keep that term. Each line below
-comes from a record or the commit history, or is marked as his own
+Updated 2026-10-19 UTC to his own account of that day and the master CV's
+role wording of 2026-10-18, which he approved. His Working Method calls
+his role "the operator"; the records and logs keep that term. Each line
+below comes from a record or the commit history, or is marked as his own
 account.
 
-- **Brings the blueprint and the architecture.** He defined what the site
-  is for and whom it serves: the evidence a CV cannot hold, employers
-  first and Masters readers second, in dedicated sections with the main
-  projects first and a curated set (ADR-0001, stated 2026-09-22). The
-  architecture chat refines his design into records rather than starting
-  from nothing (his own account, through the master CV, 2026-10-11).
+- **Designs the architecture, and the algorithms with it.** He defined
+  what the site is for and whom it serves: the evidence a CV cannot hold,
+  employers first and Masters readers second, in dedicated sections with
+  the main projects first and a curated set (ADR-0001, stated
+  2026-09-22). The rules the site is built by are his records'
+  (`docs/decisions/`); the architecture chat refines his design into them
+  rather than starting from nothing (his own account, through the master
+  CV, 2026-10-11).
+- **Sets the look.** He found the reference sites and proposed the look
+  (his own account, 2026-10-19; the sites were reviewed 2026-10-03).
+  - He found the first design-system draft basic and restrictive, and the
+    visual system was then chosen from the prototype (ADR-0011,
+    2026-10-05).
+  - He designed the timeline: a vertical spine with lanes either side,
+    lane headers travelling down the page, collapse controls and a fixed
+    scale per month (ADR-0003, stated 2026-09-23). He reopened it from its
+    deferral the same day and shaped it: newest at the top, decided on seeing the design-system
+    specimen, so that the latest work is what a reader meets first
+    (2026-10-03); and on a phone, one spine with every lane, chosen from
+    the prototype's two versions after viewing both on his phone
+    (2026-10-05; ADR-0003 Changes).
 - **Makes the engineering trade-offs.** He is the decision-maker on all 12
   records, 2026-09-22 to 2026-10-10 (`docs/decisions/`). They include the
-  scope floor (ADR-0004), free hosting on GitHub Pages (ADR-0002), the
-  timeline he reopened from its deferral (ADR-0003, 2026-09-23), speed
-  goals set in readers' terms rather than bytes (ADR-0009), the visual
-  system chosen from the prototype (ADR-0011, 2026-10-05) and how the code
-  may be reused (ADR-0012).
-- **Sets the standards every seat works to.** Every claim traces to his
+  scope floor (ADR-0004), free hosting on GitHub Pages (ADR-0002), speed
+  goals set in readers' terms rather than bytes (ADR-0009) and how the
+  code may be reused (ADR-0012).
+- **He started `portfolio-gallery`.** He asked whether the site should be
+  opened for others to reuse, set its priority, credibility through stars,
+  forks and pull requests over preventing sale, and confirmed its MIT
+  licence (`logs/2026-10-07-tree-parity.md`, rounds 7 and 10; ADR-0012
+  Changes, 2026-10-10).
+- **Sets the standards the work follows.** Every claim traces to his
   master CV, which he keeps outside the repository (scope floor line 1;
-  `tools/check_content.py`). Free services by default (scope floor
-  line 13). No em-dashes, and dates in UTC (`CLAUDE.md`, Writing). His
-  Working Method sets how the seats brief, build, log and check each
-  other.
-- **Corrects the seats' mistakes.**
+  `tools/check_content.py`). Free services by default (scope floor line
+  13). No em-dashes, and dates in UTC (`CLAUDE.md`, Writing). His Working
+  Method sets how the work is briefed, built, logged and checked.
+- **Reviews the logic and the tests, and has them corrected** (his own
+  account, 2026-10-19).
+  - He asked that the reading-layers proposal be audited before it was
+    recorded rather than accepted on the strength of the proposal; the
+    audit changed four things (ADR-0005, 2026-09-22).
   - His screen-reader run found words read as one, which every automated
     check had passed; they were fixed, and his second run passed
     (ADR-0010 Changes, 2026-10-07).
   - He found two inconsistencies on the wide timeline (7e97c5b,
     2026-10-07) and frontmatter a YAML parser rejected (73f2ab3,
     2026-10-10).
-- **Decides on every brief and report.** A brief is executed and a change
+  - The code itself is checked by the repository's gates, and against the
+    repository by the architecture chat.
+- **Decides every brief and report.** A brief is executed and a change
   goes live only on his word. He makes every commit of the architecture
-  chat's work and every push of the site (`docs/reference/commands.md`). In his
-  words, 2026-10-10: "nothing bypasses me".
-- **The code is the implementing seat's**, written to his briefs and
-  records (commit history).
+  chat's work and every push of the site (`docs/reference/commands.md`).
+  In his words, 2026-10-10: "nothing bypasses me".
+- **Implementation is delegated, for speed, to Claude Code,** which builds
+  to specifications he approves, writes the tests, runs the checks and
+  logs every session (commit history; `logs/`).
 
 ## What it does not do, and its limits
 
@@ -332,10 +357,10 @@ dated.
 - Every non-obvious choice written as a decision record when it was made,
   each assumption carrying its basis, measured, sourced or stated: 12
   records, 2026-09-22 to 2026-10-10 (the architecture chat's).
-- Every implementing report checked against the repository by a second
-  seat before anything was acted on, and each seat's own errors logged
-  with what they cost (`logs/`, the chat's briefs; the architecture
-  chat's).
+- Every implementation report checked against the repository by the
+  architecture chat before anything was acted on, and each role's own
+  errors logged with what they cost (`logs/`, the chat's briefs; the
+  architecture chat's).
 
 ## Where the evidence lives
 
