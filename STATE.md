@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit 327f2c1, the last commit before this file's
-update, 2026-10-15T22:47Z, by the Brief 8 implementing session.** This is
+**Verified against commit d053c17, the last commit before this file's
+update, 2026-10-19T14:49Z, by the Brief 9 implementing session.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -43,6 +43,12 @@ the clearing in the task's row.
 Update the verified-against line whenever you touch this file.
 
 ## Headline
+
+**Brief 9, 2026-10-19: the master CV's role wording of 2026-10-18
+on the page (the summary, a skills item, the job aggregator's role line
+and two bullets), the trace passing against it, no "seat" on the page;
+the new CV PDF checked and committed. Committed, for the operator's
+push.** Brief 8's work is live, every file checked. Before that:
 
 **Brief 8, 2026-10-15: the footer carries the master CV's Portfolio
 Footer line, word for word, its repository address a link to this
@@ -106,16 +112,17 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 
 | Task | Status | Evidence | Date | Proof |
 |---|---|---|---|---|
-| The footer line live, every live file equal to the build | PENDING | [VERIFIED] locally | 2026-10-15 | logs/2026-10-15-footer-line.md. Committed; live after the operator's push, then checked |
+| The role wording and the new CV PDF live, every live file equal to the build | PENDING | [VERIFIED] locally | 2026-10-19 | logs/2026-10-19-role-wording.md. Committed; live after the operator's push, then checked |
+| Lighthouse, five each, on a quiet machine: this page and the page before it, against ADR-0009 | PENDING | [VERIFIED] failing on a busy machine, both pages alike | 2026-10-19 | logs/2026-10-19-role-wording.md. Two sets failed for both pages, CPU 10 to 71% busy with other programs |
 
 ## Blocked, and on whom
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
 | Whether this site goes on itself as a project (research 0004, decision 1); reuse is settled by ADR-0012 | The operator, for the master CV; then the chat, for placement | Operator and chat | 2026-10-07 |
-| The push of Brief 8's commits | The operator | Operator | 2026-10-15 |
-| Report 8 | The architecture chat | Chat | 2026-10-15 |
-| Listing the site in emmabostian/developer-portfolios, once the footer line is live (Brief 8, next for him) | The operator | Operator | 2026-10-15 |
+| The push of Brief 9's commits | The operator | Operator | 2026-10-19 |
+| Report 9; then `CAPABILITIES.md`'s role section and README's "How this project is run" to the role rule of 2026-10-19 | The architecture chat | Chat | 2026-10-19 |
+| Listing the site in emmabostian/developer-portfolios; the footer line it waited on is live, checked 2026-10-19 | The operator | Operator | 2026-10-15 |
 | portfolio-gallery: built in its own folder by a fresh session from this seat's brief, then reviewed by this seat (ADR-0012's search for the master's text among it) before the operator publishes | That session, then this seat, then the operator | Operator | 2026-10-11 |
 
 ## Known unverified
