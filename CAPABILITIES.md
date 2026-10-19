@@ -296,11 +296,12 @@ the only deeper destination (ADR-0008), and no reuse of this repository
   same bytes served locally and compressed; under the 200 ms limit as a
   median, with single runs above it. The cause of the spread is not
   known.
-- **Local Lighthouse failed ADR-0009 on 2026-10-19** for this page and
-  for the page before it alike (blocking time medians 300 to 580 ms;
-  the page before it measured 29 ms on 2026-10-15), with the machine's
-  CPU 10 to 71% busy with other programs. Not passed until a set on a
-  quiet machine passes (`logs/2026-10-19-role-wording.md`).
+- **Local Lighthouse failed ADR-0009 on 2026-10-19,** three sets, for
+  this page and for the page before it alike (blocking time medians 300
+  to 580 ms; the page before it measured 29 ms on 2026-10-15), with
+  other sustained work on the machine, a mutation-testing run among it;
+  not tested as the cause. Not passed until a set with no other
+  sustained load passes (`logs/2026-10-19-role-wording.md`).
 - **A browser that turns accessibility on only after load** meets the
   lower sections when they render, a residual ADR-0009 accepts.
 - **Tested only in Chrome 154 and Edge 154 and 155**, and with one screen

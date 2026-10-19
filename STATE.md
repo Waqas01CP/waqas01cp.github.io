@@ -113,7 +113,7 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 | Task | Status | Evidence | Date | Proof |
 |---|---|---|---|---|
 | The role wording and the new CV PDF live, every live file equal to the build | PENDING | [VERIFIED] locally | 2026-10-19 | logs/2026-10-19-role-wording.md. Committed; live after the operator's push, then checked |
-| Lighthouse, five each, on a quiet machine: this page and the page before it, against ADR-0009 | PENDING | [VERIFIED] failing on a busy machine, both pages alike | 2026-10-19 | logs/2026-10-19-role-wording.md. Two sets failed for both pages, CPU 10 to 71% busy with other programs |
+| Lighthouse, five each, with no other sustained load: this page and the page before it, against ADR-0009 | PENDING | [VERIFIED] failing with other work on the machine, both pages alike | 2026-10-19 | logs/2026-10-19-role-wording.md. Three sets failed for both pages; a mutation-testing run in another project ran through the third, not tested as the cause |
 
 ## Blocked, and on whom
 

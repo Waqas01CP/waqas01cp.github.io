@@ -139,11 +139,37 @@ in the second its 2,500 ms paint limit. The page before it is the same
 bytes that measured LCP 2,258 ms and TBT 29 ms on 2026-10-15. Measured,
 not a cause: before the second set, with no harness of this seat
 running, the machine's CPU load read 62%, with the operator's Chrome (21
-processes), VS Code and Notepad among the busiest; during the second set
-it read 10 to 71%, median 42%, in 30 samples. Within each set the two
-pages overlap run for run, so these sets show no cost of the change; but
-ADR-0009 counts a fail on any machine, so Lighthouse stays open until a
-set on a quiet machine passes.
+processes), VS Code and Notepad among the busiest. During the second set
+it read 10 to 71%, median 42%, in 30 samples, but those samples include
+Lighthouse's own browser, so they do not measure other programs; the
+first draft of these records said they did.
+
+**A third set, 2026-10-19T19:46Z to 19:51Z (2026-10-20 local),** after the
+operator closed his programs; his Chrome's main process and Notepad
+still ran but used 0.3% and 1.0% of the machine over 20 s. This page:
+LCP 2,451 ms, CLS 0, TBT 427 ms (runs 908 280 429 427 224); the page
+before it: 2,366 ms, 0, 317 ms (243 377 675 317 46); the defeat 2,008
+ms. Both fail again.
+
+What was ruled out, measured: the laptop was plugged in, on the Balanced
+plan with no power-saving overlay. Lighthouse's own speed index for the
+machine (`benchmarkIndex`, median per variant) was 1,741 to 1,859 in the
+third set against 1,631 to 2,032 on 2026-10-15, so the machine was not
+slower on its short benchmark; yet on the same bytes, every main-thread
+category took 2.5 to 4 times as long (style and layout 199 to 485 ms,
+script evaluation 45 to 205 ms, long tasks 1 to 3 per run against 2 to
+7). A slowdown even across every category points at contention during
+the page's work, not at the page.
+
+What was found, not tested as the cause: another Claude Code session, in
+the operator's job-aggregator repository, was running mutation testing
+(`tools/mutate.py`, which reruns that project's test suite repeatedly)
+from 2026-10-19T17:53Z, through the third set. This seat did not touch
+it. Whether anything like it ran during the first two sets is not known.
+
+Within each set the two pages overlap run for run, so no set shows a
+cost of the change; but ADR-0009 counts a fail on any machine, so
+Lighthouse stays open until a set passes with no other sustained load.
 
 ## The CV PDF
 
@@ -228,9 +254,15 @@ line on "a second seat", and README's "How this project is run".
   ignores, it crashed again. The checks it had already printed stood;
   the lines it was printing were read from the text file instead.
 
+- The first draft of these records said the CPU was "10 to 71% busy
+  with other programs" during the second Lighthouse set; those samples
+  include Lighthouse's own browser. Corrected above and in
+  `CAPABILITIES.md` and `STATE.md` before the push.
+
 ## What is next
 
-- Lighthouse, five each, on a quiet machine: this page against the page
+- Lighthouse, five each, with no other sustained load (the job
+  aggregator's mutation run finished): this page against the page
   before it. Until then, ADR-0009 is not shown met for this round.
 - The operator's push; then the live check of this round.
 - The chat: the role section and README, after this commit.
