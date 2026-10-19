@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit d053c17, the last commit before this file's
-update, 2026-10-19T14:49Z, by the Brief 9 implementing session.** This is
+**Verified against commit 12084bc, the last commit before this file's
+update, 2026-10-19T22:42Z, by the Brief 10 implementing session.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -43,6 +43,13 @@ the clearing in the task's row.
 Update the verified-against line whenever you touch this file.
 
 ## Headline
+
+**Brief 10, 2026-10-19: this machine's load measured against
+Lighthouse. With memory freed the page passes ADR-0009 (live LCP 1,670
+ms, TBT 63 ms); under the load of Brief 9's sets it failed, and memory,
+not CPU, separates the two. Light, medium and heavy are proposed in
+Report 10, for the operator to decide.** Brief 9's work is live,
+every file checked. Before that:
 
 **Brief 9, 2026-10-19: the master CV's role wording of 2026-10-18
 on the page (the summary, a skills item, the job aggregator's role line
@@ -112,16 +119,15 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 
 | Task | Status | Evidence | Date | Proof |
 |---|---|---|---|---|
-| The role wording and the new CV PDF live, every live file equal to the build | PENDING | [VERIFIED] locally | 2026-10-19 | logs/2026-10-19-role-wording.md. Committed; live after the operator's push, then checked |
-| Lighthouse, five each, with no other sustained load: this page and the page before it, against ADR-0009 | PENDING | [VERIFIED] failing with other work on the machine, both pages alike | 2026-10-19 | logs/2026-10-19-role-wording.md. Three sets failed for both pages; a mutation-testing run in another project ran through the third, not tested as the cause |
+| Load levels for Lighthouse on this machine set from measurement (Brief 10) | PENDING | [VERIFIED] measured | 2026-10-19 | logs/2026-10-19-role-wording.md, round 2. Proposed in Report 10; the operator decides, the chat writes the ADR-0009 row |
 
 ## Blocked, and on whom
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
 | Whether this site goes on itself as a project (research 0004, decision 1); reuse is settled by ADR-0012 | The operator, for the master CV; then the chat, for placement | Operator and chat | 2026-10-07 |
-| The push of Brief 9's commits | The operator | Operator | 2026-10-19 |
-| Report 9; then `CAPABILITIES.md`'s role section and README's "How this project is run" to the role rule of 2026-10-19 | The architecture chat | Chat | 2026-10-19 |
+| The push of Brief 10's records | The operator | Operator | 2026-10-19 |
+| Report 10: the load levels, then the ADR-0009 row | The operator, then the architecture chat | Operator and chat | 2026-10-19 |
 | Listing the site in emmabostian/developer-portfolios; the footer line it waited on is live, checked 2026-10-19 | The operator | Operator | 2026-10-15 |
 | portfolio-gallery: built in its own folder by a fresh session from this seat's brief, then reviewed by this seat (ADR-0012's search for the master's text among it) before the operator publishes | That session, then this seat, then the operator | Operator | 2026-10-11 |
 

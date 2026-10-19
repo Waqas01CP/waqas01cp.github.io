@@ -1,6 +1,6 @@
 ---
 type: log
-description: "Brief 9. The master CV's role wording of 2026-10-18 carried onto the page by script (the summary, a skills item, the job aggregator's role line and two bullets); the trace passing again against the master; no \"seat\" on the page; the new CV PDF checked and committed; CAPABILITIES.md's build table relabelled by what each role did. Brief 8 confirmed live."
+description: "Briefs 9 and 10. The master CV's role wording of 2026-10-18 carried onto the page by script (the summary, a skills item, the job aggregator's role line and two bullets); the trace passing again against the master; no \"seat\" on the page; the new CV PDF checked and committed; CAPABILITIES.md's build table relabelled by what each role did. Brief 8 confirmed live. Brief 10: this machine's load measured against Lighthouse; the quiet set passes ADR-0009; light, medium and heavy proposed from the measurements."
 status: current
 ---
 
@@ -266,4 +266,157 @@ line on "a second seat", and README's "How this project is run".
   before it. Until then, ADR-0009 is not shown met for this round.
 - The operator's push; then the live check of this round.
 - The chat: the role section and README, after this commit.
+- For him: listing the site in emmabostian/developer-portfolios.
+
+# Round 2, 2026-10-19 (UTC): Brief 10, the machine's load against Lighthouse
+
+The session continued into Brief 10, pasted by the operator. HEAD at the
+round's start: 12084bc, the chat's, pushed.
+
+## Brief 9 live
+
+[VERIFIED] At 2026-10-19T19:57:34Z, after the operator's push of
+33bbff9 to bec7623: 24 live files byte-identical to HEAD by SHA-256; the
+live page has the new summary, the new skills item and the review
+bullet, and 0 hits for "seat"; the live CV PDF's MD5 is
+03a9be1dd2a404b482aebd71aebafb15. The check's defeat, an older commit,
+was shown earlier this session.
+
+## What was asked
+
+Brief 10, which is never committed. The operator's decision of
+2026-10-19: a Lighthouse set counts only at light or medium load on this
+machine; a set at heavy load is void and repeated once the load falls;
+at medium the set is run, not deferred; every result is reported with
+its level and compared only within it; a fail at light or medium is a
+fail. Where the levels begin and end is not decided: the operator chose
+to set them from measurement. Measure under the job aggregator's
+mutation run (another Claude session, not to be stopped, slowed or
+changed), then quiet, then optionally at controlled loads between; report
+raw numbers, the quiet set against ADR-0009, and proposed levels with
+their basis. The chat writes the ADR-0009 row; the operator decides.
+
+## How it was measured
+
+`cpu10.ps1` (scratchpad): Windows' counters once a second for 60 s,
+`\Processor(_Total)\% Processor Time`, `\Memory\Available MBytes` and
+`\Memory\Pages/sec`; then committed memory, and the processes using most
+CPU over 5 s and most private memory. Memory was added after the first
+phase showed it mattered; the first phase has CPU only. A Lighthouse set:
+13.5.0, default mobile, five runs each, interleaved: the live page, the
+same bytes served locally without compression, and the 600 ms defeat.
+Each run's TBT, LCP, CLS and `environment.benchmarkIndex` were kept. A
+reading during each set includes Lighthouse's own browser and is
+reported only as that.
+
+## The machine
+
+7.7 GB of RAM, a commit limit of 31.7 GB, 12 logical processors, plugged
+in, Balanced power plan. Microsoft Defender's scanner (`MsMpEng`) used
+6 to 10% of the machine in most readings; Windows Update's background
+download and Disk Cleanup appeared from 21:48Z, at up to 8% and 6%.
+
+## The sets
+
+Medians over the 60 s before each set.
+
+| Set, UTC | Chrome | CPU | Available memory | Pages/s | Committed | Live TBT, LCP | Local TBT, LCP | Defeat TBT | ADR-0009 |
+|---|---|---|---|---|---|---|---|---|---|
+| Under the mutation run, 21:14 to 21:19 | 154 | 38% (mean 42.7) | not recorded; 235 MB at 21:22 to 21:23, 139 MB at 21:28 to 21:29 | not recorded; 13,539 and 13,833 then | 30.9 and 31.0 of 31.7 GB then | 516, 2,143 | 350, 2,455 | 2,117 | fails |
+| Quiet, 21:58 to 22:02 | 155 | 34.9% | 850 MB | 5,969 | 22.9 GB | 63, 1,670 | 42, 2,255 | 1,854 | passes |
+| Controlled: 6 of 12 cores busy, 22:09 to 22:13 | 155 | 77% | 444 MB | 7,581 | 22.7 GB | 25, 1,607 | 73, 2,256 | 1,826 | passes |
+| Controlled: 600 MB held, with the 6 cores still busy until 22:22:44, 22:19 to 22:23 | 155 | 51.3% | 716 MB | 16 | 22.7 GB | 45, 1,667 | 33, 2,255 | 1,790 | passes |
+| Controlled: 850 MB held, 22:30 to 22:34 | 155 | 32.7% | 994 MB | 6,834 | 23.1 GB | 36, 1,654 | 39, 2,257 | 1,850 | passes |
+
+Runs, TBT in ms, in order:
+
+- Under the mutation run: live 784 628 312 516 305; local 246 483 350 414 331; defeat 1949 1933 2117 2167 2148. benchmarkIndex 1,077 to 2,062.
+- Quiet: live 280 74 63 0 11; local 36 64 42 25 43; defeat 1814 1888 1859 1852 1854. benchmarkIndex 1,703 to 2,313.
+- 6 cores: live 80 0 25 22 36; local 85 57 73 13 92; defeat 1852 1905 1762 1769 1826. Local benchmarkIndex 1,598 to 2,068.
+- 600 MB: live 156 76 45 20 38; local 94 33 59 13 26; defeat 1790 1766 1795 1760 1823.
+- 850 MB: live 36 12 47 44 15; local 53 36 39 37 60; defeat 1893 1907 1850 1761 1764.
+
+Every JSON report and every reading is kept in the scratchpad,
+`load10/`.
+
+**The quiet set passes ADR-0009** for the live page (LCP 1,670 ms, CLS 0,
+TBT 63 ms) and the local copy (2,255 ms, 0, 42 ms); the defeat fails in
+every set. That answers Brief 9's open Lighthouse check. The local
+figures match 2026-10-15's (2,255 ms, 49 ms) on Chrome 154.
+
+## What the numbers show
+
+- **Memory, not CPU, separates the failing set from the passing ones.**
+  CPU before the failing set (median 38%) was within the range of the
+  passing ones (33 to 77%); the controlled load at 77% CPU passed.
+  Available memory near the failing set was 139 to 235 MB with
+  committed memory at 97 to 98% of its limit; every passing set had 444
+  MB or more and 72 to 73%. In the failing set every main-thread
+  category took 2.5 to 4 times as long as on 2026-10-15 (Brief 9's
+  third set), as paging to disk would cause.
+- **What was holding memory under the mutation run,** private memory at
+  21:22Z: VS Code 8.1 GB over 42 processes, Claude 4.3 GB over 17,
+  `vmmem` 3.0 GB (the virtual machine behind Claude Cowork, in the
+  operator's account), Chrome 2.9 GB over 28. The mutation run's own
+  processes held about 0.05 GB. With Cowork's machine and Chrome closed,
+  committed memory fell from 31 to 22.3 GB.
+- **`benchmarkIndex` does not separate them:** 1,077 to 2,062 in the
+  failing set against 1,598 to 2,313 in the passing ones.
+- **Not reproduced:** holding 600 or 850 MB did not bring available
+  memory near the failing level; Windows paged other programs out and
+  kept 556 to 1,032 MB available. A larger hold was not run: it would
+  have pushed the whole machine into paging and slowed the job
+  aggregator's session, which the brief forbids.
+- **Paging per second is too noisy to place a boundary:** a median of
+  16 in one passing set and 7,581 in another.
+- **Chrome changed version mid-round:** it updated from 154 to
+  155.0.8059.85 when the operator closed it, 21:48Z; the failing set ran
+  on 154, the passing ones on 155. The 154 passes of 2026-10-15 give the
+  same local figures as the 155 quiet set.
+
+## Proposed levels, for the operator and the chat
+
+Read over the 60 s before a set, with `cpu10.ps1`'s counters; available
+memory first, because it is what separated the results.
+
+- **Light:** available memory 800 MB or more, CPU median 40% or less.
+  Basis: the quiet set (850 MB, 34.9%) and the 850 MB set (994 MB,
+  32.7%), both passing.
+- **Medium:** available memory 440 to 800 MB, or CPU median 40 to 77%.
+  Basis: the 6-core set (444 MB, 77%) and the 600 MB set (716 MB, 51%),
+  both passing. 77% is the highest CPU measured.
+- **Heavy, void:** available memory under 440 MB, or committed memory
+  over 90% of its limit, or CPU over 77%. Basis: the failing set (139 to
+  235 MB, 97 to 98% committed). The 440 MB edge is the lowest passing
+  reading; the true edge lies somewhere between 235 and 444 MB and is
+  not measured. The 90% edge lies between 73% (passing) and 97% (failing)
+  and is not measured. Above 77% CPU nothing was measured, so it is
+  heavy until measured.
+
+Each edge can be refined by any set run near it, since every set now
+records the reading.
+
+## Errors this seat made, Brief 10
+
+- The first local server was started with a name that is not a variant
+  directory and answered 404; caught by a request before any set ran.
+- The first quiet attempt filtered out Lighthouse's error and left two
+  headless Chrome processes; found, stopped by their Lighthouse profile,
+  and the cause (Chrome's first launch after its update) found by a
+  probe run.
+- The CPU load's worker processes do not carry the script's name, so
+  the stop script stopped only their parent and reported "0 left", a
+  check that could not fail. The workers ran on until their own
+  deadline, 22:22:44Z, into the 600 MB set, which is reported as a
+  combined point.
+- A first draft of the CAPABILITIES.md limit said the four failing sets
+  ran at 139 to 235 MB available; only the last was followed by a
+  memory reading, minutes after it. A first draft of the highlight said
+  the cause was found; it is indicated, not reproduced. Both corrected
+  before the commit.
+
+## What is next
+
+- The chat: Report 10; the ADR-0009 row on the levels, from it.
+- The operator: deciding the levels.
 - For him: listing the site in emmabostian/developer-portfolios.

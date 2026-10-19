@@ -20,7 +20,7 @@ Sharif confirmed on 2026-10-10:
   that readers relevant to this repository may be added.
 
 **Current as of 2026-10-19 UTC**, Claude Code's lane re-measured at the
-close of Brief 9. Written by Claude Code, in its lane: what the site
+close of Brief 10. Written by Claude Code, in its lane: what the site
 does and how, the stack, the qualities, the numbers, the limits, and the
 timeline's rows for what was built. **The architecture chat's sections**
 (the problem, where it is going, Waqas Sharif's role, the excluded list
@@ -161,7 +161,7 @@ what waits is listed here with its source, as of 2026-10-10, updated 2026-10-12:
 | Page | HTML, CSS and plain JavaScript; no framework. Three typefaces self-hosted under the SIL Open Font License |
 | Hosting | GitHub Pages on the free plan, from a public repository |
 | Repository checks | Git hooks running `tools/gates.py`; `tools/generate_map.py`; `tools/check_content.py` |
-| Browser checks, outside the repository | Headless Chrome 154 and Edge 155 through puppeteer-core 25.12.0, axe-core 4.14.0, Lighthouse 13.5.0; not dependencies of the repository (`docs/reference/standing-checks.md`) |
+| Browser checks, outside the repository | Headless Chrome 155 (154 until it updated on 2026-10-19) and Edge 155 through puppeteer-core 25.12.0, axe-core 4.14.0, Lighthouse 13.5.0; not dependencies of the repository (`docs/reference/standing-checks.md`) |
 | Design | A prototype built in Claude Design and reviewed by Waqas Sharif on 2026-10-05 (ADR-0011) |
 | AI tooling | Claude Code writes the code to the briefs; a Claude chat turns his design into decision records and briefs |
 
@@ -173,7 +173,7 @@ what waits is listed here with its source, as of 2026-10-10, updated 2026-10-12:
 | Every word in the first response, readable without scripts and by crawlers | The build renders all content into `index.html`; the page works without `site.js` (ADR-0010, scope floor line 7) |
 | A fact is written once | Content files, generated markup (ADR-0006); gate B refuses a hand-edited page |
 | Deterministic output | Builds at the recorded month are byte-identical; gate B rebuilds at that month |
-| Performance | Core Web Vitals goals (ADR-0009), checked by Lighthouse, median of five, per the standing checks; a fail on any machine is a fail |
+| Performance | Core Web Vitals goals (ADR-0009), checked by Lighthouse, median of five, per the standing checks; a fail on any machine is a fail. Each set runs the page, the page before the change and a page with a deliberate 600 ms script that must fail, interleaved run by run, with the machine's CPU, free memory and paging recorded before and after |
 | Accessibility | axe at two widths and three theme states; the accessibility tree at load compared with the page without layout skipping; keyboard through every panel; joined-word checks; a recorded NVDA speech test |
 | No tracking, no third parties | Scope floor lines 9 to 11; no request leaves the site's origin |
 | Reduced motion respected | Every motion stops under `prefers-reduced-motion` (ADR-0011, scope floor line 8) |
@@ -186,15 +186,15 @@ what waits is listed here with its source, as of 2026-10-10, updated 2026-10-12:
 |---|---|---|---|
 | Hand-written source | `build.py` 784 lines; 3 tools, 867 lines; 12 templates, 507 lines; 1 stylesheet, 1,558 lines; 2 scripts, 643 lines; 2 content files, 542 lines | 2026-10-19 | `git ls-files`, `wc -l` |
 | Built page | `index.html` 76,925 bytes, 14,864 gzipped; stylesheet 51,550 and 11,981; `site.js` 21,323 and 6,823; `knot.js` 5,638 and 2,215; fonts 78,396 bytes; the CV PDF 58,639 bytes, one A4 page | 2026-10-19 | `wc -c`; Python's gzip, level 6 |
-| Live performance | Lighthouse 13.5.0, default mobile, median of five: LCP 1,685 ms, CLS 0, TBT 58 ms (runs 481, 58, 0, 57, 104); 116,128 bytes transferred. ADR-0009 limits: 2,500 ms, 0.1, 200 ms. On 2026-10-07: TBT medians 138 and 95 ms, LCP 1,721 and 1,739 ms | 2026-10-12 | `logs/2026-10-12-fonts-gate-c-survey.md` |
+| Live performance | Lighthouse 13.5.0, default mobile, Chrome 155, median of five, with the machine quiet: LCP 1,670 ms, CLS 0, TBT 63 ms (runs 280, 74, 63, 0, 11); 116,556 bytes transferred. ADR-0009 limits: 2,500 ms, 0.1, 200 ms. On 2026-10-12: LCP 1,685 ms, TBT 58 ms; on 2026-10-07: TBT medians 138 and 95 ms | 2026-10-19 | `logs/2026-10-19-role-wording.md`, Brief 10 |
 | Accessibility, automated | axe-core 4.14.0: 0 violations in 12 cells (360 and 1366 px; light, device dark, switched dark; panels closed and open), in Chrome and in Edge | 2026-10-07 | Same log, rounds 1 to 2 |
 | Accessibility at load | The full-mode accessibility tree matches the page without layout skipping in 32 of 32 loads locally and 16 of 16 per browser on the live site | 2026-10-07 | Same log |
 | Screen reader | NVDA 2026.2 in Chrome: each "In depth" control named and its state spoken, reading into the panel, focus returned; no words run together | 2026-10-07 | Same log, rounds 3 and 5; `docs/deferred/screen-reader-speech-test.md` |
 | Keyboard | 60 of 60 checks at 360 and 1366 px | 2026-10-07 | Same log |
 | Content | 14 items and 10 skills groups; 378 blocks of text traced to the master, 0 not; every master bullet, italic sentence, skills line, course and certificate, the summary, the Portfolio Intro and the Portfolio Footer on the page; 7 of 7 project links and the footer's link | 2026-10-19 | `tools/check_content.py` |
-| Checks on the page, locally | Tree at load in full mode matching the page without layout skipping in 32 of 32 loads, default mode adding no node in 32; keyboard 60 of 60; axe-core 0 violations in 12 cells; anchors 132 of 132; no joined words at 360 and 1366 px in Chrome 154 and Edge 155; Lighthouse not passed: on a busy machine this page and the page before it both failed ADR-0009, so a quiet-machine set is pending | 2026-10-19 | `logs/2026-10-19-role-wording.md` |
+| Checks on the page, locally | Tree at load in full mode matching the page without layout skipping in 32 of 32 loads, default mode adding no node in 32; keyboard 60 of 60; axe-core 0 violations in 12 cells; anchors 132 of 132; no joined words at 360 and 1366 px in Chrome 154 and Edge 155; Lighthouse locally, with the machine quiet, median LCP 2,255 ms, CLS 0, TBT 42 ms | 2026-10-19 | `logs/2026-10-19-role-wording.md` |
 | Decision records | 12, 1 superseded; 42 dated Changes rows | 2026-10-12 | `docs/decisions/` |
-| History | 90 commits, the first at 2026-09-25T21:42Z, to `d053c17`; 9 session logs, 23 rows in their index | 2026-10-19 | `git log`, `logs/` |
+| History | 93 commits, the first at 2026-09-25T21:42Z, to `12084bc`; 9 session logs, 24 rows in their index | 2026-10-19 | `git log`, `logs/` |
 | Cost | None | 2026-10-10 | Free plans only |
 
 ## How it was built
@@ -321,15 +321,19 @@ the only deeper destination (ADR-0008), and no reuse of this repository
   same bytes served locally and compressed; under the 200 ms limit as a
   median, with single runs above it. The cause of the spread is not
   known.
-- **Local Lighthouse failed ADR-0009 on 2026-10-19,** three sets, for
-  this page and for the page before it alike (blocking time medians 300
-  to 580 ms; the page before it measured 29 ms on 2026-10-15), with
-  other sustained work on the machine, a mutation-testing run among it;
-  not tested as the cause. Not passed until a set with no other
-  sustained load passes (`logs/2026-10-19-role-wording.md`).
+- **Lighthouse on this machine appears to depend on its free memory.**
+  The machine has 7.7 GB of RAM. On 2026-10-19 four sets failed ADR-0009
+  for this page and the page before it alike (blocking time medians 300
+  to 580 ms); minutes after the last of them, available memory read 139
+  to 235 MB and committed memory 31 of 31.7 GB. Four sets passed with
+  444 to 994 MB available (medians over the minute before each), one of
+  them with CPU at 77% from a
+  controlled load. No controlled run reproduced the failure by taking
+  memory away, and where between 235 and 444 MB results begin to fail
+  is not measured (`logs/2026-10-19-role-wording.md`, Brief 10).
 - **A browser that turns accessibility on only after load** meets the
   lower sections when they render, a residual ADR-0009 accepts.
-- **Tested only in Chrome 154 and Edge 154 and 155**, and with one screen
+- **Tested only in Chrome 154 and 155 and Edge 154 and 155**, and with one screen
   reader,
   NVDA 2026.2. Firefox, Safari with VoiceOver, phones' screen readers and
   find-in-page are not tested.
@@ -354,6 +358,15 @@ dated.
   day (2026-10-07).
 - On the live site, Lighthouse medians of 1.7 s largest paint and zero
   layout shift on its default mobile run (2026-10-07).
+- Performance measured so a slow machine is not mistaken for a slow
+  page: every Lighthouse set runs the page, the page before the change,
+  and a page with a deliberate 600 ms script that must fail, five runs
+  each, interleaved. On 2026-10-19 both pages failed alike where the
+  earlier one had passed four days before; battery and machine speed
+  were ruled out by measurement, and the change was not blamed. The
+  evidence points to the machine's free memory: with memory freed, the
+  page passed (live, LCP 1.7 s, TBT 63 ms), and a controlled CPU load of
+  77% did not make it fail.
 - Every non-obvious choice written as a decision record when it was made,
   each assumption carrying its basis, measured, sourced or stated: 12
   records, 2026-09-22 to 2026-10-10 (the architecture chat's).
