@@ -328,10 +328,15 @@ the only deeper destination (ADR-0008), and no reuse of this repository
   to 580 ms); minutes after the last of them, available memory read 139
   to 235 MB and committed memory 31 of 31.7 GB. Four sets passed with
   444 to 994 MB available (medians over the minute before each), one of
-  them with CPU at 77% from a
-  controlled load. No controlled run reproduced the failure by taking
-  memory away, and where between 235 and 444 MB results begin to fail
-  is not measured (`logs/2026-10-19-role-wording.md`, Brief 10).
+  them with CPU at 77% from a controlled load. The Chrome version
+  changed too: the failing sets ran on Chrome 154, the passing ones on
+  155, after it updated itself at 21:48Z; against that, Chrome 154
+  passed on 2026-10-15 at nearly the same figures (LCP 2,255 ms, TBT
+  49 ms, against 2,255 ms and 42 ms on 155).
+  No controlled run reproduced the failure by taking memory away, and
+  where between 235 and 444 MB results begin to fail is not measured
+  (`logs/2026-10-19-role-wording.md`, Brief 10). Since 2026-10-20 a set
+  counts only at light or medium load (ADR-0009 Changes).
 - **A browser that turns accessibility on only after load** meets the
   lower sections when they render, a residual ADR-0009 accepts.
 - **Tested only in Chrome 154 and 155 and Edge 154 and 155**, and with one screen
@@ -363,11 +368,14 @@ dated.
   page: every Lighthouse set runs the page, the page before the change,
   and a page with a deliberate 600 ms script that must fail, five runs
   each, interleaved. On 2026-10-19 both pages failed alike where the
-  earlier one had passed four days before; battery and machine speed
-  were ruled out by measurement, and the change was not blamed. The
-  evidence points to the machine's free memory: with memory freed, the
-  page passed (live, LCP 1.7 s, TBT 63 ms), and a controlled CPU load of
-  77% did not make it fail.
+  earlier one had passed four days before, so the change was not
+  blamed. The laptop was plugged in when checked, and Lighthouse's own
+  speed test of the machine read about the same in failing and passing
+  runs. The evidence points to the machine's free memory: with memory
+  freed, the page passed (live, LCP 1.7 s, TBT 63 ms), and a controlled
+  CPU load of 77% did not make it fail. The failing sets also ran on
+  Chrome 154 and the passing ones on 155, though 154 had passed four
+  days earlier.
 - Every non-obvious choice written as a decision record when it was made,
   each assumption carrying its basis, measured, sourced or stated: 12
   records, 2026-09-22 to 2026-10-10 (the architecture chat's).

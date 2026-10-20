@@ -1,6 +1,6 @@
 ---
 type: log
-description: "Briefs 9 and 10. The master CV's role wording of 2026-10-18 carried onto the page by script (the summary, a skills item, the job aggregator's role line and two bullets); the trace passing again against the master; no \"seat\" on the page; the new CV PDF checked and committed; CAPABILITIES.md's build table relabelled by what each role did. Brief 8 confirmed live. Brief 10: this machine's load measured against Lighthouse; the quiet set passes ADR-0009; light, medium and heavy proposed from the measurements."
+description: "Briefs 9 to 11. The master CV's role wording of 2026-10-18 carried onto the page by script (the summary, a skills item, the job aggregator's role line and two bullets); the trace passing again against the master; no \"seat\" on the page; the new CV PDF checked and committed; CAPABILITIES.md's build table relabelled by what each role did. Brief 8 confirmed live. Brief 10: this machine's load measured against Lighthouse; the quiet set passes ADR-0009; light, medium and heavy proposed from the measurements."
 status: current
 ---
 
@@ -420,3 +420,58 @@ records the reading.
 - The chat: Report 10; the ADR-0009 row on the levels, from it.
 - The operator: deciding the levels.
 - For him: listing the site in emmabostian/developer-portfolios.
+
+# Round 3, 2026-10-20 (UTC): Brief 11, Report 10's close-out
+
+The session continued into Brief 11, pasted by the operator, after the
+Claude Code process exited with code 3221226505 (0xC0000409, a fail-fast)
+partway through the first attempt; nothing had been written. Its log
+showed event-loop stalls of about half a second with thousands of major
+page faults each, which fits the memory pressure of round 2; the cause of
+the exit is not tested. HEAD at the round's start: 750faec, the chat's,
+pushed. It adds ADR-0009's Changes row of 2026-10-20, read this round:
+the level is the worse of the memory and CPU readings over the minute
+before a set; committed memory and the Chrome version are recorded but
+set no level.
+
+## What was asked
+
+1. `CAPABILITIES.md`: beside the memory finding, the Chrome versions;
+   and the highlight's "battery and machine speed were ruled out by
+   measurement" kept only where a measurement supports each part.
+2. The handoff: next actions to ADR-0009's levels; the portfolio-gallery
+   review no longer this seat's (the gallery is public; reviews come
+   through the chat); the listing merged (pull request 4350); the site
+   not to go on his master CV.
+3. Records only; the standing checks a records-only change needs.
+
+## What was done
+
+- **Chrome versions.** Added to the limit and the highlight: the four
+  failing sets of 2026-10-19 ran on Chrome 154, the passing ones on 155
+  after it updated itself at 21:48Z; against that, 154 passed on
+  2026-10-15 (local LCP 2,255 ms, TBT 49 ms; 155 quiet: 2,255 ms, 42 ms).
+- **The highlight's claim, checked part by part.** Battery: read once,
+  at about 19:53Z on 2026-10-19, plugged in, between the third and
+  fourth failing sets; nothing was read for the first two, so "ruled
+  out" became "plugged in when checked". Machine speed: Lighthouse's
+  `benchmarkIndex` read 1,077 to 2,062 in failing runs and 1,598 to
+  2,313 in passing ones, so the measurement shows the short speed test
+  did not separate them, not that speed was ruled out; reworded to that.
+- **The limit** also notes that since 2026-10-20 a set counts only at
+  light or medium load.
+- **STATE and the completed list.** The levels row closed into
+  completed, with the listing (his account, through the chat) and the
+  master-CV answer; the blocked rows they cleared removed.
+
+## Checks
+
+[VERIFIED] The page did not change: two builds as of 2026-10 left
+`index.html` and `static/` byte-identical to the committed files; the
+content trace against the master passes. No page check applies to a
+change that leaves the built page as it was (`docs/reference/standing-checks.md`
+covers changes to the built page). Gates on the commit.
+
+## Errors this seat made, Brief 11
+
+- None found this round.

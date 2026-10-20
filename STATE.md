@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit 12084bc, the last commit before this file's
-update, 2026-10-19T22:42Z, by the Brief 10 implementing session.** This is
+**Verified against commit 750faec, the last commit before this file's
+update, 2026-10-20T11:04Z, by the Brief 11 implementing session.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -43,6 +43,11 @@ the clearing in the task's row.
 Update the verified-against line whenever you touch this file.
 
 ## Headline
+
+**Brief 11, 2026-10-20: the load levels are decided (ADR-0009
+Changes, 2026-10-20); `CAPABILITIES.md` names the Chrome versions
+beside the memory finding. Records only; the page did not change.**
+Before that:
 
 **Brief 10, 2026-10-19: this machine's load measured against
 Lighthouse. With memory freed the page passes ADR-0009 (live LCP 1,670
@@ -119,17 +124,13 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 
 | Task | Status | Evidence | Date | Proof |
 |---|---|---|---|---|
-| Load levels for Lighthouse on this machine set from measurement (Brief 10) | PENDING | [VERIFIED] measured | 2026-10-19 | logs/2026-10-19-role-wording.md, round 2. Proposed in Report 10; the operator decides, the chat writes the ADR-0009 row |
+| No open rows. Finished ones are in `docs/reference/completed.md`. | | | | |
 
 ## Blocked, and on whom
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
-| Whether this site goes on itself as a project (research 0004, decision 1); reuse is settled by ADR-0012 | The operator, for the master CV; then the chat, for placement | Operator and chat | 2026-10-07 |
-| The push of Brief 10's records | The operator | Operator | 2026-10-19 |
-| Report 10: the load levels, then the ADR-0009 row | The operator, then the architecture chat | Operator and chat | 2026-10-19 |
-| Listing the site in emmabostian/developer-portfolios; the footer line it waited on is live, checked 2026-10-19 | The operator | Operator | 2026-10-15 |
-| portfolio-gallery: built in its own folder by a fresh session from this seat's brief, then reviewed by this seat (ADR-0012's search for the master's text among it) before the operator publishes | That session, then this seat, then the operator | Operator | 2026-10-11 |
+| The push of Brief 11's records | The operator | Operator | 2026-10-20 |
 
 ## Known unverified
 
