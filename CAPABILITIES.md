@@ -234,6 +234,7 @@ architecture chat's.
 | 2026-10-19 | The master's role wording on the page: the summary, a skills item, the job aggregator's role line and two bullets; a new CV PDF, the same wording |
 | 2026-10-15 | Decided: the footer carries the master CV's Portfolio Footer line, word for word, its address a link to this repository, and the content trace requires it (ADR-0008 Changes) |
 | 2026-10-19 | Decided: his name may appear in `portfolio-gallery`'s showcase, never in what a copy receives (ADR-0012 Changes) |
+| 2026-10-20 | Decided: a Lighthouse set counts only on a machine at light or medium load, its level read from free memory and CPU over the minute before; a set at heavy load is void and repeated (ADR-0009 Changes) |
 
 ## Waqas Sharif's role
 
