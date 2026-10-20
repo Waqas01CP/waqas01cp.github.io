@@ -1,6 +1,6 @@
 ---
 type: log
-description: "Briefs 9 to 11. The master CV's role wording of 2026-10-18 carried onto the page by script (the summary, a skills item, the job aggregator's role line and two bullets); the trace passing again against the master; no \"seat\" on the page; the new CV PDF checked and committed; CAPABILITIES.md's build table relabelled by what each role did. Brief 8 confirmed live. Brief 10: this machine's load measured against Lighthouse; the quiet set passes ADR-0009; light, medium and heavy proposed from the measurements."
+description: "Briefs 9 to 11, and the briefs folder taken off the repository. The master CV's role wording of 2026-10-18 carried onto the page by script (the summary, a skills item, the job aggregator's role line and two bullets); the trace passing again against the master; no \"seat\" on the page; the new CV PDF checked and committed; CAPABILITIES.md's build table relabelled by what each role did. Brief 8 confirmed live. Brief 10: this machine's load measured against Lighthouse; the quiet set passes ADR-0009; light, medium and heavy proposed from the measurements."
 status: current
 ---
 
@@ -475,3 +475,39 @@ covers changes to the built page). Gates on the commit.
 ## Errors this seat made, Brief 11
 
 - None found this round.
+
+# Round 4, 2026-10-21 (UTC): the briefs folder off the repository
+
+Waqas Sharif's instruction in this session: the briefs folder must not
+appear on GitHub. It still did, because `briefs/README.md` was tracked
+and `.gitignore` ignored the folder's contents (`briefs/*`) with that one
+file excepted. Git cannot re-include a file whose parent folder is
+ignored, which is why the earlier rule was written that way.
+
+## What was done
+
+- `briefs/README.md` untracked with `git rm --cached`; the file stays on
+  disk, outside the repository.
+- `.gitignore`: `briefs/`, the whole folder, with a comment naming his
+  instruction.
+- `README.md`: the pointer "Why briefs are not committed" moved from
+  `briefs/README.md` to `CLAUDE.md`, Briefs, which says the folder is
+  gitignored.
+- `MAP.md` regenerated: 40 documented files, the briefs README gone.
+
+[VERIFIED] `git ls-files briefs` lists nothing; `git check-ignore`
+reports `briefs/README.md` and `briefs/architecture.md` ignored by the
+new rule.
+
+## Left as it was, and why
+
+- **Gate A** still refuses anything under `briefs/` except a README
+  (`tools/gates.py`). With the README untracked the exception never
+  applies; changing what the gate blocks is ADR-0007's, so it is left
+  for the architecture chat. ADR-0007 says only that the briefs are never
+  committed, which the change keeps.
+- **`CLAUDE.md`'s gate table** ("anything in `briefs/` but its README")
+  still describes gate A as it is.
+- **History:** the README remains in commits before this one; removing
+  it would rewrite pushed history, which this seat does not do.
+

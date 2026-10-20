@@ -1,10 +1,10 @@
 # The architecture chat's ledger is never committed. ADR-0002.
 CHAT_STATE.md
 
-# Briefs are working space, overwritten each round. Only the README is
-# tracked. See briefs/README.md.
-briefs/*
-!briefs/README.md
+# Briefs are working space, overwritten each round, and the whole folder
+# stays off the repository, its README included, at Waqas Sharif's
+# instruction of 2026-10-21. See CLAUDE.md, Briefs.
+briefs/
 
 # Local build environment and Python artefacts. The venv is recreated from
 # requirements.txt, which is committed. Brief 1.

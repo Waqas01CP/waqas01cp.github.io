@@ -52,6 +52,7 @@ before the root becomes unscannable, not after.
 
 | Date (UTC) | Log file | Session | What was done | Outcome |
 |---|---|---|---|---|
+| 2026-10-21 | [2026-10-19-role-wording.md](2026-10-19-role-wording.md) | His instruction | The briefs folder taken off the repository: its README untracked, `.gitignore` ignores the whole folder, README's pointer moved to CLAUDE.md | Nothing tracked under briefs/; gate A left for the chat |
 | 2026-10-20 | [2026-10-19-role-wording.md](2026-10-19-role-wording.md) | Brief 11 | Report 10's close-out: CAPABILITIES.md names the Chrome versions beside the memory finding and claims only what was measured; STATE to ADR-0009's levels and the operator's answers | Records only; the page byte-identical after two builds; trace passes |
 | 2026-10-19 | [2026-10-19-role-wording.md](2026-10-19-role-wording.md) | Brief 10 | Brief 9 live checked; this machine's CPU and memory measured against Lighthouse under the mutation run, quiet, and at three controlled loads; levels proposed | The quiet set passes ADR-0009 (live TBT 63 ms); memory, not CPU, separates fail from pass; no ADR row written |
 | 2026-10-19 | [2026-10-19-role-wording.md](2026-10-19-role-wording.md) | Brief 9 | The master's role wording of 2026-10-18 on the page by script; trace passing; no "seat" on the page; the new CV PDF checked and committed; the build table relabelled; Brief 8 live checked | 33bbff9, d053c17; three trace defeats exit 1; every check passes; awaiting push |

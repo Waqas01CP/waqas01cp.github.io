@@ -55,7 +55,7 @@ Method, kept in his private vault and deliberately not linked from here.
 | How the page is checked against the master CV | `docs/reference/commands.md`, the content trace |
 | The checks every change to the page runs | `docs/reference/standing-checks.md` |
 | What prior implementing sessions did | `logs/README.md` |
-| Why briefs are not committed | `briefs/README.md` |
+| Why briefs are not committed | `CLAUDE.md`, Briefs |
 | Completed work moved out of the state file | `docs/reference/completed.md` |
 
 ## The rule that governs every claim
