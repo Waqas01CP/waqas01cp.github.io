@@ -28,6 +28,18 @@ Every internal link is root-relative and no absolute self-origin is
 hardcoded, so moving to a custom domain later is a DNS change and a CNAME
 file, not a link rewrite.
 
+## Start here
+
+Pick the row that fits why you are here, and read in that order.
+
+| You are | Read, in this order |
+|---|---|
+| Reviewing his work, as an employer or admissions reader | The live site; then `CAPABILITIES.md`, everything the site is and does in one file; then `docs/decisions/README.md`, for why each choice was made |
+| Checking a claim on the site | `CAPABILITIES.md`, "Where the evidence lives"; then `docs/reference/commands.md`, the content trace, which ties every line on the page to his master CV |
+| Changing the content or the code | `CLAUDE.md`, the rules and the reading order; `STATE.md`; `src/content/README.md`; `docs/reference/commands.md`; `docs/reference/standing-checks.md` |
+| An AI agent working in this repository | `CLAUDE.md` first: it holds the authority order, the scope floor, the rules and the reading order. Then follow its reading order. `MAP.md` lists every documented file with what it is for; open files from it rather than reading the folders |
+| Looking for what happened when | `logs/README.md`, then the newest relevant log; audits in `logs/audit/README.md` |
+
 ## How this project is run
 
 Waqas Sharif designs the architecture, its rules and the site's look,
@@ -58,6 +70,8 @@ Method, kept in his private vault and deliberately not linked from here.
 | What prior implementing sessions did | `logs/README.md` |
 | Why briefs are not committed | `CLAUDE.md`, Briefs |
 | Completed work moved out of the state file | `docs/reference/completed.md` |
+| Every documented file, with what each is for | `MAP.md`, generated |
+| The audits of this repository | `logs/audit/README.md` |
 
 ## The rule that governs every claim
 
