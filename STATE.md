@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit 27013c5, the last commit before this file's
-update, 2026-10-21T11:50Z, by the implementing session committing the first audit.** This is
+**Verified against commit 5241916, the last commit before this file's
+update, 2026-10-21T22:10Z, by the Brief 13 implementing session.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -43,6 +43,11 @@ the clearing in the task's row.
 Update the verified-against line whenever you touch this file.
 
 ## Headline
+
+**Brief 13, Part 0, 2026-10-21: the master's new role wording on the page
+(the summary, the job aggregator's role line, the footer) and the new CV PDF;
+every standing check passes, Lighthouse at light load. Committed, for the
+operator's push. Parts 1 to 5 follow.** Before that:
 
 **The first audit, 2026-10-21: cold and read-only, of 27013c5 and the
 live site, its report committed unchanged (`logs/audit/2026-10-21-first-audit.md`).
@@ -141,11 +146,8 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
-| The push of the first audit's commit | The operator | Operator | 2026-10-21 |
-| The first audit's F1, the footer line (master text): to the master CV's chat | The operator, then the master's chat | Operator | 2026-10-21 |
-| The first audit's F6, F7, F12, F14 and F11's open questions: records and the chat's lanes | The architecture chat | Chat | 2026-10-21 |
-| The first audit's F10 scope (which files count as records), F16's judgements, F2 (the sleeping Streamlit app) and F21 (`.commitmsg/` leftovers) | The operator | Operator | 2026-10-21 |
-| The first audit's findings in this seat's lane (F3, F4, F5, F8, F9's stale sentence, F11's numbers, F13, F17 to F20): fixes, on a brief | The architecture chat, then the implementing seat | Chat | 2026-10-21 |
+| The push of Brief 13's Part 0 (f2ce13f, 5241916 and its records) | The operator | Operator | 2026-10-21 |
+| Brief 13, Parts 1 to 5: CLAUDE.md blocks, the audit's findings in this seat's lane with W1, floor lines 7, 9 and 10 investigated, documents for a person and an AI, his screenshots | The implementing seat, in progress | Seat | 2026-10-21 |
 
 ## Known unverified
 

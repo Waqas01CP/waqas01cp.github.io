@@ -620,3 +620,90 @@ on the live page (LCP 1,725 ms, CLS 0.031, TBT 113 ms).
 
 - F13, above: a local date written as UTC in round 4.
 
+# Round 7, 2026-10-21 (UTC): Brief 13, Part 0, the master's new role wording
+
+Brief 13 arrived pasted at about 21:30Z (2026-10-22 local). Before it,
+the chat committed c25bf08 (the first audit's findings in its lane: F6,
+F9, F11's waiting list, F12, F14, and F16 in its lane) and 9ad8c45 (a
+README fix), and Waqas pushed both. His answers, given in this session
+on 2026-10-21 and recorded here as round 6 said they would be: F2, leave
+the Streamlit app asleep ("the streamlit on free plan has this so let it
+be ... they can just click one button"); F10, STATE.md, docs/reference/
+and docs/deferred/ count as records ("if not that then what else will
+they be?"); F16, raised to the chat and the CV chat, in his words to
+appear credible, never passive or defensive; F21, the `.commitmsg/`
+folder deleted by him. The brief adds a fact from him: he used Claude
+Code from Rahzaan onward, not before.
+
+## Part 0: what was asked
+
+The CV chat changed the master at 2026-10-21T21:19:18Z (file time), on
+his approval, resolving F1 and F16: the summary's second sentence, the
+job aggregator's role line, and the Portfolio Footer. Carry them onto
+the page by script from a diff against the last traced copy; the trace
+to pass, each defeat to fail; the footer's address to occur exactly
+once. The new CV PDF, MD5 5a561a83664af0797039a67cbf7563d3, on disk in
+lower case: checked as in Brief 6 and committed on its own under the
+tracked name. The page's standing checks; Lighthouse by ADR-0009's
+levels.
+
+## Part 0: what was done
+
+[VERIFIED] The master and the copy traced on 2026-10-19 differ in four
+lines: the three above and the footer's italic note, which records the
+revision and is not page text, so it was left out by name. The script
+(Brief 9's, with that one skip) replaced each changed region with the
+least context occurring once in the content. Each claim of the new
+footer was checked against the repository before it went on: he
+architected the site (the decision-maker on every record); he set its
+look (ADR-0011: the prototype built from his six reference sites, which
+he reviewed); its implementation delegated to Claude Code (README.md and
+CAPABILITIES.md say the same); he tested it with a screen reader
+(ADR-0010 Changes, 2026-10-07, his NVDA run). f2ce13f.
+
+Trace: 378 blocks, 0 not traced; summary, footer, footer link and
+italic-line sentences complete; PASS. Defeats, each exit 1: the page
+before the change (3 not traced, exactly the three lines); "speed" made
+"pace" in a copy of the master, the copy differing only at line 23 (the
+footer, 0 of 1); the role line shortened in a copy of the page
+(italic-line sentences 16 of 17). Control exit 0. The footer's address
+occurs once in the line. Builds twice identical. No "seat" or
+"operator" on the page.
+
+The CV PDF. [VERIFIED] 5241916. It arrived as `cv/waqas_sharif_cv.pdf`;
+renamed on disk to the tracked `cv/Waqas_Sharif_CV.pdf` (checked with ls
+against git ls-files), MD5 unchanged. Brief 6's 15 checks: 14 pass, the
+fifteenth the machine user-name probe, 5 occurrences, all required
+fields, as before. One A4 page; Title and Author only; 4 fonts embedded;
+3 links, each 200 with no redirect at 21:36:26Z; 613 words; no dashes;
+41 numbers, all in the master. Its doctored copy fails 13 of 15. The new
+wording present and the old absent, no "seat", "operator", "vibe" or
+"routing", MD5 as given: 12 of 12; the PDF before it fails 5.
+
+The standing checks, each defeat first, 21:38Z to 22:08Z. Chrome
+156.0.8078.47 (it updated itself since 2026-10-19; read from its file),
+Edge 155.0.4283.62. Tree at load: full mode 32 of 32 loads match, default
+adds no node in 32 (defeats: 4 of 4 differ; 1 node added). Keyboard 60
+of 60 (defeat 58). axe 0 violations in 12 of 12 cells (defeat 12).
+Anchors 132 of 132 (defeat 74). Joined words 0 at 1366 and 360 px in
+Chrome and Edge (defeat 58 and 59); the new footer and role line each
+read as one line by the NVDA model.
+
+Lighthouse at light load (ADR-0009 Changes, 2026-10-20): the 60 s before
+read available memory median 1,124 MB and CPU median 22.9%, both light;
+committed 24.0 of 31.7 GB. This page LCP 2,255 ms, CLS 0, TBT 42 ms
+(runs 148 27 42 31 45); the page before it 2,255 ms, 0, 23 ms; the
+600 ms defeat TBT 1,852 ms, failing. After the set: 1,385 MB, CPU 17.2%.
+
+What moved: the summary's height is unchanged; the role line adds 24 px
+to Projects and the footer about the same; the page is 47 px longer at
+360 px and 48 px at 1366 px; no horizontal overflow.
+
+## Errors this seat made, round 7
+
+- A patch script written through a bash heredoc turned its escaped line
+  breaks into real ones and failed to compile; nothing was written. The
+  handoff's first tool trap, again; and a records command written the
+  same way failed to parse, nothing run. Both rerun from files.
+- A PDF wording script crashed printing a bullet character after every
+  check had printed; rerun without that line.

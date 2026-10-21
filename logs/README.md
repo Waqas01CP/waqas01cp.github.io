@@ -53,6 +53,7 @@ before the root becomes unscannable, not after.
 
 | Date (UTC) | Log file | Session | What was done | Outcome |
 |---|---|---|---|---|
+| 2026-10-21 | [2026-10-19-role-wording.md](2026-10-19-role-wording.md) | Brief 13, Part 0 | The master's new role wording on the page by script; the new CV PDF checked and committed under its tracked name; every standing check | f2ce13f, 5241916; trace defeats exit 1; Lighthouse passes at light load |
 | 2026-10-21 | [2026-10-19-role-wording.md](2026-10-19-role-wording.md) | The first audit | Its report committed unchanged; each of its 22 findings routed: master, chat, Waqas, or this seat on a brief. Corrects the row below it dated 2026-10-21 for the briefs folder: that work was 2026-10-20 UTC (audit F13) | No page change |
 | 2026-10-21 | [2026-10-19-role-wording.md](2026-10-19-role-wording.md) | Brief 12 | Gate A refuses the whole briefs folder; CLAUDE.md's row A to match; the audit brief written; `logs/audit/` index created for its report | Defeat: the README staged with -f refused by gate A; the page unchanged |
 | 2026-10-21 | [2026-10-19-role-wording.md](2026-10-19-role-wording.md) | His instruction | The briefs folder taken off the repository: its README untracked, `.gitignore` ignores the whole folder, README's pointer moved to CLAUDE.md | Nothing tracked under briefs/; gate A left for the chat |
