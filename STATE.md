@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit 5241916, the last commit before this file's
-update, 2026-10-21T22:10Z, by the Brief 13 implementing session.** This is
+**Verified against commit 388f618, the last commit before this file's
+update, 2026-10-21T22:56Z, by the Brief 13 implementing session.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -43,6 +43,15 @@ the clearing in the task's row.
 Update the verified-against line whenever you touch this file.
 
 ## Headline
+
+**Brief 13, Parts 1 to 4, 2026-10-21: CLAUDE.md's three blocks; the "In
+depth" button no longer stranded (W1), the certificate cards' cue on
+touch (F3), no current mark without a script (F17); "operator" and
+"seat" out of every file outside the records; a layout check and a
+measured contrast check added to the standing checks; floor lines 7, 9
+and 10 investigated; a Start here for people and AI agents. Every
+standing check passes; Lighthouse at light load. Committed, for the
+operator's push. Part 5 waits on his screenshots.** Before that:
 
 **Brief 13, Part 0, 2026-10-21: the master's new role wording on the page
 (the summary, the job aggregator's role line, the footer) and the new CV PDF;
@@ -146,8 +155,9 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
-| The push of Brief 13's Part 0 (f2ce13f, 5241916 and its records) | The operator | Operator | 2026-10-21 |
-| Brief 13, Parts 1 to 5: CLAUDE.md blocks, the audit's findings in this seat's lane with W1, floor lines 7, 9 and 10 investigated, documents for a person and an AI, his screenshots | The implementing seat, in progress | Seat | 2026-10-21 |
+| The push of Brief 13's commits (f2ce13f to the records of Parts 1 to 4) | The operator | Operator | 2026-10-21 |
+| Report 13: floor lines 7, 9 and 10, build or amend (ADR-0004, ADR-0007); AGENTS.md and CLAUDE.md's length (Part 4); F4's split, the prototype's order | The operator, then the architecture chat | Operator and chat | 2026-10-21 |
+| Brief 13, Part 5: his screenshots of the live site | The operator | Operator | 2026-10-21 |
 
 ## Known unverified
 

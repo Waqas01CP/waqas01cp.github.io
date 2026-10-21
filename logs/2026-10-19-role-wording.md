@@ -707,3 +707,144 @@ to Projects and the footer about the same; the page is 47 px longer at
   same way failed to parse, nothing run. Both rerun from files.
 - A PDF wording script crashed printing a bullet character after every
   check had printed; rerun without that line.
+
+# Round 8, 2026-10-21 (UTC): Brief 13, Parts 1 to 4
+
+## Part 1: CLAUDE.md
+
+[VERIFIED] 35b71fa. The three blocks Waqas approved on 2026-10-21, worded
+to fit: Conventions, no absolute URL to the site's origin in the built
+page, a document read apart from the site such as the CV PDF may give the
+full address (ADR-0002 Changes, 2026-10-21); a new Audits section, reports
+in `logs/audit/`, the audit seat writing its report and index row, this
+seat committing them unchanged; and under Writing, where "operator" and
+"seat" may stay: the decision records, the logs, STATE.md,
+docs/reference/, docs/deferred/ and CLAUDE.md, everything else using his
+name.
+
+## Part 2: the first audit's findings in this lane
+
+**W1, the stranded "In depth" button.** [VERIFIED] 78f13ce. The proof
+links now wrap among themselves in the left column of a two-column grid,
+and the button keeps the right column beside their last row. The button
+had `margin-left: auto` in a wrapping flex row, so when the row wrapped
+it went to a row of its own, pushed right. The approved look is kept,
+the button at the right of the links; on the research card at 1366 px
+the two links now stack, with the button beside the second.
+
+**F3, the certificate cards on touch.** [VERIFIED] On a screen without
+hover, `@media (hover: none)`, "View credential" shows from the start. An
+emulated touch phone: opacity 1; the live page before the fix: 0; a
+desktop with a mouse: 0 until hover, as designed.
+
+**F17, the menu without a script.** [VERIFIED] The templates no longer
+mark Intro as current; the script's observer marks the section in view
+on load. Without a script: 0 links marked current, and the phone bar
+reads "Sections"; the live page before: 2, and "Intro".
+
+**F4 was not an overlap.** The first audit reported the probes card
+covering the foot of "592" at 360 px; Report 12 repeated it and called it
+wider, at 320 to 768 px, on the strength of a scan that measured the
+font's box rather than the letters. Measured by ink and seen at 3x zoom
+on the live page at 360 and 390 px: a clear gap, the digits' ink ending
+18 px above the card's box at 390 px. A spacing fix made for it was
+reverted before commit. What remains of F4 is the card's place between
+"592" and "automated tests" below 1000 px, which `site.css` records as
+the approved prototype's order (ADR-0011). Not changed; for Waqas.
+
+**The layout check, a new standing check.** `layoutcheck.js`
+(scratchpad; described in `docs/reference/standing-checks.md`): at nine
+widths, 320 to 1920 px, scripts on and off, light, it finds text whose
+ink is overlapped by other text or a painted box, an item stranded by
+`margin-left: auto`, clipped text, and anything that scrolls the page
+sideways, outside a named list of four deliberate cases. Its defeats,
+each exit 1: the live page before the fix (12 stranded-button findings);
+a copy with the probes card moved 70 px up over "592" (10 findings,
+"592" overlapped at the phone widths). The fixed page, scripts on and
+off: 0 findings outside the list.
+
+**F8, a measured contrast check.** `contrastcheck.js`: every visible text
+element's colour, with alpha and ancestors' opacity, against the nearest
+solid background, WCAG 2 AA, light and dark, 360 and 1366 px. The page:
+0 below AA; 17 elements at 360 px and 94 at 1366 px sit over a gradient
+or in the floating bar and are counted as unmeasured, not passed. Defeat:
+a `#c8c8c8` span planted in the Skills heading, 1.48:1 in light theme,
+exit 1. ADR-0011's Confirmation still names axe; its wording is the
+chat's.
+
+**F18 and F19, answered by measurement.** The standing tree-at-load
+defeat (0403c68) differs from its reference in all four cells, 360 and
+1366 px, light and dark; the audit's own defeat fired at 360 px only. The
+standing Lighthouse defeat, a 600 ms script at the end of the head, fails
+by TBT (about 1,850 ms in every set since 2026-10-19), so it exercises
+the TBT check; the audit's, at the top of the head, failed by LCP.
+`standing-checks.md` now says both.
+
+**F5, F9, F10, F13, F20.** [VERIFIED] d2003b2. Research 0004's passage
+on languages reworded: the site is evidence of how he designs, directs
+and verifies a build, not of which languages he lists, which is the
+master's to say; a dated annotation says the earlier wording implied he
+cannot code and is withdrawn; no language levels stated. The 2026-10-07
+log's line ("Languages written by AI seats are not defensible as
+skills") is corrected here, not edited there: it implied the same, and
+is withdrawn under the rule of 2026-10-19. "Operator" and "seat" replaced
+by his name, or by Claude Code for the implementer, in 34 places across
+research 0002 to 0005, the design-system README, the content README, the
+comments in `tools/check_content.py`, `tools/gates.py` and
+`projects.html.j2`, `.gitignore` and `.gitattributes`; none remains in
+those files. `.gitignore`'s comment on the chat's message files now says
+Waqas makes those commits, as commands.md does (the audit's F21 note),
+and its date is 2026-10-20 UTC (F13). `gates.py`'s Gate E comment points
+to ADR-0007 Changes, 2026-09-26; commands.md gives `--page` (F20).
+
+**CAPABILITIES.md, this lane.** The Design and AI tooling rows with
+Waqas the subject: the visual system he chose, with his changes, from a
+prototype built in Claude Design from his six reference sites (ADR-0011);
+Claude Code, to which he delegates implementation, for speed. The build
+table's prototype row reworded the same way. F11's numbers re-measured on
+2026-10-21; live CLS given with its load level; the timeline in date
+order.
+
+**The standing checks on the page with these fixes**, 22:22Z to 22:52Z,
+each defeat first: tree at load 32 of 32 full and no node added in 32
+default; keyboard 60 of 60 (defeat 58); axe 0 violations in 12 of 12
+(defeat 12); anchors 132 of 132 (defeat 76); layout check clean, scripts
+on and off (defeats fail); joined words 0 in Chrome 156 and Edge 155 at
+both widths (defeat 58 and 59). Lighthouse at light load (914 MB free,
+CPU 20%): this page LCP 2,255 ms, CLS 0.0001, TBT 54 ms; Part 0's page
+2,256, 0, 51; the defeat 1,852 ms TBT, failing. The trace passes, 378 of
+378.
+
+## Part 3: floor lines 7, 9 and 10, investigated
+
+Nothing built; recommendations in Report 13. What was measured
+2026-10-21: the shipped scripts write text in six places, all interface
+labels (the section number and name, the scroll percentage, the
+timeline's month chip, Pause and Play); the only extra script they load
+is `/static/knot.js`, same origin; no storage, cookie or network API in
+either; no external `src` in the page and no external `url()` or
+`@import` in the stylesheet.
+
+## Part 4: documents for a person and an AI
+
+First-party sources read 2026-10-21: Anthropic's Claude Code memory docs;
+OpenAI's Codex AGENTS.md docs; GitHub's Copilot repository-instructions
+docs; Google's Gemini CLI context-file docs (updated 2026-06-18); the
+agents.md site; llmstxt.org (v2, modified 2026-08-10). Built: a Start
+here in README.md (388f618). Proposed in Report 13, not built: an
+AGENTS.md, and a shorter CLAUDE.md (260 lines against the 200 Anthropic's
+docs suggest).
+
+## Errors this seat made, round 8
+
+- F4: Report 12 repeated the audit's overlap and called it wider, from a
+  scan that measured fonts' boxes; I also used that false overlap as one
+  of the scan's two defeats. Found when an ink-measured scan stopped
+  flagging it; settled by a 3x screenshot. The fix made for it was
+  reverted before commit.
+- The first ink-measured scan skipped "592" altogether: its rule for
+  screen-reader-only text treated an element with `display: contents`
+  (width 0) as hidden. Found when the planted overlap passed; fixed.
+- The fixed page's copy for the first layout and screenshot runs still
+  held the reverted spacing; refreshed from the build, and the layout
+  check and the standing checks rerun on the true build.

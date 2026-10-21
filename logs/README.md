@@ -53,6 +53,7 @@ before the root becomes unscannable, not after.
 
 | Date (UTC) | Log file | Session | What was done | Outcome |
 |---|---|---|---|---|
+| 2026-10-21 | [2026-10-19-role-wording.md](2026-10-19-role-wording.md) | Brief 13, Parts 1 to 4 | CLAUDE.md's blocks; W1, F3, F17 fixed; F4 found not to be an overlap; the audit's documents findings; layout and contrast checks added; floor lines 7, 9, 10 investigated; a Start here | 35b71fa, 78f13ce, d2003b2, 388f618; every standing check; Lighthouse at light load |
 | 2026-10-21 | [2026-10-19-role-wording.md](2026-10-19-role-wording.md) | Brief 13, Part 0 | The master's new role wording on the page by script; the new CV PDF checked and committed under its tracked name; every standing check | f2ce13f, 5241916; trace defeats exit 1; Lighthouse passes at light load |
 | 2026-10-21 | [2026-10-19-role-wording.md](2026-10-19-role-wording.md) | The first audit | Its report committed unchanged; each of its 22 findings routed: master, chat, Waqas, or this seat on a brief. Corrects the row below it dated 2026-10-21 for the briefs folder: that work was 2026-10-20 UTC (audit F13) | No page change |
 | 2026-10-21 | [2026-10-19-role-wording.md](2026-10-19-role-wording.md) | Brief 12 | Gate A refuses the whole briefs folder; CLAUDE.md's row A to match; the audit brief written; `logs/audit/` index created for its report | Defeat: the README staged with -f refused by gate A; the page unchanged |
