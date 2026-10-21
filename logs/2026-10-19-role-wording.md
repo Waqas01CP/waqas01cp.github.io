@@ -564,3 +564,59 @@ the implementing seat commits it unchanged. `logs/README.md` points to it.
 
 Nothing in the footer, the content or the page changed.
 
+# Round 6, 2026-10-21 (UTC): the first audit committed
+
+The audit seat ran the first cold, read-only audit of this repository and
+the live site, from the audit brief, about 10:25Z to 11:45Z, and wrote
+`logs/audit/2026-10-21-first-audit.md` and its index row. The operator
+asked this seat to commit both unchanged with `STATE.md`, remove the
+index's placeholder row, regenerate the map, and record what is done
+with each of its 22 findings, routing F1 to the master CV's chat; F6,
+F7, F12 and F11's open questions to the architecture chat; F10's scope
+question and F16 to him; F2 as outside the repository.
+
+## The report checked before committing
+
+[VERIFIED] Read whole, 693 lines. No path into his private material: the
+only addresses are public URLs already on the page or GitHub's public
+API. No master text that is not on the live page: what it quotes (the
+footer line, the job aggregator's role line, the summary's phrase) is on
+the page. Nothing of a brief's beyond his wording rules, whose substance
+is already public (`README.md` line 35). No em-dashes. Committed
+unchanged; the only edit in `logs/audit/README.md` is the removal of the
+"No audit yet." row, as the report itself asked.
+
+## Each finding, and what is done with it
+
+| Finding | Owner | What is done |
+|---|---|---|
+| F1, the footer names no author of the code (master text) | The master CV's chat, through Waqas | Routed. The footer is the master's Portfolio Footer word for word (ADR-0008 Changes, 2026-10-15); nothing on the site changes until the master does, and the trace will then require the new line |
+| F2, the Streamlit "Live app" link opens a sleeping app | Outside the repository: Waqas's app | Routed to him. Whether to wake it, keep it awake, or change the link's text is his; a text change would come through the master |
+| F3, certificate cards show no link cue on touch screens | This seat, on a brief (a visible change within ADR-0011) | Proposed for the chat's brief: show "View credential" where hover is not available, then the standing checks |
+| F4, at 360 px the figure card covers part of "592" | This seat, on a brief | Proposed for the chat's brief: a layout fix at phone width, checked by screenshots at both widths |
+| F5, research 0004 and a log imply he cannot write languages he lists | This seat, on a brief | Proposed: a dated annotation in research 0004 correcting it under the rule of 2026-10-19; the 2026-10-07 log is not modified, its correction a note in a later log |
+| F6, portfolio-gallery public, `LICENSE` and `README.md` still call it planned | The architecture chat (ADR-0012) | Routed |
+| F7, ADR-0004's gateable lines never built as gates | The architecture chat and Waqas | Routed: build the gates or amend the record |
+| F8, axe leaves most contrast as "needs review" | This seat, on a brief | Proposed: a contrast check that can fail beside axe in the standing checks, with its defeat; ADR-0011's Confirmation wording is the chat's |
+| F9, `README.md` says "operator", and a stale sentence on what is never committed | The "operator" line with F10's answer; the stale sentence this seat's, on a brief | Routed with F10; the sentence proposed for correction |
+| F10, "seat" or "operator" in 21 files outside records, logs and `CLAUDE.md` | Waqas: which files count as records | Routed. After his answer each file goes to its lane |
+| F11, `CAPABILITIES.md` behind in five places | Its open questions the chat's; its date line, CLS, dated counts and timeline order this seat's | Open questions routed; the rest proposed for the next records round, re-measured |
+| F12, the decision index's Pending list | The architecture chat | Routed |
+| F13, a local date written as UTC | This seat: its own error | Confirmed: round 4 above and its index row say 2026-10-21; the work was 2026-10-20 UTC (2bf8e41 at 22:38:01Z). Logs and index rows are not modified; this row is the correction. `.gitignore`'s comment date is proposed for the next round |
+| F14, ADR-0002's Confirmation and `CLAUDE.md`'s "anywhere" | The architecture chat | Routed (not in the operator's list; a record and `CLAUDE.md`, so the chat's) |
+| F15, `STATE.md` listed a push that had happened | This seat | Done: the row cleared in this commit. The lag is built in, since a commit cannot record its own push |
+| F16, judgements on how the agent's part is phrased | Waqas; the role line and summary are master text; `CAPABILITIES.md` line 166 this seat's, lines 294 to 298 the chat's | Routed to him |
+| F17, scripts off, the menu stays on "Intro" | This seat, on a brief | Proposed: no static current-section mark without the script |
+| F18, the tree-at-load defeat built here fires at 360 px only | This seat, on a brief | Proposed: run the standing defeat (0403c68) at both widths and record where it fires |
+| F19, the 600 ms defeat fails by LCP, not TBT | This seat, on a brief | Proposed: a defeat that blocks after first paint, so the TBT check is shown able to fail |
+| F20, a stale code comment; `--page` missing from commands.md | This seat, on a brief | Proposed for the next round |
+| F21, `.commitmsg/` leftovers | Waqas | Routed: the files are the chat's, deleted by him after their commits (commands.md); this seat does not touch them |
+| F22, commit messages hold "seat" or "operator" | None | Reported only; history is not rewritten |
+
+The audit's Lighthouse set counted at medium load and passed ADR-0009
+on the live page (LCP 1,725 ms, CLS 0.031, TBT 113 ms).
+
+## Errors this seat made
+
+- F13, above: a local date written as UTC in round 4.
+

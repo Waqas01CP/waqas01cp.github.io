@@ -76,4 +76,4 @@ correction is a note in the next report.
 
 | Date | Audit | Scope | Verdict | Report |
 |---|---|---|---|---|
-| | No audit yet. | | | |
+| 2026-10-21 | First, cold, read-only | The repository at 27013c5 and the live site: wording about Waqas on every surface, content, accessibility, performance, records, documents, a visual pass at 360 and 1366 px | Live site sound and traced to the master; the footer line names no author of the code; three other reader-facing faults; stale documents and two records behind the repository; 22 findings, none blocking | [2026-10-21-first-audit.md](2026-10-21-first-audit.md) |

@@ -28,6 +28,7 @@ Proof is a commit, a decision record or a log filename. Never a file path.
 | Content trace: the master's project links read and checked as links, after the master moved Rahzaan's links onto its project line | [VERIFIED] | 2026-10-10 | logs/2026-10-07-tree-parity.md, round 8. PASS against the current master; three defeat cases each exit 1 |
 | Every documented file's frontmatter readable as YAML: four descriptions holding a colon and a space quoted | [VERIFIED] | 2026-10-10 | logs/2026-10-07-tree-parity.md, round 9. PyYAML: 4 of 36 rejected before, 0 after |
 | A licence notice: all rights reserved, at the operator's instruction; README.md brought current | [VERIFIED] | 2026-10-10 | Same log, round 9 |
+| The first cold audit, read-only, of 27013c5 and the live site; its report committed unchanged | [VERIFIED] | 2026-10-21 | logs/audit/2026-10-21-first-audit.md; logs/2026-10-19-role-wording.md, round 6 |
 | Load levels for Lighthouse on this machine set from measurement: light, medium, heavy by free memory and CPU, the worse of the two | [VERIFIED] | 2026-10-20 | ADR-0009 Changes, 2026-10-20, from Report 10; logs/2026-10-19-role-wording.md, round 2 |
 | portfolio-gallery published; its reviews come through the architecture chat, not this seat | Decided | 2026-10-20 | Brief 11, the architecture chat |
 | Listing the site in emmabostian/developer-portfolios | [VERIFIED] by the operator | 2026-10-20 | His account through the architecture chat: pull request 4350, merged |

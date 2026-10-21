@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit 2bf8e41, the last commit before this file's
-update, 2026-10-21T10:19Z, by the Brief 12 implementing session.** This is
+**Verified against commit 27013c5, the last commit before this file's
+update, 2026-10-21T11:50Z, by the implementing session committing the first audit.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -43,6 +43,12 @@ the clearing in the task's row.
 Update the verified-against line whenever you touch this file.
 
 ## Headline
+
+**The first audit, 2026-10-21: cold and read-only, of 27013c5 and the
+live site, its report committed unchanged (`logs/audit/2026-10-21-first-audit.md`).
+The live site is sound and traces to the master; 22 findings, none
+blocking, each routed in `logs/2026-10-19-role-wording.md`, round 6.**
+Before that:
 
 **Brief 12, 2026-10-21: gate A refuses the whole briefs folder, its
 README included; the briefs folder is off the repository (2bf8e41). An
@@ -135,8 +141,11 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
-| The push of Brief 12's commit | The operator | Operator | 2026-10-21 |
-| The cold audit: a fresh session started by the operator from the audit brief, its report in `logs/audit/`, then committed unchanged by the implementing seat | The operator, then the audit seat | Operator | 2026-10-21 |
+| The push of the first audit's commit | The operator | Operator | 2026-10-21 |
+| The first audit's F1, the footer line (master text): to the master CV's chat | The operator, then the master's chat | Operator | 2026-10-21 |
+| The first audit's F6, F7, F12, F14 and F11's open questions: records and the chat's lanes | The architecture chat | Chat | 2026-10-21 |
+| The first audit's F10 scope (which files count as records), F16's judgements, F2 (the sleeping Streamlit app) and F21 (`.commitmsg/` leftovers) | The operator | Operator | 2026-10-21 |
+| The first audit's findings in this seat's lane (F3, F4, F5, F8, F9's stale sentence, F11's numbers, F13, F17 to F20): fixes, on a brief | The architecture chat, then the implementing seat | Chat | 2026-10-21 |
 
 ## Known unverified
 

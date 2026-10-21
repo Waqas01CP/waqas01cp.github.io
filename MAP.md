@@ -92,6 +92,7 @@ frontmatter. Decision records have no `type`; their `topic` is shown.
 
 | File | Type | Status | Description |
 |---|---|---|---|
+| `logs/audit/2026-10-21-first-audit.md` | log | current | The first cold audit, read-only, of the repository at 27013c5 and the live site: wording about Waqas Sharif, content, accessibility, performance, records, documents and a visual pass. Verdict: the live site is sound and traces to the master; the wording fails in places, on the page only in the master's footer line; three other reader-facing faults; and several documents and records are stale against the repository. |
 | `logs/audit/README.md` | reference | current | The audit reports of this repository, one per audit, written by the audit seat in its own words, newest first, and how a report is written and committed. |
 
 ## src/content
