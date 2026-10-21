@@ -88,6 +88,12 @@ frontmatter. Decision records have no `type`; their `topic` is shown.
 | `logs/2026-10-19-role-wording.md` | log | current | Briefs 9 to 11, and the briefs folder taken off the repository. The master CV's role wording of 2026-10-18 carried onto the page by script (the summary, a skills item, the job aggregator's role line and two bullets); the trace passing again against the master; no \"seat\" on the page; the new CV PDF checked and committed; CAPABILITIES.md's build table relabelled by what each role did. Brief 8 confirmed live. Brief 10: this machine's load measured against Lighthouse; the quiet set passes ADR-0009; light, medium and heavy proposed from the measurements. |
 | `logs/README.md` | index | current | The session log index. Read this first for what prior sessions did, then chain backwards through the most recent relevant log only as far as needed. |
 
+## logs/audit
+
+| File | Type | Status | Description |
+|---|---|---|---|
+| `logs/audit/README.md` | reference | current | The audit reports of this repository, one per audit, written by the audit seat in its own words, newest first, and how a report is written and committed. |
+
 ## src/content
 
 | File | Type | Status | Description |

@@ -511,3 +511,56 @@ new rule.
 - **History:** the README remains in commits before this one; removing
   it would rewrite pushed history, which this seat does not do.
 
+# Round 5, 2026-10-21 (UTC): Brief 12, gate A and the audit brief
+
+## What was asked
+
+Brief 12, which is never committed. Part 1: ADR-0007 blocks "the
+briefs" with no exception for their README; the exception lived only in
+`tools/gates.py` and `CLAUDE.md`. Drop it, reword the gate's docstring and
+refusal message to point to `CLAUDE.md`'s Briefs section, show the defeat
+(the README staged with `-f` refused), apply the operator's approved
+update block to `CLAUDE.md`'s gate table, and sweep for anything else
+naming the README as tracked. Part 2: write the brief for a cold,
+read-only audit seat (his Working Method, sections 2.2 and 6.5) covering
+the wording about Waqas on every surface, an overall audit, and a full
+visual pass of the live site; context, not conclusions; not naming a
+visual issue he has seen. Part 3: the footer is the master's; change
+nothing in it.
+
+## Part 1
+
+[VERIFIED] Before the change, `briefs/README.md` staged with `-f` passed
+gate A: only gate C refused it, for a stale map. After it, the same
+staging is refused by gate A by name, "briefs are working space and are
+never committed (CLAUDE.md, Briefs)"; another brief staged with `-f` is
+refused the same way; `CHAT_STATE.md` staged with `-f` is still refused.
+Each case was unstaged afterwards. The docstring names the new defeat
+case. `CLAUDE.md`'s row A reads "anything in `briefs/`".
+
+The sweep: no current document names the README as tracked. Mentions
+remain as history in logs, `docs/reference/completed.md` (a 2026-09-26
+row) and two records' text (ADR-0001 and ADR-0006, which cite it as a
+document); they are left as written and reported to the chat.
+
+## Part 2
+
+The audit brief is in `briefs/audit.md`, gitignored, and was given to
+the operator as one paste-ready block. It carries the authority order and
+the scope floor in full, the wording rules of 2026-10-19 in full, how to
+get the master CV's path (from the operator, never stored), the machine
+rules (ADR-0009's levels of 2026-10-20, closing Chrome and Claude Cowork
+before Lighthouse, never his visible Chrome), the harnesses' tools and
+where their rebuild notes are, and where the report goes. It names no
+finding and no visual issue.
+
+The report's home is new: `logs/audit/README.md`, an index modelled on
+the job-aggregator project's (the operator's decision there of
+2026-09-30, carried in his Working Method): one report per audit, its
+format, what a report may never contain in a public repository, and that
+the implementing seat commits it unchanged. `logs/README.md` points to it.
+
+## Part 3
+
+Nothing in the footer, the content or the page changed.
+

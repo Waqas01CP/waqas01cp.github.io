@@ -7,7 +7,8 @@ status: current
 # Session logs
 
 One log per session, newest at the top. This table is the navigation index
-for all session history.
+for all session history. Audit reports, written by the audit seat, have
+their own index in `logs/audit/README.md`.
 
 ## How to use this file
 
@@ -52,6 +53,7 @@ before the root becomes unscannable, not after.
 
 | Date (UTC) | Log file | Session | What was done | Outcome |
 |---|---|---|---|---|
+| 2026-10-21 | [2026-10-19-role-wording.md](2026-10-19-role-wording.md) | Brief 12 | Gate A refuses the whole briefs folder; CLAUDE.md's row A to match; the audit brief written; `logs/audit/` index created for its report | Defeat: the README staged with -f refused by gate A; the page unchanged |
 | 2026-10-21 | [2026-10-19-role-wording.md](2026-10-19-role-wording.md) | His instruction | The briefs folder taken off the repository: its README untracked, `.gitignore` ignores the whole folder, README's pointer moved to CLAUDE.md | Nothing tracked under briefs/; gate A left for the chat |
 | 2026-10-20 | [2026-10-19-role-wording.md](2026-10-19-role-wording.md) | Brief 11 | Report 10's close-out: CAPABILITIES.md names the Chrome versions beside the memory finding and claims only what was measured; STATE to ADR-0009's levels and the operator's answers | Records only; the page byte-identical after two builds; trace passes |
 | 2026-10-19 | [2026-10-19-role-wording.md](2026-10-19-role-wording.md) | Brief 10 | Brief 9 live checked; this machine's CPU and memory measured against Lighthouse under the mutation run, quiet, and at three controlled loads; levels proposed | The quiet set passes ADR-0009 (live TBT 63 ms); memory, not CPU, separates fail from pass; no ADR row written |

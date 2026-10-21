@@ -6,12 +6,12 @@
 Each gate, what it blocks, and the case built to defeat it:
 
   A  Never-commit paths, pre-commit. Refuses CHAT_STATE.md at any path,
-     anything under briefs/ except briefs/README.md, and any staged text
-     file whose content holds a filesystem path into the operator's
-     private material. Prints the file, line and matched text, so a false
-     positive can be seen for what it is. Defeated by staging CHAT_STATE.md
-     with -f, and by a planted template path. Control: a sentence naming
-     the Working Method in prose passes.
+     anything under briefs/, its README included since 2026-10-21, and
+     any staged text file whose content holds a filesystem path into the
+     operator's private material. Prints the file, line and matched text,
+     so a false positive can be seen for what it is. Defeated by staging
+     CHAT_STATE.md or briefs/README.md with -f, and by a planted template
+     path. Control: a sentence naming the Working Method in prose passes.
   B  Rebuild, pre-commit. Reads the as-of month from the staged index.html,
      rebuilds the staged tree in a temporary directory with that month,
      and refuses unless every generated file matches what is staged, byte
@@ -110,8 +110,8 @@ def never_commit_reason(path: str) -> str | None:
     lowered = path.lower()
     if lowered.rsplit("/", 1)[-1] == "chat_state.md":
         return "CHAT_STATE.md is the architecture chat's ledger and is never committed (ADR-0002)"
-    if lowered.startswith("briefs/") and lowered != "briefs/readme.md":
-        return "briefs are working space and are never committed (briefs/README.md)"
+    if lowered.startswith("briefs/"):
+        return "briefs are working space and are never committed (CLAUDE.md, Briefs)"
     return None
 
 

@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit 750faec, the last commit before this file's
-update, 2026-10-20T11:04Z, by the Brief 11 implementing session.** This is
+**Verified against commit 2bf8e41, the last commit before this file's
+update, 2026-10-21T10:19Z, by the Brief 12 implementing session.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -43,6 +43,11 @@ the clearing in the task's row.
 Update the verified-against line whenever you touch this file.
 
 ## Headline
+
+**Brief 12, 2026-10-21: gate A refuses the whole briefs folder, its
+README included; the briefs folder is off the repository (2bf8e41). An
+audit brief is written for a cold, read-only audit of the repository and
+the live site; its reports go in `logs/audit/`.** Before that:
 
 **Brief 11, 2026-10-20: the load levels are decided (ADR-0009
 Changes, 2026-10-20); `CAPABILITIES.md` names the Chrome versions
@@ -130,7 +135,8 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
-| The push of Brief 11's records | The operator | Operator | 2026-10-20 |
+| The push of Brief 12's commit | The operator | Operator | 2026-10-21 |
+| The cold audit: a fresh session started by the operator from the audit brief, its report in `logs/audit/`, then committed unchanged by the implementing seat | The operator, then the audit seat | Operator | 2026-10-21 |
 
 ## Known unverified
 
