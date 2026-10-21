@@ -113,7 +113,7 @@
       "Airtable",
       "Git as the database"
     ],
-    "layer2": "Unattended pipeline that reads employer job boards on a schedule and shows only eligible postings for review, at no recurring cost. Architect and director: the design, the algorithms, the trade-offs and the decisions are mine; Claude Code writes the code to specifications I approve, under a working method I designed.",
+    "layer2": "Unattended pipeline that reads employer job boards on a schedule and shows only eligible postings for review, at no recurring cost. Architect and director: I design the system and its algorithms, make the trade-offs and the decisions, and delegate implementation to Claude Code for speed, under specifications I approve and a development method I designed.",
     "layer1": "Cut job discovery from a by-hand baseline I estimated at three to six days to a measured median of 5.4 hours after publication.",
     "detail": "In development, and running in production since 17 Sep 2026. Unattended pipeline that reads employer job boards on a schedule and shows only eligible postings for review, at no recurring cost.",
     "proof": [
