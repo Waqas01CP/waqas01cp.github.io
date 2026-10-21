@@ -115,8 +115,10 @@ generated from it, never hand-written per item, so a date or a fact is
 written once. ADR-0006.
 
 Every internal link is root-relative. No absolute URL pointing at this
-site's own origin appears anywhere, so moving to a custom domain later is a
-DNS change and not a rewrite. ADR-0002.
+site's own origin appears in the built page, so moving to a custom domain
+later is a DNS change and not a rewrite. A document read apart from the
+site may give the full address, such as the CV PDF. ADR-0002, and its
+Changes, 2026-10-21.
 
 Every item carries a specific checkable fact; a summary and full depth
 follow only where the master CV has material for them. Every layer an item
@@ -228,6 +230,13 @@ with the date when the operator says so; replaced only after the old one
 is read for what it still says. Numbered briefs from before 2026-10-10
 are history.
 
+## Audits
+
+Audit reports live in logs/audit/, indexed in its README, which gives
+their format. The audit seat writes its report and the report's index
+row, and nothing else; this seat checks the report for anything the
+public repository must not carry, then commits both unchanged.
+
 ## CAPABILITIES.md
 
 Everything the site is and does, for a reader who opens nothing else.
@@ -244,3 +253,8 @@ never rewrite it silently.
 No em-dashes. Lead with the verdict. Active voice. Numbers carry their
 provenance or they do not appear. Dates are UTC; when a local date differs,
 say which is which. Plain text that survives a paste into Word.
+
+"Operator" and "seat" are the Working Method's words. They may stay in
+the decision records, the logs, STATE.md, docs/reference/, docs/deferred/
+and this file (his answer, 2026-10-21). Everything else a reader meets
+uses his name, Waqas Sharif.
