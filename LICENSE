@@ -11,9 +11,9 @@ its content and its design, beyond the rights GitHub's Terms of Service give
 every GitHub user for a public repository: to view it, and to fork it within
 GitHub. A fork carries no further permission.
 
-If you want a site like this one, do not copy this repository. A separate
-template repository, with its own licence, is planned for that purpose.
-When it is published, its address will be given here and in README.md.
+If you want a site like this one, do not copy this repository. Use
+portfolio-gallery instead, a separate template repository with its own
+licence, MIT: https://github.com/Waqas01CP/portfolio-gallery
 
 Not covered by this notice:
 

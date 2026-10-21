@@ -19,9 +19,10 @@ files, styled to the visual system of ADR-0011, with a little script for
 the menu, the theme switch, the disclosures and the motion. `STATE.md` is
 the honest picture; `CAPABILITIES.md` describes everything the site does.
 
-The repository is public, per ADR-0002. `CHAT_STATE.md` is the one file that
-is never committed, because it names blockers and errors; it is in
-`.gitignore` and will also be blocked by a gate.
+The repository is public, per ADR-0002. Two things are never committed:
+`CHAT_STATE.md`, the architecture chat's ledger, because it names blockers
+and errors, and the briefs (`CLAUDE.md`, Briefs). Both are in `.gitignore`,
+and gate A refuses them.
 
 Every internal link is root-relative and no absolute self-origin is
 hardcoded, so moving to a custom domain later is a DNS change and a CNAME
@@ -32,7 +33,7 @@ file, not a link rewrite.
 Waqas Sharif designs the architecture, its rules and the site's look,
 makes the trade-offs, sets the standards, reviews the logic and the tests,
 and decides every change; nothing goes live without his word.
-Implementation is delegated, for speed, to Claude Code, which builds to
+He delegates implementation, for speed, to Claude Code, which builds to
 specifications he approves, writes the tests, runs the checks and logs
 every session. Claude, in a separate chat, works his decisions into the
 records in `docs/decisions/` and checks each report against this
@@ -60,7 +61,7 @@ Method, kept in his private vault and deliberately not linked from here.
 
 ## The rule that governs every claim
 
-The operator's master CV is the only source of truth for anything this site
+Waqas Sharif's master CV is the only source of truth for anything this site
 asserts. It lives in his private vault, and its path is deliberately not
 recorded here, because this repository is public. Every claim traces to it
 and every number carries its provenance.
@@ -74,5 +75,6 @@ With the project venv active, `python build.py` writes `index.html` and
 ## Licence
 
 All rights reserved: see `LICENSE`. This repository is published to be
-read, not reused. A separate template repository, with its own licence, is
-planned for anyone who wants a site like this one.
+read, not reused. For a site like this one, use `portfolio-gallery`, a
+separate template repository under the MIT licence:
+https://github.com/Waqas01CP/portfolio-gallery

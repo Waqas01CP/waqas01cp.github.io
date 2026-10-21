@@ -69,22 +69,24 @@ Decisions identified but not yet concluded.
 - What each `tier` value renders. **Closed 2026-09-26**: tier controls order
   and prominence only, never which layers render. ADR-0005 Changes.
 - Page placement for the `opensource` lane. The `work` lane's section is
-  Work, and the degree (`band`) is a line in the Intro plus the timeline
-  band, both ADR-0008. The build fails if an item arrives in a lane
+  Work, and the degree (`band`) is the Education section, a line in the
+  Intro and the timeline band, all ADR-0008 (Education since its Changes
+  of 2026-10-02). The build fails if an item arrives in a lane
   with no section, so these are decided before the brief that brings those
   items.
 - A `.gitattributes` forcing LF line endings, so the rebuild gate cannot fail
   on line endings alone under Windows autocrlf. **Closed 2026-09-26 (UTC)**:
   agreed in the chat's reply to Brief 1's report, added by the Brief 1 seat.
-- The pixel size of one timeline layout unit, and the collapse control's
-  behaviour at each breakpoint. Left open by ADR-0003.
+- The pixel size of one timeline layout unit, left open by ADR-0003. The
+  collapse control's behaviour at each breakpoint: **Closed 2026-10-05**,
+  ADR-0003 Changes (on a phone, one spine with every lane).
 - What exception the operator wants to line 8 of the floor. **Closed
   2026-09-25**: none. He withdrew the qualifier and the line stands as
   written, now ADR-0004 line 7.
 - Whether the Research Concierge, the Crypto scanner and WordPy have public
-  repositories. **Closed 2026-09-26**: all three are public. Their URLs are
-  still missing from the master CV and must be added before those items can
-  carry a proof link.
+  repositories. **Closed 2026-09-26**: all three are public. Their URLs
+  have since reached the master CV: each item carries its proof link on
+  the page, which the build refuses without (audit F12, 2026-10-21).
 - The framework and rendering approach. **Closed 2026-09-26 by ADR-0006.**
 - The repository layout, the templating library by name, and where the
   structured content file lives. Left to the first implementing brief by

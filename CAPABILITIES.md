@@ -70,22 +70,24 @@ repository (ADR-0002).
 
 **No version is defined yet** (Working Method 8.10); defining one is
 his. The site as built carries every item in the master CV, and
-what waits is listed here with its source, as of 2026-10-10, updated 2026-10-12:
+what waits is listed here with its source, as of 2026-10-10, updated 2026-10-21:
 
 - **A CV download: done, 2026-10-11.** `cv/Waqas_Sharif_CV.pdf`, a one-page
   general CV produced from the master CV outside this repository, is live,
   linked from the Intro and the footer (ADR-0008).
-- **A template repository, `portfolio-gallery`,** planned on 2026-10-10 for
+- **A template repository, `portfolio-gallery`: done, public since
+  2026-10-16,** at https://github.com/Waqas01CP/portfolio-gallery, for
   anyone who wants a site like this one; this repository stays read, not
   reused (ADR-0012). Its licence is MIT, as Waqas Sharif confirmed and
-  ADR-0012's Changes record; its own records will carry the decision.
-- **Whether this site lists itself as a project.** It waits on the master
-  CV first (scope floor line 1; research 0004, decision 1).
+  ADR-0012's Changes record; its own records carry its decisions.
+- **Whether this site lists itself as a project: settled, it does not.**
+  Waqas Sharif decided not to add it to his master CV as a project
+  (`docs/reference/completed.md`; research 0004, decision 1).
 - **An open-source lane.** Its section placement is open in the decision
   index's Pending list, to be decided before the brief that brings such
   an item.
-- **Whether to list the site in emmabostian/developer-portfolios.** Open
-  (research 0004, decision 5).
+- **Listed in emmabostian/developer-portfolios: done,** pull request 4350,
+  merged (`docs/reference/completed.md`; research 0004, decision 5).
 - **Monthly refresh.** While an item ends "present", the page is rebuilt
   in each new month (`docs/reference/commands.md`).
 
@@ -239,7 +241,8 @@ architecture chat's.
 ## Waqas Sharif's role
 
 Updated 2026-10-19 UTC to his own account of that day and the master CV's
-role wording of 2026-10-18, which he approved. His Working Method calls
+role wording of 2026-10-18, which he approved; reworded 2026-10-21 so that
+every line has him as its subject. His Working Method calls
 his role "the operator"; the records and logs keep that term. Each line
 below comes from a record or the commit history, or is marked as his own
 account.
@@ -291,13 +294,10 @@ account.
   - He found two inconsistencies on the wide timeline (7e97c5b,
     2026-10-07) and frontmatter a YAML parser rejected (73f2ab3,
     2026-10-10).
-  - The code itself is checked by the repository's gates, and against the
-    repository by the architecture chat.
 - **Decides every brief and report.** A brief is executed and a change
-  goes live only on his word. He makes every commit of the architecture
-  chat's work and every push of the site (`docs/reference/commands.md`).
-  In his words, 2026-10-10: "nothing bypasses me".
-- **Implementation is delegated, for speed, to Claude Code,** which builds
+  goes live only on his word. In his words, 2026-10-10: "nothing bypasses
+  me".
+- **Delegates implementation, for speed, to Claude Code,** which builds
   to specifications he approves, writes the tests, runs the checks and
   logs every session (commit history; `logs/`).
 
