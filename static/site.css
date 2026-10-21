@@ -850,9 +850,9 @@ html:has(:target) .page > .sec { content-visibility: visible; }
 }
 .proj-side { display: flex; flex-direction: column; gap: 18px; }
 .proj-fact { font-size: 17px; line-height: 1.5; font-weight: 500; text-wrap: pretty; }
-.proj-actions { margin-top: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding-top: 4px; }
+.proj-actions { margin-top: auto; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 8px; padding-top: 4px; }
+.proj-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .depth-toggle {
-  margin-left: auto;
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
@@ -1445,6 +1445,9 @@ html:has(:target) .page > .sec { content-visibility: visible; }
 }
 .cert:hover .cert-flood, .cert:focus-visible .cert-flood { transform: translateY(0); }
 .cert:hover .cert-view, .cert:focus-visible .cert-view { opacity: 1; transform: none; }
+/* A touch screen has no hover, so the card's only link cue is shown from the
+   start there (the first audit, F3). */
+@media (hover: none) { .cert-view { opacity: 1; transform: none; } }
 .cert-acc:hover, .cert-acc:focus-visible { color: #0B0C0F; }
 .cert-ink:hover, .cert-ink:focus-visible { color: var(--bg); }
 

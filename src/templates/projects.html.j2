@@ -49,10 +49,15 @@
 <li>{{ s }}</li>
 {% endfor %}
 </ul>
+{# The proof links wrap among themselves on the left; "In depth" keeps the
+   right-hand column beside their last row, so it is never stranded on a
+   row of its own when the links wrap (Waqas's report, W1, 2026-10-21). #}
 <div class="proj-actions">
+<div class="proj-links">
 {% for link in p.proof %}
 <a class="btn btn-sm" href="{{ link.url }}">{{ link.label }}<span class="vh">: {{ p.name }}</span>{{ m.icon("out") }}</a>
 {% endfor %}
+</div>
 {% if p.has_depth %}
 <button type="button" class="depth-toggle" id="toggle-{{ p.id }}" aria-expanded="false" aria-controls="depth-{{ p.id }}" data-depth-toggle data-js hidden aria-hidden="true">In depth<span class="vh">: {{ p.name }}</span><span class="sign" aria-hidden="true"></span></button>
 {% endif %}
@@ -76,7 +81,7 @@
 {% for b in p.bullets %}
 {# |safe here and on no other field. Bullets are HTML fragments that
    build.py has already limited to <strong> and <a href>, and the content
-   is the operator's own, with no input path from visitors (Brief 1, 8a). #}
+   is Waqas's own, with no input path from visitors (Brief 1, 8a). #}
 <li><span class="depth-n" aria-hidden="true">{{ "%02d"|format(loop.index) }}</span><p>{{ b|safe }}</p></li>
 {% endfor %}
 </ol>
