@@ -32,7 +32,7 @@ file, not a link rewrite.
 
 Waqas Sharif designs the architecture, its rules and the site's look,
 makes the trade-offs, sets the standards, reviews the logic and the tests,
-and decides every change; nothing goes live without his word.
+and decides every brief and report; nothing goes live without his word.
 He delegates implementation, for speed, to Claude Code, which builds to
 specifications he approves, writes the tests, runs the checks and logs
 every session. Claude, in a separate chat, works his decisions into the
