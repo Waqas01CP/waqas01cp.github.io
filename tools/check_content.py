@@ -22,7 +22,7 @@ Two checks, both reported in full:
     - approved interface text: section names, labels, the contact lines,
       "In depth", year and month markers and the like, listed below.
   Anything else fails, with the block printed. Until 2026-10-11 a third
-  route let through one operator-approved paragraph that was not in the
+  route let through one paragraph approved by Waqas that was not in the
   master; the master has carried it since 2026-10-10, as its Portfolio
   Intro, so the route is gone.
 
@@ -67,8 +67,8 @@ MONTHS = set(LONG_MONTHS.values()) | {"may"}
 WORD_RE = re.compile(r"\d+(?:[.,]\d+)*%?|[^\W\d_]+")
 NUMBER_RE = re.compile(r"^\d")
 
-# Interface text: what the page says about itself rather than about the
-# operator. Removed from a block only when the block fails as it stands.
+# Interface text: what the page says about itself rather than about
+# Waqas. Removed from a block only when the block fails as it stands.
 INTERFACE = sorted([
     "Skip to main content", "Sections menu", "Sections", "Dark theme", "Dark",
     "Intro", "Projects", "Timeline", "Work", "Education", "Certifications", "Skills",

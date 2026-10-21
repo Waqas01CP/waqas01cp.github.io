@@ -118,8 +118,11 @@ committing it.
 
 ```
 python tools/check_content.py --master <path to the master CV>
+python tools/check_content.py --master <path to the master CV> --page <a copy of the page>
 ```
 
 Exit 0 means every block traces and nothing is missing; 1 means a block
 does not trace or master text is missing, each printed; 2 means no file at
-the path given.
+the path given. `--page` traces another copy of the page instead of
+`index.html`, such as the live page fetched to a file, or a copy with a
+defeat planted in it.

@@ -20,11 +20,11 @@ Two files hold every word on the site. Markup is generated from them by
 would need a second dependency, which scope floor line 14 forbids without a
 record.
 
-Every claim in these files traces to the operator's master CV, the only
+Every claim in these files traces to Waqas Sharif's master CV, the only
 source of truth (scope floor line 1). Where they and the master disagree,
 the master wins and the disagreement is reported. The Intro's second
 paragraph, `intro`, is the master's Portfolio Intro, written for this site
-and approved by the operator word for word; until the master carried it,
+and approved by Waqas word for word; until the master carried it,
 on 2026-10-10, it was stored as `approved` and reported as not in the
 master on every trace.
 

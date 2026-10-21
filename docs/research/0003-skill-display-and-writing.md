@@ -66,7 +66,7 @@ source that was answering a different question.
 Three things do transfer.
 
 1. **A percentage or a star has no measurement behind it.** "Python 90%" is
-   90% of what, against whom. The operator's own standing rule is that a
+   90% of what, against whom. Waqas's own standing rule is that a
    number carries its measurement or it does not appear. A self-rating
    cannot satisfy that rule, so it fails on the project's own terms before
    any external evidence is considered.
@@ -90,7 +90,7 @@ A self-rating is the least verifiable thing on a page. A repository, a live
 application or a named result is the most verifiable. The two sit at
 opposite ends of the same axis, and the evidence favours one end.
 
-### The operator's existing position, tested
+### Waqas's existing position, tested
 
 His rule is that levels are internal only and never printed on a CV or
 public profile. **Against a resume, that rule is stricter than Princeton
@@ -146,7 +146,7 @@ recorded as such.
 
 ## 3. Years of experience per skill
 
-Asked separately by the operator on 2026-09-25, after the recommendation
+Asked separately by Waqas on 2026-09-25, after the recommendation
 above was approved. This is the one part of the question with strong
 peer-reviewed evidence behind it.
 
@@ -197,7 +197,7 @@ against supervisory ratings and .47 against a work sample test. The relation
 is non-linear, rising roughly linearly to about five years and flattening
 after that.
 
-**Every one of this operator's spans is under five years**, so his years sit
+**Every one of Waqas's spans is under five years**, so his years sit
 in the steep part of that curve rather than the flat part. Years are not
 meaningless for him. That is the honest counter-argument and it is why the
 recommendation below rests on a different point rather than on "years do not
@@ -228,7 +228,7 @@ Three reasons, in order of strength.
 3. **"Years" has no agreed unit.** A language used in one course in 2023
    and in projects from 2025: is that three years or one. The ambiguity is
    in the counting rule, not the arithmetic, and no rule exists that a
-   reader could apply to check the number. That fails the operator's own
+   reader could apply to check the number. That fails Waqas's own
    standing rule that a number carries its measurement or it does not
    appear.
 

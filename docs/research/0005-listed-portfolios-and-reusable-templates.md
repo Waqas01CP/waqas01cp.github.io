@@ -7,13 +7,13 @@ status: current
 # Research 0005: Listed portfolios, and what reusable templates offer
 
 Gathered 2026-10-12 UTC (the same date locally) by the Brief 7
-implementing session, at the operator's request, carried from Brief 6's
+implementing session, at Waqas's request, carried from Brief 6's
 Addenda 2 and 4. The sites were loaded from 15:45Z to 16:09Z; GitHub's
 figures were read the same afternoon and will drift.
 
 **This is evidence, not a decision.** It ranks below every accepted
 record. Anything it suggests reaches the site only through a decision
-with the operator and a record. The answers to question 4 are for
+with Waqas and a record. The answers to question 4 are for
 `portfolio-gallery`'s own architecture chat; they decide nothing here.
 
 ## The answers in short
@@ -331,7 +331,7 @@ undercounted; how much is not known.
 
 None is taken here.
 
-- **For the operator and the chat:** whether to state on the page how
+- **For Waqas and the chat:** whether to state on the page how
   the site is built and where its evidence is, or to add an accessibility
   statement (section 3). Both first need the master CV, under scope floor
   line 1.

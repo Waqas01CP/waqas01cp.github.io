@@ -1,6 +1,6 @@
 ---
 type: reference
-description: The checks every change to the built page runs before it is committed, each with its pass line and the case built to defeat it. Includes the accessibility tree at load that ADR-0009 makes a condition of layout skipping, words a screen reader hears run together, and a pixel check for changes meant to be invisible.
+description: "The checks every change to the built page runs before it is committed, each with its pass line and the case built to defeat it. Includes the accessibility tree at load that ADR-0009 makes a condition of layout skipping, words a screen reader hears run together, a layout check for overlaps and stranded items, and a pixel check for changes meant to be invisible."
 status: current
 ---
 
@@ -44,14 +44,16 @@ html:has(:target) .page > .sec { content-visibility: visible; }
 | Build twice | Every generated file byte-identical across builds at the recorded month | A build as of another month: hashes differ |
 | Gates | Every commit passes A, B and C; a push passes E (ADR-0007) | The proofs in `logs/2026-09-26-gates-map-and-as-of.md` |
 | Content trace | `tools/check_content.py` exits 0: every block traces to the master, and every master bullet, sentence, skills line, course, certificate and project link, the Portfolio Intro and the Portfolio Footer with its address as a link, is on the page | One number changed in a scratch copy of the page, 592 to 593: exit 1. For the project links: a master copy with a wrong address, and a page copy missing a link: exit 1, the link named |
-| Accessibility tree at load, full mode | Matches the page without the rule (below), in every load | The page as built at 0403c68 |
+| Accessibility tree at load, full mode | Matches the page without the rule (below), in every load | The page as built at 0403c68. It differs from its reference in all four cells, 360 and 1366 px, light and dark (2026-10-21; the first audit's F18 asked, since a defeat it built fired at 360 px only) |
 | Accessibility tree at load, default mode | Holds no node the page without the rule lacks | A paragraph planted in the Intro that the reference lacks |
 | Keyboard | Every "In depth" panel: Tab reaches its control; Enter opens it and its text enters the tree; Tab moves into it; Close closes it and focus returns to the control; the control closes it too. A Tab walk to the footer never stops inside `aria-hidden`, and `aria-hidden="true"` is never set on an element holding focus | The Close handler hiding the panel before moving focus; for the walk, the contact links marked `aria-hidden` |
 | axe-core, its default rules, which include the WCAG 2.x A and AA ones | 0 violations at 1366 and 360 px; light, dark by the device, dark by the switch (read 3 s after it, once the colours have settled); as loaded, and with every panel and timeline card open, each opened as the script opens it | Faint text and an image without alt planted in the page |
+| Contrast, measured | `contrastcheck.js`: every visible text element's colour, its alpha and its ancestors' opacity applied, against the nearest solid background behind it, meets WCAG 2 AA (4.5:1; 3:1 at 24 px or 18.66 px bold), light and dark, at 360 and 1366 px. Added 2026-10-21 because axe leaves most of this page's contrast as "needs review" (the first audit, F8). Text over a gradient, or in a bar that floats over the page, has no single background and is counted as unmeasured, not passed: 17 elements at 360 px and 94 at 1366 px on 2026-10-21, most of them the dark Intro's | A `#c8c8c8` span planted in the Skills heading: 1.48:1 in light theme, at both widths |
 | Anchors | Every in-page target, by a link and by a URL with its hash, scripts on and off, at 1366 and 360 px, lands within 3 px of its scroll margin or at the page's end | The rule without its `:has(:target)` undo |
 | Words run together for a screen reader | No join at 360 and 1366 px, in Chrome and Edge, by the model of NVDA's lines below | The page at 6812c4f: 58 joins at 1366 px, 45 at 360 px |
 | Visually unchanged, for a change meant to be invisible | Full-page screenshots under reduced motion at 360 and 1366 px, light and dark, with every section made to render first (`.page > .sec { content-visibility: visible }` added for the capture: a full-page capture paints only near the viewport, and a skipped section comes out blank in both images alike): same size, and no pixel differs by more than 2 of 255 in any channel, the noise two captures of one unchanged page show | A visible change in a lower section that keeps the page's height, such as the timeline fix of 7e97c5b: about 10,500 pixels change inside the timeline |
-| Lighthouse | Default mobile, median of five, meets ADR-0009: LCP at most 2.5 s, CLS at most 0.1, TBT under 200 ms. Variants run interleaved so drift falls on all alike. A fail on any machine is a fail (ADR-0009 Changes, 2026-10-06) | A 600 ms synchronous script in the head |
+| Layout | `layoutcheck.js`, below: at 320, 360, 375, 390, 414, 768, 1024, 1366 and 1920 px, scripts on and off, no finding outside its named list of deliberate cases | The page before Brief 13's fix, with the "In depth" button stranded on its own row (W1); a copy with the probes card moved up over "592" |
+| Lighthouse | Default mobile, median of five, meets ADR-0009: LCP at most 2.5 s, CLS at most 0.1, TBT under 200 ms. Variants run interleaved so drift falls on all alike. A set counts only with the machine at light or medium load, read over the 60 s before it; a fail there is a fail, a set at heavy load is void (ADR-0009 Changes, 2026-10-06 and 2026-10-20) | A 600 ms synchronous script at the end of the head, after the stylesheets: it fails by TBT (medians about 1,850 ms, 2026-10-19 to 21), so it shows the TBT check able to fail. A script at the top of the head delays first paint instead and fails by LCP, leaving TBT untested (the first audit's variant, F19) |
 
 ## The accessibility tree at load
 
@@ -95,6 +97,41 @@ what `hidden` or CSS hides. So anything hidden inside a section must also
 carry `aria-hidden`; `setShown` in `static/site.js` keeps the two
 together. Mechanism inferred from the measurements in
 `logs/2026-10-07-tree-parity.md`, not from Chromium's source.
+
+## The layout check
+
+Added 2026-10-21 (Brief 13), after Waqas found a fault the first audit's
+eye-read visual pass had on screen and did not report: the "In depth"
+button stranded on a row of its own when a card's links wrapped (W1).
+
+**What it measures.** A geometric scan of the page, every section laid
+out first, light theme, reduced motion, at nine widths, with scripts on
+and off. Four kinds of finding:
+- **overlap**: the ink of a line of text intersected by another line's
+  ink, or by a painted box (a background or a border) it is not inside.
+  Ink, not the font's box: each text box is tightened to the letters'
+  measured ascent and descent around the baseline, because at display
+  sizes the font's box reaches far past the letters, and a check on it
+  reports overlaps nobody can see;
+- **orphan**: a flex item pushed right by `margin-left: auto` that has
+  wrapped onto a row of its own, the pattern of W1;
+- **clipped**: text cut off by an element that hides its overflow;
+- **wide**: anything past the viewport's right edge that nothing clips,
+  and a page that scrolls sideways.
+
+Skipped: `aria-hidden` decoration, the fixed or sticky menu, the 3D
+canvas, and screen-reader-only text (`.vh`, or a box 1 px wide; an
+element with `display: contents` has no box and is not skipped).
+
+**The named list of deliberate cases**, each matched by kind and
+element, never by width: the name's two lines, a tight lockup in the
+approved design (ADR-0011); text over the timeline's month and year
+bands, painted behind its entries; the Intro clipping the 3D knot; the
+desktop timeline's 1 px lane labels. Anything else fails. A new case is
+added to the list only with its reason, in this file.
+
+**What it cannot see.** Taste: spacing, alignment and balance are not
+geometry. A screenshot read by a person remains the test for those.
 
 ## Words run together for a screen reader
 

@@ -36,7 +36,7 @@ in the repository. Nothing here is wired into the build yet.
 ## Fonts removed, 2026-10-12
 
 IBM Plex Mono and Source Serif 4 were removed from `fonts/` and
-`licences/`, by the operator's choice over renaming them or shipping the
+`licences/`, by Waqas's choice over renaming them or shipping the
 makers' complete files (ADR-0012 Changes). Both families reserve a font
 name, "Plex" and "Source", and the OFL treats a subset as a Modified
 Version, which may not carry a reserved name. Earlier commits still hold

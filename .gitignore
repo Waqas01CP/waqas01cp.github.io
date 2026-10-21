@@ -3,7 +3,7 @@ CHAT_STATE.md
 
 # Briefs are working space, overwritten each round, and the whole folder
 # stays off the repository, its README included, at Waqas Sharif's
-# instruction of 2026-10-21. See CLAUDE.md, Briefs.
+# instruction of 2026-10-20 UTC. See CLAUDE.md, Briefs.
 briefs/
 
 # Local build environment and Python artefacts. The venv is recreated from
@@ -12,11 +12,11 @@ briefs/
 __pycache__/
 *.pyc
 
-# The architecture chat's pending commit message. The implementing seat
-# commits with it and deletes it. docs/reference/commands.md.
+# The architecture chat's pending commit messages. Waqas makes each
+# commit with its file, then deletes them. docs/reference/commands.md.
 .commitmsg
 
-# The operator's local instructions for replacing the CV PDF. Never
+# Waqas's local instructions for replacing the CV PDF. Never
 # published. cv/ itself is tracked.
 cv/UPDATING.md
 

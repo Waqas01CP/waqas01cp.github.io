@@ -7,11 +7,12 @@ Each gate, what it blocks, and the case built to defeat it:
 
   A  Never-commit paths, pre-commit. Refuses CHAT_STATE.md at any path,
      anything under briefs/, its README included since 2026-10-21, and
-     any staged text file whose content holds a filesystem path into the
-     operator's private material. Prints the file, line and matched text,
-     so a false positive can be seen for what it is. Defeated by staging
-     CHAT_STATE.md or briefs/README.md with -f, and by a planted template
-     path. Control: a sentence naming the Working Method in prose passes.
+     any staged text file whose content holds a filesystem path into
+     Waqas Sharif's private material. Prints the file, line and matched
+     text, so a false positive can be seen for what it is. Defeated by
+     staging CHAT_STATE.md or briefs/README.md with -f, and by a planted
+     template path. Control: a sentence naming the Working Method in
+     prose passes.
   B  Rebuild, pre-commit. Reads the as-of month from the staged index.html,
      rebuilds the staged tree in a temporary directory with that month,
      and refuses unless every generated file matches what is staged, byte
@@ -72,7 +73,7 @@ VAULT_ROOT_LENGTH = 17
 # Gate B.
 AS_OF_RE = re.compile(rb'<meta name="as-of" content="(\d{4}-(?:0[1-9]|1[0-2]))">')
 
-# Gate E. This scope is Brief 2's, not a record's.
+# Gate E. Its scope is recorded in ADR-0007 Changes, 2026-09-26.
 IMPLEMENTATION_FILES = {"build.py", "requirements.txt", "index.html"}
 IMPLEMENTATION_DIRS = ("src/", "static/", "tools/", ".githooks/")
 

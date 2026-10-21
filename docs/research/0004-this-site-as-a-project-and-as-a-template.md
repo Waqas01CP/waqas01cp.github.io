@@ -1,17 +1,17 @@
 ---
 type: research
-description: "Evidence on two questions the operator raised on 2026-10-07: whether this site belongs on itself as a project, and whether to open it for others to reuse, for credit. Licences, forks against templates, precedents with their numbers, what stars are worth. Evidence for decisions, never a decision."
+description: "Evidence on two questions Waqas Sharif raised on 2026-10-07: whether this site belongs on itself as a project, and whether to open it for others to reuse, for credit. Licences, forks against templates, precedents with their numbers, what stars are worth. Evidence for decisions, never a decision."
 status: current
 ---
 
 # Research 0004: This site as a project, and as a template for others
 
 Gathered 2026-10-07 UTC (2026-10-08 local) by the Brief 5 implementing
-session, at the operator's request after Report 5. Figures from GitHub
+session, at Waqas's request after Report 5. Figures from GitHub
 were read through its public API at 21:33Z on 2026-10-07 and will drift.
 
 **This is evidence, not a decision.** It ranks below every accepted record.
-Both questions end in decisions for the operator and the architecture
+Both questions end in decisions for Waqas and the architecture
 chat, listed at the end.
 
 ## 1. Whether this site belongs on the site as a project
@@ -20,8 +20,8 @@ chat, listed at the end.
 
 - Scope floor line 1 (ADR-0004): no claim that is not in the master CV.
   The site cannot list itself, or any skill learned building it, until
-  the operator adds it to the master CV. Content reaches this repository
-  through the operator or a brief, never the other way.
+  Waqas adds it to the master CV. Content reaches this repository
+  through Waqas or a brief, never the other way.
 - Scope floor line 2: no skill levels, so "learned" cannot appear as a
   level either.
 - Scope floor line 5 and ADR-0010: every item carries a specific,
@@ -44,8 +44,8 @@ trust (Marlow and Dabbish, CSCW 2013, as read there):
 - accessibility verified three ways: axe, the accessibility tree at load
   compared with the page without layout skipping, and a recorded NVDA
   speech test, passed 2026-10-07;
-- the process itself: briefs from an architecture chat, an implementing
-  seat, session logs and a state file, 56 commits since 2026-09-26.
+- the process itself: briefs from an architecture chat, implementation
+  by Claude Code, session logs and a state file, 56 commits since 2026-09-26.
 
 NN/g's survey of 204 UX professionals in charge of hiring (2019, in
 research 0001) found they want the process and the reasoning, not only
@@ -54,12 +54,14 @@ the process as the content of such an item, not the page.
 
 ### What the evidence does not support
 
-- **Languages and frameworks as skills.** The code here was written by AI
-  seats under the operator's direction, as the master already says of the
-  job aggregator. Listing HTML, CSS, JavaScript or Jinja2 as skills is a
-  claim an interviewer can test by asking him to write some. The rule
-  that governs is the operator's own: a claim he cannot stand behind in
-  an interview does not go on the site.
+- **Languages and frameworks as skills, from this site.** Waqas
+  delegated this site's implementation to Claude Code, as he did the job
+  aggregator's. The site is evidence of how he designs, directs and
+  verifies a build; it is not the evidence for which languages he lists,
+  which is the master CV's to say.
+  *Annotated 2026-10-22 UTC: reworded under his rule of 2026-10-19 that no
+  wording may imply he cannot code. The earlier wording here implied it
+  and is withdrawn (the first audit, F5).*
 - **Accessibility expertise.** One NVDA speech test, guided step by step,
   supports "verified with a screen reader", not more.
 - **The site's own polish as evidence of skill.** No study located
@@ -90,7 +92,7 @@ copy is unlicensed, and nothing asks the copier to credit anyone.
 - **CC BY 4.0.** Requires credit, a link to the licence and an indication
   of changes. Creative Commons itself recommends against its licences for
   software and points to software licences instead.
-- **Content is separate from code.** The operator's name, CV text, the
+- **Content is separate from code.** Waqas's name, CV text, the
   approved Intro paragraph and the contact details are not anyone's to
   reuse under a code licence; a licence for the code can exclude them by
   saying so, which most portfolio templates leave unclear.
@@ -120,7 +122,7 @@ template is easier for the copier and may carry no visible credit at all.
 
 ### This repository is not a template as it stands
 
-- The content is the operator's, by design: one content file of his
+- The content is Waqas's, by design: one content file of his
   items, traced to his private master CV.
 - The gates encode his workflow: gate A blocks paths into his private
   material and holds a digest of his vault's root folder name.
@@ -172,7 +174,7 @@ the list's readers without building or maintaining a template.
   effect in the short term (i.e., less than two months) and become a
   liability in the long term".
 - Stars on a portfolio template signal design and convenience. The
-  operator's positioning is LLM reliability and agentic systems, which a
+  Waqas's positioning is LLM reliability and agentic systems, which a
   template's stars do not show.
 
 ### What would set a reusable version apart
@@ -188,7 +190,7 @@ for people without Python.
 
 ## Decisions this informs
 
-For the operator:
+For Waqas:
 
 1. Whether to add this site to the master CV, and with which claims. Only
    then can it appear on the site.
@@ -197,15 +199,15 @@ For the architecture chat:
 
 2. If it is added: placement and tier under ADR-0008, and a brief.
 3. Whether to license this repository's code, and how to exclude the
-   operator's content. A licence is a decision with consequences for
+   Waqas's content. A licence is a decision with consequences for
    every later copy, so it takes a record.
 4. Whether to build a separate, reusable repository, and when. It is a
    project of its own, with maintenance that does not end.
 5. Whether to submit the site to emmabostian/developer-portfolios.
 
-## Addendum, 2026-10-10: the operator's priority, and the licence
+## Addendum, 2026-10-10: Waqas's priority, and the licence
 
-The operator set his priority for a template repository on 2026-10-10, in
+Waqas set his priority for a template repository on 2026-10-10, in
 his words: "what i want now is credibility like if there is a choice
 between getting stars, forks and people starting to interact and do PRs and
 other practices then i would prefer this over even if later they sell the

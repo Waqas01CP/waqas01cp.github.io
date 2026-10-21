@@ -135,7 +135,7 @@ Read from `github.com/visjs/vis-timeline`, 2026-09-22.
 - At the time of reading: 2.6k stars, 380 forks, 4,248 commits.
 
 **Configuration options, read from `visjs.github.io/vis-timeline/docs/timeline/`,
-2026-09-23.** Checked specifically against the operator's timeline spec.
+2026-09-23.** Checked specifically against Waqas's timeline spec.
 
 - **Orientation is horizontal only.** The `orientation` option takes
   `'top'`, `'bottom'`, `'both'` or `'none'`, and those values place the time
@@ -168,7 +168,7 @@ Read from `github.com/visjs/vis-timeline`, 2026-09-22.
 
 ### What this means for a hand-built timeline
 
-The deciding fact is the axis. The operator's design is a vertical spine with
+The deciding fact is the axis. Waqas's design is a vertical spine with
 lanes either side and lane headers that travel down the page. vis-timeline is
 horizontal by documented design, so it is not an inadequate fit for that
 layout, it is the wrong axis and cannot be configured into it.

@@ -19,8 +19,8 @@ Sharif confirmed on 2026-10-10:
   the code. Added by Claude Code on 2026-10-10, under his word
   that readers relevant to this repository may be added.
 
-**Current as of 2026-10-19 UTC**, Claude Code's lane re-measured at the
-close of Brief 10. Written by Claude Code, in its lane: what the site
+**Current as of 2026-10-21 UTC**, Claude Code's lane re-measured at the
+close of Brief 13. Written by Claude Code, in its lane: what the site
 does and how, the stack, the qualities, the numbers, the limits, and the
 timeline's rows for what was built. **The architecture chat's sections**
 (the problem, where it is going, Waqas Sharif's role, the excluded list
@@ -163,9 +163,9 @@ what waits is listed here with its source, as of 2026-10-10, updated 2026-10-21:
 | Page | HTML, CSS and plain JavaScript; no framework. Three typefaces self-hosted under the SIL Open Font License |
 | Hosting | GitHub Pages on the free plan, from a public repository |
 | Repository checks | Git hooks running `tools/gates.py`; `tools/generate_map.py`; `tools/check_content.py` |
-| Browser checks, outside the repository | Headless Chrome 155 (154 until it updated on 2026-10-19) and Edge 155 through puppeteer-core 25.12.0, axe-core 4.14.0, Lighthouse 13.5.0; not dependencies of the repository (`docs/reference/standing-checks.md`) |
-| Design | A prototype built in Claude Design and reviewed by Waqas Sharif on 2026-10-05 (ADR-0011) |
-| AI tooling | Claude Code writes the code to the briefs; a Claude chat turns his design into decision records and briefs |
+| Browser checks, outside the repository | Headless Chrome 156 (154 until 2026-10-19, then 155) and Edge 155 through puppeteer-core 25.12.0, axe-core 4.14.0, Lighthouse 13.5.0; not dependencies of the repository (`docs/reference/standing-checks.md`) |
+| Design | The visual system Waqas Sharif chose on 2026-10-05, with his changes, from a prototype built in Claude Design from his six reference sites (ADR-0011) |
+| AI tooling | Claude Code, to which he delegates implementation, for speed; a Claude chat that works his design into decision records and briefs |
 
 ## Engineering qualities, and what enforces each
 
@@ -186,16 +186,16 @@ what waits is listed here with its source, as of 2026-10-10, updated 2026-10-21:
 
 | What | Value | Date | Source |
 |---|---|---|---|
-| Hand-written source | `build.py` 784 lines; 3 tools, 867 lines; 12 templates, 507 lines; 1 stylesheet, 1,558 lines; 2 scripts, 643 lines; 2 content files, 542 lines | 2026-10-19 | `git ls-files`, `wc -l` |
-| Built page | `index.html` 76,925 bytes, 14,864 gzipped; stylesheet 51,550 and 11,981; `site.js` 21,323 and 6,823; `knot.js` 5,638 and 2,215; fonts 78,396 bytes; the CV PDF 58,639 bytes, one A4 page | 2026-10-19 | `wc -c`; Python's gzip, level 6 |
-| Live performance | Lighthouse 13.5.0, default mobile, Chrome 155, median of five, with the machine quiet: LCP 1,670 ms, CLS 0, TBT 63 ms (runs 280, 74, 63, 0, 11); 116,556 bytes transferred. ADR-0009 limits: 2,500 ms, 0.1, 200 ms. On 2026-10-12: LCP 1,685 ms, TBT 58 ms; on 2026-10-07: TBT medians 138 and 95 ms | 2026-10-19 | `logs/2026-10-19-role-wording.md`, Brief 10 |
+| Hand-written source | `build.py` 784 lines; 3 tools, 868 lines; 12 templates, 514 lines; 1 stylesheet, 1,561 lines; 2 scripts, 643 lines; 2 content files, 542 lines | 2026-10-21 | `git ls-files`, `wc -l` |
+| Built page | `index.html` 77,163 bytes, 14,941 gzipped; stylesheet 51,820 and 12,071; `site.js` 21,323 and 6,823; `knot.js` 5,638 and 2,215; fonts 78,396 bytes; the CV PDF 58,301 bytes, one A4 page | 2026-10-21 | `wc -c`; Python's gzip, level 6 |
+| Live performance | Lighthouse 13.5.0, default mobile, median of five. At light load, Chrome 155, 2026-10-19: LCP 1,670 ms, CLS 0, TBT 63 ms (runs 280, 74, 63, 0, 11); 116,556 bytes transferred. At medium load, Chrome 155, 2026-10-21, the first audit's set: LCP 1,725 ms, CLS 0.031 (above 0 in 3 of 5 runs; the local copy 0 in 5 of 5; cause not tested), TBT 113 ms. ADR-0009 limits: 2,500 ms, 0.1, 200 ms; results compared only within a load level | 2026-10-21 | `logs/2026-10-19-role-wording.md`, Brief 10; `logs/audit/2026-10-21-first-audit.md` |
 | Accessibility, automated | axe-core 4.14.0: 0 violations in 12 cells (360 and 1366 px; light, device dark, switched dark; panels closed and open), in Chrome and in Edge | 2026-10-07 | Same log, rounds 1 to 2 |
 | Accessibility at load | The full-mode accessibility tree matches the page without layout skipping in 32 of 32 loads locally and 16 of 16 per browser on the live site | 2026-10-07 | Same log |
 | Screen reader | NVDA 2026.2 in Chrome: each "In depth" control named and its state spoken, reading into the panel, focus returned; no words run together | 2026-10-07 | Same log, rounds 3 and 5; `docs/deferred/screen-reader-speech-test.md` |
 | Keyboard | 60 of 60 checks at 360 and 1366 px | 2026-10-07 | Same log |
 | Content | 14 items and 10 skills groups; 378 blocks of text traced to the master, 0 not; every master bullet, italic sentence, skills line, course and certificate, the summary, the Portfolio Intro and the Portfolio Footer on the page; 7 of 7 project links and the footer's link | 2026-10-19 | `tools/check_content.py` |
-| Checks on the page, locally | Tree at load in full mode matching the page without layout skipping in 32 of 32 loads, default mode adding no node in 32; keyboard 60 of 60; axe-core 0 violations in 12 cells; anchors 132 of 132; no joined words at 360 and 1366 px in Chrome 154 and Edge 155; Lighthouse locally, with the machine quiet, median LCP 2,255 ms, CLS 0, TBT 42 ms | 2026-10-19 | `logs/2026-10-19-role-wording.md` |
-| Decision records | 12, 1 superseded; 42 dated Changes rows | 2026-10-12 | `docs/decisions/` |
+| Checks on the page, locally | Tree at load in full mode matching the page without layout skipping in 32 of 32 loads, default mode adding no node in 32; keyboard 60 of 60; axe-core 0 violations in 12 cells; measured contrast 0 elements below AA in light and dark at 360 and 1366 px, with 17 and 94 over a gradient unmeasured; the layout check clean at nine widths, scripts on and off; anchors 132 of 132; no joined words at 360 and 1366 px in Chrome 156 and Edge 155; Lighthouse at light load, median LCP 2,255 ms, CLS 0, TBT 54 ms | 2026-10-21 | `logs/2026-10-19-role-wording.md`, rounds 7 and 8 |
+| Decision records | 12, 1 superseded; 48 dated Changes rows | 2026-10-21 | `docs/decisions/` |
 | History | 93 commits, the first at 2026-09-25T21:42Z, to `12084bc`; 9 session logs, 24 rows in their index | 2026-10-19 | `git log`, `logs/` |
 | Cost | None | 2026-10-10 | Free plans only |
 
@@ -208,7 +208,7 @@ what waits is listed here with its source, as of 2026-10-10, updated 2026-10-21:
 | Architecture and direction | Waqas Sharif | Brought the blueprint and the architecture, made the trade-offs, set the standards, reviewed the design, the logic and the tests and had them corrected (his account, 2026-10-19), and decided every brief and report; see "Waqas Sharif's role" |
 | Decisions and briefs: a Claude chat | Claude, in a chat | Refined his design with him into decision records, wrote the briefs, checked each report against the repository |
 | Implementation: Claude Code | Claude Code | Built to the briefs he approved: the generator, the templates, the stylesheet and scripts, the checks and gates; logged every session |
-| Design prototype: Claude Design | Claude Design | Built the prototype from his six reference sites and the content pack; he reviewed it, and the visual system was settled from it with his changes (ADR-0011) |
+| Design prototype: Claude Design | Claude Design | Built a prototype from his six reference sites and the content pack, from which he chose the visual system, with his changes (ADR-0011) |
 
 **Timeline, UTC: what was built.** Rows for what was decided are the
 architecture chat's.
@@ -233,10 +233,11 @@ architecture chat's.
 | 2026-10-11 | The commands moved to their own reference file; the master's changes on the page (a summary sentence, ten skills groups, the job aggregator's role and method); the trace requires the Portfolio Intro and reads section numbers by markup; the CV PDF checked and added, with its download link |
 | 2026-10-12 | Gate C refuses a Markdown header GitHub cannot read; the design-system draft's reserved-name fonts removed; a survey of 200 listed portfolios, research 0005 |
 | 2026-10-15 | The footer line on the page, the master's Portfolio Footer word for word, its address a link to this repository; the trace requires both |
-| 2026-10-19 | The master's role wording on the page: the summary, a skills item, the job aggregator's role line and two bullets; a new CV PDF, the same wording |
 | 2026-10-15 | Decided: the footer carries the master CV's Portfolio Footer line, word for word, its address a link to this repository, and the content trace requires it (ADR-0008 Changes) |
+| 2026-10-19 | The master's role wording on the page: the summary, a skills item, the job aggregator's role line and two bullets; a new CV PDF, the same wording |
 | 2026-10-19 | Decided: his name may appear in `portfolio-gallery`'s showcase, never in what a copy receives (ADR-0012 Changes) |
 | 2026-10-20 | Decided: a Lighthouse set counts only on a machine at light or medium load, its level read from free memory and CPU over the minute before; a set at heavy load is void and repeated (ADR-0009 Changes) |
+| 2026-10-21 | The master's new role wording on the page and a new CV PDF; the "In depth" button no longer stranded when a card's links wrap; the certificate cards' link cue shown on touch screens; no section marked current without a script; a layout check and a measured contrast check added to the standing checks |
 
 ## Waqas Sharif's role
 
@@ -339,7 +340,7 @@ the only deeper destination (ADR-0008), and no reuse of this repository
   counts only at light or medium load (ADR-0009 Changes).
 - **A browser that turns accessibility on only after load** meets the
   lower sections when they render, a residual ADR-0009 accepts.
-- **Tested only in Chrome 154 and 155 and Edge 154 and 155**, and with one screen
+- **Tested only in Chrome 154 to 156 and Edge 154 and 155**, and with one screen
   reader,
   NVDA 2026.2. Firefox, Safari with VoiceOver, phones' screen readers and
   find-in-page are not tested.
