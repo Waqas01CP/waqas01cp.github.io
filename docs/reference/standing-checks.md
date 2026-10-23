@@ -52,7 +52,9 @@ html:has(:target) .page > .sec { content-visibility: visible; }
 | Anchors | Every in-page target, by a link and by a URL with its hash, scripts on and off, at 1366 and 360 px, lands within 3 px of its scroll margin or at the page's end | The rule without its `:has(:target)` undo |
 | Words run together for a screen reader | No join at 360 and 1366 px, in Chrome and Edge, by the model of NVDA's lines below | The page at 6812c4f: 58 joins at 1366 px, 45 at 360 px |
 | Visually unchanged, for a change meant to be invisible | Full-page screenshots under reduced motion at 360 and 1366 px, light and dark, with every section made to render first (`.page > .sec { content-visibility: visible }` added for the capture: a full-page capture paints only near the viewport, and a skipped section comes out blank in both images alike): same size, and no pixel differs by more than 2 of 255 in any channel, the noise two captures of one unchanged page show | A visible change in a lower section that keeps the page's height, such as the timeline fix of 7e97c5b: about 10,500 pixels change inside the timeline |
-| Layout | `layoutcheck.js`, below: at 320, 360, 375, 390, 414, 768, 1024, 1366 and 1920 px, scripts on and off, no finding outside its named list of deliberate cases | The page before Brief 13's fix, with the "In depth" button stranded on its own row (W1); a copy with the probes card moved up over "592" |
+| Layout | `layoutcheck.js`, below: at 320, 360, 375, 390, 414, 768, 1024, 1040, 1060, 1065, 1100, 1180, 1366 and 1920 px, scripts on and off, no finding outside its named list of deliberate cases | The page before Brief 13's fix (78f13ce's parent), with the "In depth" button stranded on its own row (W1); a copy with the probes card moved up over "592"; a copy with the timeline to scale from 960 px and its cards at a fixed height, which cuts off one-month cards' titles |
+| Words broken mid-word | `wordbreak.js`: no word of a timeline card's title, organisation or dates falls on two lines, at 1060 to 1920 px, read from each word's own range | The timeline to scale from 960 px, at 980 px: "Specialization" and "Professional" each split across two lines |
+| The reading marker | `chipcheck.js`: with motion on, at 1065, 1180, 1366 and 1521 px, the reading line moved onto each year badge and every fifth month label; with the marker shown, that label is faded | The build before the fix (fd73058): 10 of 10 labels still visible under the marker at each width |
 | Lighthouse | Default mobile, median of five, meets ADR-0009: LCP at most 2.5 s, CLS at most 0.1, TBT under 200 ms. Variants run interleaved so drift falls on all alike. A set counts only with the machine at light or medium load, read over the 60 s before it; a fail there is a fail, a set at heavy load is void (ADR-0009 Changes, 2026-10-06 and 2026-10-20) | A 600 ms synchronous script at the end of the head, after the stylesheets: it fails by TBT (medians about 1,850 ms, 2026-10-19 to 21), so it shows the TBT check able to fail. A script at the top of the head delays first paint instead and fails by LCP, leaving TBT untested (the first audit's variant, F19) |
 
 ## The accessibility tree at load
@@ -105,8 +107,9 @@ eye-read visual pass had on screen and did not report: the "In depth"
 button stranded on a row of its own when a card's links wrapped (W1).
 
 **What it measures.** A geometric scan of the page, every section laid
-out first, light theme, reduced motion, at nine widths, with scripts on
-and off. Four kinds of finding:
+out first, light theme, reduced motion, at fourteen widths, with scripts
+on and off; 1040, 1060, 1065 and 1100 px since 2026-10-22, around the
+width where the timeline turns to scale. Five kinds of finding:
 - **overlap**: the ink of a line of text intersected by another line's
   ink, or by a painted box (a background or a border) it is not inside.
   Ink, not the font's box: each text box is tightened to the letters'
@@ -116,6 +119,10 @@ and off. Four kinds of finding:
 - **orphan**: a flex item pushed right by `margin-left: auto` that has
   wrapped onto a row of its own, the pattern of W1;
 - **clipped**: text cut off by an element that hides its overflow;
+- **cut off**: a line's ink reaching past the box of the nearest ancestor
+  that clips its overflow, at any edge. Added 2026-10-22, when a one-month
+  timeline card cut its title's third line at 1065 px, which the sideways
+  test above could not see;
 - **wide**: anything past the viewport's right edge that nothing clips,
   and a page that scrolls sideways.
 

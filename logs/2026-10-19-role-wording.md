@@ -848,3 +848,89 @@ docs suggest).
 - The fixed page's copy for the first layout and screenshot runs still
   held the reverted spacing; refreshed from the build, and the layout
   check and the standing checks rerun on the true build.
+
+# Round 9, 2026-10-22 to 23 (UTC): Brief 13, Part 5, his screenshots
+
+## Brief 13, Parts 0 to 4, live
+
+[VERIFIED] Waqas pushed fd73058. At 2026-10-22T22:40:16Z, 24 live files
+byte-identical to the build by SHA-256; the live CV PDF's MD5
+5a561a83664af0797039a67cbf7563d3.
+
+## What he sent
+
+Ten screenshots of the live site, light theme: eight from his portrait
+monitor (a 1080 px wide screen at 100%, so a viewport of about 1065 px)
+and two from his laptop (1920 px at 125%, about 1521 px). His questions:
+why the portrait monitor is "treated as a mobile phone"; and that on the
+laptop "the button is a bit off".
+
+## What each showed, and what was done
+
+- **The portrait monitor gets the phone's timeline.** The site never asks
+  what device it is on; it reads the window's width. The to-scale
+  timeline started at 1180 px, a threshold taken from the prototype's
+  breakpoints (logs/2026-10-05-styled-site.md), so a 1065 px desktop
+  window got the stacked list meant for phones. ADR-0003 Changes,
+  2026-10-05, says the desktop timeline stays to scale. Asked, Waqas chose
+  the to-scale timeline from about 1040 px (2026-10-22). Measured first:
+  below 1180 a one-month card cut its title (the Crypto card's third line
+  at 1065 px), and at 980 px words broke inside themselves
+  ("Professional", "Specialization"). Done: the cards now grow past their
+  months' height when a title needs the room (no change at 1180 px and up,
+  where every title already fit), and the threshold is 1060 px, the
+  narrowest width at which no card's word breaks: at 1040 and 1050 px
+  "Specialization" still did. Below 1060, the stacked list. In the
+  stylesheet (with its reason) and the script's `wideQuery`.
+- **"In depth" on the laptop.** The W1 fix of 78f13ce kept the button in a
+  right-hand column, so where a card's links and the button did not fit on
+  one line, the links stacked and the button sat beside the second. Asked,
+  Waqas chose: the links on one line, "In depth" at their right while all
+  fit, and on the next line at the left when they do not. Done with a
+  wrapping flex row, `justify-content: space-between`: a line holding the
+  button alone starts at the left.
+- **The reading marker over the axis labels** (his laptop screenshots:
+  "Oct 2026" over the "2026" badge, "Aug 2025" over "Aug"). By design the
+  marker follows a line 55% down the screen; it slid over the year badges
+  and month labels. Done: a label or badge within 18 px of the marker
+  fades while it is there.
+- Seen and left as designed: the outline on cards the reading line
+  crosses; the Pause button over the moving strip under the Intro.
+
+## The checks
+
+New, each shown able to fail (`docs/reference/standing-checks.md`):
+- the layout check's **cut off** test, a line's ink past the box that
+  clips it, and four more widths (1040, 1060, 1065, 1100): defeat, the
+  timeline to scale from 960 px with fixed-height cards, 7 findings, the
+  Crypto and Google Prompting titles cut off from 1024 to 1100 px;
+- **words broken mid-word** (`wordbreak.js`), each word's own range on one
+  line: defeat, that copy at 980 px, "Specialization" and "Professional"
+  split; the page, 1060 to 1920 px, none. An earlier estimate by measured
+  font widths missed "Professional" at 980 px and was replaced;
+- **the reading marker** (`chipcheck.js`), with motion on, at 1065, 1180,
+  1366 and 1521 px: defeat, HEAD's build, 10 of 10 labels visible under
+  the marker at each width; the page, 0 of 10.
+
+Every standing check on the final build, each defeat first, 2026-10-22
+22:57Z to 2026-10-23 08:38Z (the machine slept partway): keyboard 60 of
+60 (defeat 58); axe 0 violations in 12 of 12 (defeat 12); anchors 132 of
+132 (defeat 75); the layout check 0 findings outside its list at 14
+widths, scripts on and off (defeats 13, 11 and 7 findings); words and
+marker as above; contrast 0 below AA (defeat 1.48:1); joined words 0 in
+Chrome 156 and Edge 155 at both widths (defeat 58 and 59). The tree at
+load crashed partway in that run ("Session closed" from the browser,
+after 25 full and 24 default loads, all of them passing); rerun whole,
+08:40Z to 08:43Z: full mode 32 of 32 loads match, default adds no node
+in 32. Lighthouse at light load (1,154 MB free, CPU 8.3%, 08:32Z):
+this page LCP 2,253 ms, CLS 0.0001, TBT 54 ms; HEAD's page 2,255, 0.0001,
+51; the defeat fails (TBT 1,843 ms). Trace 378 of 378.
+
+## Errors this seat made, round 9
+
+- The first marker screenshots showed the Intro: a screenshot's clip is
+  measured from the page's top, not the view's, so the scroll was left
+  out; and the page scrolls smoothly when motion is on, so the shots fired
+  before the scroll arrived. Both fixed before any conclusion was drawn.
+- The first word-break probe estimated words' widths and missed one at
+  980 px; replaced by each word's own range.

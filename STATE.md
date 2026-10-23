@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit 388f618, the last commit before this file's
-update, 2026-10-21T22:56Z, by the Brief 13 implementing session.** This is
+**Verified against commit f20451f, the last commit before this file's
+update, 2026-10-23T08:44Z, by the Brief 13 implementing session.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -43,6 +43,12 @@ the clearing in the task's row.
 Update the verified-against line whenever you touch this file.
 
 ## Headline
+
+**Brief 13, Part 5, 2026-10-22: from Waqas's screenshots, the timeline
+to scale from 1060 px (his portrait monitor gets the desktop timeline),
+"In depth" on its own line when a card's actions wrap, and the reading
+marker kept off the axis labels; every standing check passes, with three
+new ones. Committed, for the operator's push.** Before that:
 
 **Brief 13, Parts 1 to 4, 2026-10-21: CLAUDE.md's three blocks; the "In
 depth" button no longer stranded (W1), the certificate cards' cue on
@@ -155,9 +161,8 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
-| The push of Brief 13's commits (f2ce13f to the records of Parts 1 to 4) | The operator | Operator | 2026-10-21 |
+| The push of Brief 13, Part 5's commits | The operator | Operator | 2026-10-23 |
 | Report 13: floor lines 7, 9 and 10, build or amend (ADR-0004, ADR-0007); AGENTS.md and CLAUDE.md's length (Part 4); F4's split, the prototype's order | The operator, then the architecture chat | Operator and chat | 2026-10-21 |
-| Brief 13, Part 5: his screenshots of the live site | The operator | Operator | 2026-10-21 |
 
 ## Known unverified
 
