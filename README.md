@@ -37,7 +37,7 @@ Pick the row that fits why you are here, and read in that order.
 | Reviewing his work, as an employer or admissions reader | The live site; then `CAPABILITIES.md`, everything the site is and does in one file; then `docs/decisions/README.md`, for why each choice was made |
 | Checking a claim on the site | `CAPABILITIES.md`, "Where the evidence lives"; then `docs/reference/commands.md`, the content trace, which ties every line on the page to his master CV |
 | Changing the content or the code | `CLAUDE.md`, the rules and the reading order; `STATE.md`; `src/content/README.md`; `docs/reference/commands.md`; `docs/reference/standing-checks.md` |
-| An AI agent working in this repository | `CLAUDE.md` first: it holds the authority order, the scope floor, the rules and the reading order. Then follow its reading order. `MAP.md` lists every documented file with what it is for; open files from it rather than reading the folders |
+| An AI agent working in this repository | `CLAUDE.md` first (`AGENTS.md` points there, for agents that read only that name): it holds the authority order, the scope floor, the rules and the reading order. Then follow its reading order. `MAP.md` lists every documented file with what it is for; open files from it rather than reading the folders |
 | Looking for what happened when | `logs/README.md`, then the newest relevant log; audits in `logs/audit/README.md` |
 
 ## How this project is run
@@ -61,6 +61,7 @@ Method, kept in his private vault and deliberately not linked from here.
 | Everything the site is and does, for a reader who opens nothing else | `CAPABILITIES.md` |
 | What exists, what is blocked and on whom | `STATE.md` |
 | How to work here: authority, claim rules, scope floor | `CLAUDE.md` |
+| The pointer for coding agents other than Claude Code | `AGENTS.md`, which sends them to `CLAUDE.md` |
 | Why a choice was made | `docs/decisions/`, indexed in its README |
 | The evidence behind the decisions | `docs/research/` |
 | What was deliberately not built, and what would reopen it | `docs/deferred/` |

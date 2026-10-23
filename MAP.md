@@ -18,6 +18,7 @@ frontmatter. Decision records have no `type`; their `topic` is shown.
 
 | File | Type | Status | Description |
 |---|---|---|---|
+| `AGENTS.md` | instruction | current | For coding agents other than Claude Code. Points to CLAUDE.md, which holds this repository's instructions and is read first, in its reading order. Holds no rule of its own. |
 | `CAPABILITIES.md` | explanation | current | Everything the portfolio site is and does, in one file: how it is built and served end to end, the stack, its engineering qualities and what enforces each, measured numbers with their sources, how it was built, and its limits. For any chat or person who will open nothing else. Kept current. |
 | `CLAUDE.md` | instruction | current | How to work in this repository. Reading order, authority order, the fourteen-line scope floor, runtime and claim rules. Read before touching anything. |
 | `README.md` | reference | current | What this project is, how it is organised, and where each document lives. The entry point for a reader who has never seen it. |
