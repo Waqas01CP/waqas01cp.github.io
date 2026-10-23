@@ -60,8 +60,13 @@ frontmatter. Decision records have no `type`; their `topic` is shown.
 
 | File | Type | Status | Description |
 |---|---|---|---|
+| `docs/reference/audits.md` | reference | current | Where audit reports live, who writes a report and its index row, and who checks and commits them. Moved word for word from CLAUDE.md. |
+| `docs/reference/briefs.md` | reference | current | The gitignored briefs folder. Its three files, one per receiving seat, and how each is written, ticked and replaced. Moved word for word from CLAUDE.md. |
+| `docs/reference/capabilities-lanes.md` | reference | current | What to update in CAPABILITIES.md at a session's close, and which of its sections are Claude Code's and which the architecture chat's. Moved word for word from CLAUDE.md. |
 | `docs/reference/commands.md` | reference | current | Every command that exists in this repository, each with what it exits and why. The environment, the gates, the architecture chat's commits, the build, the monthly refresh, the map, the one-dependency check and the content trace. Read before running anything. |
 | `docs/reference/completed.md` | reference | current | Where DONE rows from STATE.md move, so the state file holds only what is unsettled. Nothing is ever deleted from here. |
+| `docs/reference/decision-records.md` | reference | current | How decision records are written and amended, and what a seat may and may not change in one. Moved word for word from CLAUDE.md. Read before writing or touching a record. |
+| `docs/reference/gates.md` | reference | current | The seven repository gates of ADR-0007. What each blocks, when it fires and the case that defeats it, with the notes on gates A and E. Moved word for word from CLAUDE.md. Read before committing, and before building or changing a gate. |
 | `docs/reference/standing-checks.md` | reference | current | The checks every change to the built page runs before it is committed, each with its pass line and the case built to defeat it. Includes the accessibility tree at load that ADR-0009 makes a condition of layout skipping, words a screen reader hears run together, a layout check for overlaps and stranded items, and a pixel check for changes meant to be invisible. |
 
 ## docs/research

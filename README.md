@@ -21,7 +21,7 @@ the honest picture; `CAPABILITIES.md` describes everything the site does.
 
 The repository is public, per ADR-0002. Two things are never committed:
 `CHAT_STATE.md`, the architecture chat's ledger, because it names blockers
-and errors, and the briefs (`CLAUDE.md`, Briefs). Both are in `.gitignore`,
+and errors, and the briefs (`docs/reference/briefs.md`). Both are in `.gitignore`,
 and gate A refuses them.
 
 Every internal link is root-relative and no absolute self-origin is
@@ -36,7 +36,7 @@ Pick the row that fits why you are here, and read in that order.
 |---|---|
 | Reviewing his work, as an employer or admissions reader | The live site; then `CAPABILITIES.md`, everything the site is and does in one file; then `docs/decisions/README.md`, for why each choice was made |
 | Checking a claim on the site | `CAPABILITIES.md`, "Where the evidence lives"; then `docs/reference/commands.md`, the content trace, which ties every line on the page to his master CV |
-| Changing the content or the code | `CLAUDE.md`, the rules and the reading order; `STATE.md`; `src/content/README.md`; `docs/reference/commands.md`; `docs/reference/standing-checks.md` |
+| Changing the content or the code | `CLAUDE.md`, the rules and the reading order; `STATE.md`; `src/content/README.md`; `docs/reference/commands.md`; `docs/reference/gates.md`; `docs/reference/standing-checks.md` |
 | An AI agent working in this repository | `CLAUDE.md` first (`AGENTS.md` points there, for agents that read only that name): it holds the authority order, the scope floor, the rules and the reading order. Then follow its reading order. `MAP.md` lists every documented file with what it is for; open files from it rather than reading the folders |
 | Looking for what happened when | `logs/README.md`, then the newest relevant log; audits in `logs/audit/README.md` |
 
@@ -68,8 +68,9 @@ Method, kept in his private vault and deliberately not linked from here.
 | What the content schema is and how to add an item | `src/content/README.md` |
 | How the page is checked against the master CV | `docs/reference/commands.md`, the content trace |
 | The checks every change to the page runs | `docs/reference/standing-checks.md` |
+| The seven gates every commit and push passes, and what defeats each | `docs/reference/gates.md` |
 | What prior implementing sessions did | `logs/README.md` |
-| Why briefs are not committed | `CLAUDE.md`, Briefs |
+| Why briefs are not committed | `docs/reference/briefs.md` |
 | Completed work moved out of the state file | `docs/reference/completed.md` |
 | Every documented file, with what each is for | `MAP.md`, generated |
 | The audits of this repository | `logs/audit/README.md` |

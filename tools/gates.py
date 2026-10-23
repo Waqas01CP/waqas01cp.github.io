@@ -170,7 +170,7 @@ def never_commit_reason(path: str) -> str | None:
     if lowered.rsplit("/", 1)[-1] == "chat_state.md":
         return "CHAT_STATE.md is the architecture chat's ledger and is never committed (ADR-0002)"
     if lowered.startswith("briefs/"):
-        return "briefs are working space and are never committed (CLAUDE.md, Briefs)"
+        return "briefs are working space and are never committed (docs/reference/briefs.md)"
     return None
 
 

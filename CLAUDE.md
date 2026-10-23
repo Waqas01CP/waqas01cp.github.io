@@ -149,23 +149,6 @@ Do not revert another seat's deliberate change. Flag it.
 Re-read a source before reproducing a constant from it. This repository's
 architecture chat has already made that error once; it is in CHAT_STATE.md.
 
-## Decision records
-
-docs/decisions/, MADR 4.0.0 with an Assumptions section, per the Decision
-Record Standard. The `topic` field takes one value from the fixed list in
-docs/decisions/README.md.
-
-Write the record when the decision concludes, not afterwards.
-A record's decision is never silently rewritten: an amendment that leaves it
-in force goes in its Changes table; a replacement is a new record that
-supersedes it, with both directions linked.
-Every assumption carries its basis: measured, sourced, or stated by the
-operator.
-
-A seat may annotate a factual error with its date and evidence, correct a
-wrong reference, and report a record as stale. It may not change a decision,
-retire a record, or resolve a conflict between two records.
-
 ## Documentation layering
 
 System-level picture in docs/. Component detail in comments in the file it
@@ -181,30 +164,13 @@ trace, in `docs/reference/commands.md`. Read it before running anything.
 Do not infer a command that is not there, and do not treat its absence as
 permission.
 
-## The hook blocks
+## Procedures in docs/reference/
 
-Seven gates, ADR-0007, in `tools/gates.py`, called by `.githooks/pre-commit`
-and `.githooks/pre-push`. Each was proven by the case built to defeat it,
-and each case was also shown to get through with its gate neutered. They
-enforce only once `core.hooksPath` is set (Commands); until then they are
-requests, so treat them as binding anyway.
-
-| Gate | When | Blocks | Defeated by |
-|---|---|---|---|
-| A, never-commit | pre-commit | `CHAT_STATE.md` at any path; anything in `briefs/`; any staged text file holding a filesystem path into the operator's private material: a drive-letter absolute path, a climb out of the repository, a path segment naming the Working Method or the Operating Plan folder, the master CV's file name, or the vault's root folder name. Prints the file, line and matched text. | Staging `CHAT_STATE.md` with `-f`; a planted template path. Control: prose naming the Working Method passes. |
-| B, rebuild | pre-commit | Staged output that differs from a fresh build of the staged source, as of the month recorded in the staged `index.html`. | A one-character edit to `index.html`; `items.json` changed without rebuilding. |
-| C, map | pre-commit | A `MAP.md` that is stale against the staged files, or a staged Markdown header GitHub would refuse to read: an unquoted value holding ": " or " #", or beginning with a character YAML reserves. Standard library only; known patterns, not every YAML rule (ADR-0007 Changes, 2026-10-12). | A new Markdown file committed without regenerating the map; a description holding an unquoted ": ". |
-| D, missing tool | every hook | A missing venv interpreter, gate script, map generator or `build.py`: a refusal naming it, never a skip. | Renaming the map generator; moving the venv. |
-| E, STATE.md moved | pre-push | A push whose range touches `build.py`, `requirements.txt`, `index.html`, `src/`, `static/`, `tools/` or `.githooks/` with no commit in the range touching `STATE.md`. The last commit of a series is enough. | Pushing a `src/` change with no `STATE.md` change. Control: a series with `STATE.md` only in its last commit passes. |
-| F, every claim readable | pre-commit | On gate B's fresh build, a string in `site.json` or `items.json` that, markup stripped, is not in `index.html`'s readable text: its text with script, style and template bodies and any element marked `hidden` left out. A title counts as its name and subtitle. Keys never printed as written (ids, months, provenance, addresses) are named in the gate; every other key is checked. Scope floor line 7 (ADR-0007 Changes, 2026-10-23). | A template rendering a field only into a data attribute. Control: the same field in a data attribute and in the text passes. |
-| G, no third parties, no tracking | pre-commit | In the staged `index.html` and `static/`'s scripts and stylesheets: an absolute or scheme-relative address in any attribute but a plain link's `href`, in a stylesheet outside a comment, or in a script's string; in script code, `document.cookie`, `cookieStore`, `localStorage`, `sessionStorage`, `indexedDB`, `sendBeacon`, `fetch`, `XMLHttpRequest` or `WebSocket`; anywhere in them, a known analytics host. The allowlist is empty; XML namespace names pass. Known patterns, not every route. Scope floor lines 9 and 10 (ADR-0007 Changes, 2026-10-23). | A planted Google Tag Manager script; `document.cookie` in `site.js`. Control: an external plain link passes. |
-
-Gate A matches path forms, never prose, and cannot match its own source.
-Every pattern is written so the source never contains the text it matches,
-and the vault's root folder name, which has never been committed, is held
-only as a digest. A brief that needs a private path carries it, and briefs
-are never committed. Gate E's list of implementation paths is recorded
-in ADR-0007 Changes, 2026-09-26.
+- Decision records: their format, when one is written, how one is amended, and what a seat may and may not change in one: `docs/reference/decision-records.md`.
+- The gates: what each of the seven blocks, the case that defeats it, and why they bind before the hooks are set: `docs/reference/gates.md`.
+- Briefs: the three files in the gitignored `briefs/`, and how each is written, ticked and replaced: `docs/reference/briefs.md`.
+- Audits: who writes an audit report and its index row, and who checks and commits them: `docs/reference/audits.md`.
+- CAPABILITIES.md: what to update in it at a session's close, and whose lane each section is: `docs/reference/capabilities-lanes.md`.
 
 ## Committing and pushing
 
@@ -219,36 +185,6 @@ One Lighthouse set or browser harness at a time. Say a job's whole length
 before it starts. Before finishing, stop any process this seat started,
 and touch none it did not. Read a browser's version from its file; never
 launch the operator's own browser to get it.
-
-## Briefs
-
-briefs/, gitignored, one file per receiving seat:
-briefs/implementation-seat.md, the architecture chat's current brief to
-this seat; briefs/architecture.md, this seat's report to the chat;
-briefs/implementing.md, this seat's own handoff, written at session close
-and whenever the session may end without warning. Each file: unexecuted,
-with an empty box on its first line and addenda appended; executed, ticked
-with the date when the operator says so; replaced only after the old one
-is read for what it still says. Numbered briefs from before 2026-10-10
-are history.
-
-## Audits
-
-Audit reports live in logs/audit/, indexed in its README, which gives
-their format. The audit seat writes its report and the report's index
-row, and nothing else; this seat checks the report for anything the
-public repository must not carry, then commits both unchanged.
-
-## CAPABILITIES.md
-
-Everything the site is and does, for a reader who opens nothing else.
-At the close of any session that changes a capability or a measured
-number, update its section, re-measuring the number with its date and
-source. This seat's lane: what it does and how, the stack, the qualities,
-the numbers, the limits, the built rows of the timeline. The architecture
-chat's: the purpose, where it is going, the decisions, the decided rows
-and the operator's role. Counter the other seat's line with evidence;
-never rewrite it silently.
 
 ## Writing
 

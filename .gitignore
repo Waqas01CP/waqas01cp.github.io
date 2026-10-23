@@ -3,7 +3,7 @@ CHAT_STATE.md
 
 # Briefs are working space, overwritten each round, and the whole folder
 # stays off the repository, its README included, at Waqas Sharif's
-# instruction of 2026-10-20 UTC. See CLAUDE.md, Briefs.
+# instruction of 2026-10-20 UTC. See docs/reference/briefs.md.
 briefs/
 
 # Local build environment and Python artefacts. The venv is recreated from
