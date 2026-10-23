@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit f20451f, the last commit before this file's
-update, 2026-10-23T08:44Z, by the Brief 13 implementing session.** This is
+**Verified against commit 20c8dca, the last commit before this file's
+update, 2026-10-23T13:04Z, by the Brief 14 implementing session.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -43,6 +43,13 @@ the clearing in the task's row.
 Update the verified-against line whenever you touch this file.
 
 ## Headline
+
+**Brief 14, 2026-10-23: gates F and G enforce scope floor lines 7, 9
+and 10 at every commit, proven in a scratch clone with every gate rerun;
+AGENTS.md points other coding agents to CLAUDE.md; CLAUDE.md is 198
+lines, five procedures moved word for word into docs/reference/. The
+page is unchanged; Brief 13, Part 5 checked live. Committed, for the
+operator's push.** Before that:
 
 **Brief 13, Part 5, 2026-10-22: from Waqas's screenshots, the timeline
 to scale from 1060 px (his portrait monitor gets the desktop timeline),
@@ -138,8 +145,9 @@ A small Python generator builds the page from two content files
 order or shortened text that is not a cut of its source, and records the
 month the page is as of. `tools/check_content.py` traces the built page to
 the master CV. Eleven decisions are in force, and ADR-0005 is superseded by
-ADR-0010. Five repository gates guard
-every commit and push (ADR-0007); they enforce only in a clone where
+ADR-0010. Seven repository gates guard
+every commit and push (ADR-0007), two of them for scope floor lines 7, 9
+and 10; they enforce only in a clone where
 `core.hooksPath` is set. How the repository got here is in the session
 logs, not in this file.
 
@@ -161,8 +169,7 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
-| The push of Brief 13, Part 5's commits | The operator | Operator | 2026-10-23 |
-| Report 13: floor lines 7, 9 and 10, build or amend (ADR-0004, ADR-0007); AGENTS.md and CLAUDE.md's length (Part 4); F4's split, the prototype's order | The operator, then the architecture chat | Operator and chat | 2026-10-21 |
+| The push of Brief 14's commits (a82dd6b to its records) | The operator | Operator | 2026-10-23 |
 
 ## Known unverified
 

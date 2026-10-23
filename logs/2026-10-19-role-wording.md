@@ -1,6 +1,6 @@
 ---
 type: log
-description: "Briefs 9 to 11, and the briefs folder taken off the repository. The master CV's role wording of 2026-10-18 carried onto the page by script (the summary, a skills item, the job aggregator's role line and two bullets); the trace passing again against the master; no \"seat\" on the page; the new CV PDF checked and committed; CAPABILITIES.md's build table relabelled by what each role did. Brief 8 confirmed live. Brief 10: this machine's load measured against Lighthouse; the quiet set passes ADR-0009; light, medium and heavy proposed from the measurements."
+description: "Briefs 9 to 11, and the briefs folder taken off the repository. The master CV's role wording of 2026-10-18 carried onto the page by script (the summary, a skills item, the job aggregator's role line and two bullets); the trace passing again against the master; no \"seat\" on the page; the new CV PDF checked and committed; CAPABILITIES.md's build table relabelled by what each role did. Brief 8 confirmed live. Brief 10: this machine's load measured against Lighthouse; the quiet set passes ADR-0009; light, medium and heavy proposed from the measurements. Later rounds: Brief 11; the briefs folder off the repository; Brief 12; the first audit; Brief 13; Brief 14, gates for floor lines 7, 9 and 10, AGENTS.md and CLAUDE.md under 200 lines."
 status: current
 ---
 
@@ -934,3 +934,179 @@ this page LCP 2,253 ms, CLS 0.0001, TBT 54 ms; HEAD's page 2,255, 0.0001,
   before the scroll arrived. Both fixed before any conclusion was drawn.
 - The first word-break probe estimated words' widths and missed one at
   980 px; replaced by each word's own range.
+
+# Round 10, 2026-10-23 (UTC): Brief 14, the floor's gates, AGENTS.md, a shorter CLAUDE.md
+
+**All three parts done.** Gates F and G enforce scope floor lines 7, 9
+and 10 at every commit, each proven by its defeats and controls in a
+scratch clone with every gate rerun, 73 of 73. AGENTS.md points other
+coding agents to CLAUDE.md. CLAUDE.md is 198 lines, from 262, five
+procedures moved word for word into `docs/reference/`, shown by a script
+that fails on each of three defeats. The page is unchanged. Committed
+for Waqas's push: a82dd6b, f8fd177, 20c8dca and this round's records.
+
+## Read first
+
+[VERIFIED] `git log`: the chat's 5746eda on ad2c52c, pushed; origin/main
+at 5746eda. Its three Changes rows read: ADR-0007's (the gates below),
+ADR-0011's (the measured contrast check in its Confirmation), ADR-0003's
+(the timeline to scale from 1060 px). No other new commit.
+
+His answers to Report 13, from the brief, 2026-10-23: build the three
+gates; AGENTS.md as a pointer; CLAUDE.md under 200 lines; no llms.txt;
+the CAPABILITIES.md lines about him stand. **F4 is closed:** "it looks
+alright as it is", so the prototype's order, with the probes card
+between "592" and its label below 1000 px, stays.
+
+## Brief 13, Part 5, live
+
+[VERIFIED] At 2026-10-23T13:00:46Z, 24 live files (the page, everything
+under `static/`, the CV PDF and the design-system draft) byte-identical
+to origin/main 5746eda by SHA-256; the live PDF's MD5
+5a561a83664af0797039a67cbf7563d3. Defeat: the same check against
+fd73058 reports `static/site.css` and `static/site.js`, the two files
+f20451f changed. The brief said the live site was checked at ad2c52c;
+this is this session's own check.
+
+## Part 1: gates F and G (a82dd6b)
+
+Measured before building: the shipped files held none of what G
+refuses. The page's 30 absolute addresses are all on `<a href>`; the
+stylesheet's three `url()`s are the local fonts; the scripts name no
+cookie, storage or network interface. The word "fetch" is in the page
+once, in prose ("a fetch skill"), so interface names are matched in
+script code only.
+
+What each gate checks, as built (ADR-0007 Changes, 2026-10-23):
+- **F, line 7.** Gate B now hands F the page it has just built from the
+  staged tree. Every string in `site.json` and `items.json`, markup
+  stripped and entities read, must be in that page's readable text: its
+  text, with script, style and template bodies and anything inside an
+  element marked `hidden` left out, since only a script reveals those.
+  A title is checked as its name and subtitle, split at the first ": "
+  as `build.py` prints it. Keys never printed as written are named in
+  the gate with their reasons (id, lane, route, date_style, start, end,
+  source, from, item, no_proof, url); any other key is checked, so a new
+  field counts as a claim until it is named. 244 strings on today's
+  page, all present.
+- **G, lines 9 and 10,** over the staged `index.html` and `static/`'s
+  scripts and stylesheets: an absolute or scheme-relative address in
+  any attribute but a plain link's `href`; in a stylesheet outside a
+  comment; or in a quoted string in script code, the page's script
+  bodies and inline handlers included. In script code: `document.cookie`,
+  `cookieStore`, `localStorage`, `sessionStorage`, `indexedDB`,
+  `sendBeacon`, `fetch`, `XMLHttpRequest`, `WebSocket`. Anywhere in those
+  files: 33 known analytics hosts. The allowlist is empty; XML namespace
+  names pass, since a browser never fetches them.
+
+**My reading of the record, for the chat.** The row lists the elements
+that may not carry an external address. G refuses one on any attribute
+but a plain link's `href`, which covers every listed element and also a
+link's `ping`, a form's `action` and the other link relations. In
+scripts it refuses any quoted absolute address, not only a Worker's or
+`importScripts`'s, so a script element's source set by script and
+`import()` are caught; and `cookieStore` beside `document.cookie`.
+Stricter than the row's list, never looser.
+
+Cost: `tools/gates.py` 299 to 513 lines, standard library only (`json`,
+`html`, `html.parser` added); a pre-commit run took 2.7 s here, timed
+once before the harness.
+
+**Proof, in a scratch clone** (a path with spaces, a local bare
+repository as its only remote, the project venv copied in), through real
+`git commit` and `git push`: `gate_tests14.py`, adapted from Brief 2's
+`gate_tests.py` and `sabotage.py` to today's tree, every gate rerun.
+**73 of 73, twice:** on the gates as first written, 12:09:53Z to
+12:14:46Z, and on the final tree at 20c8dca, 12:53:15Z to 12:58:51Z,
+with the same cases and verdicts. The script lives in the session
+scratchpad, not in the repository.
+
+| Gate | Defeats, each refused | Controls, each passing |
+|---|---|---|
+| All | | Today's tree passes A, B, C, F and G; the pass line names them |
+| A | `CHAT_STATE.md` at two paths, a brief and `briefs/README.md` with `-f`, each by A alone; a template path, named with file, line and text; drive-letter paths, both slashes; the vault's root name by digest, both cases; the master's file name; a climb out | A climb that stays inside; prose naming the Working Method |
+| B | A one-character edit to `index.html`, by B alone; the staged copy edited with the working tree correct; `items.json` not rebuilt; a stray file in `static/` | Rebuilt and staged; a commit with the clock a month ahead |
+| C | A new Markdown file without the map, by C alone; the map regenerated but not staged; no description; an unquoted ": " | The map regenerated and staged |
+| D | The map generator renamed; the venv moved; the gate script missing; `build.py` missing from the staged tree; the venv moved at push | |
+| F | **The brief's: the subtitle rendered only into a data attribute,** by F alone, naming `items.json[rahzaan].title` 'AI Career Guidance Platform' and the job aggregator's; a field only in a `hidden` element; only in a script body | The same field in a data attribute and in the text; a bullet's inline markup |
+| G | **The brief's: a Google Tag Manager script,** by G alone, on its `src` and as an analytics host; **`document.cookie` in `site.js`,** by G alone, naming `static/site.js` and its line; also `localStorage`, `fetch`, `sendBeacon`, a Worker from another host, a script's source set to another host, an external stylesheet, an iframe, an img, a link's `ping`, a CSS `@import`, a scheme-relative CSS `url()`, an inline handler that fetches, each by G alone | **The brief's: an external plain link;** an SVG namespace name in a script; an address in a CSS comment; "fetch" in the page's prose |
+| E | A pushed `src/` change with no `STATE.md`, the remote unmoved; a new branch's first push the same | `STATE.md` only in the last commit; a docs-only push; the new branch with `STATE.md` last |
+| Tier | A tier 3 item above Rahzaan | The same item below it |
+
+Neutered, each defeat then got through: A, B, C, D (the hook made a
+skip), E, F, G (the tag and the cookie) and the tier check.
+
+Errors in the harness, each fixed before any result was used: the venv
+copy ran past Windows' 260-character path limit in pip's caches, so it
+is copied without pip, which the harness never runs; a passing control
+left its edited template at HEAD for the cases after it, so controls
+that change a file now drop their commit; the neutered tier case
+patched `build.py` with Brief 2's indentation.
+
+Documents: CLAUDE.md's gate table gained rows F and G and "Seven gates"
+(the brief's update block), the hook's comment, `standing-checks.md`'s
+Gates row, the gates' docstring. Also `cv/UPDATING.md`, gitignored, his
+local how-to: the line it expects is now "gates A, B, C, F, G passed".
+
+## Part 2: AGENTS.md (f8fd177)
+
+It says what the repository is, that its instructions are in CLAUDE.md,
+read first with its reading order, that README.md's Start here gives a
+path for each kind of reader and that MAP.md lists every file. It holds
+no rule, and says it moves if CLAUDE.md does. Header `type: instruction`,
+as CLAUDE.md's; gate C passed. README.md names it in the AI agent row
+and the documents table.
+
+## Part 3: CLAUDE.md under 200 lines (20c8dca)
+
+**The brief's three moves fell short.** Moving the hook blocks (25
+lines), Briefs (12) and Audits (7) would have left about 224 lines; my
+Report 13, P2, said they would bring it under 200, without counting.
+Counted before any move; asked, Waqas approved two more sections on
+2026-10-23: Decision records (17 lines) and the CAPABILITIES.md lanes
+(11).
+
+- Moved word for word, each to its own file under a header and a note
+  of where it came from: `docs/reference/gates.md`,
+  `decision-records.md`, `briefs.md`, `audits.md`,
+  `capabilities-lanes.md`. In CLAUDE.md, one section, "Procedures in
+  docs/reference/", after Commands, with a pointer line for each.
+- Stayed: the authority order, the scope floor, the claim rules and the
+  reading order, as the brief said; also Verification, Conventions,
+  Committing and pushing, Heavy work and Writing.
+- **The script diff** (`move14.py prove`): 262 lines before, 198 after
+  (262 less 72 plus 8). Each moved block whole in its new file; each of
+  its 53 non-blank lines exactly once there and nowhere left in
+  CLAUDE.md; CLAUDE.md after, less the pointer section, equal line for
+  line to CLAUDE.md before, less the five sections. Defeats
+  (`move14_defeat.py`), each making it fail: a moved line reworded in
+  its new home; a line that stays in CLAUDE.md changed; part of a moved
+  line dropped. Control: the files as moved pass. A first structural
+  check compared a diff's removed and added lines, and the diff paired
+  blank lines across the edits (70 and 6 for 72 and 8); it was replaced
+  by the exact comparison before any result was used.
+- Pointers updated: README.md (the briefs, twice; `gates.md` in the
+  Start here and the documents table), `.gitignore`'s comment, gate A's
+  refusal message. Left: `completed.md`'s rows naming CLAUDE.md
+  sections, which are history; the logs; ADR-0007's row of 2026-10-23,
+  which puts the rows "in the gate table of `CLAUDE.md`", now in
+  `docs/reference/gates.md`, the chat's to annotate.
+
+## Standing checks
+
+Records and tooling only: the page and its sources are unchanged since
+5746eda (`git diff --stat` of `index.html`, `static/`, `src/`, `build.py`
+and `requirements.txt`: empty), so no browser check is due. Every commit
+passed A, B, C, F and G. One-dependency check: Jinja2 and pip. Content
+trace: 378 of 378, against the master of 2026-10-21T21:19:18Z (its file
+time).
+
+## Errors this seat made, round 10
+
+- Report 13's P2 promised CLAUDE.md under 200 lines from three moves;
+  they leave about 224. Found by counting before moving, and put to
+  Waqas.
+- `standing-checks.md`'s new Gates row first pointed to a new log file;
+  `logs/README.md` says one session, one file, so it points here. Fixed
+  before the commit.
+- The harness errors above.

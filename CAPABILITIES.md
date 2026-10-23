@@ -20,7 +20,7 @@ Sharif confirmed on 2026-10-10:
   that readers relevant to this repository may be added.
 
 **Current as of 2026-10-23 UTC**, Claude Code's lane re-measured at the
-close of Brief 13, Part 5. Written by Claude Code, in its lane: what the site
+close of Brief 14. Written by Claude Code, in its lane: what the site
 does and how, the stack, the qualities, the numbers, the limits, and the
 timeline's rows for what was built. **The architecture chat's sections**
 (the problem, where it is going, Waqas Sharif's role, the excluded list
@@ -121,11 +121,14 @@ what waits is listed here with its source, as of 2026-10-10, updated 2026-10-21:
    line, course, certificate and project link, the summary, the
    Portfolio Intro and the Portfolio Footer must be on the page, the
    footer's address as a link.
-5. **The gates.** Five, in `tools/gates.py`, run by git hooks (ADR-0007):
+5. **The gates.** Seven, in `tools/gates.py`, run by git hooks (ADR-0007):
    nothing private committed; the committed page equal to a fresh build;
-   the map current, and every Markdown header one GitHub can read; no hook
-   skipping a missing tool; and no push of
-   implementation work without the state file moving.
+   every content string in the page's text without a script; no
+   third-party source, cookie, storage or network call, or analytics host
+   in the built files; the map current, and every Markdown header one
+   GitHub can read; no hook skipping a missing tool; and no push of
+   implementation work without the state file moving. What each blocks
+   and the case that defeats it: `docs/reference/gates.md`.
 6. **Serving.** GitHub Pages serves `main` from the repository root. A
    push was live 17 seconds later on 2026-10-07; one deployment that day
    never started, because GitHub found no machine to run it, and the next
@@ -172,12 +175,12 @@ what waits is listed here with its source, as of 2026-10-10, updated 2026-10-21:
 | Quality | What enforces it |
 |---|---|
 | Every claim traceable to the master CV | `tools/check_content.py`, page to master and master to page, each check shown able to fail |
-| Every word in the first response, readable without scripts and by crawlers | The build renders all content into `index.html`; the page works without `site.js` (ADR-0010, scope floor line 7) |
+| Every word in the first response, readable without scripts and by crawlers | The build renders all content into `index.html`; the page works without `site.js` (ADR-0010, scope floor line 7); gate F refuses a commit whose page lacks any content string in its text without a script |
 | A fact is written once | Content files, generated markup (ADR-0006); gate B refuses a hand-edited page |
 | Deterministic output | Builds at the recorded month are byte-identical; gate B rebuilds at that month |
 | Performance | Core Web Vitals goals (ADR-0009), checked by Lighthouse, median of five, per the standing checks; a fail on any machine is a fail. Each set runs the page, the page before the change and a page with a deliberate 600 ms script that must fail, interleaved run by run, with the machine's CPU, free memory and paging recorded before and after |
 | Accessibility | axe at two widths and three theme states; the accessibility tree at load compared with the page without layout skipping; keyboard through every panel; joined-word checks; a recorded NVDA speech test |
-| No tracking, no third parties | Scope floor lines 9 to 11; no request leaves the site's origin |
+| No tracking, no third parties | Scope floor lines 9 to 11; no request leaves the site's origin; gate G refuses an external source, a cookie, storage or network interface, or an analytics host in the built files |
 | Reduced motion respected | Every motion stops under `prefers-reduced-motion` (ADR-0011, scope floor line 8) |
 | Nothing private published | Gate A |
 | The record kept current | Gate C for the map and for headers GitHub can read; gate E for the state file |
@@ -186,7 +189,7 @@ what waits is listed here with its source, as of 2026-10-10, updated 2026-10-21:
 
 | What | Value | Date | Source |
 |---|---|---|---|
-| Hand-written source | `build.py` 784 lines; 3 tools, 868 lines; 12 templates, 514 lines; 1 stylesheet, 1,567 lines; 2 scripts, 649 lines; 2 content files, 542 lines | 2026-10-23 | `git ls-files`, `wc -l` |
+| Hand-written source | `build.py` 784 lines; 3 tools, 1,082 lines; 12 templates, 514 lines; 1 stylesheet, 1,567 lines; 2 scripts, 649 lines; 2 content files, 542 lines | 2026-10-23 | `git ls-files`, `wc -l` |
 | Built page | `index.html` 77,163 bytes, 14,941 gzipped; stylesheet 52,193 and 12,248; `site.js` 21,841 and 6,992; `knot.js` 5,638 and 2,215; fonts 78,396 bytes; the CV PDF 58,301 bytes, one A4 page | 2026-10-23 | `wc -c`; Python's gzip, level 6 |
 | Live performance | Lighthouse 13.5.0, default mobile, median of five. At light load, Chrome 155, 2026-10-19: LCP 1,670 ms, CLS 0, TBT 63 ms (runs 280, 74, 63, 0, 11); 116,556 bytes transferred. At medium load, Chrome 155, 2026-10-21, the first audit's set: LCP 1,725 ms, CLS 0.031 (above 0 in 3 of 5 runs; the local copy 0 in 5 of 5; cause not tested), TBT 113 ms. ADR-0009 limits: 2,500 ms, 0.1, 200 ms; results compared only within a load level | 2026-10-21 | `logs/2026-10-19-role-wording.md`, Brief 10; `logs/audit/2026-10-21-first-audit.md` |
 | Accessibility, automated | axe-core 4.14.0: 0 violations in 12 cells (360 and 1366 px; light, device dark, switched dark; panels closed and open), in Chrome and in Edge | 2026-10-07 | Same log, rounds 1 to 2 |
@@ -195,8 +198,8 @@ what waits is listed here with its source, as of 2026-10-10, updated 2026-10-21:
 | Keyboard | 60 of 60 checks at 360 and 1366 px | 2026-10-07 | Same log |
 | Content | 14 items and 10 skills groups; 378 blocks of text traced to the master, 0 not; every master bullet, italic sentence, skills line, course and certificate, the summary, the Portfolio Intro and the Portfolio Footer on the page; 7 of 7 project links and the footer's link | 2026-10-19 | `tools/check_content.py` |
 | Checks on the page, locally | Tree at load in full mode matching the page without layout skipping in 32 of 32 loads, default mode adding no node in 32; keyboard 60 of 60; axe-core 0 violations in 12 cells; measured contrast 0 elements below AA in light and dark at 360 and 1366 px, with 17 and 94 over a gradient unmeasured; the layout check clean at fourteen widths, scripts on and off; no word of a timeline card broken from 1060 to 1920 px; the reading marker never over a label; anchors 132 of 132; no joined words at 360 and 1366 px in Chrome 156 and Edge 155; Lighthouse at light load, median LCP 2,253 ms, CLS 0.0001, TBT 54 ms | 2026-10-23 | `logs/2026-10-19-role-wording.md`, rounds 8 and 9 |
-| Decision records | 12, 1 superseded; 48 dated Changes rows | 2026-10-21 | `docs/decisions/` |
-| History | 93 commits, the first at 2026-09-25T21:42Z, to `12084bc`; 9 session logs, 24 rows in their index | 2026-10-19 | `git log`, `logs/` |
+| Decision records | 12, 1 superseded; 51 dated Changes rows | 2026-10-23 | `docs/decisions/` |
+| History | 115 commits, the first at 2026-09-25T21:42Z, to `20c8dca`; 9 session logs, 32 rows in their index | 2026-10-23 | `git log`, `logs/` |
 | Cost | None | 2026-10-10 | Free plans only |
 
 ## How it was built
@@ -238,6 +241,7 @@ architecture chat's.
 | 2026-10-19 | Decided: his name may appear in `portfolio-gallery`'s showcase, never in what a copy receives (ADR-0012 Changes) |
 | 2026-10-20 | Decided: a Lighthouse set counts only on a machine at light or medium load, its level read from free memory and CPU over the minute before; a set at heavy load is void and repeated (ADR-0009 Changes) |
 | 2026-10-21 | The master's new role wording on the page and a new CV PDF; the "In depth" button no longer stranded when a card's links wrap; the certificate cards' link cue shown on touch screens; no section marked current without a script; a layout check and a measured contrast check added to the standing checks |
+| 2026-10-23 | Gates F and G: a commit is refused when a content string is missing from the page's text without a script, or when the built files carry a third-party source, a cookie, storage or network call, or an analytics host; AGENTS.md, a pointer for other coding agents; CLAUDE.md under 200 lines, five procedures moved to `docs/reference/` |
 | 2026-10-22 | The timeline to scale from 1060 px instead of 1180, so a desktop window that narrow gets the desktop timeline, with cards growing to fit their titles; "In depth" starts the next line when a card's actions wrap; the reading marker no longer prints over the axis labels; layout, word-break and marker checks added |
 
 ## Waqas Sharif's role
@@ -339,6 +343,11 @@ the only deeper destination (ADR-0008), and no reuse of this repository
   where between 235 and 444 MB results begin to fail is not measured
   (`logs/2026-10-19-role-wording.md`, Brief 10). Since 2026-10-20 a set
   counts only at light or medium load (ADR-0009 Changes).
+- **Gates F and G check known patterns, not every route.** F reads the
+  page's markup, not its stylesheet, so text a stylesheet hides passes it
+  (the accessibility tree and scripts-off checks cover that); G knows 33
+  analytics hosts, not every one, and cannot follow an address a script
+  builds in pieces (ADR-0007 Changes, 2026-10-23).
 - **A browser that turns accessibility on only after load** meets the
   lower sections when they render, a residual ADR-0009 accepts.
 - **Tested only in Chrome 154 to 156 and Edge 154 and 155**, and with one screen
@@ -358,9 +367,10 @@ dated.
 - A portfolio where every claim traces to a single source document, checked
   by a tool in both directions before any content change (2026-10-10).
 - Every word in the first response, readable without scripts, with no
-  cookies, tracking or third-party requests.
+  cookies, tracking or third-party requests; since 2026-10-23 a commit
+  that breaks any of the three is refused by a gate.
 - Built by a small Python generator with one templating library and no
-  framework; 12 decision records and 5 repository gates (2026-10-11).
+  framework; 12 decision records and 7 repository gates (2026-10-23).
 - Verified with a real screen reader: NVDA found words read as one, such as
   "Dec 20255-Day"; fixed with hidden spaces and confirmed by ear the same
   day (2026-10-07).

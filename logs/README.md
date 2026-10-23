@@ -53,6 +53,7 @@ before the root becomes unscannable, not after.
 
 | Date (UTC) | Log file | Session | What was done | Outcome |
 |---|---|---|---|---|
+| 2026-10-23 | [2026-10-19-role-wording.md](2026-10-19-role-wording.md) | Brief 14 | Gates F and G for floor lines 7, 9 and 10; AGENTS.md; CLAUDE.md 262 to 198 lines, five procedures moved to docs/reference/; F4 closed; Brief 13, Part 5 live checked | a82dd6b, f8fd177, 20c8dca; 73 of 73 in a scratch clone, twice; the move's script diff, failing on each of three defeats |
 | 2026-10-23 | [2026-10-19-role-wording.md](2026-10-19-role-wording.md) | Brief 13, Part 5 | His screenshots: the timeline to scale from 1060 px; In depth on its own line when actions wrap; the reading marker off the axis labels; Parts 0 to 4 live checked | f20451f; every standing check, three new; Lighthouse at light load |
 | 2026-10-21 | [2026-10-19-role-wording.md](2026-10-19-role-wording.md) | Brief 13, Parts 1 to 4 | CLAUDE.md's blocks; W1, F3, F17 fixed; F4 found not to be an overlap; the audit's documents findings; layout and contrast checks added; floor lines 7, 9, 10 investigated; a Start here | 35b71fa, 78f13ce, d2003b2, 388f618; every standing check; Lighthouse at light load |
 | 2026-10-21 | [2026-10-19-role-wording.md](2026-10-19-role-wording.md) | Brief 13, Part 0 | The master's new role wording on the page by script; the new CV PDF checked and committed under its tracked name; every standing check | f2ce13f, 5241916; trace defeats exit 1; Lighthouse passes at light load |
