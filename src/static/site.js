@@ -20,7 +20,7 @@
   const $$ = (selector, scope = doc) => Array.from(scope.querySelectorAll(selector));
   const motionQuery = matchMedia("(prefers-reduced-motion: reduce)");
   const darkQuery = matchMedia("(prefers-color-scheme: dark)");
-  const wideQuery = matchMedia("(min-width: 1180px)");
+  const wideQuery = matchMedia("(min-width: 1060px)"); // the timeline to scale; site.css
   let reduced = motionQuery.matches;
 
   // A frame for work driven by scrolling. Under reduced motion a timer
@@ -266,6 +266,7 @@
   const mspineFill = $("[data-mspine-fill]");
   const readLine = $("[data-tl-read]");
   const chip = $("[data-tl-chip]");
+  const axisLabels = $$(".tl-axis .tl-month, .tl-axis .tl-year");
   const list = $("[data-tl-list]");
   const marks = tl ? $$(".tl-mark", tl) : [];
   const fadeWords = $$("[data-fade-word]");
@@ -300,6 +301,7 @@
     [spineFill, mspineFill].forEach((f) => { if (f) f.style.transform = ""; });
     if (readLine) readLine.style.opacity = "";
     if (chip) chip.style.opacity = "";
+    axisLabels.forEach((l) => { l.style.opacity = ""; });
     spans.forEach((s) => { if (s.card) s.card.style.outline = ""; });
     marks.forEach((m) => m.classList.remove("lit"));
     fadeWords.forEach((w) => { w.style.transform = ""; });
@@ -316,6 +318,7 @@
       const wide = wideQuery.matches;
       const axisHeight = wide && readLine ? readLine.parentElement.getBoundingClientRect().height : 0;
       const lit = wide ? [] : marks.map((m) => m.getBoundingClientRect().top < mid);
+      const labelYs = wide ? axisLabels.map((l) => { const b = l.getBoundingClientRect(); return b.top + b.height / 2 - r.top; }) : [];
       const fill = Math.min(1, Math.max(0, (mid - r.top) / r.height)).toFixed(4);
       const activeFill = wide ? spineFill : mspineFill;
       if (activeFill) activeFill.style.transform = "scaleY(" + fill + ")";
@@ -329,6 +332,9 @@
           const index = topMonth - Math.floor((y / axisHeight) * months);
           chip.textContent = monthNames[((index % 12) + 12) % 12] + " " + Math.floor(index / 12);
         }
+        // A month label or year badge under the marker fades, so the two
+        // never print over each other.
+        axisLabels.forEach((l, i) => { l.style.opacity = on && Math.abs(labelYs[i] - y) < 18 ? "0" : ""; });
         spans.forEach((s) => {
           const hit = on && y >= s.y0 && y <= s.y1;
           if (s.card) {

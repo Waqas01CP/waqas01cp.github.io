@@ -12,7 +12,8 @@
    `js` class to <html>, and only rules under `.js` depend on it.
 
    Mobile first. Widths: 760px (projects two to a row), 1040px (the menu
-   moves to the top), 1180px (projects three to a row, timeline to scale). */
+   moves to the top), 1060px (timeline to scale), 1180px (projects three to
+   a row). */
 
 /* Fonts: Latin subsets, served from this site, each with its SIL Open Font
    License beside it in fonts/. The upright Instrument Serif is not used and
@@ -850,7 +851,7 @@ html:has(:target) .page > .sec { content-visibility: visible; }
 }
 .proj-side { display: flex; flex-direction: column; gap: 18px; }
 .proj-fact { font-size: 17px; line-height: 1.5; font-weight: 500; text-wrap: pretty; }
-.proj-actions { margin-top: auto; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 8px; padding-top: 4px; }
+.proj-actions { margin-top: auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; padding-top: 4px; }
 .proj-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .depth-toggle {
   white-space: nowrap;
@@ -1089,8 +1090,13 @@ html:has(:target) .page > .sec { content-visibility: visible; }
 }
 .tl-band-end span { display: block; }
 
-/* Timeline on a wide screen: to scale. */
-@media (min-width: 1180px) {
+/* Timeline on a wide screen: to scale. From 1060px, not 1180: a desktop
+   window can be narrower than 1180 (Waqas's portrait monitor, about 1065
+   px), and ADR-0003 keeps the desktop timeline to scale. Below it, the
+   stacked list of a phone. 1060, the narrowest width at which no card
+   title breaks inside a word (measured 2026-10-22; at 1040 and 1050
+   "Specialization" did). */
+@media (min-width: 1060px) {
   .tl { max-width: none; }
   .tl-lanes {
     position: sticky;
@@ -1233,7 +1239,7 @@ html:has(:target) .page > .sec { content-visibility: visible; }
   .tl-yr, .tl-mark { display: none !important; }
   .tl-card {
     position: relative;
-    height: 100%;
+    min-height: 100%;
     margin-left: calc(var(--x) + var(--gl));
     width: calc(var(--w) - var(--gl) - var(--gr));
     border-radius: 12px;
@@ -1253,7 +1259,7 @@ html:has(:target) .page > .sec { content-visibility: visible; }
   }
   .lane-builds .tl-card::after { right: -1px; border-radius: 0 12px 12px 0; background: var(--acc); }
   .lane-work .tl-card::after { left: -1px; border-radius: 12px 0 0 12px; background: var(--ink); }
-  .tl-card summary { height: 100%; gap: 3px; padding: 7px 12px 6px 14px; border-radius: 12px; overflow: hidden; }
+  .tl-card summary { min-height: 100%; gap: 3px; padding: 7px 12px 6px 14px; border-radius: 12px; overflow: hidden; }
   .tl-meta { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .tl-dates { order: 1; margin: 0; font-size: 11px; line-height: 13px; color: var(--muted); }
   .tl-dates::before { content: ""; display: inline-block; margin-right: 7px; vertical-align: -1px; }
