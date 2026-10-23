@@ -243,6 +243,7 @@ architecture chat's.
 | 2026-10-21 | The master's new role wording on the page and a new CV PDF; the "In depth" button no longer stranded when a card's links wrap; the certificate cards' link cue shown on touch screens; no section marked current without a script; a layout check and a measured contrast check added to the standing checks |
 | 2026-10-23 | Gates F and G: a commit is refused when a content string is missing from the page's text without a script, or when the built files carry a third-party source, a cookie, storage or network call, or an analytics host; AGENTS.md, a pointer for other coding agents; CLAUDE.md under 200 lines, five procedures moved to `docs/reference/` |
 | 2026-10-22 | The timeline to scale from 1060 px instead of 1180, so a desktop window that narrow gets the desktop timeline, with cards growing to fit their titles; "In depth" starts the next line when a card's actions wrap; the reading marker no longer prints over the axis labels; layout, word-break and marker checks added |
+| 2026-10-23 | Decided: floor lines 7, 9 and 10 enforced as pre-commit gates (ADR-0007 Changes); contrast confirmed by a measured check as well as axe (ADR-0011 Changes); the desktop timeline to scale from a 1060 px window (ADR-0003 Changes) |
 
 ## Waqas Sharif's role
 
