@@ -183,7 +183,7 @@ permission.
 
 ## The hook blocks
 
-Five gates, ADR-0007, in `tools/gates.py`, called by `.githooks/pre-commit`
+Seven gates, ADR-0007, in `tools/gates.py`, called by `.githooks/pre-commit`
 and `.githooks/pre-push`. Each was proven by the case built to defeat it,
 and each case was also shown to get through with its gate neutered. They
 enforce only once `core.hooksPath` is set (Commands); until then they are
@@ -196,6 +196,8 @@ requests, so treat them as binding anyway.
 | C, map | pre-commit | A `MAP.md` that is stale against the staged files, or a staged Markdown header GitHub would refuse to read: an unquoted value holding ": " or " #", or beginning with a character YAML reserves. Standard library only; known patterns, not every YAML rule (ADR-0007 Changes, 2026-10-12). | A new Markdown file committed without regenerating the map; a description holding an unquoted ": ". |
 | D, missing tool | every hook | A missing venv interpreter, gate script, map generator or `build.py`: a refusal naming it, never a skip. | Renaming the map generator; moving the venv. |
 | E, STATE.md moved | pre-push | A push whose range touches `build.py`, `requirements.txt`, `index.html`, `src/`, `static/`, `tools/` or `.githooks/` with no commit in the range touching `STATE.md`. The last commit of a series is enough. | Pushing a `src/` change with no `STATE.md` change. Control: a series with `STATE.md` only in its last commit passes. |
+| F, every claim readable | pre-commit | On gate B's fresh build, a string in `site.json` or `items.json` that, markup stripped, is not in `index.html`'s readable text: its text with script, style and template bodies and any element marked `hidden` left out. A title counts as its name and subtitle. Keys never printed as written (ids, months, provenance, addresses) are named in the gate; every other key is checked. Scope floor line 7 (ADR-0007 Changes, 2026-10-23). | A template rendering a field only into a data attribute. Control: the same field in a data attribute and in the text passes. |
+| G, no third parties, no tracking | pre-commit | In the staged `index.html` and `static/`'s scripts and stylesheets: an absolute or scheme-relative address in any attribute but a plain link's `href`, in a stylesheet outside a comment, or in a script's string; in script code, `document.cookie`, `cookieStore`, `localStorage`, `sessionStorage`, `indexedDB`, `sendBeacon`, `fetch`, `XMLHttpRequest` or `WebSocket`; anywhere in them, a known analytics host. The allowlist is empty; XML namespace names pass. Known patterns, not every route. Scope floor lines 9 and 10 (ADR-0007 Changes, 2026-10-23). | A planted Google Tag Manager script; `document.cookie` in `site.js`. Control: an external plain link passes. |
 
 Gate A matches path forms, never prose, and cannot match its own source.
 Every pattern is written so the source never contains the text it matches,

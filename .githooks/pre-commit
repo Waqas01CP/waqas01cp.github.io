@@ -1,5 +1,5 @@
 #!/bin/sh
-# Gates A, B and C (ADR-0007). The logic is in tools/gates.py; this file
+# Gates A, B, C, F and G (ADR-0007). The logic is in tools/gates.py; this file
 # only finds the project venv's interpreter and hands over. A missing
 # interpreter or gate script refuses the commit, naming what is missing.
 # It is never a skip (gate D). Activate once per clone:

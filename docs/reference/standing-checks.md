@@ -42,7 +42,7 @@ html:has(:target) .page > .sec { content-visibility: visible; }
 | Check | Pass line | Defeat case |
 |---|---|---|
 | Build twice | Every generated file byte-identical across builds at the recorded month | A build as of another month: hashes differ |
-| Gates | Every commit passes A, B and C; a push passes E (ADR-0007) | The proofs in `logs/2026-09-26-gates-map-and-as-of.md` |
+| Gates | Every commit passes A, B, C, F and G; a push passes E (ADR-0007) | The proofs in `logs/2026-09-26-gates-map-and-as-of.md`, and for all seven in `logs/2026-10-19-role-wording.md`, round 10 |
 | Content trace | `tools/check_content.py` exits 0: every block traces to the master, and every master bullet, sentence, skills line, course, certificate and project link, the Portfolio Intro and the Portfolio Footer with its address as a link, is on the page | One number changed in a scratch copy of the page, 592 to 593: exit 1. For the project links: a master copy with a wrong address, and a page copy missing a link: exit 1, the link named |
 | Accessibility tree at load, full mode | Matches the page without the rule (below), in every load | The page as built at 0403c68. It differs from its reference in all four cells, 360 and 1366 px, light and dark (2026-10-21; the first audit's F18 asked, since a defeat it built fired at 360 px only) |
 | Accessibility tree at load, default mode | Holds no node the page without the rule lacks | A paragraph planted in the Intro that the reference lacks |

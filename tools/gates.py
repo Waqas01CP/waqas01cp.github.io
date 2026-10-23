@@ -1,6 +1,6 @@
 """The repository gates (ADR-0007). Called by the thin hooks in .githooks/.
 
-  python tools/gates.py pre-commit    gates A, B and C, with D throughout
+  python tools/gates.py pre-commit    gates A, B, C, F and G, with D throughout
   python tools/gates.py pre-push      gate E, reading git's pre-push input
 
 Each gate, what it blocks, and the case built to defeat it:
@@ -34,6 +34,17 @@ Each gate, what it blocks, and the case built to defeat it:
      bookkeeping last passes (ADR-0007). Defeated by pushing a src/ change
      with no STATE.md change. Control: several commits where only the last
      touches STATE.md pass.
+  F  Every claim readable, pre-commit: scope floor line 7 (ADR-0007
+     Changes, 2026-10-23). On gate B's fresh build, every string in the
+     content files, markup stripped, appears in index.html's readable
+     text, so no claim exists only for a script to insert. Defeated by a
+     template that renders a field only into a data attribute. Control:
+     the same field in a data attribute and in the text passes.
+  G  No third-party source, no cookie or tracking, pre-commit: scope floor
+     lines 9 and 10, the same row. Reads the staged index.html and
+     static/'s scripts and stylesheets. Defeated by a planted Google Tag
+     Manager script, and by document.cookie in site.js. Control: an
+     external plain link passes.
 
 Standard library only; scope floor line 14 applies to tooling too.
 """
@@ -41,10 +52,13 @@ Standard library only; scope floor line 14 applies to tooling too.
 from __future__ import annotations
 
 import hashlib
+import json
 import re
 import subprocess
 import sys
 import tempfile
+from html import unescape
+from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -76,6 +90,50 @@ AS_OF_RE = re.compile(rb'<meta name="as-of" content="(\d{4}-(?:0[1-9]|1[0-2]))">
 # Gate E. Its scope is recorded in ADR-0007 Changes, 2026-09-26.
 IMPLEMENTATION_FILES = {"build.py", "requirements.txt", "index.html"}
 IMPLEMENTATION_DIRS = ("src/", "static/", "tools/", ".githooks/")
+
+# Gate F. Every string in the content files is a claim the page must print,
+# unless its key is one of these, which are never printed as written. A key
+# not named here is checked, so a new field counts as a claim until it is
+# named here with its reason.
+CONTENT_FILES = ("src/content/site.json", "src/content/items.json")
+UNPRINTED_KEYS = {
+    "id", "lane", "route", "date_style",   # choose markup: anchors, sections, the contact route, a date's form
+    "start", "end",                        # months, printed as the date phrases build.py derives
+    "source", "from", "item", "no_proof",  # provenance: the master's section, a bullet, a record
+    "url",                                 # addresses, printed as a link's href beside its checked text
+}
+# Text no visitor reads with scripts off: script and style bodies, a template,
+# and anything inside an element marked hidden, which only a script reveals.
+UNREAD_TAGS = {"script", "style", "template"}
+VOID_TAGS = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link",
+             "meta", "source", "track", "wbr"}
+
+# Gate G. An absolute address, a scheme-relative one included, is one the
+# browser fetches from another host. Only a plain link may carry one. The
+# allowlist is empty: a third-party source takes a floor line 9 record
+# first. XML namespace names look like addresses and are never fetched.
+ABSOLUTE_RE = re.compile(r"(?i)(?:https?:)?//[\w-]+(?:\.[\w-]+)+")
+ALLOWED_HOSTS: tuple[str, ...] = ()
+NAMESPACES = ("http://www.w3.org/2000/svg", "http://www.w3.org/1999/xlink",
+              "http://www.w3.org/1999/xhtml")
+QUOTED_ABSOLUTE_RE = re.compile(r"""['"`]\s*((?:https?:)?//[\w-]+(?:\.[\w-]+)+)""", re.I)
+CSS_COMMENT_RE = re.compile(r"/\*.*?\*/", re.S)
+# Floor line 10 in script code: the cookie, storage and network interfaces.
+# Matched in code only, never in the page's prose, which says "a fetch skill".
+TRACKING_API_RE = re.compile(r"\b(?:document\s*\.\s*cookie|cookieStore|localStorage|sessionStorage|"
+                             r"indexedDB|sendBeacon|fetch|XMLHttpRequest|WebSocket)\b")
+# Analytics and tracking hosts, refused anywhere in the built files: the
+# known ones, not every one.
+ANALYTICS_HOSTS = (
+    "googletagmanager.com", "google-analytics.com", "analytics.google.com", "doubleclick.net",
+    "googlesyndication.com", "plausible.io", "usefathom.com", "simpleanalyticscdn.com",
+    "cloudflareinsights.com", "hotjar.com", "clarity.ms", "segment.com", "segment.io",
+    "mixpanel.com", "amplitude.com", "heapanalytics.com", "posthog.com", "matomo.cloud",
+    "gc.zgo.at", "statcounter.com", "quantserve.com", "scorecardresearch.com",
+    "connect.facebook.net", "snap.licdn.com", "ads-twitter.com", "analytics.tiktok.com",
+    "mc.yandex.ru", "umami.is", "nr-data.net", "fullstory.com", "mouseflow.com",
+    "hs-analytics.net", "stats.wp.com",
+)
 
 
 class MissingTool(Exception):
@@ -156,14 +214,16 @@ def gate_a(staged: list[str]) -> list[str]:
 
 
 # Gate B: the staged output is what a fresh build of the staged source makes.
+# Returns its refusals and the freshly built page, which gate F reads; no
+# page when the staged tree could not be built, which B has already refused.
 
-def gate_b() -> list[str]:
+def gate_b() -> tuple[list[str], bytes | None]:
     if "index.html" not in staged_paths("index.html"):
-        return ["B  index.html is not staged, so there is no as-of month to rebuild with"]
+        return ["B  index.html is not staged, so there is no as-of month to rebuild with"], None
     recorded = AS_OF_RE.search(staged_blob("index.html"))
     if not recorded:
         return ['B  the staged index.html records no as-of month (<meta name="as-of">). '
-                "Rebuild with the current build.py and stage the output"]
+                "Rebuild with the current build.py and stage the output"], None
     as_of = recorded.group(1).decode()
     with tempfile.TemporaryDirectory(prefix="gate-b-") as tmp:
         tree = Path(tmp)
@@ -174,7 +234,7 @@ def gate_b() -> list[str]:
                                 cwd=tree, capture_output=True, text=True)
         if result.returncode != 0:
             output = (result.stdout + result.stderr).strip()
-            return [f"B  the staged source does not build as of {as_of}:\n      {output}"]
+            return [f"B  the staged source does not build as of {as_of}:\n      {output}"], None
         fresh = {"index.html"} | {p.relative_to(tree).as_posix()
                                   for p in (tree / "static").rglob("*") if p.is_file()}
         staged = {"index.html"} | set(staged_paths("static/"))
@@ -184,11 +244,162 @@ def gate_b() -> list[str]:
             committed = staged_blob(path) if path in staged else None
             if built != committed:
                 differ.append(path)
+        page = (tree / "index.html").read_bytes()
     if differ:
         return [f"B  staged output differs from a fresh build of the staged source as of "
                 f"{as_of}: {', '.join(differ)}. Run python build.py --as-of {as_of}, or plain "
-                f"python build.py for a monthly refresh, then stage index.html and static/"]
-    return []
+                f"python build.py for a monthly refresh, then stage index.html and static/"], page
+    return [], page
+
+
+# Gate F: floor line 7, every claim in the page's readable text.
+
+class ReadableText(HTMLParser):
+    """The page's text as a visitor reads it with scripts off."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.inside: list[str] = []  # an unread element's tag, once more for each nested repeat
+        self.chunks: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list) -> None:
+        if tag in VOID_TAGS:
+            return
+        if self.inside:
+            if tag == self.inside[0]:
+                self.inside.append(tag)
+        elif tag in UNREAD_TAGS or any(name == "hidden" for name, _ in attrs):
+            self.inside.append(tag)
+
+    def handle_endtag(self, tag: str) -> None:
+        if self.inside and tag == self.inside[0]:
+            self.inside.pop()
+
+    def handle_data(self, data: str) -> None:
+        if not self.inside:
+            self.chunks.append(data)
+
+
+def plain(text: str) -> str:
+    return re.sub(r"\s+", " ", unescape(re.sub(r"<[^>]+>", "", text))).strip()
+
+
+def claims(node, where: str):
+    """Every printed string under a content node, with where it sits."""
+    if isinstance(node, dict):
+        for key, value in node.items():
+            if key in UNPRINTED_KEYS:
+                continue
+            if key == "title" and isinstance(value, str):
+                # build.py prints a title as its name and its subtitle, split
+                # at the first ": ", in two elements.
+                yield from ((f"{where}.title", part) for part in value.partition(": ")[::2] if part)
+            else:
+                yield from claims(value, f"{where}.{key}")
+    elif isinstance(node, list):
+        for i, value in enumerate(node):
+            label = value.get("id") if isinstance(value, dict) else None
+            yield from claims(value, f"{where}[{label or i}]")
+    elif isinstance(node, str):
+        yield where, node
+
+
+def gate_f(page: bytes | None) -> list[str]:
+    if page is None:
+        return []
+    reader = ReadableText()
+    reader.feed(page.decode("utf-8"))
+    text = re.sub(r"\s+", " ", "".join(reader.chunks))
+    refusals = []
+    for path in CONTENT_FILES:
+        for where, value in claims(json.loads(staged_blob(path)), path.rsplit("/", 1)[-1]):
+            shown = plain(value)
+            if shown and shown not in text:
+                shown = shown if len(shown) <= 80 else shown[:77] + "..."
+                refusals.append(f"F  {where} is not in index.html's readable text (scripts off, "
+                                f"hidden elements left out), so only a script could show it "
+                                f"(floor line 7): {shown!r}")
+    return refusals
+
+
+# Gate G: floor lines 9 and 10 in the staged built files.
+
+class BuiltPage(HTMLParser):
+    """Every attribute of index.html with its line, and each script and style body."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.attributes: list[tuple[int, str, str, str]] = []
+        self.code: list[tuple[int, str, str]] = []
+        self.open: tuple[int, str] | None = None
+
+    def handle_starttag(self, tag: str, attrs: list) -> None:
+        line = self.getpos()[0]
+        self.attributes += [(line, tag, name, value or "") for name, value in attrs]
+        if tag in ("script", "style"):
+            self.open = (line, tag)
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag in ("script", "style"):
+            self.open = None
+
+    def handle_data(self, data: str) -> None:
+        if self.open:
+            self.code.append((*self.open, data))
+
+
+def addresses(pattern: re.Pattern, text: str) -> list[str]:
+    """The absolute addresses the pattern finds, namespace names and allowed hosts aside."""
+    for name in NAMESPACES:
+        text = text.replace(name, "")
+    found = [(m, m.split("//", 1)[1].lower()) for m in pattern.findall(text)]
+    return [m for m, host in found
+            if not any(host == h or host.endswith("." + h) for h in ALLOWED_HOSTS)]
+
+
+def in_code(path: str, first_line: int, kind: str, code: str) -> list[str]:
+    """Gate G's refusals for a stylesheet ("css") or a script ("js")."""
+    if kind == "css":
+        # Comments go, their line breaks kept, so a line number still points true.
+        code = CSS_COMMENT_RE.sub(lambda m: "\n" * m.group(0).count("\n"), code)
+    hits = []
+    for number, line in enumerate(code.split("\n"), start=first_line):
+        if kind == "css":
+            hits += [(number, "an absolute address in a stylesheet (floor line 9)", m)
+                     for m in addresses(ABSOLUTE_RE, line)]
+        else:
+            hits += [(number, "an absolute address in a script's string (floor line 9)", m)
+                     for m in addresses(QUOTED_ABSOLUTE_RE, line)]
+            hits += [(number, "a cookie, storage or network interface (floor line 10)", m.group(0))
+                     for m in TRACKING_API_RE.finditer(line)]
+    return [f"G  {path}, line {n}: {label}: {m!r}" for n, label, m in hits]
+
+
+def gate_g() -> list[str]:
+    files = {p: staged_blob(p).decode("utf-8") for p in staged_paths("index.html", "static/")
+             if p == "index.html" or p.endswith((".js", ".css"))}
+    refusals = []
+    built = BuiltPage()
+    built.feed(files.get("index.html", ""))
+    for line, tag, name, value in built.attributes:
+        if not (tag == "a" and name == "href"):
+            refusals += [f"G  index.html, line {line}: an absolute address on <{tag} {name}>, "
+                         f"which only a plain link may carry (floor line 9): {m!r}"
+                         for m in addresses(ABSOLUTE_RE, value)]
+        if name.startswith("on") or value.lower().lstrip().startswith("javascript:"):
+            refusals += in_code("index.html", line, "js", value)
+    for line, tag, body in built.code:
+        refusals += in_code("index.html", line, "css" if tag == "style" else "js", body)
+    for path, text in files.items():
+        if path != "index.html":
+            refusals += in_code(path, 1, path.rsplit(".", 1)[1], text)
+        lowered = text.lower()
+        for host in ANALYTICS_HOSTS:
+            at = lowered.find(host)
+            if at >= 0:
+                refusals.append(f"G  {path}, line {lowered.count(chr(10), 0, at) + 1}: "
+                                f"a known analytics host (floor line 10): {host!r}")
+    return refusals
 
 
 # Gate C: the map is current against the staged files.
@@ -213,7 +424,10 @@ def pre_commit() -> int:
     try:
         staged = zsplit(git("diff", "--cached", "--name-only", "-z", "--diff-filter=ACMRT"))
         refusals += gate_a(staged)
-        refusals += gate_b()
+        b_refusals, page = gate_b()
+        refusals += b_refusals
+        refusals += gate_f(page)
+        refusals += gate_g()
         refusals += gate_c()
     except MissingTool as error:
         refusals.append(f"D  missing tool: {error}")
@@ -224,7 +438,7 @@ def pre_commit() -> int:
         for refusal in refusals:
             print(f"  {refusal}", file=sys.stderr)
         return 1
-    print("gates A, B, C passed", file=sys.stderr)
+    print("gates A, B, C, F, G passed", file=sys.stderr)
     return 0
 
 
