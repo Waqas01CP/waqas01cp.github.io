@@ -28,6 +28,8 @@ Proof is a commit, a decision record or a log filename. Never a file path.
 | Content trace: the master's project links read and checked as links, after the master moved Rahzaan's links onto its project line | [VERIFIED] | 2026-10-10 | logs/2026-10-07-tree-parity.md, round 8. PASS against the current master; three defeat cases each exit 1 |
 | Every documented file's frontmatter readable as YAML: four descriptions holding a colon and a space quoted | [VERIFIED] | 2026-10-10 | logs/2026-10-07-tree-parity.md, round 9. PyYAML: 4 of 36 rejected before, 0 after |
 | A licence notice: all rights reserved, at the operator's instruction; README.md brought current | [VERIFIED] | 2026-10-10 | Same log, round 9 |
+| Brief 15: three projects, the summary, skills and degree dates, the CV PDF; the timeline's layout; ADR-0013; the link preview | [VERIFIED] | 2026-11-04 | 4e5f15c to the branch's records; logs/2026-10-19-role-wording.md, round 11. Trace 467 of 467; gates 79 of 79; every standing check |
+| Brief 14, live: every live file equal to the build | [VERIFIED] | 2026-11-04 | d48ebbe on main; 24 of 24 files by SHA-256 at 12:56:43Z |
 | Brief 14, Part 1: gates F and G, scope floor lines 7, 9 and 10 at every commit | [VERIFIED] | 2026-10-23 | a82dd6b; ADR-0007 Changes, 2026-10-23; logs/2026-10-19-role-wording.md, round 10. 73 of 73 in a scratch clone, every gate rerun, each gate neutered letting its defeat through |
 | Brief 14, Part 2: AGENTS.md, a pointer to CLAUDE.md for other coding agents | [VERIFIED] | 2026-10-23 | f8fd177; same log |
 | Brief 14, Part 3: CLAUDE.md 262 to 198 lines, five procedures moved word for word to docs/reference/ | [VERIFIED] | 2026-10-23 | 20c8dca; same log. A script diff, failing on each of three defeats |
@@ -45,6 +47,7 @@ Proof is a commit, a decision record or a log filename. Never a file path.
 | portfolio-gallery published; its reviews come through the architecture chat, not this seat | Decided | 2026-10-20 | Brief 11, the architecture chat |
 | Listing the site in emmabostian/developer-portfolios | [VERIFIED] by the operator | 2026-10-20 | His account through the architecture chat: pull request 4350, merged |
 | Whether this site goes on his master CV as a project (research 0004, decision 1) | Decided: no | 2026-10-20 | The operator, in the architecture chat, before 2026-10-20 |
+| Whether this site goes on his master CV as a project: **reversed**, it and portfolio-gallery are in the master and on the site as projects; the row above is history | Decided: yes | 2026-10-31 | The operator's statement of 2026-10-31 (Brief 15); ADR-0013 |
 | Lighthouse passes ADR-0009 on the role-wording page with the machine quiet: live LCP 1,670 ms, CLS 0, TBT 63 ms; locally 2,255 ms, 0, 42 ms; the 600 ms defeat fails | [VERIFIED] | 2026-10-19 | logs/2026-10-19-role-wording.md, round 2. Chrome 155; available memory 850 MB |
 | Brief 9's commits live, every live file equal to the build | [VERIFIED] | 2026-10-19 | 33bbff9 to bec7623, pushed by the operator; logs/2026-10-19-role-wording.md, round 2. 24 live files by SHA-256, at 19:57:34Z |
 | The master CV's role wording of 2026-10-18 on the page; the trace passing against it; no "seat" on the page | [VERIFIED] | 2026-10-19 | 33bbff9; logs/2026-10-19-role-wording.md. 378 blocks traced; three trace defeats, each exit 1 |

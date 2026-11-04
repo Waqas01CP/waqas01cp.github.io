@@ -51,10 +51,20 @@ REQUIREMENTS = ROOT / "requirements.txt"
 CV_FILE = ROOT / "cv" / "Waqas_Sharif_CV.pdf"
 CV_URL = "/cv/Waqas_Sharif_CV.pdf"
 
-# This site's own host. Nothing in the output may point at it absolutely:
+# This site's own host. Nothing in the output points at it absolutely but the
+# link preview below:
 # internal links are root-relative so a later custom domain is a DNS change,
 # not a rewrite (ADR-0002).
 SITE_HOST = "waqas01cp.github.io"
+# The one place the full address is written: the link preview's og:url and
+# og:image, which crawlers need absolute (Waqas's exception of 2026-11-04,
+# Brief 15, Addendum; gate G allows it in those tags only). A custom domain
+# changes this line.
+SITE_ORIGIN = f"https://{SITE_HOST}"
+# The preview image, a snip of the page's first screen; the tags render only
+# while it exists (docs/reference/standing-checks.md, The preview image).
+PREVIEW_FILE = STATIC_SRC / "img" / "preview.png"
+PREVIEW_URL = "/static/img/preview.png"
 
 # Timeline scale from ADR-0003: four layout units per month, the axis
 # running from the as-of month at the top down to January 2024 (Changes,
@@ -63,7 +73,9 @@ AXIS_START = "2024-01"
 UNITS_PER_MONTH = 4
 
 # Lane keys and the text each carries (ADR-0003). Open source stays in the
-# data model, but nothing renders in it until it holds a merged pull request.
+# data model, but nothing renders in it until his first code contribution to
+# someone else's project merges, or a project of his has real adoption
+# (ADR-0003 Changes, 2026-11-04; ADR-0013).
 LANE_LABELS = {
     "builds": "Builds",
     "opensource": "Open source",
@@ -606,7 +618,12 @@ def sub_columns(entries: list[dict]) -> None:
     """Within one lane, give overlapping entries side-by-side columns, the
     longest placed first. Writes x and w, as percentages of the lane, onto
     each entry. Builds sits left of the spine, so its first column is the
-    one nearest the spine, on the right."""
+    one nearest the spine, on the right.
+
+    Columns were once counted for the whole lane, so five builds running
+    at once in Sep to Nov 2026 narrowed every overlapping builds card to a
+    fifth, the 2025 pair and the Crypto card included, and broke their
+    titles mid-word (Brief 15, Waqas's choice of 2026-11-04)."""
     def overlaps(a, b):
         return a["first"] <= b["last"] and b["first"] <= a["last"]
 
@@ -619,13 +636,29 @@ def sub_columns(entries: list[dict]) -> None:
             columns.append([])
         columns[index].append(entry)
         entry["column"] = index
-    shares = [45, 55] if len(columns) == 2 else [100 / max(1, len(columns))] * len(columns)
+    # Columns are counted per group of cards linked by overlaps, and a card
+    # widens into the columns to its far side that are free in its months.
+    groups: list[list[dict]] = []
+    for entry in entries:
+        linked = [g for g in groups if any(overlaps(o, entry) for o in g)]
+        merged = [entry] + [o for g in linked for o in g]
+        groups = [g for g in groups if g not in linked] + [merged]
+    for group in groups:
+        n = 1 + max(e["column"] for e in group)
+        shares = [45, 55] if n == 2 else [100 / n] * n
+        for entry in group:
+            k = 1
+            while entry["column"] + k < n and not any(
+                    o["column"] == entry["column"] + k and overlaps(o, entry) for o in group):
+                k += 1
+            entry["_start"] = sum(shares[:entry["column"]])
+            entry["_width"] = sum(shares[entry["column"]:entry["column"] + k])
     for entry in entries:
         entry["gl"] = entry["gr"] = 0
         if not any(o is not entry and overlaps(o, entry) for o in entries):
             entry["x"], entry["w"] = 0, 100
             continue
-        start, width = sum(shares[:entry["column"]]), shares[entry["column"]]
+        start, width = entry["_start"], entry["_width"]
         if entry["lane"] == "builds":
             start = 100 - start - width
         entry["x"], entry["w"] = round(start, 3), round(width, 3)
@@ -713,6 +746,18 @@ def check_environment() -> None:
             raise BuildError(f"{name} {installed} is installed but requirements.txt pins {pinned}")
 
 
+def preview_image() -> dict | None:
+    """The preview image's address and size, read from the PNG's own header
+    so the tags cannot go stale when the image is remade."""
+    if not PREVIEW_FILE.is_file():
+        return None
+    head = PREVIEW_FILE.read_bytes()[:24]
+    if head[:8] != b"\x89PNG\r\n\x1a\n" or head[12:16] != b"IHDR":
+        raise BuildError(f"{PREVIEW_FILE.relative_to(ROOT).as_posix()} is not a PNG")
+    return {"url": SITE_ORIGIN + PREVIEW_URL, "width": int.from_bytes(head[16:20], "big"),
+            "height": int.from_bytes(head[20:24], "big")}
+
+
 def render(context: dict) -> str:
     # Imported here, after check_environment, so a build outside the venv
     # reports that rather than a bare ImportError.
@@ -764,6 +809,8 @@ def main(argv: list[str] | None = None) -> int:
             "certifications": by_lane["certifications"],
             "timeline": timeline,
             "cv": CV_URL if CV_FILE.is_file() else None,
+            "origin": SITE_ORIGIN,
+            "preview": preview_image(),
         }
         html_out = render(context)
     except BuildError as error:

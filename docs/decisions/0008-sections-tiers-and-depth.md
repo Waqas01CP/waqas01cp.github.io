@@ -1,7 +1,7 @@
 ---
-status: accepted
+status: superseded
 topic: structure
-description: The eight sections and their order, the CV download, the project tiers, no separate project pages, and the Rahzaan case study as the only deeper destination. Read before laying out the page or adding a project.
+description: Superseded by ADR-0013. The eight sections and their order, the CV download, the project tiers, no separate project pages, and the Rahzaan case study as the only deeper destination. Read before laying out the page or adding a project.
 date: 2026-09-26
 decision-makers: Waqas Sharif
 # consulted:
@@ -175,3 +175,4 @@ request, the same rule ADR-0003 applies to the timeline lane.
 | 2026-10-03 | **Navigation: one page with a section menu that stays in view**, listing the eight sections, highlighting the one in view, and jumping to each. Projects open their depth in place. No separate pages. The alternative, separate pages per section, is kept in `docs/deferred/multi-page-site.md`. | Decided by the operator 2026-10-03, after reviewing six reference sites he chose, three of each kind. Closes navigation, open since 2026-09-22. |
 | 2026-10-06 | Confirmation reads **"tier label"**, not "tier word": the master's own bullets use "two-tier", "merit-tier", "reasoning tier", "tier validation" and "market-cap tier", and those are content. **Relevant Coursework now holds 26 courses**, the master's list as updated from the transcript on 2026-10-05; the count of 17 in the row of 2026-10-02 is history. Frontmatter description now says eight sections. | Found by the implementing seat in Report 3; checked by the chat against the master on 2026-10-06: 26 courses, five uses of "tier" on the built page, all in master text. |
 | 2026-10-15 | **The footer carries the master CV's Portfolio Footer line, word for word**, with its repository address as a link to this repository. The content trace's coverage requires it on the page whole, as it requires the Portfolio Intro. | The operator approved the chat's recommendation on 2026-10-12, from research 0005: its first pattern, with the second folded in as "tested with a screen reader". The wording went into the master on 2026-10-15, approved by him. This is not research 0004's decision 1: the site does not list itself as a project. ADR-0012's restriction on links is about portfolio-gallery, not this repository. |
+| 2026-11-04 | **Superseded by ADR-0013**, which carries every rule still in force, as amended by the rows above, and records Waqas's decisions of 2026-10-31 and 2026-11-02: the tier order with three new projects, this site and portfolio-gallery listed as projects, the master's research entries in Projects, and the open-source bar raised. | Recording them would have been this table's eighth row, the supersession trigger of the Decision Record Standard (Brief 15). A row recording the supersession itself does not count toward the eight. |

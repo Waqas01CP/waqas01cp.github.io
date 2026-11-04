@@ -4,9 +4,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="as-of" content="2026-10">
+<meta name="as-of" content="2026-11">
 <title>Waqas Sharif</title>
 <meta name="description" content="AI Engineer | LLM Reliability | Agentic Systems in Production">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Waqas Sharif">
+<meta property="og:description" content="AI Engineer | LLM Reliability | Agentic Systems in Production">
+<meta property="og:url" content="https://waqas01cp.github.io/">
+<meta property="og:image" content="https://waqas01cp.github.io/static/img/preview.png">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1256">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:,">
 <link rel="preload" href="/static/fonts/manrope-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -75,9 +83,9 @@
 <div class="intro-main">
 <ul class="facts">
 <li><span class="arrow" aria-hidden="true">&rarr;</span> <span>Karachi, Pakistan (UTC+5).</span></li>
-<li><span class="arrow" aria-hidden="true">&rarr;</span> <span><span>BE Software Engineering, KIET,</span> <span>Sep 2022 to Aug 2026,</span> <span>CGPA 3.47</span></span></li>
+<li><span class="arrow" aria-hidden="true">&rarr;</span> <span><span>BE Software Engineering, KIET,</span> <span>Oct 2022 to Jul 2026,</span> <span>CGPA 3.47</span></span></li>
 </ul>
-<p class="lede">Software Engineering graduate (BESE, KIET) specialising in LLM reliability and behavioural testing, with production agentic-system experience. Builds AI-native: designs the architecture and the algorithms, makes the engineering trade-offs, delegates implementation to coding agents such as Claude Code for speed, and verifies their work through automated tests, mutation testing and independent audits. Primary architect and director of Rahzaan, a deployed AI career guidance platform maintained through an evaluation harness of 19 behavioural probes, 60 per-turn traces and 592 automated tests over a 24-node LangGraph pipeline at 3.7-second first-response latency. Independent research naming three reproducible LLM failure modes, with controlled sampling experiments and adversarial red-teaming across multiple deployed projects.</p>
+<p class="lede">Software Engineering graduate (BESE, KIET) specialising in LLM reliability and behavioural testing, with production agentic-system experience. Builds AI-native: designs the architecture and the algorithms, makes the engineering trade-offs, delegates implementation to coding agents such as Claude Code for speed, and verifies their work through automated tests, mutation testing and independent audits. Primary architect and director of Rahzaan, a deployed AI career guidance platform maintained through an evaluation harness of 19 behavioural probes, 60 per-turn traces and 592 automated tests over a 24-node LangGraph pipeline at 3.7-second first-response latency. Independent research naming three reproducible LLM failure modes, with controlled sampling experiments and adversarial red-teaming across multiple deployed projects, and a black-box provenance investigation of ChatGPT Deep Research.</p>
 <p class="lede">I architect the systems I build: I define the problem, set the design and the decisions, and hold the implementation to them through a systematic framework of written specifications, automated tests and independent audits. Rahzaan ran through 334 session records and 53 audit documents; the job aggregator carries 55 decision records, 754 tests and 410 recorded mutations that deliberately break the code to prove the tests notice.</p>
 <ul class="cta">
 <li><a class="btn btn-acc" href="mailto:ma.sharif.waqas@gmail.com"><svg class="i" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7l8 6 8-6"/></svg>Email me</a></li>
@@ -223,43 +231,44 @@
 <li><span class="depth-n" aria-hidden="true">03</span><p>Shipped a <strong>5-stage prompting protocol</strong> combining intent decomposition, strict output schemas, and adversarial self-critique, deployed as an interactive Streamlit application with a failure-mode comparison view and a prompt template playground (<a href="https://applied-llm-workflow-research.streamlit.app/">live</a>).</p></li>
 </ol>
 </div>
-<article id="autonomous-research-concierge" class="proj" style="--span-wide: 2; --span-mid: 3" aria-labelledby="h-autonomous-research-concierge" data-tilt>
+<article id="chatgpt-deep-research-provenance-case-study" class="proj" style="--span-wide: 2; --span-mid: 3" aria-labelledby="h-chatgpt-deep-research-provenance-case-study" data-tilt>
 <span class="glare" aria-hidden="true"></span>
 <div class="proj-body">
 <div class="proj-head">
-<p class="proj-dates"><time datetime="2025-11">Nov</time> to <time datetime="2025-12">Dec 2025</time></p>
-<h3 id="h-autonomous-research-concierge">Autonomous Research Concierge</h3>
-<p class="proj-summary">Multi-agent research pipeline, containerised and deployed on Railway.</p>
+<p class="proj-dates"><time datetime="2026-10">Oct 2026</time></p>
+<h3 id="h-chatgpt-deep-research-provenance-case-study">ChatGPT Deep Research Provenance Case Study</h3>
+<p class="proj-summary">Black-box investigation of a production AI research agent: ChatGPT Deep Research runs that displayed &#34;Research completed&#34; with 0 searches and 0 citations while still producing substantive, source-specific reports. I conceived and ran the investigation, made every evidence, claim and publication decision, refined the design with ChatGPT as my architecture chat and delegated the supporting code and documentation to Codex for speed.</p>
 </div>
 <div class="proj-side">
-<p class="proj-fact">Engineered a sequential-parallel-loop agent architecture: three live-search agents fan out concurrently, and a draft-critique-validate loop exits on an explicit escalation signal rather than a timeout.</p>
+<p class="proj-fact">Reduced research briefs of 974 to 1,757 words to a 55-word canary that tells the system to report failure if it retrieves no sources.</p>
 <ul class="chips chips-mono" aria-label="Stack">
 <li>Python</li>
-<li>Google ADK</li>
-<li>Docker</li>
+<li>GitHub Actions</li>
+<li>browser developer tools</li>
 </ul>
 <div class="proj-actions">
 <div class="proj-links">
-<a class="btn btn-sm" href="https://github.com/Waqas01CP/Autonomous-Research-Concierge">GitHub<span class="vh">: Autonomous Research Concierge</span><svg class="i" aria-hidden="true" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
+<a class="btn btn-sm" href="https://github.com/Waqas01CP/chatgpt-deep-research-provenance-case-study">GitHub<span class="vh">: ChatGPT Deep Research Provenance Case Study</span><svg class="i" aria-hidden="true" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
 </div>
-<button type="button" class="depth-toggle" id="toggle-autonomous-research-concierge" aria-expanded="false" aria-controls="depth-autonomous-research-concierge" data-depth-toggle data-js hidden aria-hidden="true">In depth<span class="vh">: Autonomous Research Concierge</span><span class="sign" aria-hidden="true"></span></button>
+<button type="button" class="depth-toggle" id="toggle-chatgpt-deep-research-provenance-case-study" aria-expanded="false" aria-controls="depth-chatgpt-deep-research-provenance-case-study" data-depth-toggle data-js hidden aria-hidden="true">In depth<span class="vh">: ChatGPT Deep Research Provenance Case Study</span><span class="sign" aria-hidden="true"></span></button>
 </div>
 </div>
 </div>
 </article>
-<div id="depth-autonomous-research-concierge" class="depth" data-depth>
+<div id="depth-chatgpt-deep-research-provenance-case-study" class="depth" data-depth>
 <div class="depth-glow" aria-hidden="true"></div>
 <div class="depth-head">
-<h3 id="depth-h-autonomous-research-concierge">In depth: <span class="serif">Autonomous Research Concierge</span></h3>
+<h3 id="depth-h-chatgpt-deep-research-provenance-case-study">In depth: <span class="serif">ChatGPT Deep Research Provenance Case Study</span></h3>
 <div class="depth-actions">
-<a class="btn btn-sm" href="https://github.com/Waqas01CP/Autonomous-Research-Concierge">GitHub<span class="vh">: Autonomous Research Concierge</span><svg class="i" aria-hidden="true" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
-<button type="button" class="btn btn-sm" aria-label="Close in depth: Autonomous Research Concierge" data-depth-close="autonomous-research-concierge" data-js hidden aria-hidden="true">Close<span class="mono" aria-hidden="true">&minus;</span></button>
+<a class="btn btn-sm" href="https://github.com/Waqas01CP/chatgpt-deep-research-provenance-case-study">GitHub<span class="vh">: ChatGPT Deep Research Provenance Case Study</span><svg class="i" aria-hidden="true" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
+<button type="button" class="btn btn-sm" aria-label="Close in depth: ChatGPT Deep Research Provenance Case Study" data-depth-close="chatgpt-deep-research-provenance-case-study" data-js hidden aria-hidden="true">Close<span class="mono" aria-hidden="true">&minus;</span></button>
 </div>
 </div>
 <ol class="depth-list">
-<li><span class="depth-n" aria-hidden="true">01</span><p>Engineered a <strong>sequential-parallel-loop agent architecture</strong>: an intent synthesiser compacts chat history into a research directive, three live-search agents fan out concurrently, and a draft-critique-validate loop exits on an explicit escalation signal rather than a timeout.</p></li>
-<li><span class="depth-n" aria-hidden="true">02</span><p>Implemented <strong>per-call session isolation</strong>. A fresh session per pipeline invocation keeps raw search results, internal drafts, and critique logs out of the user's conversation context, a production concern absent from typical multi-agent demos.</p></li>
-<li><span class="depth-n" aria-hidden="true">03</span><p>Deployed a <strong>deterministic code-based keyword filter</strong> ahead of all tool access, making the security guardrail structurally <strong>bypass-resistant</strong>, with a deliberate worker/critic model split for quality-cost balance.</p></li>
+<li><span class="depth-n" aria-hidden="true">01</span><p>Preserved a baseline of 9 earlier runs that had displayed <strong>2,835 searches and 477 citations</strong>, then reduced research briefs of 974 to 1,757 words to a <strong>55-word canary</strong> that tells the system to report failure if it retrieves no sources. The canary still completed at 0/0 on four accounts (one Plus, three Free) across desktop web, the iOS app and macOS Safari, and again three days later; all 14 runs since the baseline displayed zero of both.</p></li>
+<li><span class="depth-n" aria-hidden="true">02</span><p>Instrumented a fresh reproduction with browser diagnostics and captured the client's own warning that the report "contains citation markers but no content references". Checked the run's policy figures against the central banks' official sites: it reported a Bank of Canada rate change published hours earlier, so a zero counter is no evidence that current information failed to reach it. Kept every conclusion at the level of the evidence: no root-cause or retrieval claim, and earlier public reports credited.</p></li>
+<li><span class="depth-n" aria-hidden="true">03</span><p>Found a separate failure: two completed reports silently covered 1 of 3 and 1 of 4 requested programmes, which is why I treat completion, provenance and scope coverage as separate acceptance criteria for research agents. Published a privacy-bounded case study from a fresh repository, every evidence file checked by SHA-256 in GitHub Actions against an exact manifest, and gave OpenAI Support the sanitized network capture it requested.</p></li>
+<li><span class="depth-n" aria-hidden="true">04</span><p>Retired my own natural-language checker after reviews found it passing cases that were not clean, and replaced it with deterministic checks on explicit inputs, kept out of the public claim.</p></li>
 </ol>
 </div>
 <article id="job-aggregator" class="proj" style="--span-wide: 2; --span-mid: 3" aria-labelledby="h-job-aggregator" data-tilt>
@@ -307,6 +316,135 @@
 <li><span class="depth-n" aria-hidden="true">07</span><p>Covered by <strong>754 tests and 410 recorded mutations</strong> that deliberately break the code to prove the tests notice, with 10,381 lines of tests against 6,636 lines of source; the suite fails if a code change leaves any recorded mutation unable to run, and architectural rules are guarded by fitness functions in the ordinary suite. A production save failure on 27 Sep 2026 was found in the morning run log, reproduced, fixed and pushed before the next run, with the postings it missed recovered by the next walk.</p></li>
 </ol>
 </div>
+<article id="portfolio-gallery" class="proj" style="--span-wide: 2; --span-mid: 3" aria-labelledby="h-portfolio-gallery" data-tilt>
+<span class="glare" aria-hidden="true"></span>
+<div class="proj-body">
+<div class="proj-head">
+<p class="proj-dates"><time datetime="2026-10">Oct 2026</time> to Present</p>
+<h3 id="h-portfolio-gallery">Portfolio Gallery</h3>
+<p class="proj-sub">Portfolio Site Template and Design Gallery</p>
+<p class="proj-summary">A public, MIT-licensed template anyone can copy to publish a one-page portfolio site on GitHub Pages without installing anything: they write their content once, pick one of 17 designs, 10 of them made for professions, and every claim on the site is checked against their own CV; a copy clears the project&#39;s own files out of itself on its first run. I started it and maintain it on my own account: I design the system, set its standards, make the decisions and delegate implementation to Claude Code for speed.</p>
+</div>
+<div class="proj-side">
+<p class="proj-fact">Cut a check of every page from 75.4 minutes on one runner to about 5 by sharing it across parallel jobs.</p>
+<ul class="chips chips-mono" aria-label="Stack">
+<li>Python</li>
+<li>Jinja2</li>
+<li>GitHub Actions</li>
+<li>GitHub Pages</li>
+<li>GraphQL</li>
+</ul>
+<div class="proj-actions">
+<div class="proj-links">
+<a class="btn btn-sm" href="https://github.com/Waqas01CP/portfolio-gallery">GitHub<span class="vh">: Portfolio Gallery</span><svg class="i" aria-hidden="true" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
+<a class="btn btn-sm" href="/portfolio-gallery/">Gallery<span class="vh">: Portfolio Gallery</span><svg class="i" aria-hidden="true" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
+</div>
+<button type="button" class="depth-toggle" id="toggle-portfolio-gallery" aria-expanded="false" aria-controls="depth-portfolio-gallery" data-depth-toggle data-js hidden aria-hidden="true">In depth<span class="vh">: Portfolio Gallery</span><span class="sign" aria-hidden="true"></span></button>
+</div>
+</div>
+</div>
+</article>
+<div id="depth-portfolio-gallery" class="depth" data-depth>
+<div class="depth-glow" aria-hidden="true"></div>
+<div class="depth-head">
+<h3 id="depth-h-portfolio-gallery">In depth: <span class="serif">Portfolio Gallery</span></h3>
+<div class="depth-actions">
+<a class="btn btn-sm" href="https://github.com/Waqas01CP/portfolio-gallery">GitHub<span class="vh">: Portfolio Gallery</span><svg class="i" aria-hidden="true" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
+<a class="btn btn-sm" href="/portfolio-gallery/">Gallery<span class="vh">: Portfolio Gallery</span><svg class="i" aria-hidden="true" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
+<button type="button" class="btn btn-sm" aria-label="Close in depth: Portfolio Gallery" data-depth-close="portfolio-gallery" data-js hidden aria-hidden="true">Close<span class="mono" aria-hidden="true">&minus;</span></button>
+</div>
+</div>
+<ol class="depth-list">
+<li><span class="depth-n" aria-hidden="true">01</span><p>Designed it to take strangers' pull requests safely: designs are CSS only; a Content Security Policy in every page refuses requests to other sites; a scope check runs from the default branch, so a pull request cannot change how it is checked; contributors' screenshots are redrawn and never served as uploaded, and their sites are fetched but never rendered; every workflow action is pinned to a full commit SHA, the Python dependencies to the SHA-256 of every file PyPI serves, and npm runs with install scripts disabled.</p></li>
+<li><span class="depth-n" aria-hidden="true">02</span><p>Runs accessibility (<strong>axe-core</strong>) and speed (<strong>Lighthouse</strong>) checks in GitHub Actions on every pull request. Cut a check of every page from <strong>75.4 minutes</strong> on one runner to <strong>about 5</strong> by sharing it across parallel jobs, and set the rule that a pull request is checked only on the pages it alters, with every page rechecked each Monday. The required check cannot pass by being skipped: a verdict job fails unless every part passed or was skipped by plan, proven on a failed, a timed-out and a wrongly skipped part.</p></li>
+<li><span class="depth-n" aria-hidden="true">03</span><p>Proved every check able to fail: <strong>178 file defeat cases</strong> and <strong>24 browser cases</strong>, each set with planted controls that must pass. Speed is judged so a noisy shared runner is not mistaken for a slow page: blocking time over its goal is reported, and fails only above 600 ms.</p></li>
+<li><span class="depth-n" aria-hidden="true">04</span><p>Followed my own setup as a stranger would and turned each friction into a fix a check now guards: resizing a screenshot in Paint became any snip; a copy's first deploy, which failed red while GitHub Pages was off, now ends with a notice saying how to turn it on; the screenshot overlay gained a close button; and when I judged the designs too alike, they became designs per profession, each shown with its own invented sample person and held to a measured distinctness bar of 60 to 75 percent on box placement rather than judged by eye.</p></li>
+<li><span class="depth-n" aria-hidden="true">05</span><p>Documented it for strangers and their AI tools: a README that routes each visitor to what they came to do and carries a self-contained prompt for their own AI assistant, checked against the repository by a tool so it cannot drift; an AGENTS.md for coding agents; and versions of both that every copy receives.</p></li>
+<li><span class="depth-n" aria-hidden="true">06</span><p>Run as maintainer: a ruleset requiring a pull request and passing checks for every change to main, CODEOWNERS review, issue forms, a Code of Conduct and private vulnerability reporting. Likes are counted from GitHub Discussions through its GraphQL API, counting only the workflow's posts and mine. <strong>21 decision records</strong>, each assumption carrying its basis; three found resting on memory were sourced or measured within the day, one by my own test of how GitHub counts reactions.</p></li>
+</ol>
+</div>
+<article id="portfolio-site" class="proj" style="--span-wide: 2; --span-mid: 3" aria-labelledby="h-portfolio-site" data-tilt>
+<span class="glare" aria-hidden="true"></span>
+<div class="proj-body">
+<div class="proj-head">
+<p class="proj-dates"><time datetime="2026-09">Sep 2026</time> to Present</p>
+<h3 id="h-portfolio-site">Portfolio Site</h3>
+<p class="proj-summary">My one-page portfolio, carrying the evidence a one-page CV cannot hold. I architected it, found the six reference sites its look comes from, prototyped it in Claude Design and delegated implementation to Claude Code for speed.</p>
+</div>
+<div class="proj-side">
+<p class="proj-fact">Every claim on the page traces to my master CV, checked by a tool in both directions before any content change.</p>
+<ul class="chips chips-mono" aria-label="Stack">
+<li>Python</li>
+<li>Jinja2</li>
+<li>HTML</li>
+<li>CSS</li>
+<li>JavaScript</li>
+<li>GitHub Pages</li>
+</ul>
+<div class="proj-actions">
+<div class="proj-links">
+<a class="btn btn-sm" href="https://github.com/Waqas01CP/waqas01cp.github.io">GitHub<span class="vh">: Portfolio Site</span><svg class="i" aria-hidden="true" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
+</div>
+<button type="button" class="depth-toggle" id="toggle-portfolio-site" aria-expanded="false" aria-controls="depth-portfolio-site" data-depth-toggle data-js hidden aria-hidden="true">In depth<span class="vh">: Portfolio Site</span><span class="sign" aria-hidden="true"></span></button>
+</div>
+</div>
+</div>
+</article>
+<div id="depth-portfolio-site" class="depth" data-depth>
+<div class="depth-glow" aria-hidden="true"></div>
+<div class="depth-head">
+<h3 id="depth-h-portfolio-site">In depth: <span class="serif">Portfolio Site</span></h3>
+<div class="depth-actions">
+<a class="btn btn-sm" href="https://github.com/Waqas01CP/waqas01cp.github.io">GitHub<span class="vh">: Portfolio Site</span><svg class="i" aria-hidden="true" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
+<button type="button" class="btn btn-sm" aria-label="Close in depth: Portfolio Site" data-depth-close="portfolio-site" data-js hidden aria-hidden="true">Close<span class="mono" aria-hidden="true">&minus;</span></button>
+</div>
+</div>
+<ol class="depth-list">
+<li><span class="depth-n" aria-hidden="true">01</span><p>Every claim on the page traces to my master CV, checked by a tool in both directions before any content change. A small Python generator builds one page with every word in the first response, readable without scripts, and refuses content with a missing source or proof link, projects out of rank order, or shortened text that is not a cut of its source. <strong>Seven repository gates</strong>, run by git hooks, refuse a commit that adds a cookie, tracking, a third-party request or anything private.</p></li>
+<li><span class="depth-n" aria-hidden="true">02</span><p>Designed its timeline: a vertical spine with lanes either side, newest work at the top so a reader meets the latest first, and on a phone one spine carrying every lane, chosen after viewing both prototype versions on my phone.</p></li>
+<li><span class="depth-n" aria-hidden="true">03</span><p>Tested it with a screen reader: my <strong>NVDA</strong> run found words read as one, such as "Dec 20255-Day", which every automated check had passed; I had them fixed with hidden spaces and confirmed the fix by ear the same day. axe-core found 0 violations in 12 combinations of width, theme and panel state, in Chrome and in Edge, and keyboard checks passed 60 of 60.</p></li>
+<li><span class="depth-n" aria-hidden="true">04</span><p>Measures performance so a slow machine is not mistaken for a slow page: each Lighthouse set runs the page, the page before the change and a control with a deliberate 600 ms script that must fail, five runs each, interleaved. Live median of <strong>1.7 s</strong> largest paint against a 2.5 s goal (Oct 2026). Had the reading-layers proposal audited before it was recorded rather than accepted as proposed; the audit changed four things. <strong>12 decision records</strong>, each assumption carrying its basis.</p></li>
+</ol>
+</div>
+<article id="autonomous-research-concierge" class="proj" style="--span-wide: 2; --span-mid: 3" aria-labelledby="h-autonomous-research-concierge" data-tilt>
+<span class="glare" aria-hidden="true"></span>
+<div class="proj-body">
+<div class="proj-head">
+<p class="proj-dates"><time datetime="2025-11">Nov</time> to <time datetime="2025-12">Dec 2025</time></p>
+<h3 id="h-autonomous-research-concierge">Autonomous Research Concierge</h3>
+<p class="proj-summary">Multi-agent research pipeline, containerised and deployed on Railway.</p>
+</div>
+<div class="proj-side">
+<p class="proj-fact">Engineered a sequential-parallel-loop agent architecture: three live-search agents fan out concurrently, and a draft-critique-validate loop exits on an explicit escalation signal rather than a timeout.</p>
+<ul class="chips chips-mono" aria-label="Stack">
+<li>Python</li>
+<li>Google ADK</li>
+<li>Docker</li>
+</ul>
+<div class="proj-actions">
+<div class="proj-links">
+<a class="btn btn-sm" href="https://github.com/Waqas01CP/Autonomous-Research-Concierge">GitHub<span class="vh">: Autonomous Research Concierge</span><svg class="i" aria-hidden="true" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
+</div>
+<button type="button" class="depth-toggle" id="toggle-autonomous-research-concierge" aria-expanded="false" aria-controls="depth-autonomous-research-concierge" data-depth-toggle data-js hidden aria-hidden="true">In depth<span class="vh">: Autonomous Research Concierge</span><span class="sign" aria-hidden="true"></span></button>
+</div>
+</div>
+</div>
+</article>
+<div id="depth-autonomous-research-concierge" class="depth" data-depth>
+<div class="depth-glow" aria-hidden="true"></div>
+<div class="depth-head">
+<h3 id="depth-h-autonomous-research-concierge">In depth: <span class="serif">Autonomous Research Concierge</span></h3>
+<div class="depth-actions">
+<a class="btn btn-sm" href="https://github.com/Waqas01CP/Autonomous-Research-Concierge">GitHub<span class="vh">: Autonomous Research Concierge</span><svg class="i" aria-hidden="true" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
+<button type="button" class="btn btn-sm" aria-label="Close in depth: Autonomous Research Concierge" data-depth-close="autonomous-research-concierge" data-js hidden aria-hidden="true">Close<span class="mono" aria-hidden="true">&minus;</span></button>
+</div>
+</div>
+<ol class="depth-list">
+<li><span class="depth-n" aria-hidden="true">01</span><p>Engineered a <strong>sequential-parallel-loop agent architecture</strong>: an intent synthesiser compacts chat history into a research directive, three live-search agents fan out concurrently, and a draft-critique-validate loop exits on an explicit escalation signal rather than a timeout.</p></li>
+<li><span class="depth-n" aria-hidden="true">02</span><p>Implemented <strong>per-call session isolation</strong>. A fresh session per pipeline invocation keeps raw search results, internal drafts, and critique logs out of the user's conversation context, a production concern absent from typical multi-agent demos.</p></li>
+<li><span class="depth-n" aria-hidden="true">03</span><p>Deployed a <strong>deterministic code-based keyword filter</strong> ahead of all tool access, making the security guardrail structurally <strong>bypass-resistant</strong>, with a deliberate worker/critic model split for quality-cost balance.</p></li>
+</ol>
+</div>
 <article id="crypto-accumulation-scanner" class="proj" style="--span-wide: 3; --span-mid: 3" aria-labelledby="h-crypto-accumulation-scanner" data-tilt>
 <span class="glare" aria-hidden="true"></span>
 <div class="proj-body">
@@ -346,7 +484,7 @@
 <li><span class="depth-n" aria-hidden="true">02</span><p>Solved platform constraints: chunked storage across a 500KB per-key limit, execution-timeout safety with progress persistence and auto-resume, exchange symbol-prefix normalisation (1000SHIB to SHIB with price scaled), and time-weighted volatility correcting for partial-candle distortion.</p></li>
 </ol>
 </div>
-<article id="wordpy-autonomous-solver" class="proj" style="--span-wide: 3; --span-mid: 6" aria-labelledby="h-wordpy-autonomous-solver" data-tilt>
+<article id="wordpy-autonomous-solver" class="proj" style="--span-wide: 3; --span-mid: 3" aria-labelledby="h-wordpy-autonomous-solver" data-tilt>
 <span class="glare" aria-hidden="true"></span>
 <div class="proj-body">
 <div class="proj-head">
@@ -377,7 +515,7 @@
 <span class="fade-word" aria-hidden="true" data-fade-word>Timeline</span>
 <div class="sec-title"><span class="sec-n" aria-hidden="true">03</span><h2 id="h-timeline">Timeline</h2></div>
 </header>
-<div class="tl" style="--rows: 136" data-tl data-top="2026-10" data-months="34">
+<div class="tl" style="--rows: 140" data-tl data-top="2026-11" data-months="35">
 <div class="tl-lanes">
 <span class="tl-head lane-builds" aria-hidden="true"><span class="shape" aria-hidden="true"></span>Builds</span>
 <span class="tl-head lane-work" aria-hidden="true"><span class="shape" aria-hidden="true"></span>Work</span>
@@ -393,50 +531,75 @@
 <div class="tl-body">
 <div class="tl-axis" aria-hidden="true">
 <div class="tl-spine"><span class="tl-spine-fill" data-spine-fill></span><span class="tl-chip" data-tl-chip></span></div>
-<span class="tl-month" style="--row: 1">Oct</span>
-<span class="tl-month" style="--row: 5">Sep</span>
-<span class="tl-month" style="--row: 9">Aug</span>
-<span class="tl-month" style="--row: 13">Jul</span>
-<span class="tl-month" style="--row: 17">Jun</span>
-<span class="tl-month" style="--row: 21">May</span>
-<span class="tl-month" style="--row: 25">Apr</span>
-<span class="tl-month" style="--row: 29">Mar</span>
-<span class="tl-month" style="--row: 33">Feb</span>
-<span class="tl-month" style="--row: 37">Jan</span>
-<span class="tl-month" style="--row: 41">Dec</span>
-<span class="tl-month" style="--row: 45">Nov</span>
-<span class="tl-month" style="--row: 49">Oct</span>
-<span class="tl-month" style="--row: 53">Sep</span>
-<span class="tl-month" style="--row: 57">Aug</span>
-<span class="tl-month" style="--row: 61">Jul</span>
-<span class="tl-month" style="--row: 65">Jun</span>
-<span class="tl-month" style="--row: 69">May</span>
-<span class="tl-month" style="--row: 73">Apr</span>
-<span class="tl-month" style="--row: 77">Mar</span>
-<span class="tl-month" style="--row: 81">Feb</span>
-<span class="tl-month" style="--row: 85">Jan</span>
-<span class="tl-month" style="--row: 89">Dec</span>
-<span class="tl-month" style="--row: 93">Nov</span>
-<span class="tl-month" style="--row: 97">Oct</span>
-<span class="tl-month" style="--row: 101">Sep</span>
-<span class="tl-month" style="--row: 105">Aug</span>
-<span class="tl-month" style="--row: 109">Jul</span>
-<span class="tl-month" style="--row: 113">Jun</span>
-<span class="tl-month" style="--row: 117">May</span>
-<span class="tl-month" style="--row: 121">Apr</span>
-<span class="tl-month" style="--row: 125">Mar</span>
-<span class="tl-month" style="--row: 129">Feb</span>
-<span class="tl-month" style="--row: 133">Jan</span>
+<span class="tl-month" style="--row: 1">Nov</span>
+<span class="tl-month" style="--row: 5">Oct</span>
+<span class="tl-month" style="--row: 9">Sep</span>
+<span class="tl-month" style="--row: 13">Aug</span>
+<span class="tl-month" style="--row: 17">Jul</span>
+<span class="tl-month" style="--row: 21">Jun</span>
+<span class="tl-month" style="--row: 25">May</span>
+<span class="tl-month" style="--row: 29">Apr</span>
+<span class="tl-month" style="--row: 33">Mar</span>
+<span class="tl-month" style="--row: 37">Feb</span>
+<span class="tl-month" style="--row: 41">Jan</span>
+<span class="tl-month" style="--row: 45">Dec</span>
+<span class="tl-month" style="--row: 49">Nov</span>
+<span class="tl-month" style="--row: 53">Oct</span>
+<span class="tl-month" style="--row: 57">Sep</span>
+<span class="tl-month" style="--row: 61">Aug</span>
+<span class="tl-month" style="--row: 65">Jul</span>
+<span class="tl-month" style="--row: 69">Jun</span>
+<span class="tl-month" style="--row: 73">May</span>
+<span class="tl-month" style="--row: 77">Apr</span>
+<span class="tl-month" style="--row: 81">Mar</span>
+<span class="tl-month" style="--row: 85">Feb</span>
+<span class="tl-month" style="--row: 89">Jan</span>
+<span class="tl-month" style="--row: 93">Dec</span>
+<span class="tl-month" style="--row: 97">Nov</span>
+<span class="tl-month" style="--row: 101">Oct</span>
+<span class="tl-month" style="--row: 105">Sep</span>
+<span class="tl-month" style="--row: 109">Aug</span>
+<span class="tl-month" style="--row: 113">Jul</span>
+<span class="tl-month" style="--row: 117">Jun</span>
+<span class="tl-month" style="--row: 121">May</span>
+<span class="tl-month" style="--row: 125">Apr</span>
+<span class="tl-month" style="--row: 129">Mar</span>
+<span class="tl-month" style="--row: 133">Feb</span>
+<span class="tl-month" style="--row: 137">Jan</span>
 <span class="tl-year" style="--row: 1">2026</span>
-<span class="tl-year" style="--row: 41">2025</span>
-<span class="tl-year-line" style="--row: 41"></span>
-<span class="tl-year" style="--row: 89">2024</span>
-<span class="tl-year-line" style="--row: 89"></span>
+<span class="tl-year" style="--row: 45">2025</span>
+<span class="tl-year-line" style="--row: 45"></span>
+<span class="tl-year" style="--row: 93">2024</span>
+<span class="tl-year-line" style="--row: 93"></span>
 <span class="tl-read" data-tl-read></span>
 </div>
 <span class="tl-mspine" aria-hidden="true"><span class="tl-spine-fill" data-mspine-fill></span></span>
 <ol class="tl-list" role="list" data-tl-list>
-<li class="tl-entry lane-builds after-band" style="--row: 1; --span: 8; --x: 0%; --w: 55%; --gl: 0px; --gr: 3px" data-lane="builds" data-year="2026" data-year-mark>
+<li class="tl-entry lane-builds after-band" style="--row: 1; --span: 8; --x: 20.0%; --w: 20.0%; --gl: 3px; --gr: 3px" data-lane="builds" data-year="2026" data-year-mark>
+<span class="tl-yr" aria-hidden="true">2026</span>
+<span class="tl-mark" aria-hidden="true"></span>
+<details class="tl-card" name="tl" data-tl-card>
+<summary><span class="tl-meta"><span class="tl-lane">Builds</span> <span class="tl-sign" aria-hidden="true"></span></span><span class="vh"> </span> <span class="tl-dates"><time datetime="2026-10">Oct 2026</time> to Present</span><span class="vh"> </span> <span class="tl-title">Portfolio Gallery</span></summary>
+<div class="tl-pop">
+<button type="button" class="tl-close" aria-label="Close: Portfolio Gallery" data-tl-close data-js hidden aria-hidden="true">&times;</button>
+<p class="tl-detail">A public, MIT-licensed template anyone can copy to publish a one-page portfolio site on GitHub Pages without installing anything.</p>
+<p class="tl-links"><a href="#portfolio-gallery" data-tl-go>Go to full entry<span class="vh">: Portfolio Gallery</span> <span aria-hidden="true">&darr;</span></a></p>
+</div>
+</details>
+</li>
+<li class="tl-entry lane-builds after-band" style="--row: 5; --span: 4; --x: 0.0%; --w: 20.0%; --gl: 0px; --gr: 3px" data-lane="builds" data-year="2026">
+<span class="tl-yr" aria-hidden="true">2026</span>
+<span class="tl-mark" aria-hidden="true"></span>
+<details class="tl-card" name="tl" data-tl-card>
+<summary><span class="tl-meta"><span class="tl-lane">Builds</span> <span class="tl-sign" aria-hidden="true"></span></span><span class="vh"> </span> <span class="tl-dates"><time datetime="2026-10">Oct 2026</time></span><span class="vh"> </span> <span class="tl-title">ChatGPT Deep Research Provenance Case Study</span></summary>
+<div class="tl-pop">
+<button type="button" class="tl-close" aria-label="Close: ChatGPT Deep Research Provenance Case Study" data-tl-close data-js hidden aria-hidden="true">&times;</button>
+<p class="tl-detail">Black-box investigation of a production AI research agent.</p>
+<p class="tl-links"><a href="#chatgpt-deep-research-provenance-case-study" data-tl-go>Go to full entry<span class="vh">: ChatGPT Deep Research Provenance Case Study</span> <span aria-hidden="true">&darr;</span></a></p>
+</div>
+</details>
+</li>
+<li class="tl-entry lane-builds after-band" style="--row: 1; --span: 12; --x: 60.0%; --w: 20.0%; --gl: 3px; --gr: 3px" data-lane="builds" data-year="2026">
 <span class="tl-yr" aria-hidden="true">2026</span>
 <span class="tl-mark" aria-hidden="true"></span>
 <details class="tl-card" name="tl" data-tl-card>
@@ -448,7 +611,19 @@
 </div>
 </details>
 </li>
-<li class="tl-entry lane-work in-band" style="--row: 13; --span: 8; --x: 0%; --w: 100%; --gl: 0px; --gr: 0px" data-lane="work" data-year="2026">
+<li class="tl-entry lane-builds after-band" style="--row: 1; --span: 12; --x: 40.0%; --w: 20.0%; --gl: 3px; --gr: 3px" data-lane="builds" data-year="2026">
+<span class="tl-yr" aria-hidden="true">2026</span>
+<span class="tl-mark" aria-hidden="true"></span>
+<details class="tl-card" name="tl" data-tl-card>
+<summary><span class="tl-meta"><span class="tl-lane">Builds</span> <span class="tl-sign" aria-hidden="true"></span></span><span class="vh"> </span> <span class="tl-dates"><time datetime="2026-09">Sep 2026</time> to Present</span><span class="vh"> </span> <span class="tl-title">Portfolio Site</span></summary>
+<div class="tl-pop">
+<button type="button" class="tl-close" aria-label="Close: Portfolio Site" data-tl-close data-js hidden aria-hidden="true">&times;</button>
+<p class="tl-detail">My one-page portfolio, carrying the evidence a one-page CV cannot hold.</p>
+<p class="tl-links"><a href="#portfolio-site" data-tl-go>Go to full entry<span class="vh">: Portfolio Site</span> <span aria-hidden="true">&darr;</span></a></p>
+</div>
+</details>
+</li>
+<li class="tl-entry lane-work in-band" style="--row: 17; --span: 8; --x: 0%; --w: 100%; --gl: 0px; --gr: 0px" data-lane="work" data-year="2026">
 <span class="tl-yr" aria-hidden="true">2026</span>
 <span class="tl-mark" aria-hidden="true"></span>
 <details class="tl-card" name="tl" data-tl-card>
@@ -460,7 +635,7 @@
 </div>
 </details>
 </li>
-<li class="tl-entry lane-builds in-band" style="--row: 1; --span: 36; --x: 55%; --w: 45%; --gl: 3px; --gr: 0px" data-lane="builds" data-year="2026">
+<li class="tl-entry lane-builds in-band" style="--row: 1; --span: 40; --x: 80.0%; --w: 20.0%; --gl: 3px; --gr: 0px" data-lane="builds" data-year="2026">
 <span class="tl-yr" aria-hidden="true">2026</span>
 <span class="tl-mark" aria-hidden="true"></span>
 <details class="tl-card" name="tl" data-tl-card>
@@ -472,7 +647,7 @@
 </div>
 </details>
 </li>
-<li class="tl-entry lane-builds in-band" style="--row: 33; --span: 4; --x: 0%; --w: 55%; --gl: 0px; --gr: 3px" data-lane="builds" data-year="2026">
+<li class="tl-entry lane-builds in-band" style="--row: 37; --span: 4; --x: 0.0%; --w: 80.0%; --gl: 0px; --gr: 3px" data-lane="builds" data-year="2026">
 <span class="tl-yr" aria-hidden="true">2026</span>
 <span class="tl-mark" aria-hidden="true"></span>
 <details class="tl-card" name="tl" data-tl-card>
@@ -484,7 +659,7 @@
 </div>
 </details>
 </li>
-<li class="tl-entry lane-builds in-band" style="--row: 41; --span: 8; --x: 0%; --w: 55%; --gl: 0px; --gr: 3px" data-lane="builds" data-year="2025" data-year-mark>
+<li class="tl-entry lane-builds in-band" style="--row: 45; --span: 8; --x: 0%; --w: 55%; --gl: 0px; --gr: 3px" data-lane="builds" data-year="2025" data-year-mark>
 <span class="tl-yr" aria-hidden="true">2025</span>
 <span class="tl-mark" aria-hidden="true"></span>
 <details class="tl-card" name="tl" data-tl-card>
@@ -496,7 +671,7 @@
 </div>
 </details>
 </li>
-<li class="tl-entry lane-certifications in-band" style="--row: 41; --span: 8; --x: 45%; --w: 55%; --gl: 3px; --gr: 0px" data-lane="certifications" data-year="2025">
+<li class="tl-entry lane-certifications in-band" style="--row: 45; --span: 8; --x: 45%; --w: 55%; --gl: 3px; --gr: 0px" data-lane="certifications" data-year="2025">
 <span class="tl-yr" aria-hidden="true">2025</span>
 <span class="tl-mark" aria-hidden="true"></span>
 <details class="tl-card" name="tl" data-tl-card>
@@ -507,7 +682,7 @@
 </div>
 </details>
 </li>
-<li class="tl-entry lane-certifications in-band" style="--row: 41; --span: 12; --x: 0%; --w: 45%; --gl: 0px; --gr: 3px" data-lane="certifications" data-year="2025">
+<li class="tl-entry lane-certifications in-band" style="--row: 45; --span: 12; --x: 0%; --w: 45%; --gl: 0px; --gr: 3px" data-lane="certifications" data-year="2025">
 <span class="tl-yr" aria-hidden="true">2025</span>
 <span class="tl-mark" aria-hidden="true"></span>
 <details class="tl-card" name="tl" data-tl-card>
@@ -518,7 +693,7 @@
 </div>
 </details>
 </li>
-<li class="tl-entry lane-builds in-band" style="--row: 41; --span: 16; --x: 55%; --w: 45%; --gl: 3px; --gr: 0px" data-lane="builds" data-year="2025">
+<li class="tl-entry lane-builds in-band" style="--row: 45; --span: 16; --x: 55%; --w: 45%; --gl: 3px; --gr: 0px" data-lane="builds" data-year="2025">
 <span class="tl-yr" aria-hidden="true">2025</span>
 <span class="tl-mark" aria-hidden="true"></span>
 <details class="tl-card" name="tl" data-tl-card>
@@ -530,7 +705,7 @@
 </div>
 </details>
 </li>
-<li class="tl-entry lane-certifications in-band" style="--row: 53; --span: 4; --x: 45%; --w: 55%; --gl: 3px; --gr: 0px" data-lane="certifications" data-year="2025">
+<li class="tl-entry lane-certifications in-band" style="--row: 57; --span: 4; --x: 45%; --w: 55%; --gl: 3px; --gr: 0px" data-lane="certifications" data-year="2025">
 <span class="tl-yr" aria-hidden="true">2025</span>
 <span class="tl-mark" aria-hidden="true"></span>
 <details class="tl-card" name="tl" data-tl-card>
@@ -541,7 +716,7 @@
 </div>
 </details>
 </li>
-<li class="tl-entry lane-certifications in-band" style="--row: 53; --span: 16; --x: 0%; --w: 45%; --gl: 0px; --gr: 3px" data-lane="certifications" data-year="2025">
+<li class="tl-entry lane-certifications in-band" style="--row: 57; --span: 16; --x: 0%; --w: 45%; --gl: 0px; --gr: 3px" data-lane="certifications" data-year="2025">
 <span class="tl-yr" aria-hidden="true">2025</span>
 <span class="tl-mark" aria-hidden="true"></span>
 <details class="tl-card" name="tl" data-tl-card>
@@ -552,7 +727,7 @@
 </div>
 </details>
 </li>
-<li class="tl-entry lane-builds in-band" style="--row: 81; --span: 4; --x: 0%; --w: 100%; --gl: 0px; --gr: 0px" data-lane="builds" data-year="2025">
+<li class="tl-entry lane-builds in-band" style="--row: 85; --span: 4; --x: 0%; --w: 100%; --gl: 0px; --gr: 0px" data-lane="builds" data-year="2025">
 <span class="tl-yr" aria-hidden="true">2025</span>
 <span class="tl-mark" aria-hidden="true"></span>
 <details class="tl-card" name="tl" data-tl-card>
@@ -564,7 +739,7 @@
 </div>
 </details>
 </li>
-<li class="tl-entry lane-certifications in-band" style="--row: 85; --span: 24; --x: 0%; --w: 100%; --gl: 0px; --gr: 0px" data-lane="certifications" data-year="2024" data-year-mark>
+<li class="tl-entry lane-certifications in-band" style="--row: 89; --span: 24; --x: 0%; --w: 100%; --gl: 0px; --gr: 0px" data-lane="certifications" data-year="2024" data-year-mark>
 <span class="tl-yr" aria-hidden="true">2024</span>
 <span class="tl-mark" aria-hidden="true"></span>
 <details class="tl-card" name="tl" data-tl-card>
@@ -575,7 +750,7 @@
 </div>
 </details>
 </li>
-<li class="tl-entry lane-work in-band" style="--row: 129; --span: 8; --x: 0%; --w: 100%; --gl: 0px; --gr: 0px" data-lane="work" data-year="2024">
+<li class="tl-entry lane-work in-band" style="--row: 133; --span: 8; --x: 0%; --w: 100%; --gl: 0px; --gr: 0px" data-lane="work" data-year="2024">
 <span class="tl-yr" aria-hidden="true">2024</span>
 <span class="tl-mark" aria-hidden="true"></span>
 <details class="tl-card" name="tl" data-tl-card>
@@ -587,10 +762,10 @@
 </div>
 </details>
 </li>
-<li class="tl-band" style="--row: 9; --span: 128">
+<li class="tl-band" style="--row: 17; --span: 124">
 <span class="tl-band-bg" aria-hidden="true"></span>
-<p class="tl-band-label"><a href="#be-software-engineering">BE Software Engineering, KIET</a> <span class="sq" aria-hidden="true"></span> <span><time datetime="2022-09">Sep 2022</time> to <time datetime="2026-08">Aug 2026</time></span></p>
-<p class="tl-band-end" aria-hidden="true"><span>&darr;</span> Sep 2022</p>
+<p class="tl-band-label"><a href="#be-software-engineering">BE Software Engineering, KIET</a> <span class="sq" aria-hidden="true"></span> <span><time datetime="2022-10">Oct 2022</time> to <time datetime="2026-07">Jul 2026</time></span></p>
+<p class="tl-band-end" aria-hidden="true"><span>&darr;</span> Oct 2022</p>
 </li>
 </ol>
 </div>
@@ -641,7 +816,7 @@
 <article id="be-software-engineering" class="degree" aria-labelledby="h-be-software-engineering">
 <div class="degree-glow" aria-hidden="true"></div>
 <div class="degree-head">
-<p class="job-top"><span class="tile" aria-hidden="true"><svg class="i" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg></span><span class="job-dates"><time datetime="2022-09">Sep 2022</time> to <time datetime="2026-08">Aug 2026</time></span></p>
+<p class="job-top"><span class="tile" aria-hidden="true"><svg class="i" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg></span><span class="job-dates"><time datetime="2022-10">Oct 2022</time> to <time datetime="2026-07">Jul 2026</time></span></p>
 <h3 id="h-be-software-engineering">BE Software Engineering</h3>
 <p class="degree-org">Karachi Institute of Economics and Technology (KIET), Karachi</p>
 <p class="degree-cgpa">CGPA: <span class="mono">3.47 / 4.0</span></p>
@@ -749,6 +924,7 @@
 <li>Agent Skills</li>
 <li>Model Context Protocol (MCP)</li>
 <li>Antigravity</li>
+<li>Codex</li>
 <li>Google AI Studio</li>
 <li>Spec-Driven Development</li>
 <li>Directing and Reviewing Coding Agents</li>
@@ -788,6 +964,8 @@
 <ul class="chips chips-soft">
 <li>Flutter</li>
 <li>Streamlit</li>
+<li>Jinja2</li>
+<li>HTML/CSS</li>
 </ul>
 </li>
 <li class="skill" data-tilt>
@@ -798,6 +976,8 @@
 <li>Prompt Engineering</li>
 <li>Evaluation Design</li>
 <li>Behavioural Testing</li>
+<li>Black-Box Testing</li>
+<li>Failure Analysis</li>
 <li>Red Teaming</li>
 <li>Chain of Density</li>
 <li>Tree of Thoughts</li>
@@ -812,6 +992,8 @@
 <li>Mutation Testing</li>
 <li>Fitness Functions</li>
 <li>Independent Code Audits</li>
+<li>CI/CD</li>
+<li>Accessibility Testing</li>
 </ul>
 </li>
 <li class="skill" data-tilt>
@@ -820,6 +1002,9 @@
 <ul class="chips chips-soft">
 <li>Git / GitHub</li>
 <li>GitHub Actions</li>
+<li>GitHub Pages</li>
+<li>Lighthouse</li>
+<li>axe-core</li>
 <li>LangSmith</li>
 <li>Google Apps Script</li>
 </ul>

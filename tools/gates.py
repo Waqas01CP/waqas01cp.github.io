@@ -44,7 +44,9 @@ Each gate, what it blocks, and the case built to defeat it:
      lines 9 and 10, the same row. Reads the staged index.html and
      static/'s scripts and stylesheets. Defeated by a planted Google Tag
      Manager script, and by document.cookie in site.js. Control: an
-     external plain link passes.
+     external plain link passes. Since 2026-11-04 the link preview's
+     og:url, og:image and twitter:image may hold the site's own origin;
+     another host there is refused.
 
 Standard library only; scope floor line 14 applies to tooling too.
 """
@@ -114,6 +116,11 @@ VOID_TAGS = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link",
 # first. XML namespace names look like addresses and are never fetched.
 ABSOLUTE_RE = re.compile(r"(?i)(?:https?:)?//[\w-]+(?:\.[\w-]+)+")
 ALLOWED_HOSTS: tuple[str, ...] = ()
+# The one exception, Waqas's of 2026-11-04 (Brief 15, Addendum): a link
+# preview needs absolute addresses, which crawlers fetch and visitors never
+# do, so these three tags may hold the site's own origin, and no other host.
+PREVIEW_META = {"og:url", "og:image", "twitter:image"}
+SITE_HOST = "waqas01cp.github.io"
 NAMESPACES = ("http://www.w3.org/2000/svg", "http://www.w3.org/1999/xlink",
               "http://www.w3.org/1999/xhtml")
 QUOTED_ABSOLUTE_RE = re.compile(r"""['"`]\s*((?:https?:)?//[\w-]+(?:\.[\w-]+)+)""", re.I)
@@ -335,7 +342,9 @@ class BuiltPage(HTMLParser):
 
     def handle_starttag(self, tag: str, attrs: list) -> None:
         line = self.getpos()[0]
-        self.attributes += [(line, tag, name, value or "") for name, value in attrs]
+        preview = tag == "meta" and (dict(attrs).get("property") or dict(attrs).get("name")) in PREVIEW_META
+        self.attributes += [(line, "meta preview" if preview and name == "content" else tag, name, value or "")
+                            for name, value in attrs]
         if tag in ("script", "style"):
             self.open = (line, tag)
 
@@ -382,7 +391,12 @@ def gate_g() -> list[str]:
     built = BuiltPage()
     built.feed(files.get("index.html", ""))
     for line, tag, name, value in built.attributes:
-        if not (tag == "a" and name == "href"):
+        if tag == "meta preview":
+            refusals += [f"G  index.html, line {line}: a link preview's address on another host than "
+                         f"the site's own (floor line 9): {m!r}"
+                         for m in addresses(ABSOLUTE_RE, value)
+                         if m.split("//", 1)[1].lower() != SITE_HOST]
+        elif not (tag == "a" and name == "href"):
             refusals += [f"G  index.html, line {line}: an absolute address on <{tag} {name}>, "
                          f"which only a plain link may carry (floor line 9): {m!r}"
                          for m in addresses(ABSOLUTE_RE, value)]
