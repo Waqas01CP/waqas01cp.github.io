@@ -606,7 +606,12 @@ def sub_columns(entries: list[dict]) -> None:
     """Within one lane, give overlapping entries side-by-side columns, the
     longest placed first. Writes x and w, as percentages of the lane, onto
     each entry. Builds sits left of the spine, so its first column is the
-    one nearest the spine, on the right."""
+    one nearest the spine, on the right.
+
+    Columns were once counted for the whole lane, so five builds running
+    at once in Sep to Nov 2026 narrowed every overlapping builds card to a
+    fifth, the 2025 pair and the Crypto card included, and broke their
+    titles mid-word (Brief 15, Waqas's choice of 2026-11-04)."""
     def overlaps(a, b):
         return a["first"] <= b["last"] and b["first"] <= a["last"]
 
@@ -619,13 +624,29 @@ def sub_columns(entries: list[dict]) -> None:
             columns.append([])
         columns[index].append(entry)
         entry["column"] = index
-    shares = [45, 55] if len(columns) == 2 else [100 / max(1, len(columns))] * len(columns)
+    # Columns are counted per group of cards linked by overlaps, and a card
+    # widens into the columns to its far side that are free in its months.
+    groups: list[list[dict]] = []
+    for entry in entries:
+        linked = [g for g in groups if any(overlaps(o, entry) for o in g)]
+        merged = [entry] + [o for g in linked for o in g]
+        groups = [g for g in groups if g not in linked] + [merged]
+    for group in groups:
+        n = 1 + max(e["column"] for e in group)
+        shares = [45, 55] if n == 2 else [100 / n] * n
+        for entry in group:
+            k = 1
+            while entry["column"] + k < n and not any(
+                    o["column"] == entry["column"] + k and overlaps(o, entry) for o in group):
+                k += 1
+            entry["_start"] = sum(shares[:entry["column"]])
+            entry["_width"] = sum(shares[entry["column"]:entry["column"] + k])
     for entry in entries:
         entry["gl"] = entry["gr"] = 0
         if not any(o is not entry and overlaps(o, entry) for o in entries):
             entry["x"], entry["w"] = 0, 100
             continue
-        start, width = sum(shares[:entry["column"]]), shares[entry["column"]]
+        start, width = entry["_start"], entry["_width"]
         if entry["lane"] == "builds":
             start = 100 - start - width
         entry["x"], entry["w"] = round(start, 3), round(width, 3)
