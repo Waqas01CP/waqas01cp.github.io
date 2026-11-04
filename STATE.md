@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit 20c8dca, the last commit before this file's
-update, 2026-10-23T13:04Z, by the Brief 14 implementing session.** This is
+**Verified against commit d10c512, the last commit before this file's
+update, 2026-11-04T14:20Z, by the Brief 15 implementing session.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -43,6 +43,15 @@ the clearing in the task's row.
 Update the verified-against line whenever you touch this file.
 
 ## Headline
+
+**Brief 15, 2026-11-04, on the branch brief-15-projects: three new
+projects (the ChatGPT Deep Research case study, Portfolio Gallery,
+Portfolio Site), the summary, five skills lines and the degree's dates
+from the master, and the CV PDF; the timeline's layout changed so five
+projects at once stay legible, his choice; ADR-0013 supersedes ADR-0008;
+a link preview for LinkedIn, the site's own address allowed in its tags
+only, his exception. Every standing check passes. For his push, pull
+request and merge.** Before that:
 
 **Brief 14, 2026-10-23: gates F and G enforce scope floor lines 7, 9
 and 10 at every commit, proven in a scratch clone with every gate rerun;
@@ -144,8 +153,8 @@ A small Python generator builds the page from two content files
 (ADR-0006), fails on a missing source, a missing proof link, a tier out of
 order or shortened text that is not a cut of its source, and records the
 month the page is as of. `tools/check_content.py` traces the built page to
-the master CV. Eleven decisions are in force, and ADR-0005 is superseded by
-ADR-0010. Seven repository gates guard
+the master CV. Eleven decisions are in force; ADR-0005 is superseded by ADR-0010, and
+ADR-0008 by ADR-0013. Seven repository gates guard
 every commit and push (ADR-0007), two of them for scope floor lines 7, 9
 and 10; they enforce only in a clone where
 `core.hooksPath` is set. How the repository got here is in the session
@@ -169,7 +178,7 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
-| The push of Brief 14's commits (a82dd6b to its records) | The operator | Operator | 2026-10-23 |
+| Brief 15's branch: his push, pull request and merge; then the live check, and LinkedIn's Post Inspector | The operator | Operator | 2026-11-04 |
 
 ## Known unverified
 

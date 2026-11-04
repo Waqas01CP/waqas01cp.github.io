@@ -19,8 +19,8 @@ Sharif confirmed on 2026-10-10:
   the code. Added by Claude Code on 2026-10-10, under his word
   that readers relevant to this repository may be added.
 
-**Current as of 2026-10-23 UTC**, Claude Code's lane re-measured at the
-close of Brief 14. Written by Claude Code, in its lane: what the site
+**Current as of 2026-11-04 UTC**, Claude Code's lane re-measured at the
+close of Brief 15. Written by Claude Code, in its lane: what the site
 does and how, the stack, the qualities, the numbers, the limits, and the
 timeline's rows for what was built. **The architecture chat's sections**
 (the problem, where it is going, Waqas Sharif's role, the excluded list
@@ -96,7 +96,7 @@ what waits is listed here with its source, as of 2026-10-10, updated 2026-10-21:
 1. **The source.** His master CV, kept privately and never
    committed. Content reaches this repository through him or a brief
    (`CLAUDE.md`).
-2. **The content files.** `src/content/items.json` holds 14 items (6
+2. **The content files.** `src/content/items.json` holds 17 items (9
    projects, 2 roles, 5 certificates, the degree) and `site.json` the
    page-wide text. Each item carries a checkable fact, then a summary and
    full depth where the master has material for them (ADR-0010). Markup is
@@ -189,17 +189,17 @@ what waits is listed here with its source, as of 2026-10-10, updated 2026-10-21:
 
 | What | Value | Date | Source |
 |---|---|---|---|
-| Hand-written source | `build.py` 784 lines; 3 tools, 1,082 lines; 12 templates, 514 lines; 1 stylesheet, 1,567 lines; 2 scripts, 649 lines; 2 content files, 542 lines | 2026-10-23 | `git ls-files`, `wc -l` |
-| Built page | `index.html` 77,163 bytes, 14,941 gzipped; stylesheet 52,193 and 12,248; `site.js` 21,841 and 6,992; `knot.js` 5,638 and 2,215; fonts 78,396 bytes; the CV PDF 58,301 bytes, one A4 page | 2026-10-23 | `wc -c`; Python's gzip, level 6 |
+| Hand-written source | `build.py` 831 lines; 3 tools, 1,097 lines; 12 templates, 527 lines; 1 stylesheet, 1,579 lines; 2 scripts, 649 lines; 2 content files, 650 lines | 2026-11-04 | `git ls-files`, `wc -l` |
+| Built page | `index.html` 97,394 bytes, 19,039 gzipped; stylesheet 52,780 and 12,489; `site.js` 21,841 and 6,992; `knot.js` 5,638 and 2,215; fonts 78,396 bytes; the CV PDF 58,302 bytes, one A4 page; the link-preview image 1,244,041 bytes, fetched by crawlers only | 2026-11-04 | `wc -c`; Python's gzip, level 6 |
 | Live performance | Lighthouse 13.5.0, default mobile, median of five. At light load, Chrome 155, 2026-10-19: LCP 1,670 ms, CLS 0, TBT 63 ms (runs 280, 74, 63, 0, 11); 116,556 bytes transferred. At medium load, Chrome 155, 2026-10-21, the first audit's set: LCP 1,725 ms, CLS 0.031 (above 0 in 3 of 5 runs; the local copy 0 in 5 of 5; cause not tested), TBT 113 ms. ADR-0009 limits: 2,500 ms, 0.1, 200 ms; results compared only within a load level | 2026-10-21 | `logs/2026-10-19-role-wording.md`, Brief 10; `logs/audit/2026-10-21-first-audit.md` |
 | Accessibility, automated | axe-core 4.14.0: 0 violations in 12 cells (360 and 1366 px; light, device dark, switched dark; panels closed and open), in Chrome and in Edge | 2026-10-07 | Same log, rounds 1 to 2 |
 | Accessibility at load | The full-mode accessibility tree matches the page without layout skipping in 32 of 32 loads locally and 16 of 16 per browser on the live site | 2026-10-07 | Same log |
 | Screen reader | NVDA 2026.2 in Chrome: each "In depth" control named and its state spoken, reading into the panel, focus returned; no words run together | 2026-10-07 | Same log, rounds 3 and 5; `docs/deferred/screen-reader-speech-test.md` |
 | Keyboard | 60 of 60 checks at 360 and 1366 px | 2026-10-07 | Same log |
-| Content | 14 items and 10 skills groups; 378 blocks of text traced to the master, 0 not; every master bullet, italic sentence, skills line, course and certificate, the summary, the Portfolio Intro and the Portfolio Footer on the page; 7 of 7 project links and the footer's link | 2026-10-19 | `tools/check_content.py` |
-| Checks on the page, locally | Tree at load in full mode matching the page without layout skipping in 32 of 32 loads, default mode adding no node in 32; keyboard 60 of 60; axe-core 0 violations in 12 cells; measured contrast 0 elements below AA in light and dark at 360 and 1366 px, with 17 and 94 over a gradient unmeasured; the layout check clean at fourteen widths, scripts on and off; no word of a timeline card broken from 1060 to 1920 px; the reading marker never over a label; anchors 132 of 132; no joined words at 360 and 1366 px in Chrome 156 and Edge 155; Lighthouse at light load, median LCP 2,253 ms, CLS 0.0001, TBT 54 ms | 2026-10-23 | `logs/2026-10-19-role-wording.md`, rounds 8 and 9 |
-| Decision records | 12, 1 superseded; 51 dated Changes rows | 2026-10-23 | `docs/decisions/` |
-| History | 115 commits, the first at 2026-09-25T21:42Z, to `20c8dca`; 9 session logs, 32 rows in their index | 2026-10-23 | `git log`, `logs/` |
+| Content | 17 items and 10 skills groups; 467 blocks of text traced to the master, 0 not; every master bullet (42), italic sentence (26), skills line, course and certificate, the summary, the Portfolio Intro and the Portfolio Footer on the page; 11 of 11 project links and the footer's link | 2026-11-04 | `tools/check_content.py` |
+| Checks on the page, locally | Tree at load in full mode matching the page without layout skipping in 32 of 32 loads, default mode adding no node in 32; keyboard 90 of 90; axe-core 0 violations in 12 cells; measured contrast 0 elements below AA in light and dark at 360 and 1366 px, with 17 and 105 over a gradient unmeasured; the layout check clean at fourteen widths, scripts on and off; no word of a timeline card broken from 1060 to 1920 px; the reading marker never over a label; anchors 150 of 150; no joined words at 360 and 1366 px in Chrome 156 and Edge 155; Lighthouse at light load (825 MB free, CPU 30.1% over the minute before, 14:13Z; Chrome 157; Waqas's own Chrome open, 20 processes): median LCP 2,260 ms, CLS 0.0001, TBT 74 ms; main's page 2,258 ms, 0.0001, 59 ms; the defeat fails (TBT 2,070 ms). A set at medium load before it (447 MB free, 12:55Z) failed both pages alike, TBT 713 and 580 ms, and is recorded as such | 2026-11-04 | `logs/2026-10-19-role-wording.md`, round 11 |
+| Decision records | 13, 2 superseded; 53 dated Changes rows | 2026-11-04 | `docs/decisions/` |
+| History | 122 commits, the first at 2026-09-25T21:42Z, to `d10c512`; 9 session logs, 33 rows in their index | 2026-11-04 | `git log`, `logs/` |
 | Cost | None | 2026-10-10 | Free plans only |
 
 ## How it was built
@@ -243,6 +243,7 @@ architecture chat's.
 | 2026-10-21 | The master's new role wording on the page and a new CV PDF; the "In depth" button no longer stranded when a card's links wrap; the certificate cards' link cue shown on touch screens; no section marked current without a script; a layout check and a measured contrast check added to the standing checks |
 | 2026-10-23 | Gates F and G: a commit is refused when a content string is missing from the page's text without a script, or when the built files carry a third-party source, a cookie, storage or network call, or an analytics host; AGENTS.md, a pointer for other coding agents; CLAUDE.md under 200 lines, five procedures moved to `docs/reference/` |
 | 2026-10-22 | The timeline to scale from 1060 px instead of 1180, so a desktop window that narrow gets the desktop timeline, with cards growing to fit their titles; "In depth" starts the next line when a card's actions wrap; the reading marker no longer prints over the axis labels; layout, word-break and marker checks added |
+| 2026-11-04 | Three projects on the page and the timeline: the ChatGPT Deep Research Provenance Case Study, Portfolio Gallery and Portfolio Site; the timeline's cards widen into free columns and Builds takes more of the width, so five projects at once stay legible; a link preview for LinkedIn, the first screen as its picture |
 | 2026-10-23 | Decided: floor lines 7, 9 and 10 enforced as pre-commit gates (ADR-0007 Changes); contrast confirmed by a measured check as well as axe (ADR-0011 Changes); the desktop timeline to scale from a 1060 px window (ADR-0003 Changes) |
 
 ## Waqas Sharif's role
@@ -371,7 +372,7 @@ dated.
   cookies, tracking or third-party requests; since 2026-10-23 a commit
   that breaks any of the three is refused by a gate.
 - Built by a small Python generator with one templating library and no
-  framework; 12 decision records and 7 repository gates (2026-10-23).
+  framework; 13 decision records and 7 repository gates (2026-11-04).
 - Verified with a real screen reader: NVDA found words read as one, such as
   "Dec 20255-Day"; fixed with hidden spaces and confirmed by ear the same
   day (2026-10-07).

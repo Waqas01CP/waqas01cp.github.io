@@ -28,6 +28,8 @@ Proof is a commit, a decision record or a log filename. Never a file path.
 | Content trace: the master's project links read and checked as links, after the master moved Rahzaan's links onto its project line | [VERIFIED] | 2026-10-10 | logs/2026-10-07-tree-parity.md, round 8. PASS against the current master; three defeat cases each exit 1 |
 | Every documented file's frontmatter readable as YAML: four descriptions holding a colon and a space quoted | [VERIFIED] | 2026-10-10 | logs/2026-10-07-tree-parity.md, round 9. PyYAML: 4 of 36 rejected before, 0 after |
 | A licence notice: all rights reserved, at the operator's instruction; README.md brought current | [VERIFIED] | 2026-10-10 | Same log, round 9 |
+| Brief 15: three projects, the summary, skills and degree dates, the CV PDF; the timeline's layout; ADR-0013; the link preview | [VERIFIED] | 2026-11-04 | 4e5f15c to the branch's records; logs/2026-10-19-role-wording.md, round 11. Trace 467 of 467; gates 79 of 79; every standing check |
+| Brief 14, live: every live file equal to the build | [VERIFIED] | 2026-11-04 | d48ebbe on main; 24 of 24 files by SHA-256 at 12:56:43Z |
 | Brief 14, Part 1: gates F and G, scope floor lines 7, 9 and 10 at every commit | [VERIFIED] | 2026-10-23 | a82dd6b; ADR-0007 Changes, 2026-10-23; logs/2026-10-19-role-wording.md, round 10. 73 of 73 in a scratch clone, every gate rerun, each gate neutered letting its defeat through |
 | Brief 14, Part 2: AGENTS.md, a pointer to CLAUDE.md for other coding agents | [VERIFIED] | 2026-10-23 | f8fd177; same log |
 | Brief 14, Part 3: CLAUDE.md 262 to 198 lines, five procedures moved word for word to docs/reference/ | [VERIFIED] | 2026-10-23 | 20c8dca; same log. A script diff, failing on each of three defeats |

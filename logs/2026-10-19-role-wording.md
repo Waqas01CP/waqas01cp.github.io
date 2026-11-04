@@ -1,6 +1,6 @@
 ---
 type: log
-description: "Briefs 9 to 11, and the briefs folder taken off the repository. The master CV's role wording of 2026-10-18 carried onto the page by script (the summary, a skills item, the job aggregator's role line and two bullets); the trace passing again against the master; no \"seat\" on the page; the new CV PDF checked and committed; CAPABILITIES.md's build table relabelled by what each role did. Brief 8 confirmed live. Brief 10: this machine's load measured against Lighthouse; the quiet set passes ADR-0009; light, medium and heavy proposed from the measurements. Later rounds: Brief 11; the briefs folder off the repository; Brief 12; the first audit; Brief 13; Brief 14, gates for floor lines 7, 9 and 10, AGENTS.md and CLAUDE.md under 200 lines."
+description: "Briefs 9 to 11, and the briefs folder taken off the repository. The master CV's role wording of 2026-10-18 carried onto the page by script (the summary, a skills item, the job aggregator's role line and two bullets); the trace passing again against the master; no \"seat\" on the page; the new CV PDF checked and committed; CAPABILITIES.md's build table relabelled by what each role did. Brief 8 confirmed live. Brief 10: this machine's load measured against Lighthouse; the quiet set passes ADR-0009; light, medium and heavy proposed from the measurements. Later rounds: Brief 11; the briefs folder off the repository; Brief 12; the first audit; Brief 13; Brief 14, gates for floor lines 7, 9 and 10, AGENTS.md and CLAUDE.md under 200 lines; Brief 15, three new projects, ADR-0013, a link preview."
 status: current
 ---
 
@@ -1110,3 +1110,181 @@ time).
   `logs/README.md` says one session, one file, so it points here. Fixed
   before the commit.
 - The harness errors above.
+
+# Round 11, 2026-11-04 (UTC): Brief 15 and its Addendum; Addendum 2
+
+**Brief 15 and its Addendum done, on the branch `brief-15-projects`, for
+Waqas's push and pull request.** Three new projects on the page and the
+timeline, the summary, five skills lines and the degree dates from the
+master, the CV PDF; ADR-0013 supersedes ADR-0008; a link preview for
+LinkedIn. Two of his decisions in the session: the timeline's new
+layout, and the site's own address allowed in the preview's tags only.
+Addendum 2's update blocks are in the report, not in this repository.
+
+## Read first
+
+[VERIFIED] `git log`: the chat's 7f46cff and d48ebbe on 78e7770, pushed;
+origin/main at d48ebbe. The CV PDF on disk, uncommitted: 58,302 bytes,
+MD5 940c028c2849960786df2599adb3e97a, as the brief gives.
+
+**The master had moved since the brief measured it.** The brief gives
+MD5 d44cbe51dc72219b3673a634b0768e58 and a file time of 2026-10-31
+21:41:49Z; on disk at the start of this round it was MD5
+0d890070732caceaa8f1607aec8f1a0f, 195 lines, file time
+2026-11-03T10:44:04Z. A diff against this seat's last traced copy
+(2026-10-21) found only the lines the brief lists, so the change of
+2026-11-03 sits inside them, most likely the new projects' wording. The
+site carries the master as it now stands (CLAUDE.md: the master wins).
+
+## His answers in the session, 2026-11-04
+
+- The Addendum's full addresses: allowed in `og:url`, `og:image` and
+  `twitter:image` only, gate G narrowed to exactly those, for the chat to
+  record in ADR-0002 and ADR-0007 and a CLAUDE.md update block (he chose
+  the recommended option over holding the Addendum).
+- The preview's text: the page's own master text, the title and the
+  headline, not the resume chat's wording, which the master does not hold
+  (scope floor line 1).
+- The timeline's layout (below): the fix, from screenshots and a
+  prototype.
+
+## The content (2c1b4c8)
+
+By script from the master's own lines (`content15.py`, scratchpad), never
+retyped. Its converters were first run against today's content from the
+last traced master: the summary, every skills group, and every builds
+item's bullets, italic line and links reproduced exactly, after one fix
+(a skills split cut "Pandas (EDA, feature engineering)" at the comma in
+its brackets). Then applied:
+
+- The summary's new last sentence; five skills lines (Codex; Jinja2,
+  HTML/CSS; Black-Box Testing, Failure Analysis; CI/CD, Accessibility
+  Testing; GitHub Pages, Lighthouse, axe-core).
+- Three items in Projects and on the timeline, 14 bullets between them:
+  the ChatGPT Deep Research Provenance Case Study (Oct 2026, 4 bullets;
+  Codex named as the master names it), Portfolio Gallery (Oct 2026 to
+  Present, 6), Portfolio Site (Sep 2026 to Present, 4). Each `layer1`
+  and `detail` a cut of its own text, which the build checks.
+- The gallery's live link root-relative, `/portfolio-gallery/`: the
+  master gives it on this site's host, which the build refuses absolute
+  (ADR-0002), and the trace reads it so.
+- Tier order as the brief gives it; the degree Oct 2022 to Jul 2026,
+  rendered from its fields in the Intro, Education and the band.
+- The CV PDF: Brief 6's checks, 14 of 15 as on 2026-10-19 (the fifteenth
+  the known probe for this machine's user name, "waqas", his first name);
+  one A4 page; "Oct 2022 to Jul 2026".
+
+Trace: 467 of 467 blocks against the current master; every master
+bullet (42), italic sentence (26), project link (11), skills line,
+course and certificate on the page. Defeats, each exit 1: og:description
+changed to text the master lacks; 75.4 to 75.5 in a new bullet; the case
+study's last bullet cut; the gallery's link changed.
+
+## The timeline (4e5f15c), his choice
+
+Five builds now run at once in Sep to Nov 2026 (Rahzaan, the Job
+Aggregator, both portfolio projects and the case study). The timeline
+counted its columns for a whole lane, so every overlapping builds card
+narrowed to a fifth: about 70 px at every desktop width, titles broken
+mid-word ("Portfo lio Galler y", "Rahza an"), the Crypto card running
+into the Concierge card. Prototyped in scratch: (a) columns counted per
+group of overlapping cards, each card widening into the columns free in
+its own months: Crypto and the 2025 pair back to full width, the newest
+five still broken; (b) a, plus the Builds lane given more of the width:
+clean from 1180 px, broken at 1060 to 1179 px and in Certifications;
+(c) a, with Builds 2fr, the axis 88 px, Work 0.55fr, Certifications
+1.1fr, and cards under 125 px in slightly smaller type: the word-break
+check clean at 1060, 1100, 1180, 1280, 1366, 1521 and 1920 px, the
+layout check clean at 14 widths. Waqas chose (c) from the screenshots.
+Committed alone first, built on the old content, so each commit is a
+fresh build of its own tree. No record fixes the timeline's widths; an
+ADR-0003 row would have been its eighth.
+
+## The records (d10c512)
+
+- **ADR-0013 supersedes ADR-0008**: its eighth Changes row was the
+  trigger. It carries every rule still in force, as amended by ADR-0008's
+  seven rows, and records his decisions of 2026-10-31 and 2026-11-02: the
+  tier order, this site and the gallery listed, research entries in
+  Projects, and no open-source label, section or lane until his first
+  code contribution to someone else's project merges or a project of his
+  has real adoption. Its More Information names what was carried
+  unchanged, carried as amended, changed and dropped as settled (the
+  job-aggregator's "once it is in the master"; the open placement of the
+  `opensource` lane; the page-weight budget, settled by ADR-0009).
+  202 lines. ADR-0008 marked superseded, with a row saying so, which does
+  not count toward the eight.
+- ADR-0003, Changes, 2026-11-04: the Open source lane's bar raised to the
+  same; its seventh row.
+- The index: 0008 superseded by 0013, 0013 added; Pending's open-source
+  item closed by ADR-0013.
+- `completed.md`: a new row for the reversal of "this site on the master
+  as a project", the old row kept as history; research 0004: a dated note
+  under the evidence, which stands as gathered, and decision 5's answer.
+- The bar's two statements, in `build.py`'s comment and
+  `src/content/README.md`, follow.
+- Written by this seat at the brief's instruction. CLAUDE.md's moved
+  procedure says a seat may not retire a record; since 20c8dca it ranks
+  with `docs/reference/`, below the brief, which is why the brief could
+  ask it. Raised for the chat.
+
+## The link preview (b213b6d)
+
+`og:type`, `og:title` and `og:description` (the page's title and
+headline), `og:url`, `og:image` with its width and height, and a
+`summary_large_image` card. The full address is written once,
+`SITE_ORIGIN` in `build.py`; the image's size is read from the PNG's own
+header, and the build refuses a preview file that is not a PNG. Gate G
+allows the site's own origin in `og:url`, `og:image` and `twitter:image`
+only; another host there, or the site's origin in any other tag, is
+refused. The content trace now reads `og:title` and `og:description`.
+
+The image: the first screen at 1200 by 628 CSS pixels (1.91:1), device
+scale 2, so 2400 by 1256; reduced motion; fonts loaded and 2.5 s for the
+knot's first frame (`preview15.js`, scratchpad; the recipe in
+`standing-checks.md`, "The preview image"). 1,244,041 bytes, under
+LinkedIn's 5 MB. It shows the page's dark first screen: the page's own
+default, light emulation notwithstanding.
+
+Gate proof: `gate_tests15.py`, every gate rerun in a scratch clone of the
+branch, **79 of 79**, 11:51:14Z to 11:58:05Z. New: the preview tags on the
+site's own origin pass; refused by gate G alone, `og:image` on another
+host, a canonical link on the site's own origin, the origin in
+`og:see_also`, a tracker host in `og:url`; with the host check removed,
+the defeat gets through.
+
+## The standing checks, on the final page
+
+Each defeat first, one harness at a time, headless with its own
+profiles, 2026-11-04 12:08Z to 14:19Z: Tree at load in full mode matching the page without layout skipping in 32 of 32 loads, default mode adding no node in 32; keyboard 90 of 90; axe-core 0 violations in 12 cells; measured contrast 0 elements below AA in light and dark at 360 and 1366 px, with 17 and 105 over a gradient unmeasured; the layout check clean at fourteen widths, scripts on and off; no word of a timeline card broken from 1060 to 1920 px; the reading marker never over a label; anchors 150 of 150; no joined words at 360 and 1366 px in Chrome 156 and Edge 155; Lighthouse at light load (825 MB free, CPU 30.1% over the minute before, 14:13Z; Chrome 157; Waqas's own Chrome open, 20 processes): median LCP 2,260 ms, CLS 0.0001, TBT 74 ms; main's page 2,258 ms, 0.0001, 59 ms; the defeat fails (TBT 2,070 ms). A set at medium load before it (447 MB free, 12:55Z) failed both pages alike, TBT 713 and 580 ms, and is recorded as such.
+
+Defeats, each failing: the tree check against the page at 0403c68 (4 of
+4 loads differ) and a planted Intro paragraph (4 of 4 loads add nodes);
+keyboard, the late-focus build, 58 of 60; axe, planted faint text and an
+unlabelled image, all 12 cells; anchors, the rule without its undo, 74 of
+132; layout, the stranded button (78f13ce's parent, 13 findings), the
+overlap at "592" (11) and the timeline to scale from 960 px (7); words,
+that copy at 980 px; the marker, fd73058's script; contrast, a planted
+1.48:1 span; joins, the page at 6812c4f, 59 and 58. Keyboard counts 90,
+not 60, and anchors 150, not 132: the three new projects add their
+panels and targets.
+
+A fresh clone of the branch builds byte-identical to its commit. The
+page grows from 77,163 to 97,394 bytes, 14,941 to 19,039 gzipped.
+
+[VERIFIED] Brief 14 live: at 2026-11-04T12:56:43Z, 24 of 24 live files
+equal to main at d48ebbe.
+
+## Errors this seat made, round 11
+
+- The layout check's first defeat run used `btnD`, a scratch copy of the
+  page after the fix it is meant to defeat; it passed, 0 findings. Found
+  because a defeat that passes is wrong; the page at 78f13ce's parent,
+  rebuilt from git, gave 13 findings as in round 9.
+- A Python script sent through a bash heredoc wrote `build.py`'s PNG
+  signature as raw control bytes, breaking the build; caught by the
+  build's own failure, rewritten from a file. The trap is in the handoff.
+- The gate harness of round 10 pushed `main` from a clone of this branch
+  and failed at setup; the clone now points `main` at the branch's head.
+- The contrast and joins defeats' counts were first cut by `tail -1`,
+  and rerun to read them.
