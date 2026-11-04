@@ -71,31 +71,32 @@
     ]
   },
   {
-    "id": "autonomous-research-concierge",
+    "id": "chatgpt-deep-research-provenance-case-study",
     "lane": "builds",
     "tier": 2,
-    "title": "Autonomous Research Concierge",
-    "start": "2025-11",
-    "end": "2025-12",
-    "source": "master-cv:projects/autonomous-research-concierge",
+    "title": "ChatGPT Deep Research Provenance Case Study",
+    "start": "2026-10",
+    "end": "2026-10",
+    "source": "master-cv:research/chatgpt-deep-research-provenance-case-study",
     "stack": [
       "Python",
-      "Google ADK",
-      "Docker"
+      "GitHub Actions",
+      "browser developer tools"
     ],
-    "layer2": "Multi-agent research pipeline, containerised and deployed on Railway.",
-    "layer1": "Engineered a sequential-parallel-loop agent architecture: three live-search agents fan out concurrently, and a draft-critique-validate loop exits on an explicit escalation signal rather than a timeout.",
-    "detail": "Multi-agent research pipeline, containerised and deployed on Railway.",
+    "layer2": "Black-box investigation of a production AI research agent: ChatGPT Deep Research runs that displayed \"Research completed\" with 0 searches and 0 citations while still producing substantive, source-specific reports. I conceived and ran the investigation, made every evidence, claim and publication decision, refined the design with ChatGPT as my architecture chat and delegated the supporting code and documentation to Codex for speed.",
+    "layer1": "Reduced research briefs of 974 to 1,757 words to a 55-word canary that tells the system to report failure if it retrieves no sources.",
+    "detail": "Black-box investigation of a production AI research agent.",
     "proof": [
       {
         "label": "GitHub",
-        "url": "https://github.com/Waqas01CP/Autonomous-Research-Concierge"
+        "url": "https://github.com/Waqas01CP/chatgpt-deep-research-provenance-case-study"
       }
     ],
     "bullets": [
-      "Engineered a <strong>sequential-parallel-loop agent architecture</strong>: an intent synthesiser compacts chat history into a research directive, three live-search agents fan out concurrently, and a draft-critique-validate loop exits on an explicit escalation signal rather than a timeout.",
-      "Implemented <strong>per-call session isolation</strong>. A fresh session per pipeline invocation keeps raw search results, internal drafts, and critique logs out of the user's conversation context, a production concern absent from typical multi-agent demos.",
-      "Deployed a <strong>deterministic code-based keyword filter</strong> ahead of all tool access, making the security guardrail structurally <strong>bypass-resistant</strong>, with a deliberate worker/critic model split for quality-cost balance."
+      "Preserved a baseline of 9 earlier runs that had displayed <strong>2,835 searches and 477 citations</strong>, then reduced research briefs of 974 to 1,757 words to a <strong>55-word canary</strong> that tells the system to report failure if it retrieves no sources. The canary still completed at 0/0 on four accounts (one Plus, three Free) across desktop web, the iOS app and macOS Safari, and again three days later; all 14 runs since the baseline displayed zero of both.",
+      "Instrumented a fresh reproduction with browser diagnostics and captured the client's own warning that the report \"contains citation markers but no content references\". Checked the run's policy figures against the central banks' official sites: it reported a Bank of Canada rate change published hours earlier, so a zero counter is no evidence that current information failed to reach it. Kept every conclusion at the level of the evidence: no root-cause or retrieval claim, and earlier public reports credited.",
+      "Found a separate failure: two completed reports silently covered 1 of 3 and 1 of 4 requested programmes, which is why I treat completion, provenance and scope coverage as separate acceptance criteria for research agents. Published a privacy-bounded case study from a fresh repository, every evidence file checked by SHA-256 in GitHub Actions against an exact manifest, and gave OpenAI Support the sanitized network capture it requested.",
+      "Retired my own natural-language checker after reviews found it passing cases that were not clean, and replaced it with deterministic checks on explicit inputs, kept out of the public claim."
     ]
   },
   {
@@ -130,6 +131,103 @@
       "Ran the build through a <strong>four-role AI-native development method</strong> of my own design. I bring the blueprint, the architecture and the engineering trade-offs, and set the standards every role works to; an architecture chat refines the design with me into decisions; Claude Code implements to briefs I approve; a fresh read-only reviewer audits cold; and every brief and audit comes back to me to decide. Six independent audits, <strong>55 decision records</strong>, 23 session logs and 122 commits on main between 1 Sep and 2 Oct 2026 UTC.",
       "Audited it by using it and caught what the coding agents missed: an age rule built so admitted rows could vanish before I had seen them, rebuilt the same day; and an aggregator endpoint rejected on a test of the wrong parameter, whose re-measurement, prompted by my question, took the feed from 93% irrelevant to every relevant posting, 420 of 420 stored. I approved a title-normalisation change only on a before-and-after comparison of every verdict, and of 1,458 titles exactly one changed, the one intended. I judged that postings reappearing under years-old dates were harvesting CVs, and the measurement afterwards found that 60 of the 83 Greenhouse postings already a week old at first sight were one role, reposted city by city since 2024. When an audit found a deletion path that would have erased my record of roles applied to, I set aside the proposed fix and designed my own.",
       "Covered by <strong>754 tests and 410 recorded mutations</strong> that deliberately break the code to prove the tests notice, with 10,381 lines of tests against 6,636 lines of source; the suite fails if a code change leaves any recorded mutation unable to run, and architectural rules are guarded by fitness functions in the ordinary suite. A production save failure on 27 Sep 2026 was found in the morning run log, reproduced, fixed and pushed before the next run, with the postings it missed recovered by the next walk."
+    ]
+  },
+  {
+    "id": "portfolio-gallery",
+    "lane": "builds",
+    "tier": 2,
+    "title": "Portfolio Gallery: Portfolio Site Template and Design Gallery",
+    "start": "2026-10",
+    "end": "present",
+    "source": "master-cv:projects/portfolio-gallery",
+    "stack": [
+      "Python",
+      "Jinja2",
+      "GitHub Actions",
+      "GitHub Pages",
+      "GraphQL"
+    ],
+    "layer2": "A public, MIT-licensed template anyone can copy to publish a one-page portfolio site on GitHub Pages without installing anything: they write their content once, pick one of 17 designs, 10 of them made for professions, and every claim on the site is checked against their own CV; a copy clears the project's own files out of itself on its first run. I started it and maintain it on my own account: I design the system, set its standards, make the decisions and delegate implementation to Claude Code for speed.",
+    "layer1": "Cut a check of every page from 75.4 minutes on one runner to about 5 by sharing it across parallel jobs.",
+    "detail": "A public, MIT-licensed template anyone can copy to publish a one-page portfolio site on GitHub Pages without installing anything.",
+    "proof": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Waqas01CP/portfolio-gallery"
+      },
+      {
+        "label": "Gallery",
+        "url": "/portfolio-gallery/"
+      }
+    ],
+    "bullets": [
+      "Designed it to take strangers' pull requests safely: designs are CSS only; a Content Security Policy in every page refuses requests to other sites; a scope check runs from the default branch, so a pull request cannot change how it is checked; contributors' screenshots are redrawn and never served as uploaded, and their sites are fetched but never rendered; every workflow action is pinned to a full commit SHA, the Python dependencies to the SHA-256 of every file PyPI serves, and npm runs with install scripts disabled.",
+      "Runs accessibility (<strong>axe-core</strong>) and speed (<strong>Lighthouse</strong>) checks in GitHub Actions on every pull request. Cut a check of every page from <strong>75.4 minutes</strong> on one runner to <strong>about 5</strong> by sharing it across parallel jobs, and set the rule that a pull request is checked only on the pages it alters, with every page rechecked each Monday. The required check cannot pass by being skipped: a verdict job fails unless every part passed or was skipped by plan, proven on a failed, a timed-out and a wrongly skipped part.",
+      "Proved every check able to fail: <strong>178 file defeat cases</strong> and <strong>24 browser cases</strong>, each set with planted controls that must pass. Speed is judged so a noisy shared runner is not mistaken for a slow page: blocking time over its goal is reported, and fails only above 600 ms.",
+      "Followed my own setup as a stranger would and turned each friction into a fix a check now guards: resizing a screenshot in Paint became any snip; a copy's first deploy, which failed red while GitHub Pages was off, now ends with a notice saying how to turn it on; the screenshot overlay gained a close button; and when I judged the designs too alike, they became designs per profession, each shown with its own invented sample person and held to a measured distinctness bar of 60 to 75 percent on box placement rather than judged by eye.",
+      "Documented it for strangers and their AI tools: a README that routes each visitor to what they came to do and carries a self-contained prompt for their own AI assistant, checked against the repository by a tool so it cannot drift; an AGENTS.md for coding agents; and versions of both that every copy receives.",
+      "Run as maintainer: a ruleset requiring a pull request and passing checks for every change to main, CODEOWNERS review, issue forms, a Code of Conduct and private vulnerability reporting. Likes are counted from GitHub Discussions through its GraphQL API, counting only the workflow's posts and mine. <strong>21 decision records</strong>, each assumption carrying its basis; three found resting on memory were sourced or measured within the day, one by my own test of how GitHub counts reactions."
+    ]
+  },
+  {
+    "id": "portfolio-site",
+    "lane": "builds",
+    "tier": 2,
+    "title": "Portfolio Site",
+    "start": "2026-09",
+    "end": "present",
+    "source": "master-cv:projects/portfolio-site",
+    "stack": [
+      "Python",
+      "Jinja2",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "GitHub Pages"
+    ],
+    "layer2": "My one-page portfolio, carrying the evidence a one-page CV cannot hold. I architected it, found the six reference sites its look comes from, prototyped it in Claude Design and delegated implementation to Claude Code for speed.",
+    "layer1": "Every claim on the page traces to my master CV, checked by a tool in both directions before any content change.",
+    "detail": "My one-page portfolio, carrying the evidence a one-page CV cannot hold.",
+    "proof": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Waqas01CP/waqas01cp.github.io"
+      }
+    ],
+    "bullets": [
+      "Every claim on the page traces to my master CV, checked by a tool in both directions before any content change. A small Python generator builds one page with every word in the first response, readable without scripts, and refuses content with a missing source or proof link, projects out of rank order, or shortened text that is not a cut of its source. <strong>Seven repository gates</strong>, run by git hooks, refuse a commit that adds a cookie, tracking, a third-party request or anything private.",
+      "Designed its timeline: a vertical spine with lanes either side, newest work at the top so a reader meets the latest first, and on a phone one spine carrying every lane, chosen after viewing both prototype versions on my phone.",
+      "Tested it with a screen reader: my <strong>NVDA</strong> run found words read as one, such as \"Dec 20255-Day\", which every automated check had passed; I had them fixed with hidden spaces and confirmed the fix by ear the same day. axe-core found 0 violations in 12 combinations of width, theme and panel state, in Chrome and in Edge, and keyboard checks passed 60 of 60.",
+      "Measures performance so a slow machine is not mistaken for a slow page: each Lighthouse set runs the page, the page before the change and a control with a deliberate 600 ms script that must fail, five runs each, interleaved. Live median of <strong>1.7 s</strong> largest paint against a 2.5 s goal (Oct 2026). Had the reading-layers proposal audited before it was recorded rather than accepted as proposed; the audit changed four things. <strong>12 decision records</strong>, each assumption carrying its basis."
+    ]
+  },
+  {
+    "id": "autonomous-research-concierge",
+    "lane": "builds",
+    "tier": 2,
+    "title": "Autonomous Research Concierge",
+    "start": "2025-11",
+    "end": "2025-12",
+    "source": "master-cv:projects/autonomous-research-concierge",
+    "stack": [
+      "Python",
+      "Google ADK",
+      "Docker"
+    ],
+    "layer2": "Multi-agent research pipeline, containerised and deployed on Railway.",
+    "layer1": "Engineered a sequential-parallel-loop agent architecture: three live-search agents fan out concurrently, and a draft-critique-validate loop exits on an explicit escalation signal rather than a timeout.",
+    "detail": "Multi-agent research pipeline, containerised and deployed on Railway.",
+    "proof": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Waqas01CP/Autonomous-Research-Concierge"
+      }
+    ],
+    "bullets": [
+      "Engineered a <strong>sequential-parallel-loop agent architecture</strong>: an intent synthesiser compacts chat history into a research directive, three live-search agents fan out concurrently, and a draft-critique-validate loop exits on an explicit escalation signal rather than a timeout.",
+      "Implemented <strong>per-call session isolation</strong>. A fresh session per pipeline invocation keeps raw search results, internal drafts, and critique logs out of the user's conversation context, a production concern absent from typical multi-agent demos.",
+      "Deployed a <strong>deterministic code-based keyword filter</strong> ahead of all tool access, making the security guardrail structurally <strong>bypass-resistant</strong>, with a deliberate worker/critic model split for quality-cost balance."
     ]
   },
   {
@@ -225,8 +323,8 @@
     "title": "BE Software Engineering",
     "org": "Karachi Institute of Economics and Technology (KIET), Karachi",
     "org_short": "KIET",
-    "start": "2022-09",
-    "end": "2026-08",
+    "start": "2022-10",
+    "end": "2026-07",
     "date_style": "full",
     "source": "master-cv:education/kiet",
     "no_proof": "ADR-0010",
