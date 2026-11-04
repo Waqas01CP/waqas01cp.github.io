@@ -14,6 +14,19 @@
 <meta name="as-of" content="{{ as_of }}">
 <title>{{ site.name }}</title>
 <meta name="description" content="{{ site.headline|join(' | ') }}">
+{# The link preview, for LinkedIn and others: the same title and description,
+   master text. The full addresses are the exception in build.py's
+   SITE_ORIGIN; crawlers fetch the image, visitors never do. #}
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ site.name }}">
+<meta property="og:description" content="{{ site.headline|join(' | ') }}">
+<meta property="og:url" content="{{ origin }}/">
+{% if preview %}
+<meta property="og:image" content="{{ preview.url }}">
+<meta property="og:image:width" content="{{ preview.width }}">
+<meta property="og:image:height" content="{{ preview.height }}">
+<meta name="twitter:card" content="summary_large_image">
+{% endif %}
 <meta name="color-scheme" content="light dark">
 {# An empty icon, so the browser does not ask the server for one. #}
 <link rel="icon" href="data:,">

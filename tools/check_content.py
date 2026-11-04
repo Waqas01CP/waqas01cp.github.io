@@ -179,7 +179,8 @@ class Blocks(HTMLParser):
             self._pieces.append("")
         for name in TEXT_ATTRIBUTES:
             self._attribute(attrs.get(name) or "")
-        if tag == "meta" and attrs.get("name") == "description":
+        if tag == "meta" and (attrs.get("name") == "description" or attrs.get("property")
+                              in ("og:title", "og:description")):
             self._attribute(attrs.get("content") or "")
         if tag == "a" and attrs.get("href"):
             self.hrefs.append(attrs["href"])

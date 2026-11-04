@@ -168,3 +168,20 @@ HTML served uncompressed raised the LCP median by 150 ms, and the same
 bytes added as a comment did the same; served gzip-compressed, as GitHub
 Pages serves it, LCP did not move. Measure size-sensitive changes
 compressed as well.
+
+## The preview image
+
+`src/static/img/preview.png` is the picture a link preview shows, such as
+LinkedIn's (Brief 15, Addendum, 2026-11-04). It is the page's first
+screen: headless Chrome with its own profile, a 1200 by 628 CSS pixel
+window (1.91:1) at device scale 2, so 2400 by 1256 pixels; reduced motion,
+so nothing is caught mid-move; fonts loaded, then 2.5 s for the knot's
+first frame; the top 1200 by 628 of the page. LinkedIn asks for at least
+1200 by 627 and at most 5 MB. The first one is 1,244,041 bytes.
+
+Remake it whenever the first screen changes: build, serve the build
+locally, take the picture with `preview15.js` (session scratchpad) or any
+headless browser on those settings, and copy it over the old file. The
+build reads its size from the PNG's own header into `og:image:width` and
+`og:image:height`, and refuses a file that is not a PNG, so the tags cannot
+go stale. Visitors never load it; only a crawler fetching the preview does.

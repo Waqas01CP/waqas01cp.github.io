@@ -51,10 +51,20 @@ REQUIREMENTS = ROOT / "requirements.txt"
 CV_FILE = ROOT / "cv" / "Waqas_Sharif_CV.pdf"
 CV_URL = "/cv/Waqas_Sharif_CV.pdf"
 
-# This site's own host. Nothing in the output may point at it absolutely:
+# This site's own host. Nothing in the output points at it absolutely but the
+# link preview below:
 # internal links are root-relative so a later custom domain is a DNS change,
 # not a rewrite (ADR-0002).
 SITE_HOST = "waqas01cp.github.io"
+# The one place the full address is written: the link preview's og:url and
+# og:image, which crawlers need absolute (Waqas's exception of 2026-11-04,
+# Brief 15, Addendum; gate G allows it in those tags only). A custom domain
+# changes this line.
+SITE_ORIGIN = f"https://{SITE_HOST}"
+# The preview image, a snip of the page's first screen; the tags render only
+# while it exists (docs/reference/standing-checks.md, The preview image).
+PREVIEW_FILE = STATIC_SRC / "img" / "preview.png"
+PREVIEW_URL = "/static/img/preview.png"
 
 # Timeline scale from ADR-0003: four layout units per month, the axis
 # running from the as-of month at the top down to January 2024 (Changes,
@@ -734,6 +744,18 @@ def check_environment() -> None:
             raise BuildError(f"{name} {installed} is installed but requirements.txt pins {pinned}")
 
 
+def preview_image() -> dict | None:
+    """The preview image's address and size, read from the PNG's own header
+    so the tags cannot go stale when the image is remade."""
+    if not PREVIEW_FILE.is_file():
+        return None
+    head = PREVIEW_FILE.read_bytes()[:24]
+    if head[:8] != b"\x89PNG\r\n\x1a\n" or head[12:16] != b"IHDR":
+        raise BuildError(f"{PREVIEW_FILE.relative_to(ROOT).as_posix()} is not a PNG")
+    return {"url": SITE_ORIGIN + PREVIEW_URL, "width": int.from_bytes(head[16:20], "big"),
+            "height": int.from_bytes(head[20:24], "big")}
+
+
 def render(context: dict) -> str:
     # Imported here, after check_environment, so a build outside the venv
     # reports that rather than a bare ImportError.
@@ -785,6 +807,8 @@ def main(argv: list[str] | None = None) -> int:
             "certifications": by_lane["certifications"],
             "timeline": timeline,
             "cv": CV_URL if CV_FILE.is_file() else None,
+            "origin": SITE_ORIGIN,
+            "preview": preview_image(),
         }
         html_out = render(context)
     except BuildError as error:
