@@ -73,7 +73,9 @@ AXIS_START = "2024-01"
 UNITS_PER_MONTH = 4
 
 # Lane keys and the text each carries (ADR-0003). Open source stays in the
-# data model, but nothing renders in it until it holds a merged pull request.
+# data model, but nothing renders in it until his first code contribution to
+# someone else's project merges, or a project of his has real adoption
+# (ADR-0003 Changes, 2026-11-04; ADR-0013).
 LANE_LABELS = {
     "builds": "Builds",
     "opensource": "Open source",

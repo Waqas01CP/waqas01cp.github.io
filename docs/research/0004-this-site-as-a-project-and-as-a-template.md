@@ -241,6 +241,18 @@ PolyForm Noncommercial does not. MIT lets anyone use, change, share and
 sell it, and keeps only his copyright notice in every copy; visible credit
 can be asked for, not required.
 
+## Note, 2026-11-04: decision 1 taken the other way
+
+Added by the Brief 15 implementing session. The evidence above stands as
+gathered; this note records what was decided after it. Before 2026-10-20
+Waqas decided this site would not go on his master CV as a project. On
+2026-10-31 he reversed that: this site and portfolio-gallery are in the
+master as projects, and so on the site (ADR-0013, which supersedes
+ADR-0008; `docs/reference/completed.md`). Decision 5 also has its
+answer: his listing pull request on emmabostian/developer-portfolios
+(#4350) is not a code contribution, and appears nowhere in the master
+(ADR-0003 Changes, 2026-11-04).
+
 ## Not verified
 
 - Whether a repository created from a template shows any visible link to

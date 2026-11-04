@@ -45,11 +45,12 @@ Adding a topic is itself a decision.
 | [0005](0005-three-reading-layers.md) | Three reading layers for every item | Superseded by 0010 |
 | [0006](0006-python-generator-build.md) | Build with a small Python generator | Accepted |
 | [0007](0007-repository-gates.md) | The repository gates | Accepted |
-| [0008](0008-sections-tiers-and-depth.md) | Sections, project tiers, and where depth lives | Accepted |
+| [0008](0008-sections-tiers-and-depth.md) | Sections, project tiers, and where depth lives | Superseded by 0013 |
 | [0009](0009-performance-goals.md) | Performance goals instead of a page-weight figure | Accepted |
 | [0010](0010-reading-layers.md) | Reading layers, consolidated | Accepted, supersedes 0005 |
 | [0011](0011-visual-system.md) | The visual system | Accepted |
 | [0012](0012-not-licensed-for-reuse.md) | This repository is not licensed for reuse; reuse goes through a separate one | Accepted |
+| [0013](0013-sections-tiers-and-depth.md) | Sections, project tiers, and where depth lives, consolidated | Accepted, supersedes 0008 |
 
 ## Pending
 
@@ -68,7 +69,10 @@ Decisions identified but not yet concluded.
   credential link.
 - What each `tier` value renders. **Closed 2026-09-26**: tier controls order
   and prominence only, never which layers render. ADR-0005 Changes.
-- Page placement for the `opensource` lane. The `work` lane's section is
+- Page placement for the `opensource` lane. **Closed 2026-11-04 by ADR-0013**:
+  no open-source label, section or lane until Waqas's first code
+  contribution to someone else's project merges, or a project of his has
+  real adoption (his decision of 2026-10-31). The `work` lane's section is
   Work, and the degree (`band`) is the Education section, a line in the
   Intro and the timeline band, all ADR-0008 (Education since its Changes
   of 2026-10-02). The build fails if an item arrives in a lane

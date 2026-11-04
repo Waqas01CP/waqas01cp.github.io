@@ -45,6 +45,7 @@ Proof is a commit, a decision record or a log filename. Never a file path.
 | portfolio-gallery published; its reviews come through the architecture chat, not this seat | Decided | 2026-10-20 | Brief 11, the architecture chat |
 | Listing the site in emmabostian/developer-portfolios | [VERIFIED] by the operator | 2026-10-20 | His account through the architecture chat: pull request 4350, merged |
 | Whether this site goes on his master CV as a project (research 0004, decision 1) | Decided: no | 2026-10-20 | The operator, in the architecture chat, before 2026-10-20 |
+| Whether this site goes on his master CV as a project: **reversed**, it and portfolio-gallery are in the master and on the site as projects; the row above is history | Decided: yes | 2026-10-31 | The operator's statement of 2026-10-31 (Brief 15); ADR-0013 |
 | Lighthouse passes ADR-0009 on the role-wording page with the machine quiet: live LCP 1,670 ms, CLS 0, TBT 63 ms; locally 2,255 ms, 0, 42 ms; the 600 ms defeat fails | [VERIFIED] | 2026-10-19 | logs/2026-10-19-role-wording.md, round 2. Chrome 155; available memory 850 MB |
 | Brief 9's commits live, every live file equal to the build | [VERIFIED] | 2026-10-19 | 33bbff9 to bec7623, pushed by the operator; logs/2026-10-19-role-wording.md, round 2. 24 live files by SHA-256, at 19:57:34Z |
 | The master CV's role wording of 2026-10-18 on the page; the trace passing against it; no "seat" on the page | [VERIFIED] | 2026-10-19 | 33bbff9; logs/2026-10-19-role-wording.md. 378 blocks traced; three trace defeats, each exit 1 |

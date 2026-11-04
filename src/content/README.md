@@ -139,8 +139,9 @@ failing item by id, and exits non-zero. The previous output stays as it was.
 - A link to this site's own origin fails, in `proof` and inside bullets.
 - A duplicate `id` fails, and so does more than one item in the band.
 - An item whose lane has no page section fails. Today that is
-  `opensource`, which has no section until it holds a merged pull request
-  (ADR-0003, ADR-0008).
+  `opensource`, which has no section until his first code contribution
+  to someone else's project merges, or a project of his has real adoption
+  (ADR-0003 Changes, 2026-11-04; ADR-0013).
 - **Tier order**: in Projects, an item of a higher tier number above one of
   a lower fails, naming both, for example `item 'x' (tier 3) is above item
   'y' (tier 2)`. The build never sorts by tier.
