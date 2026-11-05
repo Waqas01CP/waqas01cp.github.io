@@ -189,8 +189,8 @@ what waits is listed here with its source, as of 2026-10-10, updated 2026-10-21:
 
 | What | Value | Date | Source |
 |---|---|---|---|
-| Hand-written source | `build.py` 831 lines; 3 tools, 1,097 lines; 12 templates, 527 lines; 1 stylesheet, 1,579 lines; 2 scripts, 649 lines; 2 content files, 650 lines | 2026-11-04 | `git ls-files`, `wc -l` |
-| Built page | `index.html` 97,394 bytes, 19,039 gzipped; stylesheet 52,780 and 12,489; `site.js` 21,841 and 6,992; `knot.js` 5,638 and 2,215; fonts 78,396 bytes; the CV PDF 58,302 bytes, one A4 page; the link-preview image 1,244,041 bytes, fetched by crawlers only | 2026-11-04 | `wc -c`; Python's gzip, level 6 |
+| Hand-written source | `build.py` 839 lines; 3 tools, 1,097 lines; 12 templates, 527 lines; 1 stylesheet, 1,579 lines; 2 scripts, 649 lines; 2 content files, 650 lines | 2026-11-04 | `git ls-files`, `wc -l` |
+| Built page | `index.html` 97,519 bytes, 19,051 gzipped; stylesheet 52,780 and 12,489; `site.js` 21,841 and 6,992; `knot.js` 5,638 and 2,215; fonts 78,396 bytes; the CV PDF 58,302 bytes, one A4 page; the link-preview image 1,244,041 bytes, fetched by crawlers only | 2026-11-05 | `wc -c`; Python's gzip, level 6 |
 | Live performance | Lighthouse 13.5.0, default mobile, median of five. At light load, Chrome 155, 2026-10-19: LCP 1,670 ms, CLS 0, TBT 63 ms (runs 280, 74, 63, 0, 11); 116,556 bytes transferred. At medium load, Chrome 155, 2026-10-21, the first audit's set: LCP 1,725 ms, CLS 0.031 (above 0 in 3 of 5 runs; the local copy 0 in 5 of 5; cause not tested), TBT 113 ms. ADR-0009 limits: 2,500 ms, 0.1, 200 ms; results compared only within a load level | 2026-10-21 | `logs/2026-10-19-role-wording.md`, Brief 10; `logs/audit/2026-10-21-first-audit.md` |
 | Accessibility, automated | axe-core 4.14.0: 0 violations in 12 cells (360 and 1366 px; light, device dark, switched dark; panels closed and open), in Chrome and in Edge | 2026-10-07 | Same log, rounds 1 to 2 |
 | Accessibility at load | The full-mode accessibility tree matches the page without layout skipping in 32 of 32 loads locally and 16 of 16 per browser on the live site | 2026-10-07 | Same log |

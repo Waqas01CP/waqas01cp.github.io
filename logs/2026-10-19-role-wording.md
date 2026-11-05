@@ -1288,3 +1288,64 @@ equal to main at d48ebbe.
   and failed at setup; the clone now points `main` at the branch's head.
 - The contrast and joins defeats' counts were first cut by `tail -1`,
   and rerun to read them.
+
+# Round 12, 2026-11-05 (UTC): the merge, the Post Inspector, Rahzaan's end date
+
+**The merge is live, LinkedIn's preview works, and its two notes are
+fixed on main for Waqas's push.** He merged Brief 15's pull request (#1,
+1ce1f0f) and ran LinkedIn's Post Inspector.
+
+## The merge, live
+
+[VERIFIED] At 2026-11-05T10:52:55Z, 25 live files (the page, everything
+under `static/`, the preview image among them, the CV PDF and the
+design-system draft) byte-identical to origin/main 1ce1f0f by SHA-256;
+the live PDF's MD5 940c028c2849960786df2599adb3e97a. Defeat: the same
+check against d48ebbe reports the four files Brief 15 changed
+(`Waqas_Sharif_CV.pdf`, `index.html`, `preview.png`, `site.css`).
+
+## The Post Inspector, his screenshot of 2026-11-05
+
+It showed the picture, the title "Waqas Sharif" and the address, with a
+warning, "The description should be at least 100 characters long" (the
+headline is 61), and "No author found". It also gave a publish date of
+9/17/2026, which the page does not state as one; the only match is the
+Job Aggregator's "since 17 Sep 2026", so LinkedIn appears to have taken
+it from the text (believed, not tested). Its "Type: Article" differs
+from the page's `og:type` of `website`; not investigated.
+
+Fixed (0f16c48), his choices of 2026-11-05: `og:description` is the
+summary's first sentence, master text, 141 characters, and the build
+refuses a first sentence under 100; an `author` tag carries `site.name`.
+The page's own description tag stays the headline. Trace 467 of 467.
+Defeats: a page copy with words the master lacks in `og:description`
+fails the trace (exit 1); a 21-character first sentence fails the build.
+
+## His decisions in the session
+
+- **Rahzaan ends in Aug 2026**, his decision of 2026-11-05. The master
+  says "Feb 2026 to Present", and the site states only what the master
+  does (scope floor line 1), so he chose the master first: the decision
+  goes to the architecture chat and the resume chat, and the site
+  follows by script once the master changes. Only the end date changes,
+  unless a line says the work goes on. Lines on the site, all master
+  text, that speak of Rahzaan in the present: the summary's "a deployed
+  AI career guidance platform maintained through", bullet 1's "the
+  platform is maintained through", bullet 5's "now my default method",
+  and the "Live app" link. The live case study at `/Rahzaan/` gives no
+  end date; it says "Deployed" and links the live app.
+- **Changes go to main again, for him to push**, as before Brief 15. The
+  brief's "on a branch from main; Waqas pushes and merges" is the
+  gallery's practice; this repository has never required it, and
+  CLAUDE.md does not.
+
+## Addendum 2, finished
+
+02 Working Method.md read end to end, and 03 New Project Setup.md; new
+blocks from them: 8.8's "one-line pointer"; 03's gates in CI and its
+missing rebuild gate; the CAPABILITIES template's example header, whose
+unquoted ": " YAML misreads (the pattern GitHub rejected here on
+2026-10-10). Change 6 reworded after section 5.2: a brief that names the
+record and the operator's approval may override a record, as Brief 15
+did. Not read in full: 01, `Adaptations\Client Projects.md`, the
+architecture chat's templates.

@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit d10c512, the last commit before this file's
-update, 2026-11-04T14:20Z, by the Brief 15 implementing session.** This is
+**Verified against commit 0f16c48, the last commit before this file's
+update, 2026-11-05T10:59Z, by the Brief 15 implementing session.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -43,6 +43,11 @@ the clearing in the task's row.
 Update the verified-against line whenever you touch this file.
 
 ## Headline
+
+**2026-11-05: Brief 15 merged and live; LinkedIn's preview works, its
+description lengthened to 141 characters and an author tag added, on
+main for the operator's push. Rahzaan's end date, Aug 2026, his decision,
+waits on the master.** Before that:
 
 **Brief 15, 2026-11-04, on the branch brief-15-projects: three new
 projects (the ChatGPT Deep Research case study, Portfolio Gallery,
@@ -178,7 +183,8 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
-| Brief 15's branch: his push, pull request and merge; then the live check, and LinkedIn's Post Inspector | The operator | Operator | 2026-11-04 |
+| The push of 0f16c48 and its records; then LinkedIn's Post Inspector again | The operator | Operator | 2026-11-05 |
+| Rahzaan ending Aug 2026 (his decision of 2026-11-05): the master first, then the site | The resume chat, through the architecture chat | Chat | 2026-11-05 |
 
 ## Known unverified
 
