@@ -609,7 +609,15 @@ def load_site(path: Path, items: list[dict]) -> dict:
     if foot:
         before, after = foot["text"].split(foot["link"]["text"])
         foot = {**foot, "before": before, "after": after}
-    return {**site, "highlights": highlights, "feature": feature, "footer": foot}
+    # The link preview's description: the summary's first sentence, master
+    # text, since LinkedIn asks for 100 characters and the headline has 61
+    # (Waqas's choice of 2026-11-05).
+    lead = re.match(r"(.+?\.)(?:\s|$)", site["summary"])
+    if not lead or len(lead.group(1)) < 100:
+        raise BuildError("site.json: the summary's first sentence must exist and be at least "
+                         "100 characters, for the link preview's description")
+    return {**site, "highlights": highlights, "feature": feature, "footer": foot,
+            "summary_lead": lead.group(1)}
 
 
 # Layout.

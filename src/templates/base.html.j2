@@ -14,12 +14,14 @@
 <meta name="as-of" content="{{ as_of }}">
 <title>{{ site.name }}</title>
 <meta name="description" content="{{ site.headline|join(' | ') }}">
-{# The link preview, for LinkedIn and others: the same title and description,
-   master text. The full addresses are the exception in build.py's
-   SITE_ORIGIN; crawlers fetch the image, visitors never do. #}
+{# The link preview, for LinkedIn and others: the page's title and the
+   summary's first sentence, master text. The full addresses are the
+   exception in build.py's SITE_ORIGIN; crawlers fetch the image, visitors
+   never do. #}
+<meta name="author" content="{{ site.name }}">
 <meta property="og:type" content="website">
 <meta property="og:title" content="{{ site.name }}">
-<meta property="og:description" content="{{ site.headline|join(' | ') }}">
+<meta property="og:description" content="{{ site.summary_lead }}">
 <meta property="og:url" content="{{ origin }}/">
 {% if preview %}
 <meta property="og:image" content="{{ preview.url }}">
