@@ -45,7 +45,7 @@ The audit is in More Information; it changed four things.
 ## Assumptions
 
 - A1. The three reader types above are the ones that matter, and no fourth
-  needs its own layer. **Sourced**: research 0001. The Masters admissions
+  needs its own layer. **Sourced**: research 0001. The academic
   reader is served by layer 3 with different emphasis rather than a layer of
   their own, and that mapping is **assumed, not evidenced**.
 - A2. Content inside a collapsed disclosure element is read the same as
@@ -181,7 +181,7 @@ decisions, trade-offs, what failed, and how each was verified.
   three are public, but the master CV carries no link for any of them and
   GitHub blocks automated listing. The URLs must be added to the master
   before those items can carry a proof link on the site.
-- The Masters reader's mapping to layer 3, per A1.
+- The academic reader's mapping to layer 3, per A1.
 - Whether a reader likes the site. This record cannot answer that.
 
 - Evidence: `docs/research/0001`, and `docs/research/0003` for why layer 1
@@ -203,3 +203,5 @@ decisions, trade-offs, what failed, and how each was verified.
 | 2026-10-02 | **Layers render only where the master gives material for them.** Layer 1 is always present; layer 2 and layer 3 appear only when the master entry holds more than the layer above shows. This replaces "every item on the site carries all three layers" in the row of 2026-09-26; tier still controls order and prominence only. **Where layer 3 exists, its disclosure control is named for its item**, so no two controls share a name. | Decided by the operator 2026-10-02: not every project is large enough to need depth. WordPy has one master bullet and a certificate has none, so a fixed third layer would repeat layer 1 or stand empty. The naming follows from the accessibility-tree test below: a control's accessible name is its summary text, so identical summaries are indistinguishable in a screen reader's list of controls. |
 | 2026-10-02 | A2's assistive-technology half is **partly verified**. In headless Chromium, keyboard only, the disclosure is exposed with its name and collapsed state, Tab reaches it, Enter expands it and its text enters the accessibility tree, Space collapses it. The speech half is **deferred to the styled site** and must pass before that site replaces the unstyled one: `docs/deferred/screen-reader-speech-test.md`. That replaces Confirmation's "before the first content page ships", which the live page had already passed. | Run by the chat 2026-10-02 against `9971416`. Styling can change what a browser exposes, so speech heard on the unstyled page would have to be heard again. Deferral decided by the operator 2026-10-02. |
 | 2026-10-03 | **Superseded by ADR-0010**, which carries every rule still in force, as amended, plus the operator's decision of 2026-10-03 that HubIT, PAC Kamra and the degree carry no verification route. | This table reached eight rows, the supersession trigger in the operator's Decision Record Standard. This row records the supersession and does not count toward the eight. |
+
+**Note, 2026-11-09, outside the table.** A1 and "What the audit did not resolve" call the second audience the academic reader, at the operator's decision of 2026-11-03 (Brief 16). This is wording only: the record stays superseded by ADR-0010, nothing in it is amended, and no row is added, because this table belongs to a record in force.

@@ -18,7 +18,7 @@ The master CV's dated items are uneven in both dimensions. Six of eight fall bet
 
 Entry length is uneven too. Rahzaan carries nine bullets in the master; WordPy carries one. Counted from the master CV, read 2026-09-23. A uniform grid puts a tall card beside a nearly empty one.
 
-The site serves employers first and Masters admissions readers second, from one version.
+The site serves employers first and academic readers second, from one version.
 
 ## Decision Drivers
 
@@ -55,7 +55,7 @@ We will not build a timeline view. **Reversed 2026-09-23 by ADR-0003. See Change
 - Positive: no timeline library to load, test, or give a text equivalent for accessibility.
 - Positive: uneven entry length is absorbed by ranking rather than fought inside a uniform grid.
 - Negative: the reader loses an at-a-glance view of when work happened and where it overlapped, which is the one thing the CV also fails to show.
-- Negative: one importance order must serve both employers and Masters readers, and what counts as a main project may differ between them.
+- Negative: one importance order must serve both employers and academic readers, and what counts as a main project may differ between them.
 - Neutral: which projects are main, which are secondary and which are omitted is not decided here, nor is the full section list.
 
 ### Confirmation
@@ -93,7 +93,7 @@ We will not build a timeline view. **Reversed 2026-09-23 by ADR-0003. See Change
 - Evidence: `docs/research/0001-how-hiring-readers-read-candidate-material.md`.
 - Deferred, with its reopen trigger: `docs/deferred/projects-timeline.md`.
 - Not decided here, and still open: whether each project entry carries a visible date, which would keep recency without a timeline.
-- Revisit if: the project count grows until chronology matters to readers, or evidence shows Masters readers need a different order from employers.
+- Revisit if: the project count grows until chronology matters to readers, or evidence shows academic readers need a different order from employers.
 
 ## Changes
 
@@ -103,3 +103,4 @@ We will not build a timeline view. **Reversed 2026-09-23 by ADR-0003. See Change
 | 2026-09-26 | Assumption A2 no longer names the master CV's path inside the operator's private vault. The basis is unchanged: still measured, still from the master, still read 2026-09-23. | This repository is public and CLAUDE.md forbids pointing at a private location. The chat wrote that rule and breached it in three files: CLAUDE.md, which it caught itself, this record, which the implementing seat caught, and README.md, which the seat caught and fixed in a commit of its own. The path remains in pushed history, which the operator has accepted as not worth a history rewrite. |
 | 2026-09-26 | Correction to the row above: the chat's breach was **seven pointers in six files**, not three files. The seat's scan of every commit found all seven. Beyond the three files named above, they were a second pointer in README.md and one each in STATE.md, briefs/README.md and logs/README.md, all naming the Working Method or its templates. All are out of the working tree. | The row above was written from the chat's recollection before the scan ran. Left in place and corrected here rather than rewritten, because a Changes table is a history. |
 | 2026-09-26 | Extended by ADR-0008, which closes the two items this record left open: the full section list and which projects are main, secondary and omitted. None of this record's rules is reversed. | This record said "including projects, certifications and skills" and never closed the list, and the build now refuses an item in a lane with no section. |
+| 2026-11-09 | Context, Consequences and More Information call the second audience academic readers. The rules and the reasoning are unchanged. | The operator's decision of 2026-11-03 (Brief 16). |

@@ -9,9 +9,8 @@ deliberately, and state your reasoning for the typeface, the colour and any
 
 ## Audience
 Hiring engineers and engineering managers assessing a candidate for agentic
-AI and LLM reliability work. Masters admissions readers second. Technical,
-skimming first and reading deeply second, and distrustful of anything that
-looks marketed at them.
+AI and LLM reliability work. Technical, skimming first and reading deeply
+second, and distrustful of anything that looks marketed at them.
 
 ## Goal
 A polished, current site that makes dense, evidence-heavy content a

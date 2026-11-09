@@ -41,7 +41,7 @@ response. An interviewer wants the detail a recruiter skips.
 ## Assumptions
 
 - A1. Three reader types matter: the AI summariser, the skimming recruiter,
-  and the interviewer. **Sourced**: research 0001. The Masters admissions
+  and the interviewer. **Sourced**: research 0001. The academic
   reader is served by layer 3 with different emphasis; that mapping is
   **assumed, not evidenced**, carried from ADR-0005.
 - A2. Content inside a collapsed disclosure is read the same as visible
@@ -155,3 +155,4 @@ tier rather than sorting by it.
 | Date | Change | Why |
 |---|---|---|
 | 2026-10-07 | **A2's speech half verified; the deferred speech test is closed.** NVDA 2026.2 in Chrome, on the live styled site at eaee932: each "In depth" control spoken with its item's name and collapsed state; Enter spoken as expanded, and reading continued into layer 3; Close returned focus, spoken collapsed; all five, each named differently. The first run, on 6812c4f, found words run together between separately laid-out pieces, such as "592automated"; fixed in c97b99e before the passing run. The test ran after the styled site went live: the operator pushed it on 2026-10-07 at 10:25:54Z, which he confirmed on 2026-10-10, so the deferral's trigger passed unmet. | The operator's report of what he heard, confirmed on asking; his copied Speech Viewer text shows content and names, not states. Report 5, rounds 3 and 5; `logs/2026-10-07-tree-parity.md`. |
+| 2026-11-09 | A1 calls the second audience the academic reader. The mapping to layer 3 is still assumed, not evidenced. | The operator's decision of 2026-11-03 (Brief 16). |

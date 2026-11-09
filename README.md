@@ -11,7 +11,7 @@ served at the domain root. ADR-0002.
 
 Every job CV became one page on 2026-09-21, so most of the evidence in the
 master CV has nowhere else to live. This site is where it goes. It serves
-employers first and Masters admissions readers second, from one version.
+employers.
 
 **The styled site is live,** with every item from the master CV. A Python
 generator renders one page in eight sections from two structured content
@@ -34,7 +34,7 @@ Pick the row that fits why you are here, and read in that order.
 
 | You are | Read, in this order |
 |---|---|
-| Reviewing his work, as an employer or admissions reader | The live site; then `CAPABILITIES.md`, everything the site is and does in one file; then `docs/decisions/README.md`, for why each choice was made |
+| Reviewing his work, as an employer or anyone else assessing it | The live site; then `CAPABILITIES.md`, everything the site is and does in one file; then `docs/decisions/README.md`, for why each choice was made |
 | Checking a claim on the site | `CAPABILITIES.md`, "Where the evidence lives"; then `docs/reference/commands.md`, the content trace, which ties every line on the page to his master CV |
 | Changing the content or the code | `CLAUDE.md`, the rules and the reading order; `STATE.md`; `src/content/README.md`; `docs/reference/commands.md`; `docs/reference/gates.md`; `docs/reference/standing-checks.md` |
 | An AI agent working in this repository | `CLAUDE.md` first (`AGENTS.md` points there, for agents that read only that name): it holds the authority order, the scope floor, the rules and the reading order. Then follow its reading order. `MAP.md` lists every documented file with what it is for; open files from it rather than reading the folders |

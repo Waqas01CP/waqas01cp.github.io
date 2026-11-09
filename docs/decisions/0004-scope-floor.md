@@ -38,7 +38,7 @@ operator closed the third on 2026-09-25.
 
 ## Assumptions
 
-- A1. The readers are employers first and Masters admissions readers second,
+- A1. The readers are employers first and academic readers second,
   and neither needs anything this floor excludes. **Stated** by the operator
   2026-09-22 as the site's purpose. The first half is his to state; **the
   second half is not evidenced and is the part most likely to be wrong.**
@@ -175,3 +175,7 @@ names its soft edges.
 - Revisit a line only by a record that removes it.
 
 ## Changes
+
+| Date | Change | Why |
+|---|---|---|
+| 2026-11-09 | A1 calls the second audience academic readers. Its basis, and the fourteen lines, are unchanged. | The operator's decision of 2026-11-03 (Brief 16). |

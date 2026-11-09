@@ -7,8 +7,7 @@ status: current
 # CLAUDE.md
 
 Personal portfolio website for Waqas Sharif. It carries the evidence a
-one-page CV cannot hold, for employers first and Masters admissions readers
-second, from one version.
+one-page CV cannot hold, for employers.
 
 The scope floor, runtime and conventions below are settled. **Commands
 records every command that exists: the environment, the build, the gates

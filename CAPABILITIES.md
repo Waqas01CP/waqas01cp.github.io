@@ -51,8 +51,8 @@ A one-page CV, made from the same master, downloads from the page.
 
 A one-page CV cannot hold the evidence behind its lines: what each project
 did, in what order, where to see it running, and how the claims were
-checked. The site carries that evidence for **employers first and Masters
-admissions readers second, from one version** (ADR-0001; `CLAUDE.md`).
+checked. The site carries that evidence for **employers** (ADR-0001;
+`CLAUDE.md`).
 
 Its shape follows how those readers read. Hiring readers rarely read a
 portfolio word for word and want curated work (NN/g survey of 204 UX
@@ -257,7 +257,7 @@ account.
 
 - **Designs the architecture, and the algorithms with it.** He defined
   what the site is for and whom it serves: the evidence a CV cannot hold,
-  employers first and Masters readers second, in dedicated sections with
+  employers, in dedicated sections with
   the main projects first and a curated set (ADR-0001, stated
   2026-09-22). The rules the site is built by are his records'
   (`docs/decisions/`); the architecture chat refines his design into them
