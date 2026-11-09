@@ -19,8 +19,8 @@ Sharif confirmed on 2026-10-10:
   the code. Added by Claude Code on 2026-10-10, under his word
   that readers relevant to this repository may be added.
 
-**Current as of 2026-11-04 UTC**, Claude Code's lane re-measured at the
-close of Brief 15. Written by Claude Code, in its lane: what the site
+**Current as of 2026-11-09 UTC**, Claude Code's lane re-measured at the
+close of Brief 16. Written by Claude Code, in its lane: what the site
 does and how, the stack, the qualities, the numbers, the limits, and the
 timeline's rows for what was built. **The architecture chat's sections**
 (the problem, where it is going, Waqas Sharif's role, the excluded list
@@ -111,14 +111,14 @@ what waits is listed here with its source, as of 2026-10-10, updated 2026-11-07:
 3. **The build.** `python build.py`, in the project's virtual environment
    with the pinned versions, which it checks before running. It refuses
    content with a missing source, a missing proof link (outside the three
-   items ADR-0010 names), projects out of tier order (ADR-0008), or
+   items ADR-0010 names), projects out of tier order (ADR-0013), or
    shortened text that is not a cut of its source. It resolves "present"
    to the month the page is as of and records it in the page. It renders
    12 Jinja2 templates into `index.html` and copies `static/`. When
    `cv/Waqas_Sharif_CV.pdf` exists, the Intro and the footer link to it.
    The footer carries his own one-paragraph account of how the site is
    built, the master's Portfolio Footer word for word, its address a
-   link to this repository (ADR-0008 Changes, 2026-10-15).
+   link to this repository (ADR-0013, carried from ADR-0008).
    On any content failure it writes nothing and exits 1. The output is
    committed.
 4. **The content trace.** `tools/check_content.py`, run before any content
@@ -173,7 +173,7 @@ what waits is listed here with its source, as of 2026-10-10, updated 2026-11-07:
 | Page | HTML, CSS and plain JavaScript; no framework. Three typefaces self-hosted under the SIL Open Font License |
 | Hosting | GitHub Pages on the free plan, from a public repository |
 | Repository checks | Git hooks running `tools/gates.py`; `tools/generate_map.py`; `tools/check_content.py` |
-| Browser checks, outside the repository | Headless Chrome 156 (154 until 2026-10-19, then 155) and Edge 155 through puppeteer-core 25.12.0, axe-core 4.14.0, Lighthouse 13.5.0; not dependencies of the repository (`docs/reference/standing-checks.md`) |
+| Browser checks, outside the repository | Headless Chrome 157 and Edge 157, read 2026-11-09 (earlier: Chrome 154 to 156, Edge 154 and 155), through puppeteer-core 25.12.0, axe-core 4.14.0, Lighthouse 13.5.0; not dependencies of the repository (`docs/reference/standing-checks.md`) |
 | Design | The visual system Waqas Sharif chose on 2026-10-05, with his changes, from a prototype built in Claude Design from his six reference sites (ADR-0011) |
 | AI tooling | Claude Code, to which he delegates implementation, for speed; a Claude chat that works his design into decision records and briefs |
 
@@ -197,16 +197,16 @@ what waits is listed here with its source, as of 2026-10-10, updated 2026-11-07:
 | What | Value | Date | Source |
 |---|---|---|---|
 | Hand-written source | `build.py` 839 lines; 3 tools, 1,097 lines; 12 templates, 527 lines; 1 stylesheet, 1,579 lines; 2 scripts, 649 lines; 2 content files, 650 lines | 2026-11-04 | `git ls-files`, `wc -l` |
-| Built page | `index.html` 97,519 bytes, 19,051 gzipped; stylesheet 52,780 and 12,489; `site.js` 21,841 and 6,992; `knot.js` 5,638 and 2,215; fonts 78,396 bytes; the CV PDF 58,302 bytes, one A4 page; the link-preview image 1,244,041 bytes, fetched by crawlers only | 2026-11-05 | `wc -c`; Python's gzip, level 6 |
+| Built page | `index.html` 97,516 bytes, 19,065 gzipped; stylesheet 52,780 and 12,489; `site.js` 21,841 and 6,992; `knot.js` 5,638 and 2,215; fonts 78,396 bytes; the CV PDF 58,312 bytes, one A4 page; the link-preview image 1,244,041 bytes, fetched by crawlers only | 2026-11-09 | `wc -c`; Python's gzip, level 6 |
 | Live performance | Lighthouse 13.5.0, default mobile, median of five. At light load, Chrome 155, 2026-10-19: LCP 1,670 ms, CLS 0, TBT 63 ms (runs 280, 74, 63, 0, 11); 116,556 bytes transferred. At medium load, Chrome 155, 2026-10-21, the first audit's set: LCP 1,725 ms, CLS 0.031 (above 0 in 3 of 5 runs; the local copy 0 in 5 of 5; cause not tested), TBT 113 ms. ADR-0009 limits: 2,500 ms, 0.1, 200 ms; results compared only within a load level | 2026-10-21 | `logs/2026-10-19-role-wording.md`, Brief 10; `logs/audit/2026-10-21-first-audit.md` |
 | Accessibility, automated | axe-core 4.14.0: 0 violations in 12 cells (360 and 1366 px; light, device dark, switched dark; panels closed and open), in Chrome and in Edge | 2026-10-07 | Same log, rounds 1 to 2 |
 | Accessibility at load | The full-mode accessibility tree matches the page without layout skipping in 32 of 32 loads locally and 16 of 16 per browser on the live site | 2026-10-07 | Same log |
 | Screen reader | NVDA 2026.2 in Chrome: each "In depth" control named and its state spoken, reading into the panel, focus returned; no words run together | 2026-10-07 | Same log, rounds 3 and 5; `docs/deferred/screen-reader-speech-test.md` |
 | Keyboard | 60 of 60 checks at 360 and 1366 px | 2026-10-07 | Same log |
-| Content | 17 items and 10 skills groups; 467 blocks of text traced to the master, 0 not; every master bullet (42), italic sentence (26), skills line, course and certificate, the summary, the Portfolio Intro and the Portfolio Footer on the page; 11 of 11 project links and the footer's link | 2026-11-04 | `tools/check_content.py` |
-| Checks on the page, locally | Tree at load in full mode matching the page without layout skipping in 32 of 32 loads, default mode adding no node in 32; keyboard 90 of 90; axe-core 0 violations in 12 cells; measured contrast 0 elements below AA in light and dark at 360 and 1366 px, with 17 and 105 over a gradient unmeasured; the layout check clean at fourteen widths, scripts on and off; no word of a timeline card broken from 1060 to 1920 px; the reading marker never over a label; anchors 150 of 150; no joined words at 360 and 1366 px in Chrome 156 and Edge 155; Lighthouse at light load (825 MB free, CPU 30.1% over the minute before, 14:13Z; Chrome 157; Waqas's own Chrome open, 20 processes): median LCP 2,260 ms, CLS 0.0001, TBT 74 ms; main's page 2,258 ms, 0.0001, 59 ms; the defeat fails (TBT 2,070 ms). A set at medium load before it (447 MB free, 12:55Z) failed both pages alike, TBT 713 and 580 ms, and is recorded as such | 2026-11-04 | `logs/2026-10-19-role-wording.md`, round 11 |
-| Decision records | 13, 2 superseded; 53 dated Changes rows | 2026-11-04 | `docs/decisions/` |
-| History | 122 commits, the first at 2026-09-25T21:42Z, to `d10c512`; 9 session logs, 33 rows in their index | 2026-11-04 | `git log`, `logs/` |
+| Content | 17 items and 10 skills groups; 467 blocks of text traced to the master, 0 not; every master bullet (42), italic sentence (26), skills line, course and certificate, the summary, the Portfolio Intro and the Portfolio Footer on the page; 11 of 11 project links and the footer's link | 2026-11-09 | `tools/check_content.py` |
+| Checks on the page, locally | Tree at load in full mode matching the page without layout skipping in 32 of 32 loads, default mode adding no node in 32; keyboard 90 of 90; axe-core 0 violations in 12 cells; measured contrast 0 elements below AA in light and dark at 360 and 1366 px, with 17 and 106 over a gradient unmeasured; the layout check clean at fourteen widths, scripts on and off; no word of a timeline card broken from 1060 to 1920 px; the reading marker never over a label; anchors 150 of 150; no joined words at 360 and 1366 px in Chrome 157 and Edge 157. Lighthouse, Chrome 157, Waqas's own Chrome open: at light load (876 MB free, CPU median 17.5% over the minute before, 16:31Z), median LCP 2,262 ms, CLS 0.0001, TBT 183 ms; the page before this change 2,261 ms, 0.0001, 156 ms; the defeat fails (TBT 2,350 ms). At medium load 24 minutes earlier (728 MB free, 16:07Z) both pages failed alike, TBT 258 and 231 ms, a fail under ADR-0009 for the live page as much as this one | 2026-11-09 | `logs/2026-10-19-role-wording.md`, round 13 |
+| Decision records | 13, 2 superseded; 59 dated Changes rows | 2026-11-09 | `docs/decisions/` |
+| History | 129 commits, the first at 2026-09-25T21:42Z, to `08d6101`; 9 session logs, 35 rows in their index | 2026-11-09 | `git log`, `logs/` |
 | Cost | None | 2026-10-10 | Free plans only |
 
 ## How it was built
@@ -256,6 +256,7 @@ architecture chat's.
 | 2026-11-04 | Three projects on the page and the timeline: the ChatGPT Deep Research Provenance Case Study, Portfolio Gallery and Portfolio Site; the timeline's cards widen into free columns and Builds takes more of the width, so five projects at once stay legible; a link preview for LinkedIn, the first screen as its picture |
 | 2026-11-04 | Decided: the timeline's columns counted per group of overlapping cards, his choice among three prototypes; the site's own address allowed in og:url, og:image and twitter:image only (ADR-0002 and ADR-0007 Changes) |
 | 2026-11-05 | Decided: Rahzaan ends in Aug 2026, on the master first (2026-11-06) |
+| 2026-11-09 | Rahzaan ends in Aug 2026 on the page and the timeline, with the master's other changes of 2026-11-06 and a new CV PDF; the files people read name employers as the site's readers |
 
 ## Waqas Sharif's role
 
@@ -341,6 +342,11 @@ the only deeper destination (ADR-0008), and no reuse of this repository
   same bytes served locally and compressed; under the 200 ms limit as a
   median, with single runs above it. The cause of the spread is not
   known.
+- **On 2026-11-09 this page and the live page both failed ADR-0009 at
+  medium load** (TBT medians 258 and 231 ms, 728 MB free), and passed at
+  light load (183 and 156 ms, 876 MB free). On 2026-11-04 the same page
+  measured 74 ms at light load. The cause of the rise is not tested
+  (`logs/2026-10-19-role-wording.md`, round 13).
 - **Lighthouse on this machine appears to depend on its free memory.**
   The machine has 7.7 GB of RAM. On 2026-10-19 four sets failed ADR-0009
   for this page and the page before it alike (blocking time medians 300
@@ -363,7 +369,7 @@ the only deeper destination (ADR-0008), and no reuse of this repository
   builds in pieces (ADR-0007 Changes, 2026-10-23).
 - **A browser that turns accessibility on only after load** meets the
   lower sections when they render, a residual ADR-0009 accepts.
-- **Tested only in Chrome 154 to 156 and Edge 154 and 155**, and with one screen
+- **Tested only in Chrome 154 to 157 and Edge 154, 155 and 157**, and with one screen
   reader,
   NVDA 2026.2. Firefox, Safari with VoiceOver, phones' screen readers and
   find-in-page are not tested.

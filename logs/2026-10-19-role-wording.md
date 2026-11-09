@@ -1349,3 +1349,138 @@ unquoted ": " YAML misreads (the pattern GitHub rejected here on
 record and the operator's approval may override a record, as Brief 15
 did. Not read in full: 01, `Adaptations\Client Projects.md`, the
 architecture chat's templates.
+
+# Round 13, 2026-11-09 (UTC): Brief 16
+
+**Brief 16 done, on main for Waqas's push.** The files people read name
+employers as the site's readers; Rahzaan ends in Aug 2026 on the page,
+with the master's other changes of 2026-11-06 and the CV PDF to match;
+his decisions of 2026-11-06 are in the records. Commits 5c67e97, b26b211
+and 08d6101, then these records. Every standing check passes with its
+defeat failing, except Lighthouse at medium load, which failed this page
+and the live page alike (below).
+
+## Read first
+
+[VERIFIED] main and origin/main at 1ee898d. The master: 195 lines, MD5
+44e4939e7697555e0473645e41c8b95f, file time 2026-11-06T19:34:38Z, as the
+brief gives; against the last traced copy (round 11's) it differs in
+exactly lines 11, 49, 53 and 115. The CV PDF on disk: 58,312 bytes, MD5
+d6602deedfeb62eedaaca63a41d6bcc3, as the brief gives.
+
+[VERIFIED] Live, at 2026-11-09T16:40:32Z: 25 of 25 live files equal to
+1ee898d by SHA-256, and the live head carries the 141-character
+`og:description` and the author tag. Defeat: the same check against
+08d6101 reports `index.html` and the PDF.
+
+## The readers (5c67e97)
+
+Waqas's decision of 2026-11-03, with his wording choice of 2026-11-04:
+`README.md`, `CLAUDE.md`, `docs/design/DESIGN.md` and `CAPABILITIES.md`
+name employers as the site's readers, with no second audience; README's
+row for reviewers reads "as an employer or anyone else assessing it".
+ADR-0001, ADR-0004 and ADR-0010 keep their reasoning about two
+audiences, the second now called academic readers, each with a Changes
+row (ADR-0004's first). ADR-0005 and ADR-0008 are superseded; each takes
+a dated note below its table and no row. The Decision Record Standard
+keeps a Changes table for a record that stays in force, and each table
+already holds seven counted rows, so an eighth would be the supersession
+trigger on a record already superseded.
+
+[VERIFIED] The search the brief names, run on every tracked file and the
+built page before and after: 15 lines in 9 files before, 0 after, the
+built page 0 both times. No Changes row repeats the old wording, so the
+count is zero there too.
+
+## His decisions of 2026-11-06 (b26b211)
+
+- The site's own origin in `og:url`, `og:image` and `twitter:image`
+  only: ADR-0002 and ADR-0007 Changes, and the brief's `CLAUDE.md` block.
+- What moved to `docs/reference/` keeps `CLAUDE.md`'s rank: the brief's
+  block. `CLAUDE.md` is 204 lines.
+- ADR-0001 Changes: ADR-0013 extends it since superseding ADR-0008.
+- `README.md` said no absolute self-origin is hardcoded, stale since
+  b213b6d; it now names the host in `build.py` and `tools/gates.py`.
+- `CAPABILITIES.md`, the architecture chat's lane, from the brief's
+  blocks. The decided row of 2026-11-03 leaves out the brief's first
+  clause, which repeats the words Part 1 removes; reported to the chat.
+  Four rows already there, out of date order, are moved into it; none
+  is removed.
+
+## The master of 2026-11-06 (08d6101)
+
+By script (`content16.py`, session scratchpad), verify first: the two
+copies of the master differ in the four briefed lines only, the converters reproduce
+today's content from the old master, and re-serialising the content
+files moves no byte. Then: the summary's "built with"; Rahzaan's `end`,
+`2026-08`; its first bullet; its layer 1, a cut of that bullet, which the
+build refuses when it is not, so it follows the bullet word for word; and
+the Portfolio Site bullet's 13 decision records.
+
+[VERIFIED] Trace 467 of 467; three defeats fail it (exit 1): the page
+before against the new master, the new page against the old master, and
+a page copy with 13 records back to 12. Built twice, byte-identical;
+another month differs. The page: 97,519 to 97,516 bytes, 19,051 to 19,065
+gzipped. A fresh clone builds byte-identical to 08d6101. The preview
+picture shows no changed text (its first screen ends at the headline);
+not remade.
+
+[VERIFIED] The CV PDF: its text differs from the last one in Rahzaan's
+date line only. Brief 6's checks, 14 of 15, the fifteenth the known
+probe for this machine's user name; the doctored copy passes 2 of 15.
+
+The timeline: Rahzaan's card ends at Aug 2026, so at 1366 px it is
+254 px wide and 456 tall, against 111 and 654 before, and the builds
+above it keep their columns (`tlshot15.js`).
+
+## The standing checks
+
+Each defeat first, one harness at a time, headless with its own
+profiles, 2026-11-09 15:39:50Z to 16:38:45Z; Chrome 157.0.8103.38, Edge
+157.0.4341.42. Tree at load in full mode matching the page without layout
+skipping in 32 of 32 loads, default mode adding no node in 32 (defeats:
+0403c68, 4 of 4 loads differ; a planted paragraph, added nodes). Keyboard
+90 of 90 (defeat 58 of 60). axe 0 violations in 12 of 12 cells (defeat:
+12 cells with violations). Contrast 0 below AA, 17 and 106 elements over
+a gradient unmeasured (defeat fails). Anchors 150 of 150 (defeat 75 of
+132). Layout clean at fourteen widths, scripts on and off (defeats 13, 11
+and 7 findings). No broken word from 1060 to 1920 px (defeat fails at
+980). No joined words in Chrome and Edge at 1366 and 360 px (defeat 58
+and 59 in each).
+
+**The reading marker, a fault in the check.** Its first run failed at
+1065 px: one year label still visible under the marker. Repeated walks
+at 1065 px: 2 of 120 labels visible at the check on this page; the page
+before (1ee898d, with the same `site.js`) failed one of three full runs
+the same way. Every such label had faded 1.5 s later, and none showed in
+60 labels with a 1000 ms settle. So the check read before the page's
+scroll update had landed; why that update was late is not tested. The
+check now reads a still-visible label again after 1.5 s before counting
+it (`docs/reference/standing-checks.md`). Its defeat, fd73058's script,
+still shows 10 of 10 labels at every width; the page passes, 3 runs of 3.
+
+**Lighthouse.** Two sets, five runs each, interleaved: this page, the
+page before it (1ee898d, live) and the 600 ms defeat. Waqas's own Chrome
+open both times (24 to 29 processes, none headless).
+- Set 1, medium load (728 MB free, CPU median 35.3% over the minute
+  before, read from 16:07:48Z): this page LCP 2,285 ms, CLS 0.0001, TBT
+  258 ms; the page before 2,273 ms, 0.0001, 231 ms; both fail by TBT.
+  The defeat fails (TBT 2,458 ms).
+- Set 2, light load (876 MB free, CPU median 17.5%, from 16:31:44Z): this
+  page 2,262 ms, 0.0001, 183 ms; the page before 2,261 ms, 0.0001,
+  156 ms; both meet ADR-0009. The defeat fails (TBT 2,350 ms).
+
+Under ADR-0009's row of 2026-10-20 a fail at medium load is a fail, so
+set 1 stands as one, for the live page as much as for this one; the two
+differ by 3 bytes, so the change does not explain it. On 2026-11-04 the
+same page measured TBT 74 ms at light load; the rise to 183 is not
+explained, and its cause is not tested.
+
+## Errors this seat made, round 13
+
+- Report 15 said a set failed at medium load was "rerun at light load as
+  ADR-0009 requires". ADR-0009 asks no rerun at medium load; the fail
+  counts. Corrected in Report 16.
+- The marker check could fail a page that works, from 2026-10-22 until
+  now: it read the labels 250 ms after each scroll with no second look.
+  Fixed above.

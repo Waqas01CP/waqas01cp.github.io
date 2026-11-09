@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit 0f16c48, the last commit before this file's
-update, 2026-11-05T10:59Z, by the Brief 15 implementing session.** This is
+**Verified against commit 08d6101, the last commit before this file's
+update, 2026-11-09T16:43Z, by the Brief 16 implementing session.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -43,6 +43,14 @@ the clearing in the task's row.
 Update the verified-against line whenever you touch this file.
 
 ## Headline
+
+**Brief 16, 2026-11-09, on main for the operator's push: the files
+people read name employers as the site's readers, the records call the
+second audience academic readers; Rahzaan ends in Aug 2026, with the
+master's changes of 2026-11-06 and the CV PDF to match; his decisions of
+2026-11-06 recorded (ADR-0001, ADR-0002, ADR-0007, CLAUDE.md). Every
+standing check passes, but Lighthouse failed this page and the live page
+alike at medium load, and passed at light.** Before that:
 
 **2026-11-05: Brief 15 merged and live; LinkedIn's preview works, its
 description lengthened to 141 characters and an author tag added, on
@@ -183,8 +191,8 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
-| The push of 0f16c48 and its records; then LinkedIn's Post Inspector again | The operator | Operator | 2026-11-05 |
-| Rahzaan ending Aug 2026 (his decision of 2026-11-05): the master first, then the site | The resume chat, through the architecture chat | Chat | 2026-11-05 |
+| The push of Brief 16's commits, 5c67e97 to its records; then the live check | The operator | Operator | 2026-11-09 |
+| Lighthouse at medium load: this page and the live page fail ADR-0009 alike (TBT medians 258 and 231 ms, 2026-11-09), pass at light (183 and 156) | The architecture chat, to decide what follows | Chat | 2026-11-09 |
 
 ## Known unverified
 
