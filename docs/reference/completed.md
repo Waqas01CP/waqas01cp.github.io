@@ -28,6 +28,7 @@ Proof is a commit, a decision record or a log filename. Never a file path.
 | Content trace: the master's project links read and checked as links, after the master moved Rahzaan's links onto its project line | [VERIFIED] | 2026-10-10 | logs/2026-10-07-tree-parity.md, round 8. PASS against the current master; three defeat cases each exit 1 |
 | Every documented file's frontmatter readable as YAML: four descriptions holding a colon and a space quoted | [VERIFIED] | 2026-10-10 | logs/2026-10-07-tree-parity.md, round 9. PyYAML: 4 of 36 rejected before, 0 after |
 | A licence notice: all rights reserved, at the operator's instruction; README.md brought current | [VERIFIED] | 2026-10-10 | Same log, round 9 |
+| Brief 16 pushed and live: every live file equal to the build; was blocked on the push | [VERIFIED] | 2026-11-09 | c6d82ec; 25 of 25 files by SHA-256 at 16:56:35Z; defeat: 1ee898d reports the page and the PDF |
 | Rahzaan ending Aug 2026 on the page, with the master of 2026-11-06 and the CV PDF to match; was blocked on the master | [VERIFIED] | 2026-11-09 | 08d6101; trace 467 of 467, three defeats failing; logs/2026-10-19-role-wording.md, round 13 |
 | The files people read name employers as the readers; the records say academic readers | [VERIFIED] | 2026-11-09 | 5c67e97; the search 0 after, 15 lines before |
 | His decisions of 2026-11-06 recorded: the three-tag exception, moved procedures' rank, ADR-0013 extending ADR-0001 | [VERIFIED] | 2026-11-09 | b26b211; ADR-0001, ADR-0002, ADR-0007 Changes |

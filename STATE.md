@@ -6,8 +6,8 @@ status: current
 
 # STATE
 
-**Verified against commit 08d6101, the last commit before this file's
-update, 2026-11-09T16:43Z, by the Brief 16 implementing session.** This is
+**Verified against commit c6d82ec, the last commit before this file's
+update, 2026-11-09T16:57Z, by the Brief 16 implementing session.** This is
 the only line in this file that names a commit. Created 2026-09-23T01:00Z by the
 architecture chat, from the new-project setup procedure in the operator's cross-project Working
 Method, which lives in his private vault and is deliberately not linked from
@@ -44,7 +44,7 @@ Update the verified-against line whenever you touch this file.
 
 ## Headline
 
-**Brief 16, 2026-11-09, on main for the operator's push: the files
+**Brief 16, 2026-11-09, pushed and live, checked: the files
 people read name employers as the site's readers, the records call the
 second audience academic readers; Rahzaan ends in Aug 2026, with the
 master's changes of 2026-11-06 and the CV PDF to match; his decisions of
@@ -191,7 +191,6 @@ No open rows. Finished ones are in `docs/reference/completed.md`.
 
 | Item | Blocked on | Who | Since |
 |---|---|---|---|
-| The push of Brief 16's commits, 5c67e97 to its records; then the live check | The operator | Operator | 2026-11-09 |
 | Lighthouse at medium load: this page and the live page fail ADR-0009 alike (TBT medians 258 and 231 ms, 2026-11-09), pass at light (183 and 156) | The architecture chat, to decide what follows | Chat | 2026-11-09 |
 
 ## Known unverified

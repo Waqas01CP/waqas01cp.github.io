@@ -1484,3 +1484,21 @@ explained, and its cause is not tested.
 - The marker check could fail a page that works, from 2026-10-22 until
   now: it read the labels 250 ms after each scroll with no second look.
   Fixed above.
+
+## After the push, 2026-11-09
+
+[VERIFIED] Waqas pushed 5c67e97 to c6d82ec. At 16:56:35Z, 25 of 25 live
+files equal to c6d82ec by SHA-256; the same check against 1ee898d reports
+`index.html` and the PDF.
+
+His view of Lighthouse's medium-load set: the machine was busier than
+usual. The readings agree it was busier, not that it crossed the heavy
+edge. Before set 1, Disk Cleanup and a background download were running,
+CPU was above 40% in 28 of 60 one-second samples (4 of 60 before set 2),
+and free memory fell from a median of 728 MB before the set to 508 after
+it, 415 at its lowest. But the medians that set the level, 728 MB and
+about 35% CPU, are medium, and before the set no sample fell under 440 MB
+or rose above 77%, so the set counts. Two medium-load sets have now
+failed this page and the page before alike: 447 MB free on 2026-11-04,
+728 MB today. Whether the medium band should narrow is for the chat
+(Report 16, 6.1).
