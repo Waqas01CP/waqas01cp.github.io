@@ -5,7 +5,7 @@
     "tier": 1,
     "title": "Rahzaan: AI Career Guidance Platform",
     "start": "2026-02",
-    "end": "present",
+    "end": "2026-08",
     "source": "master-cv:projects/rahzaan",
     "stack": [
       "Python",
@@ -15,7 +15,7 @@
       "Supabase"
     ],
     "layer2": "Deployed agentic counselling platform for Pakistani secondary school students. The hard part is reasoning truthfully about eligibility: multiple exam boards with different percentage conversions, five streams, regulatory gating by several councils with distinct minima (PEC at 60% for BE, HEC at 50% for BS, 45% elsewhere) and merit rules that are often unpublished. Primary architect and director.",
-    "layer1": "Built the evaluation harness the platform is maintained through: 60 per-turn traces, 19 behavioural probes, and a 46-file behavioural test suite of 592 automated tests.",
+    "layer1": "Built the platform's evaluation harness: 60 per-turn traces, 19 behavioural probes, and a 46-file behavioural test suite of 592 automated tests.",
     "detail": "Deployed agentic counselling platform for Pakistani secondary school students.",
     "proof": [
       {
@@ -28,7 +28,7 @@
       }
     ],
     "bullets": [
-      "Built the evaluation harness the platform is maintained through: <strong>five named personas</strong> and a <strong>ten-scenario</strong> curriculum matrix producing <strong>60 per-turn traces</strong>, <strong>19 behavioural probes</strong> using paired before-and-after measurement and single-criterion isolation to attribute cause, a separated run-and-analyse pipeline, and a <strong>46-file behavioural test suite of 592 automated tests</strong> catching regressions before users hit them.",
+      "Built the platform's evaluation harness: <strong>five named personas</strong> and a <strong>ten-scenario</strong> curriculum matrix producing <strong>60 per-turn traces</strong>, <strong>19 behavioural probes</strong> using paired before-and-after measurement and single-criterion isolation to attribute cause, a separated run-and-analyse pipeline, and a <strong>46-file behavioural test suite of 592 automated tests</strong> catching regressions before users hit them.",
       "Refuted my own diagnosis of why the system over-asserted. I assumed thin data caused it; measuring across <strong>five data-completeness levels</strong> showed the opposite, the thinnest persona was the most honest, declining outright rather than fabricating. The real trigger was <strong>internal signal divergence</strong>, the model inventing an affective bridge to reconcile conflicting academic and psychometric inputs, so the scarcity guard I had planned would have fixed nothing. Redirected the fix to the divergence path, then added a deterministic post-generation gate as backstop after establishing that negative directives carry a reliability ceiling.",
       "Architected a <strong>24-node LangGraph pipeline</strong>: fan-out across 9 concurrent nodes, fan-in through a central dispatcher, then two further stages, with 52 typed state fields and concurrent-write reducers. Cut first-response latency from 20 to 25 seconds down to <strong>3.7 seconds</strong>. Per-node model routing lets any node's LLM be swapped through environment config alone, with <strong>LangSmith</strong> tracing for per-turn execution, node latency, and token usage.",
       "Built a production <strong>FastAPI</strong> backend: <strong>22 REST endpoints</strong>, <strong>LangGraph</strong> checkpoint persistence to <strong>PostgreSQL</strong>, SSE streaming with a parallel keepalive task that defeats the host's 30-second proxy timeout, JWT authentication with bcrypt, rate limiting, 11 Alembic migrations against live data, a deterministic refresh endpoint that regenerates recommendations with zero LLM calls, and a profile summary generator running six parallel LLM calls plus synthesis off the event loop. Automated a 15-day job-market pipeline mapping <strong>14,595 job titles</strong> to canonical career fields via Gemini.",
@@ -199,7 +199,7 @@
       "Every claim on the page traces to my master CV, checked by a tool in both directions before any content change. A small Python generator builds one page with every word in the first response, readable without scripts, and refuses content with a missing source or proof link, projects out of rank order, or shortened text that is not a cut of its source. <strong>Seven repository gates</strong>, run by git hooks, refuse a commit that adds a cookie, tracking, a third-party request or anything private.",
       "Designed its timeline: a vertical spine with lanes either side, newest work at the top so a reader meets the latest first, and on a phone one spine carrying every lane, chosen after viewing both prototype versions on my phone.",
       "Tested it with a screen reader: my <strong>NVDA</strong> run found words read as one, such as \"Dec 20255-Day\", which every automated check had passed; I had them fixed with hidden spaces and confirmed the fix by ear the same day. axe-core found 0 violations in 12 combinations of width, theme and panel state, in Chrome and in Edge, and keyboard checks passed 60 of 60.",
-      "Measures performance so a slow machine is not mistaken for a slow page: each Lighthouse set runs the page, the page before the change and a control with a deliberate 600 ms script that must fail, five runs each, interleaved. Live median of <strong>1.7 s</strong> largest paint against a 2.5 s goal (Oct 2026). Had the reading-layers proposal audited before it was recorded rather than accepted as proposed; the audit changed four things. <strong>12 decision records</strong>, each assumption carrying its basis."
+      "Measures performance so a slow machine is not mistaken for a slow page: each Lighthouse set runs the page, the page before the change and a control with a deliberate 600 ms script that must fail, five runs each, interleaved. Live median of <strong>1.7 s</strong> largest paint against a 2.5 s goal (Oct 2026). Had the reading-layers proposal audited before it was recorded rather than accepted as proposed; the audit changed four things. <strong>13 decision records</strong>, each assumption carrying its basis."
     ]
   },
   {

@@ -86,7 +86,7 @@
 <li><span class="arrow" aria-hidden="true">&rarr;</span> <span>Karachi, Pakistan (UTC+5).</span></li>
 <li><span class="arrow" aria-hidden="true">&rarr;</span> <span><span>BE Software Engineering, KIET,</span> <span>Oct 2022 to Jul 2026,</span> <span>CGPA 3.47</span></span></li>
 </ul>
-<p class="lede">Software Engineering graduate (BESE, KIET) specialising in LLM reliability and behavioural testing, with production agentic-system experience. Builds AI-native: designs the architecture and the algorithms, makes the engineering trade-offs, delegates implementation to coding agents such as Claude Code for speed, and verifies their work through automated tests, mutation testing and independent audits. Primary architect and director of Rahzaan, a deployed AI career guidance platform maintained through an evaluation harness of 19 behavioural probes, 60 per-turn traces and 592 automated tests over a 24-node LangGraph pipeline at 3.7-second first-response latency. Independent research naming three reproducible LLM failure modes, with controlled sampling experiments and adversarial red-teaming across multiple deployed projects, and a black-box provenance investigation of ChatGPT Deep Research.</p>
+<p class="lede">Software Engineering graduate (BESE, KIET) specialising in LLM reliability and behavioural testing, with production agentic-system experience. Builds AI-native: designs the architecture and the algorithms, makes the engineering trade-offs, delegates implementation to coding agents such as Claude Code for speed, and verifies their work through automated tests, mutation testing and independent audits. Primary architect and director of Rahzaan, a deployed AI career guidance platform built with an evaluation harness of 19 behavioural probes, 60 per-turn traces and 592 automated tests over a 24-node LangGraph pipeline at 3.7-second first-response latency. Independent research naming three reproducible LLM failure modes, with controlled sampling experiments and adversarial red-teaming across multiple deployed projects, and a black-box provenance investigation of ChatGPT Deep Research.</p>
 <p class="lede">I architect the systems I build: I define the problem, set the design and the decisions, and hold the implementation to them through a systematic framework of written specifications, automated tests and independent audits. Rahzaan ran through 334 session records and 53 audit documents; the job aggregator carries 55 decision records, 754 tests and 410 recorded mutations that deliberately break the code to prove the tests notice.</p>
 <ul class="cta">
 <li><a class="btn btn-acc" href="mailto:ma.sharif.waqas@gmail.com"><svg class="i" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7l8 6 8-6"/></svg>Email me</a></li>
@@ -146,13 +146,13 @@
 <span class="glare" aria-hidden="true"></span>
 <div class="proj-body">
 <div class="proj-head">
-<p class="proj-dates"><time datetime="2026-02">Feb 2026</time> to Present</p>
+<p class="proj-dates"><time datetime="2026-02">Feb</time> to <time datetime="2026-08">Aug 2026</time></p>
 <h3 id="h-rahzaan">Rahzaan</h3>
 <p class="proj-sub">AI Career Guidance Platform</p>
 <p class="proj-summary">Deployed agentic counselling platform for Pakistani secondary school students. The hard part is reasoning truthfully about eligibility: multiple exam boards with different percentage conversions, five streams, regulatory gating by several councils with distinct minima (PEC at 60% for BE, HEC at 50% for BS, 45% elsewhere) and merit rules that are often unpublished. Primary architect and director.</p>
 </div>
 <div class="proj-side">
-<p class="proj-fact">Built the evaluation harness the platform is maintained through: 60 per-turn traces, 19 behavioural probes, and a 46-file behavioural test suite of 592 automated tests.</p>
+<p class="proj-fact">Built the platform&#39;s evaluation harness: 60 per-turn traces, 19 behavioural probes, and a 46-file behavioural test suite of 592 automated tests.</p>
 <ul class="chips chips-mono" aria-label="Stack">
 <li>Python</li>
 <li>LangGraph</li>
@@ -181,7 +181,7 @@
 </div>
 </div>
 <ol class="depth-list">
-<li><span class="depth-n" aria-hidden="true">01</span><p>Built the evaluation harness the platform is maintained through: <strong>five named personas</strong> and a <strong>ten-scenario</strong> curriculum matrix producing <strong>60 per-turn traces</strong>, <strong>19 behavioural probes</strong> using paired before-and-after measurement and single-criterion isolation to attribute cause, a separated run-and-analyse pipeline, and a <strong>46-file behavioural test suite of 592 automated tests</strong> catching regressions before users hit them.</p></li>
+<li><span class="depth-n" aria-hidden="true">01</span><p>Built the platform's evaluation harness: <strong>five named personas</strong> and a <strong>ten-scenario</strong> curriculum matrix producing <strong>60 per-turn traces</strong>, <strong>19 behavioural probes</strong> using paired before-and-after measurement and single-criterion isolation to attribute cause, a separated run-and-analyse pipeline, and a <strong>46-file behavioural test suite of 592 automated tests</strong> catching regressions before users hit them.</p></li>
 <li><span class="depth-n" aria-hidden="true">02</span><p>Refuted my own diagnosis of why the system over-asserted. I assumed thin data caused it; measuring across <strong>five data-completeness levels</strong> showed the opposite, the thinnest persona was the most honest, declining outright rather than fabricating. The real trigger was <strong>internal signal divergence</strong>, the model inventing an affective bridge to reconcile conflicting academic and psychometric inputs, so the scarcity guard I had planned would have fixed nothing. Redirected the fix to the divergence path, then added a deterministic post-generation gate as backstop after establishing that negative directives carry a reliability ceiling.</p></li>
 <li><span class="depth-n" aria-hidden="true">03</span><p>Architected a <strong>24-node LangGraph pipeline</strong>: fan-out across 9 concurrent nodes, fan-in through a central dispatcher, then two further stages, with 52 typed state fields and concurrent-write reducers. Cut first-response latency from 20 to 25 seconds down to <strong>3.7 seconds</strong>. Per-node model routing lets any node's LLM be swapped through environment config alone, with <strong>LangSmith</strong> tracing for per-turn execution, node latency, and token usage.</p></li>
 <li><span class="depth-n" aria-hidden="true">04</span><p>Built a production <strong>FastAPI</strong> backend: <strong>22 REST endpoints</strong>, <strong>LangGraph</strong> checkpoint persistence to <strong>PostgreSQL</strong>, SSE streaming with a parallel keepalive task that defeats the host's 30-second proxy timeout, JWT authentication with bcrypt, rate limiting, 11 Alembic migrations against live data, a deterministic refresh endpoint that regenerates recommendations with zero LLM calls, and a profile summary generator running six parallel LLM calls plus synthesis off the event loop. Automated a 15-day job-market pipeline mapping <strong>14,595 job titles</strong> to canonical career fields via Gemini.</p></li>
@@ -404,7 +404,7 @@
 <li><span class="depth-n" aria-hidden="true">01</span><p>Every claim on the page traces to my master CV, checked by a tool in both directions before any content change. A small Python generator builds one page with every word in the first response, readable without scripts, and refuses content with a missing source or proof link, projects out of rank order, or shortened text that is not a cut of its source. <strong>Seven repository gates</strong>, run by git hooks, refuse a commit that adds a cookie, tracking, a third-party request or anything private.</p></li>
 <li><span class="depth-n" aria-hidden="true">02</span><p>Designed its timeline: a vertical spine with lanes either side, newest work at the top so a reader meets the latest first, and on a phone one spine carrying every lane, chosen after viewing both prototype versions on my phone.</p></li>
 <li><span class="depth-n" aria-hidden="true">03</span><p>Tested it with a screen reader: my <strong>NVDA</strong> run found words read as one, such as "Dec 20255-Day", which every automated check had passed; I had them fixed with hidden spaces and confirmed the fix by ear the same day. axe-core found 0 violations in 12 combinations of width, theme and panel state, in Chrome and in Edge, and keyboard checks passed 60 of 60.</p></li>
-<li><span class="depth-n" aria-hidden="true">04</span><p>Measures performance so a slow machine is not mistaken for a slow page: each Lighthouse set runs the page, the page before the change and a control with a deliberate 600 ms script that must fail, five runs each, interleaved. Live median of <strong>1.7 s</strong> largest paint against a 2.5 s goal (Oct 2026). Had the reading-layers proposal audited before it was recorded rather than accepted as proposed; the audit changed four things. <strong>12 decision records</strong>, each assumption carrying its basis.</p></li>
+<li><span class="depth-n" aria-hidden="true">04</span><p>Measures performance so a slow machine is not mistaken for a slow page: each Lighthouse set runs the page, the page before the change and a control with a deliberate 600 ms script that must fail, five runs each, interleaved. Live median of <strong>1.7 s</strong> largest paint against a 2.5 s goal (Oct 2026). Had the reading-layers proposal audited before it was recorded rather than accepted as proposed; the audit changed four things. <strong>13 decision records</strong>, each assumption carrying its basis.</p></li>
 </ol>
 </div>
 <article id="autonomous-research-concierge" class="proj" style="--span-wide: 2; --span-mid: 3" aria-labelledby="h-autonomous-research-concierge" data-tilt>
@@ -576,7 +576,7 @@
 </div>
 <span class="tl-mspine" aria-hidden="true"><span class="tl-spine-fill" data-mspine-fill></span></span>
 <ol class="tl-list" role="list" data-tl-list>
-<li class="tl-entry lane-builds after-band" style="--row: 1; --span: 8; --x: 20.0%; --w: 20.0%; --gl: 3px; --gr: 3px" data-lane="builds" data-year="2026" data-year-mark>
+<li class="tl-entry lane-builds after-band" style="--row: 1; --span: 8; --x: 25.0%; --w: 25.0%; --gl: 3px; --gr: 3px" data-lane="builds" data-year="2026" data-year-mark>
 <span class="tl-yr" aria-hidden="true">2026</span>
 <span class="tl-mark" aria-hidden="true"></span>
 <details class="tl-card" name="tl" data-tl-card>
@@ -588,7 +588,7 @@
 </div>
 </details>
 </li>
-<li class="tl-entry lane-builds after-band" style="--row: 5; --span: 4; --x: 0.0%; --w: 20.0%; --gl: 0px; --gr: 3px" data-lane="builds" data-year="2026">
+<li class="tl-entry lane-builds after-band" style="--row: 5; --span: 4; --x: 0.0%; --w: 25.0%; --gl: 0px; --gr: 3px" data-lane="builds" data-year="2026">
 <span class="tl-yr" aria-hidden="true">2026</span>
 <span class="tl-mark" aria-hidden="true"></span>
 <details class="tl-card" name="tl" data-tl-card>
@@ -600,7 +600,7 @@
 </div>
 </details>
 </li>
-<li class="tl-entry lane-builds after-band" style="--row: 1; --span: 12; --x: 60.0%; --w: 20.0%; --gl: 3px; --gr: 3px" data-lane="builds" data-year="2026">
+<li class="tl-entry lane-builds after-band" style="--row: 1; --span: 12; --x: 75.0%; --w: 25.0%; --gl: 3px; --gr: 0px" data-lane="builds" data-year="2026">
 <span class="tl-yr" aria-hidden="true">2026</span>
 <span class="tl-mark" aria-hidden="true"></span>
 <details class="tl-card" name="tl" data-tl-card>
@@ -612,7 +612,7 @@
 </div>
 </details>
 </li>
-<li class="tl-entry lane-builds after-band" style="--row: 1; --span: 12; --x: 40.0%; --w: 20.0%; --gl: 3px; --gr: 3px" data-lane="builds" data-year="2026">
+<li class="tl-entry lane-builds after-band" style="--row: 1; --span: 12; --x: 50.0%; --w: 25.0%; --gl: 3px; --gr: 3px" data-lane="builds" data-year="2026">
 <span class="tl-yr" aria-hidden="true">2026</span>
 <span class="tl-mark" aria-hidden="true"></span>
 <details class="tl-card" name="tl" data-tl-card>
@@ -636,11 +636,11 @@
 </div>
 </details>
 </li>
-<li class="tl-entry lane-builds in-band" style="--row: 1; --span: 40; --x: 80.0%; --w: 20.0%; --gl: 3px; --gr: 0px" data-lane="builds" data-year="2026">
+<li class="tl-entry lane-builds in-band" style="--row: 13; --span: 28; --x: 55%; --w: 45%; --gl: 3px; --gr: 0px" data-lane="builds" data-year="2026">
 <span class="tl-yr" aria-hidden="true">2026</span>
 <span class="tl-mark" aria-hidden="true"></span>
 <details class="tl-card" name="tl" data-tl-card>
-<summary><span class="tl-meta"><span class="tl-lane">Builds</span> <span class="tl-sign" aria-hidden="true"></span></span><span class="vh"> </span> <span class="tl-dates"><time datetime="2026-02">Feb 2026</time> to Present</span><span class="vh"> </span> <span class="tl-title">Rahzaan</span></summary>
+<summary><span class="tl-meta"><span class="tl-lane">Builds</span> <span class="tl-sign" aria-hidden="true"></span></span><span class="vh"> </span> <span class="tl-dates"><time datetime="2026-02">Feb</time> to <time datetime="2026-08">Aug 2026</time></span><span class="vh"> </span> <span class="tl-title">Rahzaan</span></summary>
 <div class="tl-pop">
 <button type="button" class="tl-close" aria-label="Close: Rahzaan" data-tl-close data-js hidden aria-hidden="true">&times;</button>
 <p class="tl-detail">Deployed agentic counselling platform for Pakistani secondary school students.</p>
@@ -648,7 +648,7 @@
 </div>
 </details>
 </li>
-<li class="tl-entry lane-builds in-band" style="--row: 37; --span: 4; --x: 0.0%; --w: 80.0%; --gl: 0px; --gr: 3px" data-lane="builds" data-year="2026">
+<li class="tl-entry lane-builds in-band" style="--row: 37; --span: 4; --x: 0%; --w: 55%; --gl: 0px; --gr: 3px" data-lane="builds" data-year="2026">
 <span class="tl-yr" aria-hidden="true">2026</span>
 <span class="tl-mark" aria-hidden="true"></span>
 <details class="tl-card" name="tl" data-tl-card>
