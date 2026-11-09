@@ -117,7 +117,10 @@ Every internal link is root-relative. No absolute URL pointing at this
 site's own origin appears in the built page, so moving to a custom domain
 later is a DNS change and not a rewrite. A document read apart from the
 site may give the full address, such as the CV PDF. ADR-0002, and its
-Changes, 2026-10-21.
+Changes, 2026-10-21. One exception, his decision of 2026-11-04: the
+site's own origin, written once as SITE_ORIGIN in build.py, in og:url,
+og:image and twitter:image only; gate G refuses it anywhere else.
+ADR-0002 and ADR-0007, Changes.
 
 Every item carries a specific checkable fact; a summary and full depth
 follow only where the master CV has material for them. Every layer an item
@@ -164,6 +167,10 @@ Do not infer a command that is not there, and do not treat its absence as
 permission.
 
 ## Procedures in docs/reference/
+
+Each moved here word for word from this file on 2026-10-23 and keeps
+this file's rank, item 2 in the order above, not that of docs/reference/
+(the operator's decision of 2026-11-06).
 
 - Decision records: their format, when one is written, how one is amended, and what a seat may and may not change in one: `docs/reference/decision-records.md`.
 - The gates: what each of the seven blocks, the case that defeats it, and why they bind before the hooks are set: `docs/reference/gates.md`.

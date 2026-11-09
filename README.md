@@ -24,9 +24,9 @@ The repository is public, per ADR-0002. Two things are never committed:
 and errors, and the briefs (`docs/reference/briefs.md`). Both are in `.gitignore`,
 and gate A refuses them.
 
-Every internal link is root-relative and no absolute self-origin is
-hardcoded, so moving to a custom domain later is a DNS change and a CNAME
-file, not a link rewrite.
+Every internal link is root-relative, so moving to a custom domain later
+is a DNS change, a CNAME file and the host in `build.py` and
+`tools/gates.py`, which the link preview's tags use, not a link rewrite.
 
 ## Start here
 

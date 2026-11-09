@@ -70,7 +70,7 @@ repository (ADR-0002).
 
 **No version is defined yet** (Working Method 8.10); defining one is
 his. The site as built carries every item in the master CV, and
-what waits is listed here with its source, as of 2026-10-10, updated 2026-10-21:
+what waits is listed here with its source, as of 2026-10-10, updated 2026-11-07:
 
 - **A CV download: done, 2026-10-11.** `cv/Waqas_Sharif_CV.pdf`, a one-page
   general CV produced from the master CV outside this repository, is live,
@@ -80,12 +80,19 @@ what waits is listed here with its source, as of 2026-10-10, updated 2026-10-21:
   anyone who wants a site like this one; this repository stays read, not
   reused (ADR-0012). Its licence is MIT, as Waqas Sharif confirmed and
   ADR-0012's Changes record; its own records carry its decisions.
-- **Whether this site lists itself as a project: settled, it does not.**
-  Waqas Sharif decided not to add it to his master CV as a project
-  (`docs/reference/completed.md`; research 0004, decision 1).
-- **An open-source lane.** Its section placement is open in the decision
-  index's Pending list, to be decided before the brief that brings such
-  an item.
+- **Whether this site lists itself as a project: it does, since
+  2026-11-04.** Waqas Sharif decided before 2026-10-20 not to add it to
+  his master CV as a project (`docs/reference/completed.md`; research
+  0004, decision 1), and reversed that on 2026-10-31: this site and
+  portfolio-gallery are in the master and on the page (ADR-0013).
+- **An open-source lane: none until his first code contribution to
+  someone else's project merges, or a project of his has real
+  adoption** (his bar of 2026-10-31; ADR-0013, and ADR-0003 Changes); a
+  listing pull request does not count. Until 2026-11-04 its placement
+  was open in the decision index's Pending list.
+- **A link preview for LinkedIn and other sites: done, 2026-11-05**,
+  checked by his Post Inspector runs of 2026-11-05 and after his push
+  (ADR-0002 and ADR-0007 Changes, the three-tag exception).
 - **Listed in emmabostian/developer-portfolios: done,** pull request 4350,
   merged (`docs/reference/completed.md`; research 0004, decision 5).
 - **Monthly refresh.** While an item ends "present", the page is rebuilt
@@ -241,10 +248,14 @@ architecture chat's.
 | 2026-10-19 | Decided: his name may appear in `portfolio-gallery`'s showcase, never in what a copy receives (ADR-0012 Changes) |
 | 2026-10-20 | Decided: a Lighthouse set counts only on a machine at light or medium load, its level read from free memory and CPU over the minute before; a set at heavy load is void and repeated (ADR-0009 Changes) |
 | 2026-10-21 | The master's new role wording on the page and a new CV PDF; the "In depth" button no longer stranded when a card's links wrap; the certificate cards' link cue shown on touch screens; no section marked current without a script; a layout check and a measured contrast check added to the standing checks |
-| 2026-10-23 | Gates F and G: a commit is refused when a content string is missing from the page's text without a script, or when the built files carry a third-party source, a cookie, storage or network call, or an analytics host; AGENTS.md, a pointer for other coding agents; CLAUDE.md under 200 lines, five procedures moved to `docs/reference/` |
 | 2026-10-22 | The timeline to scale from 1060 px instead of 1180, so a desktop window that narrow gets the desktop timeline, with cards growing to fit their titles; "In depth" starts the next line when a card's actions wrap; the reading marker no longer prints over the axis labels; layout, word-break and marker checks added |
-| 2026-11-04 | Three projects on the page and the timeline: the ChatGPT Deep Research Provenance Case Study, Portfolio Gallery and Portfolio Site; the timeline's cards widen into free columns and Builds takes more of the width, so five projects at once stay legible; a link preview for LinkedIn, the first screen as its picture |
+| 2026-10-23 | Gates F and G: a commit is refused when a content string is missing from the page's text without a script, or when the built files carry a third-party source, a cookie, storage or network call, or an analytics host; AGENTS.md, a pointer for other coding agents; CLAUDE.md under 200 lines, five procedures moved to `docs/reference/` |
 | 2026-10-23 | Decided: floor lines 7, 9 and 10 enforced as pre-commit gates (ADR-0007 Changes); contrast confirmed by a measured check as well as axe (ADR-0011 Changes); the desktop timeline to scale from a 1060 px window (ADR-0003 Changes) |
+| 2026-10-31 | Decided: this site and portfolio-gallery listed as projects, reversing research 0004's decision 1; no open-source label, section or lane until his first code contribution to someone else's project merges, or a project of his has real adoption; the order of the three new projects (ADR-0013, written 2026-11-04) |
+| 2026-11-03 | Decided: the files people read name employers only, the records "academic readers" (Brief 16) |
+| 2026-11-04 | Three projects on the page and the timeline: the ChatGPT Deep Research Provenance Case Study, Portfolio Gallery and Portfolio Site; the timeline's cards widen into free columns and Builds takes more of the width, so five projects at once stay legible; a link preview for LinkedIn, the first screen as its picture |
+| 2026-11-04 | Decided: the timeline's columns counted per group of overlapping cards, his choice among three prototypes; the site's own address allowed in og:url, og:image and twitter:image only (ADR-0002 and ADR-0007 Changes) |
+| 2026-11-05 | Decided: Rahzaan ends in Aug 2026, on the master first (2026-11-06) |
 
 ## Waqas Sharif's role
 
